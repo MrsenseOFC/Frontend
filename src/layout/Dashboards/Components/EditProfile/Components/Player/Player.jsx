@@ -238,13 +238,13 @@ export function Player() {
             <AuthRadio
               title="Qual sua melhor perna?"
               options={legOptions}
-              groupname="legOptions"
+              groupname="playerLegOptions"
               onClick={(e) => setProfileData((prevData) => ({ ...prevData, bestLeg: e.target.value }))}
             />
 
             <AuthDropdown
               title="Você atua em qual categoria?"
-              id="ageCategory"
+              id="playerAgeCategory"
               placeholder="Escolha sua categoria"
               options={ageCategoryOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, ageCategory: option }))}
@@ -253,8 +253,8 @@ export function Player() {
 
             <AuthInput
               type="date"
-              name="date_input"
-              id="date_input"
+              name="playerBirthDate_input"
+              id="playerBirthDate_input"
               title="Data de nascimento"
               value={profileData.birthDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthDate: e.target.value }))}
@@ -263,8 +263,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="weight_input"
-              id="weight_input"
+              name="playerWeight_input"
+              id="playerWeight_input"
               title="Peso"
               placeholder="Seu peso atual (em KG)"
               value={profileData.weight}
@@ -274,8 +274,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="height_input"
-              id="height_input"
+              name="playerHeight_input"
+              id="playerHeight_input"
               placeholder="Sua altura atual (Ex: 1,70)"
               title="Altura"
               value={profileData.height}
@@ -284,8 +284,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="primaryBirthCountry_input"
-              id="primaryBirthCountry_input"
+              name="playerPrimaryBirthCountry_input"
+              id="playerPrimaryBirthCountry_input"
               title="Nacionalidade primária"
               placeholder="Sua nacionalidade primária"
               value={profileData.primaryNationality}
@@ -294,8 +294,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="secondaryBirthCountry_input"
-              id="secondaryBirthCountry_input"
+              name="playerSecondaryBirthCountry_input"
+              id="playerSecondaryBirthCountry_input"
               title="Nacionalidade secundária"
               placeholder="Sua nacionalidade secundária"
               value={profileData.secondaryNationality}
@@ -304,8 +304,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="birthCity_input"
-              id="birthCity_input"
+              name="playerBirthCity_input"
+              id="playerBirthCity_input"
               title="Cidade"
               placeholder="Sua cidade de nascimento"
               value={profileData.birthCity}
@@ -314,8 +314,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="passport_input"
-              id="passport_input"
+              name="playerPassports_input"
+              id="playerPassports_input"
               title="Possui passporte para algum país?"
               placeholder="Caso sim, liste os países"
               value={profileData.passports}
@@ -324,8 +324,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="payment_input"
-              id="payment_input"
+              name="playerPayment_input"
+              id="playerPayment_input"
               title="Salário"
               placeholder="Seu salário base"
               value={profileData.payment}
@@ -334,8 +334,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="transferValue_input"
-              id="transferValue_input"
+              name="playerTransferValue_input"
+              id="playerTransferValue_input"
               title="Valor de transferência"
               placeholder="Seu valor de transferência"
               value={profileData.transferValue}
@@ -345,7 +345,7 @@ export function Player() {
             <AuthDropdown
               title="Posição Principal"
               placeholder="Sua posição principal"
-              id="mainPosition"
+              id="playerMainPosition"
               options={positionsOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, mainPosition: option }))}
               required
@@ -354,7 +354,7 @@ export function Player() {
             <AuthDropdown
               title="Posição Secundária"
               placeholder="Sua posição secundária"
-              id="secondaryPosition"
+              id="playerSecondaryPosition"
               options={positionsOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, secondaryPosition: option }))}
             />
@@ -362,14 +362,14 @@ export function Player() {
             <AuthDropdown
               title="Posição terciária"
               placeholder="Sua posição terciária"
-              id="tertiaryPosition"
+              id="playerTertiaryPosition"
               options={positionsOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, tertiaryPosition: option }))}
             />
 
             <AuthDropdown
               title="Você atua em alguma liga?"
-              id="league"
+              id="playerLeague"
               placeholder="Escolha sua Liga"
               options={leagueOptions}
               onDropdownChange={(option) => setLeague(option.value)}
@@ -380,7 +380,7 @@ export function Player() {
             <AuthRadio
               title="Você possui algum empresário?"
               options={managerOptions}
-              groupname="managerOptions"
+              groupname="playerManagerOptions"
               onClick={(e) => setProfileData((prevData) => ({ ...prevData, hasManager: e.target.value }))}
             />
 
@@ -390,7 +390,7 @@ export function Player() {
               <AuthHistoric
               // Dados padrão do componente
                 title="Histórico de clubes"
-                id="clubHistory"
+                id="playerClubHistory"
                 inputtitle="Clube"
                 placeholder="Nome do Clube"
               // Histórico do usuário (Dados anteriores que já estão salvos)
@@ -408,7 +408,7 @@ export function Player() {
 
               <AuthAchievement
                 title="Histórico de títulos e prêmios"
-                id="awardsHistory"
+                id="playerAwardsHistory"
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
               // Histórico do usuário (Dados anteriores que já estão salvos)
@@ -425,20 +425,19 @@ export function Player() {
 
             <Subtitle text="Sua história acadêmica" size={theme.sizes.xlarge} />
 
-            {/* <Column> */}
             <AuthQualCheck
               title="Realizou a prova TOEFL?"
-              groupname="toefl"
+              groupname="playerToefl"
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, toefl: e.target.value }))}
             />
             <AuthQualCheck
               title="Realizou a prova ACT?"
-              groupname="act"
+              groupname="playeAct"
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, act: e.target.value }))}
             />
             <AuthQualCheck
               title="Realizou a prova SAT?"
-              groupname="sat"
+              groupname="playerSat"
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, sat: e.target.value }))}
             />
 
@@ -453,8 +452,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="secondGradeGpa_input"
-              id="secondGradeGpa_input"
+              name="playerGpa_input"
+              id="playerGpa_input"
               title="GPA (Grade Point Average)"
               placeholder="Nota média final"
               value={profileData.gradePointAverage}
@@ -463,7 +462,7 @@ export function Player() {
 
             <AuthHistoric
               title="Conhecimentos"
-              id="Academic"
+              id="playerAcademicHistory"
               inputtitle="Formação"
               placeholder="Nome da formação"
             // Histórico do usuário (Dados anteriores que já estão salvos)
@@ -480,7 +479,7 @@ export function Player() {
             />
 
             <AuthButton
-              name="editOPlayerProFile_submit"
+              name="editOPlayerProfile_submit"
               id="editPlayerProfile_submit"
               value="Confirmar alteração"
             />

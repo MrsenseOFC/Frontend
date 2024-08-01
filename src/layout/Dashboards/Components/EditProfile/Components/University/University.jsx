@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import * as Styled from './University-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -15,14 +16,66 @@ import { AuthContainer } from '../../../../../../components/elements/AuthElement
 import { Row } from '../../../../../../components/RowContainer/Row';
 import { AuthFile } from '../../../../../../components/elements/AuthElements/AuthFile/AuthFile';
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
+import { UniversityContext } from '../../../../../../contexts/userContext/UniversityProvider/UniversityContext';
 
 export function University() {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const universityContext = useContext(UniversityContext);
+  const { universityState, univeristyDispatch } = universityContext;
+
+  const [profileData, setProfileData] = useState({
+    representative: '',
+    foundationDate: '',
+    country: '',
+    state: '',
+    trainingCenter: '',
+    stadium: '',
+    coach: '',
+  });
+
+  const [awardHistory, setAwardHistory] = useState(
+    {
+      name: '',
+      date: '',
+    },
+  );
+
+  const handleAddAward = async (e) => {
     e.preventDefault();
-    // enviar os dados para o backend
-    navigate('/'); // Direciona o usuário para alguma página quando ele clica no submit
+    e.stopPropagation();
+
+    // Verifica se os campos estão preenchidos
+    if (awardHistory.name && awardHistory.date) {
+      // lógica para alterar o histórico de títulos e prêmios no backend
+      try {
+        const response = await axios.post('api', awardHistory);
+        console.log('Perfil alterado com sucesso:', response.data);
+
+        // Reseta o estado local
+        setAwardHistory({
+          name: '',
+          date: '',
+        });
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
+    } else {
+      console.error('Por favor, preencha todos os campos.');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (profileData) {
+      try {
+        const response = await axios.post('api', profileData);
+        console.log('Perfil alterado com sucesso:', response.data);
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
+    }
   };
 
   return (
@@ -32,64 +85,93 @@ export function University() {
 
         <AuthContainer>
 
-          <AuthForm>
+          <AuthForm onSubmit={handleSubmit}>
 
             <Subtitle text="Seu perfil (Universidade)" size={theme.sizes.xlarge} />
 
             <AuthInput
-              type="date"
-              name="date_input"
-              id="date_input"
-              title="Data de fundação"
-            />
-
-            <AuthInput
               type="text"
-              name="representative_input"
-              id="representative_input"
+              name="universityRepresentative_input"
+              id="universityRepresentative_input"
               title="Representante"
               placeholder="Nome do representante da universidade"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
+            />
+
+            <AuthInput
+              type="date"
+              name="universityFoundationDate_input"
+              id="universityFoundationDate_input"
+              title="Data de fundação"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
             />
 
             <AuthInput
               type="text"
-              name="country_input"
-              id="country_input"
+              name="universityCountry_input"
+              id="universityCountry_input"
               title="País"
               placeholder="De qual país é a universidade"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 
             <AuthInput
               type="text"
-              name="state_input"
-              id="state_input"
+              name="universityState_input"
+              id="universityState_input"
               title="Estado"
               placeholder="De qual estado é a universidade"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
             />
 
             <AuthInput
               type="text"
-              name="trainingCenter_input"
-              id="trainingCenter_input"
+              name="universityTrainingCenter_input"
+              id="universityTrainingCenter_input"
               title="Local de treinamento"
               placeholder="Onde a universidade realiza os treinamentos"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, trainingCenter: e.target.value }))}
             />
 
             <AuthInput
               type="text"
-              name="coach_input"
-              id="coach_input"
+              name="universityStadium_input"
+              id="universityStadium_input"
+              title="Nome do estádio"
+              placeholder="Estádio ou arena da universidade"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, stadium: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
+              name="universityCoach_input"
+              id="universityCoach_input"
               title="Treinador"
               placeholder="Atual treinador da universidade"
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, coach: e.target.value }))}
             />
 
             <Row>
-              <AuthAchievement title="Histórico de títulos e prêmios" id="titles" inputtitle="Competição / Prêmio" placeholder="Nome da competição ou prêmio" />
+              <AuthAchievement
+                title="Histórico de títulos e prêmios"
+                id="universityAwardsHistory"
+                inputtitle="Competição / Prêmio"
+                placeholder="Nome da competição ou prêmio"
+              // Histórico do usuário (Dados anteriores que já estão salvos)
+                historic={universityState.profile.leagues}
+              // OnChanges para atualizar o competionHistory
+                onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
+                onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}
+              // Values para sincronizar os inputs com o estado do awardHistory
+                nameValue={awardHistory.name}
+                dateValue={awardHistory.date}
+                onClick={(e) => handleAddAward(e)}
+              />
             </Row>
 
             <AuthButton
-              name="register_submit"
-              id="register_submit"
+              name="editUniversityProfile_submit"
+              id="editUniversityProfile_submit"
               value="Confirmar alteração"
             />
 
