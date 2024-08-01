@@ -21,12 +21,13 @@ import { addProposal } from '../../../contexts/s2tContext/s2tActions';
 export function NewProposal({ onclick }) {
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
+
   const currentDate = new Date().toISOString().substring(0, 10); // Get current date in YYYY-MM-DD format
 
   const [proposalData, setProposalData] = useState({
     opportunityId: 0,
     details: {
-      from: 'Reducer',
+      from: '', // Tipo de perfil do usuário que publicou a proposta
       date: currentDate,
       disponibility: '',
       category: '',
@@ -34,8 +35,8 @@ export function NewProposal({ onclick }) {
       country: '',
       org: '',
       age: {
-        minAge: '',
-        maxAge: '',
+        minAge: undefined,
+        maxAge: undefined,
       },
       payment: {
         minPayment: '',
@@ -48,7 +49,9 @@ export function NewProposal({ onclick }) {
     requirements: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(proposalData);
     addProposal(s2tDispatch, proposalData);
   };
 
@@ -94,7 +97,7 @@ export function NewProposal({ onclick }) {
       </Row>
 
       <AuthWrapper>
-        <AuthForm>
+        <AuthForm onSubmit={handleSubmit}>
           <Subtitle text="Detalhes" uppercase />
           <AuthLayout isopen>
             <AuthInput
@@ -147,7 +150,7 @@ export function NewProposal({ onclick }) {
             />
 
             <AuthInput
-              type="number"
+              type="text"
               name="minimumHeight_input"
               id="minimumHeight_input"
               placeholder="Qual altura mínima para se candidatar?"
@@ -167,7 +170,7 @@ export function NewProposal({ onclick }) {
             />
 
             <AuthInput
-              type="number"
+              type="text"
               name="maximumAge_input"
               id="maximumAge_input"
               placeholder="Qual a idade máxima para se candidatar? (Em anos)"
@@ -232,7 +235,6 @@ export function NewProposal({ onclick }) {
             name="createProposal_submit"
             id="createProposal_submit"
             value="Publicar Oportunidade"
-            onclick={() => window.alert('aaa')}
           />
         </AuthForm>
       </AuthWrapper>

@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import * as Styled from './Player-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -31,6 +32,7 @@ export function Player() {
     bestLeg: '',
     ageCategory: '',
     birthDate: '',
+    age: 0,
     birthCity: '',
     weight: '',
     height: '',
@@ -47,15 +49,25 @@ export function Player() {
     toefl: '',
     act: '',
     sat: '',
-    graduationYear: '',
+    graduationDate: '',
     gradePointAverage: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // enviar os dados para o backend
-    navigate('/player-profile'); // Direciona o usuário para alguma página quando ele clica no submit
-  };
+  // Calcula a idade do usuário baseado na data de nascimento
+  useEffect(() => {
+    const calculateAge = () => {
+      const birthDate = new Date(profileData.birthDate);
+      if (birthDate) {
+        const today = new Date();
+        const ageInMilliseconds = today - birthDate;
+        const ageInYears = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24
+   * 365.25));
+        setProfileData((prevData) => ({ ...prevData, age: ageInYears }));
+      }
+    };
+
+    calculateAge();
+  }, [profileData.birthDate]);
 
   // Dropdown Options
   const legOptions = [
@@ -63,7 +75,7 @@ export function Player() {
     { value: 'left', label: 'Esquerda' },
   ];
 
-  const categoryOptions = [
+  const ageCategoryOptions = [
     { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
     { value: 'sub8', text: 'Sub-8 (8 anos)' },
     { value: 'sub9', text: 'Sub-9 (8 e 9 anos)' },
@@ -76,20 +88,19 @@ export function Player() {
   ];
 
   const positionsOptions = [
-    { value: 'goleiro', text: 'Goleiro' },
-    { value: 'lateral esquerdo', text: 'Lateral Esquerdo' },
-    { value: 'lateral direito', text: 'Lateral Direito' },
-    { value: 'zagueiro', text: 'Zagueiro' },
-    { value: 'ala', text: 'Ala' },
-    { value: 'primeiro volante', text: 'Primeiro Volante' },
-    { value: 'segundo volante', text: 'Segundo Volante' },
-    { value: 'meio-campista', text: 'Meio-Campista' },
-    { value: 'meia-ofensivo', text: 'Meia Ofensivo' },
-    { value: 'meia-lateral', text: 'Meia Lateral' },
-    { value: 'segundo atacante', text: 'Segundo atacante' },
-    { value: 'ponta esquerda', text: 'Ponta Esquerda' },
-    { value: 'ponta direita', text: 'Ponta Direito' },
-    { value: 'centroavante', text: 'Centroavante' },
+    { value: 'goalkeeper', text: 'Goleiro' },
+    { value: 'left-back', text: 'Lateral Esquerdo' },
+    { value: 'right-back', text: 'Lateral Direito' },
+    { value: 'center-back', text: 'Zagueiro' },
+    { value: 'wing-back', text: 'Ala' },
+    { value: 'defensive midfielder', text: 'Primeiro Volante' },
+    { value: 'central midfielder', text: 'Meio-Campista' },
+    { value: 'attacking midfielder', text: 'Meia Ofensivo' },
+    { value: 'wide midfielder', text: 'Meia Lateral' },
+    { value: 'second striker', text: 'Segundo atacante' },
+    { value: 'left winger', text: 'Ponta Esquerda' },
+    { value: 'right winger', text: 'Ponta Direito' },
+    { value: 'center forward', text: 'Centroavante' },
   ];
 
   const managerOptions = [
@@ -110,23 +121,27 @@ export function Player() {
     },
   );
 
-  const handleAddClub = (e) => {
+  const handleAddClub = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     // Verifica se os campos estão preenchidos
     if (clubHistory.name && clubHistory.earliestDate) {
-      // Os dados do formulário estão armazenados no clubHistory
-      window.alert('Acessar Player em EditProfile para adicionar lógica para trazer os dados para o backend');
-      console.log(clubHistory);
+      // lógica para alterar o histórico de clubes no backend
+      try {
+        const response = await axios.post('api', clubHistory);
+        console.log('Perfil alterado com sucesso:', response.data);
 
-      setClubHistory({
-        name: '',
-        earliestDate: '',
-        latestDate: '',
-      });
+        // Reseta o estado local
+        setClubHistory({
+          name: '',
+          earliestDate: '',
+          latestDate: '',
+        });
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
     } else {
-      // Opcional: Mostrar uma mensagem de erro ao usuário
       console.error('Por favor, preencha todos os campos.');
     }
   };
@@ -138,22 +153,26 @@ export function Player() {
     },
   );
 
-  const handleAddAward = (e) => {
+  const handleAddAward = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     // Verifica se os campos estão preenchidos
     if (awardHistory.name && awardHistory.date) {
-      // Os dados do formulário estão armazenados no clubHistory
-      window.alert('Acessar Player em EditProfile para adicionar lógica para trazer os dados para o backend');
-      console.log(awardHistory);
+      // lógica para alterar o histórico de títulos e prêmios no backend
+      try {
+        const response = await axios.post('api', awardHistory);
+        console.log('Perfil alterado com sucesso:', response.data);
 
-      setAwardHistory({
-        name: '',
-        date: '',
-      });
+        // Reseta o estado local
+        setAwardHistory({
+          name: '',
+          date: '',
+        });
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
     } else {
-      // Opcional: Mostrar uma mensagem de erro ao usuário
       console.error('Por favor, preencha todos os campos.');
     }
   };
@@ -166,24 +185,42 @@ export function Player() {
     },
   );
 
-  const handleAddAcademic = (e) => {
+  const handleAddAcademic = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
     // Verifica se os campos estão preenchidos
     if (academicHistory.name && academicHistory.earliestDate) {
-      // Os dados do formulário estão armazenados no clubHistory
-      window.alert('Acessar Player em EditProfile para adicionar lógica para trazer os dados para o backend');
-      console.log(academicHistory);
+      // lógica para alterar o histórico acadêmico no backend
+      try {
+        const response = await axios.post('api', academicHistory);
+        console.log('Perfil alterado com sucesso:', response.data);
 
-      setAcademicHistory({
-        name: '',
-        earliestDate: '',
-        latestDate: '',
-      });
+        // Reseta o estado local
+        setAcademicHistory({
+          name: '',
+          earliestDate: '',
+          latestDate: '',
+        });
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
     } else {
-      // Opcional: Mostrar uma mensagem de erro ao usuário
       console.error('Por favor, preencha todos os campos.');
+    }
+  };
+
+  // Submit principal
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (profileData) {
+      try {
+        const response = await axios.post('api', profileData);
+        console.log('Perfil alterado com sucesso:', response.data);
+      } catch (error) {
+        console.error('Erro ao editar perfil:', error);
+      }
     }
   };
 
@@ -194,7 +231,7 @@ export function Player() {
 
         <AuthContainer>
 
-          <AuthForm>
+          <AuthForm onSubmit={handleSubmit}>
 
             <Subtitle text="Seu perfil" size={theme.sizes.xlarge} />
 
@@ -207,48 +244,41 @@ export function Player() {
 
             <AuthDropdown
               title="Você atua em qual categoria?"
-              id="category"
+              id="ageCategory"
               placeholder="Escolha sua categoria"
-              options={categoryOptions}
-              otheroption
+              options={ageCategoryOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, ageCategory: option }))}
+              required
             />
-
-            {/* {profileData.ageCategory === 'other' && (
-            <AuthInput
-              type="name"
-              name="other_input"
-              id="other_input"
-              placeholder="insira aqui a categoria"
-              title="Qual categoria?"
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, ageCategory: e.target.value }))}
-            />
-            )} */}
 
             <AuthInput
               type="date"
               name="date_input"
               id="date_input"
               title="Data de nascimento"
+              value={profileData.birthDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthDate: e.target.value }))}
+              required
             />
 
             <AuthInput
-              type="number"
+              type="text"
               name="weight_input"
               id="weight_input"
               title="Peso"
               placeholder="Seu peso atual (em KG)"
+              value={profileData.weight}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, weight: e.target.value }))}
+
             />
 
             <AuthInput
-              type="number"
+              type="text"
               name="height_input"
               id="height_input"
-              placeholder="Sua altura altura (Ex: 1,70)"
+              placeholder="Sua altura atual (Ex: 1,70)"
               title="Altura"
-              required
+              value={profileData.height}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, height: e.target.value }))}
             />
 
@@ -258,6 +288,7 @@ export function Player() {
               id="primaryBirthCountry_input"
               title="Nacionalidade primária"
               placeholder="Sua nacionalidade primária"
+              value={profileData.primaryNationality}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, primaryNationality: e.target.value }))}
             />
 
@@ -267,6 +298,7 @@ export function Player() {
               id="secondaryBirthCountry_input"
               title="Nacionalidade secundária"
               placeholder="Sua nacionalidade secundária"
+              value={profileData.secondaryNationality}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, secondaryNationality: e.target.value }))}
             />
 
@@ -276,6 +308,7 @@ export function Player() {
               id="birthCity_input"
               title="Cidade"
               placeholder="Sua cidade de nascimento"
+              value={profileData.birthCity}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthCity: e.target.value }))}
             />
 
@@ -285,6 +318,7 @@ export function Player() {
               id="passport_input"
               title="Possui passporte para algum país?"
               placeholder="Caso sim, liste os países"
+              value={profileData.passports}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, passports: e.target.value }))}
             />
 
@@ -294,6 +328,7 @@ export function Player() {
               id="payment_input"
               title="Salário"
               placeholder="Seu salário base"
+              value={profileData.payment}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, payment: e.target.value }))}
             />
 
@@ -303,6 +338,7 @@ export function Player() {
               id="transferValue_input"
               title="Valor de transferência"
               placeholder="Seu valor de transferência"
+              value={profileData.transferValue}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, transferValue: e.target.value }))}
             />
 
@@ -312,6 +348,7 @@ export function Player() {
               id="mainPosition"
               options={positionsOptions}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, mainPosition: option }))}
+              required
             />
 
             <AuthDropdown
@@ -339,17 +376,6 @@ export function Player() {
               otheroption
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, league: option }))}
             />
-
-            {/* {league === 'other' && (
-            <AuthInput
-              type="name"
-              name="other_input"
-              id="other_input"
-              placeholder="Insira aqui o nome da liga"
-              title="Qual?"
-              required
-            />
-            )} */}
 
             <AuthRadio
               title="Você possui algum empresário?"
@@ -418,19 +444,20 @@ export function Player() {
 
             <AuthInput
               type="date"
-              name="secondGrade_input"
-              id="secondGrade_input"
-              title="Ano de formatura do segundo grau"
-              placeholder="Ano"
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, graduationYear: e.target.value }))}
+              name="secondGradeYear_input"
+              id="secondGradeYear_input"
+              title="Data de formatura do segundo grau"
+              value={profileData.graduationDate}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, graduationDate: e.target.value }))}
             />
 
             <AuthInput
-              type="number"
+              type="text"
               name="secondGradeGpa_input"
               id="secondGradeGpa_input"
               title="GPA (Grade Point Average)"
               placeholder="Nota média final"
+              value={profileData.gradePointAverage}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, gradePointAverage: e.target.value }))}
             />
 
@@ -453,8 +480,8 @@ export function Player() {
             />
 
             <AuthButton
-              name="register_submit"
-              id="register_submit"
+              name="editOPlayerProFile_submit"
+              id="editPlayerProfile_submit"
               value="Confirmar alteração"
             />
 

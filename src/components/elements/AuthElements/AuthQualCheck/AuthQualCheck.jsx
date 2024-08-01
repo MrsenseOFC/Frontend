@@ -38,7 +38,7 @@ export function AuthQualCheck({
         {selectedOption === 'yes' && (
           <>
             <AuthInput
-              type="number"
+              type="string"
               name="qualNote_input"
               id="qualNote_input"
               title="Nota"
@@ -47,7 +47,8 @@ export function AuthQualCheck({
               onChange={onChange}
             />
 
-            <AuthFile text="Comprovante / Certificado (Opcional)" id={`${groupname}_certificate`} accept="image/jpeg, image/png, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+            {/* Função de receber certificado desativada */}
+            {/* <AuthFile text="Comprovante / Certificado (Opcional)" id={`${groupname}_certificate`} accept="image/jpeg, image/png, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" /> */}
           </>
         )}
       </AuthRadioContainer>
