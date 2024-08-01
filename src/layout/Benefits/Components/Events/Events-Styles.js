@@ -1,0 +1,50 @@
+import styled, { css } from 'styled-components';
+import { TextElement } from '../../../../components/elements/Text/Text-Styles';
+import { TitleElement } from '../../../../components/elements/Title/Title-Styles';
+import { BannerSlideWrapper } from '../../../../components/elements/BannerSlide/BannerSlide-Styles';
+import { LinkContainer } from '../../../../components/elements/StyledLink/StyledLink-Styles';
+import { ListContainer, ListItem } from '../../../../components/elements/List/List-Styles';
+import { slideIn, slideOut } from '../../../../styles/animations';
+import { GridLayoutContainer } from '../../../../components/GridLayout/GridLayout-Styles';
+
+export const EventsContainer = styled.article`
+  ${({ theme }) => css`
+ 
+     text-align: center;
+
+     display: flex;
+     flex-direction: column;
+
+
+
+     & ${ListContainer} {
+      animation: ${slideIn} 500ms;
+     }
+
+     & ${ListItem} {
+      background-image: linear-gradient(to right, ${theme.colors.lightprimary}, ${theme.colors.lightsecondary});
+      padding: ${theme.spacings.xsmall};
+      border-radius: 12px;
+      border: ${theme.borders.white};
+      
+      @media ${theme.medias.mobile} {
+        padding: ${theme.spacings.xxsmall};
+      }
+      
+     }
+
+     > ${TitleElement} {
+        text-align: center;
+        margin-bottom: 0;
+        padding: ${theme.spacings.xsmall};
+        animation: ${slideIn} 500ms;
+
+     }
+
+     > ${TextElement} {
+      animation: ${slideIn} 500ms;
+     }
+
+    
+  `}
+`;
