@@ -15,7 +15,7 @@ export function ClubFavorites() {
 
       <PublicSlide items={s2tState.videos.trending} title="Vídeos em alta" publicview />
 
-      <ProfileSlide items={s2tState.videos.trending} title="Meus vídeos favoritos" publicview />
+      <PublicSlide items={s2tState.videos.trending} title="Meus vídeos favoritos" publicview />
     </Styled.ClubFavoritesContainer>
   );
 }

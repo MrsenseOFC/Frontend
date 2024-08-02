@@ -48,7 +48,7 @@ export function PublicSlide({
           }}
         >
 
-          {items.length > 0 && items.map((item) => (
+          {items && items.map((item) => (
             <SwiperSlide key={item.id}>
 
               <Styled.MediaWrapper>

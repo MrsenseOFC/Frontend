@@ -38,7 +38,7 @@ export function Club() {
   const [competitionHistory, setCompetitionHistory] = useState(
     {
       name: '',
-      date: '',
+      earliestDate: '',
     },
   );
 
@@ -47,7 +47,7 @@ export function Club() {
     e.stopPropagation();
 
     // Verifica se os campos estão preenchidos
-    if (competitionHistory.name && competitionHistory.date) {
+    if (competitionHistory.name && competitionHistory.earliestDate) {
       // lógica para alterar o histórico de clubes no backend
       try {
         const response = await axios.post('api', competitionHistory);
@@ -56,7 +56,7 @@ export function Club() {
         // Reseta o estado local
         setCompetitionHistory({
           name: '',
-          date: '',
+          earliestDate: '',
         });
       } catch (error) {
         console.error('Erro ao editar perfil:', error);
@@ -109,8 +109,6 @@ export function Club() {
       }
     }
   };
-
-  console.log(profileData);
 
   return (
     <Styled.ClubContainer>
@@ -192,10 +190,10 @@ export function Club() {
                 inputtitle="Competição"
                 placeholder="Nome da competição"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-              // historic={clubState.profile.leagues} desabilitado temporariamente
+              // achievements={clubState.profile.leagues} desabilitado temporariamente
               // OnChanges para atualizar o competionHistory
                 onChangeName={(e) => setCompetitionHistory((prevData) => ({ ...prevData, name: e.target.value }))}
-                onChangeDate={(e) => setCompetitionHistory((prevData) => ({ ...prevData, date: e.target.value }))}
+                onChangeDate={(e) => setCompetitionHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
               // Values para sincronizar os inputs com o estado do competionHistory
                 nameValue={competitionHistory.name}
                 DateValue={competitionHistory.date}

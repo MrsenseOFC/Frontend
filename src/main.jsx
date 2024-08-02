@@ -108,7 +108,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   <Route path="/users" element={<Users />}>
                     <Route path="player" element={<PlayerPage />} />
                     <Route path="club" element={<ClubPage />} />
-
                   </Route>
 
                   {/* Rota do dashboard para jogadores + subrotas dele */}

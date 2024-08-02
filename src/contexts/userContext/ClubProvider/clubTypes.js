@@ -1,3 +1,2 @@
-// src/contexts/userContext/ClubProvider/clubTypes.js
-
-export const REVEAL_PLAYER = 'REVEAL_PLAYER';
+export const reveal_player = 'reveal_player';
+// Insira aqui as types igual a acima

@@ -56,7 +56,7 @@ export function ClubDashboard() {
           />
 
           <Button
-            path="/player-dashboard"
+            path="/club-dashboard"
             text="Minha área"
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}

@@ -85,7 +85,7 @@ export function OwnerSlide({
           }}
         >
 
-          {items.length > 0 && items.map((item) => (
+          {items && items.map((item) => (
             <SwiperSlide
               key={item.id}
               lazy={item.type === 'video'}

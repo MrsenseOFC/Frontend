@@ -13,7 +13,7 @@ export const clubData = {
       name: 'São Paulo FC',
       profileImageSrc: '/assets/images/profile/spfc.jpg',
       badge: '/assets/images/pngs/medal.png',
-      backgroundImageSrc: '/assets/images/profile/cdb.jpeg',
+      backgroundImageSrc: '/assets/images/backgrounds/slider-bg-1.png',
     },
 
     // Informações que são exibidas abaixo do banner
@@ -88,21 +88,21 @@ export const clubData = {
         id: '1',
         name: 'Brasileirão Serie A',
         image: '/assets/images/background.png',
-        years: [2024],
+        earliestDate: '2024-09-01',
       },
 
       {
         id: '2',
         name: 'Conmebol Libertadores',
         image: '/assets/images/background.png',
-        years: [2024],
+        earliestDate: '2024-09-01',
       },
 
       {
         id: '3',
         name: 'Copa do brasil',
         image: '/assets/images/background.png',
-        years: [2024],
+        earliestDate: '2024-09-01',
       },
     ],
 

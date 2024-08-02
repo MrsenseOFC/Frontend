@@ -88,21 +88,21 @@ export const universityData = {
         id: '1',
         name: 'Brasileirão Serie A',
         image: '/assets/images/background.png',
-        years: [2024],
+        date: '2024-01-01',
       },
 
       {
         id: '2',
         name: 'Conmebol Libertadores',
         image: '/assets/images/background.png',
-        years: [2024],
+        date: '2024-01-01',
       },
 
       {
         id: '3',
         name: 'Copa do brasil',
         image: '/assets/images/background.png',
-        years: [2024],
+        date: '2024-01-01',
       },
     ],
 

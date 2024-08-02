@@ -1,14 +1,20 @@
 import Prop from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import * as Styled from './TextSlide-Styles';
 import { Title } from '../Title/Title';
 import { ImageText } from '../ImageText/ImageText';
+import { Text } from '../Text/Text';
 
 export function TextSlide({ items, title }) {
-  const orderedItems = items.sort((a, b) => b.year - a.year, // Ano de b menos ano de a
-  );
+  const [orderedItems, setOrderedItems] = useState();
+
+  useEffect(() => {
+    if (items) {
+      setOrderedItems(items.sort((a, b) => b.year - a.year)); // Ano de b menos ano de a
+    }
+  }, [items]);
 
   return (
     <Styled.TextSlideElement>
@@ -37,11 +43,21 @@ export function TextSlide({ items, title }) {
         }}
       >
 
-        {orderedItems.length > 0 && orderedItems.map((item) => (
-          <SwiperSlide key={item.id}>
-            <ImageText imagesrc={item.image} primarytext={item.name} secondarytext={item.year} />
-          </SwiperSlide>
-        ))}
+        {orderedItems ? (
+          <>
+            {orderedItems.map((item) => (
+              <SwiperSlide key={item.id}>
+                <ImageText
+                  imagesrc={item.image}
+                  primarytext={item.name}
+                  secondarytext={item.year}
+                />
+              </SwiperSlide>
+            ))}
+          </>
+        ) : (
+          <Text text="Nenhum dado encontrado." />
+        ) }
 
       </Swiper>
     </Styled.TextSlideElement>

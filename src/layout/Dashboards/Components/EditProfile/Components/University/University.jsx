@@ -78,6 +78,8 @@ export function University() {
     }
   };
 
+  console.log(universityState.profile.leagues);
+
   return (
     <Styled.UniversityContainer>
 
@@ -158,7 +160,7 @@ export function University() {
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-                historic={universityState.profile.leagues}
+                achievements={universityState.profile.leagues}
               // OnChanges para atualizar o competionHistory
                 onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}
