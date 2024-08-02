@@ -8,7 +8,9 @@ import { theme } from '../../../styles/theme';
 import { AuthIconFile } from '../AuthElements/AuthIconFile/AuthIconFile';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext.tsx';
 
-export function ProfilePicture({ badge = '', type = '', ownerview }) {
+export function ProfilePicture({
+  badge = '', type = '', competitivelevel, ownerview,
+}) {
   const { currentUser } = useAuth();
   const [profilePicture, setProfilePicture] = useState(currentUser?.profileImage || '');
 
@@ -60,7 +62,7 @@ export function ProfilePicture({ badge = '', type = '', ownerview }) {
       </Styled.ProfilePictureElement>
       {type && (
         <Button
-          text={type}
+          text={`${type}  ${competitivelevel || ''}`}
           bgcolor={theme.colors.secondary}
           bghover={theme.colors.secondary}
           textcolor={theme.colors.black}
@@ -69,6 +71,7 @@ export function ProfilePicture({ badge = '', type = '', ownerview }) {
           borderhover={theme.colors.black}
         />
       )}
+
     </Styled.ProfilePictureContainer>
   );
 }

@@ -17,6 +17,7 @@ import { Row } from '../../../../../../components/RowContainer/Row';
 import { AuthFile } from '../../../../../../components/elements/AuthElements/AuthFile/AuthFile';
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { UniversityContext } from '../../../../../../contexts/userContext/UniversityProvider/UniversityContext';
+import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
 
 export function University() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export function University() {
 
   const [profileData, setProfileData] = useState({
     representative: '',
+    competitiveLevel: '',
     foundationDate: '',
     country: '',
     state: '',
@@ -33,6 +35,19 @@ export function University() {
     stadium: '',
     coach: '',
   });
+
+  const competitiveLevelsOptions = [
+    { value: 'ncaa1', text: 'NCAA 1 (EUA)' },
+    { value: 'ncaa2', text: 'NCAA 2 (EUA)' },
+    { value: 'ncaa3', text: 'NCAA 3 (EUA)' },
+    { value: 'naia1', text: 'NAIA 1 (EUA)' },
+    { value: 'naia2', text: 'NAIA 2 (EUA)' },
+    { value: 'nccaa1', text: 'NCCAA 1 (EUA)' },
+    { value: 'nccaa2', text: 'NCCAA 2 (EUA)' },
+    { value: 'njcaa1', text: 'NJCAA 1 (EUA)' },
+    { value: 'njcaa2', text: 'NJCAA 2 (EUA)' },
+    { value: 'njcaa3', text: 'NJCAA 3 (EUA)' },
+  ];
 
   const [awardHistory, setAwardHistory] = useState(
     {
@@ -98,6 +113,15 @@ export function University() {
               title="Representante"
               placeholder="Nome do representante da universidade"
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
+            />
+
+            <AuthDropdown
+              title="Qual o nível competitivo da universidade?"
+              id="universityCompetitiveLevel"
+              placeholder="Escolha o nível"
+              options={competitiveLevelsOptions}
+              otheroption
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
             <AuthInput

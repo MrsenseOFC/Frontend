@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as Styled from './GridPlayers-Styles';
 import { Title } from '../Title/Title';
 import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles';
@@ -15,7 +15,15 @@ export function GridPlayers({
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
   const pagesVisited = pageNumber * itemsPerPage;
-  const displayItems = items ? items.slice(pagesVisited, pagesVisited + itemsPerPage) : [];
+
+  const displayItems = useMemo(() => {
+    if (items) {
+      return items.slice(pagesVisited, pagesVisited + itemsPerPage);
+    }
+
+    return [];
+  }, [items]);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -44,7 +52,7 @@ export function GridPlayers({
 
       {publicview && <FilterPlayers />}
 
-      {displayItems.length > 0 ? (
+      {displayItems && displayItems.length > 0 ? (
         <GridLayoutContainer>
           {displayItems.map((item) => (
             <UserCard
@@ -64,7 +72,7 @@ export function GridPlayers({
           ))}
         </GridLayoutContainer>
       ) : (
-        <Text text="Nenhum jogador foi encontrado" />
+        <Text text="Nenhum jogador foi encontrado..." />
       )}
 
       {displayItems.length > 0 && (
@@ -72,7 +80,7 @@ export function GridPlayers({
         previousLabel="Anterior"
         nextLabel="Próximo"
         breakLabel="..."
-        pageCount={Math.ceil(items.length / itemsPerPage)}
+        pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
         onPageChange={changePage}

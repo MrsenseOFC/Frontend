@@ -1,10 +1,11 @@
 import Prop from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as Styled from './GridEvents-Styles';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { EventModal } from '../EventModal/EventModal';
 import { EventCard } from '../EventCard/EventCard';
 import { FilterEvents } from '../FilterEvents/FilterProposals/FilterEvents';
+import { Text } from '../../Text/Text';
 
 export function GridEvents({ items }) {
   const [selectedEvent, setSelectedEvent] = useState();
@@ -14,7 +15,14 @@ export function GridEvents({ items }) {
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
   const pagesVisited = pageNumber * itemsPerPage;
-  const displayItems = items ? items.slice(pagesVisited, pagesVisited + itemsPerPage) : [];
+  const displayItems = useMemo(() => {
+    if (items) {
+      return items.slice(pagesVisited, pagesVisited + itemsPerPage);
+    }
+
+    return [];
+  }, [items]);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -43,21 +51,29 @@ export function GridEvents({ items }) {
       <FilterEvents />
 
       <GridLayout>
-        {displayItems.map((item) => (
-          <EventCard
-            key={item.id}
-            imagesrc={item.src}
-            title={item.title}
-            subtitle={item.subtitle}
-            organizer={item.organizer}
-            startDate={item.startDate}
-            startHour={item.startHour}
-            country={item.country}
-            state={item.state}
-            platform={item.platform}
-            onClick={() => setSelectedEvent(item)}
-          />
-        ))}
+        {displayItems && displayItems.length > 0 ? (
+          <>
+            {displayItems.map((item) => (
+              <EventCard
+                key={item.id}
+                imagesrc={item.src}
+                title={item.title}
+                subtitle={item.subtitle}
+                organizer={item.organizer}
+                startDate={item.startDate}
+                startHour={item.startHour}
+                country={item.country}
+                state={item.state}
+                platform={item.platform}
+                onClick={() => setSelectedEvent(item)}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            <Text text="Nenhum evento foi encontrado..." />
+          </>
+        )}
       </GridLayout>
 
       {displayItems.length > 0 && (
@@ -65,7 +81,7 @@ export function GridEvents({ items }) {
         previousLabel="Anterior"
         nextLabel="Próximo"
         breakLabel="..."
-        pageCount={Math.ceil(items.length / itemsPerPage)}
+        pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
         onPageChange={changePage}

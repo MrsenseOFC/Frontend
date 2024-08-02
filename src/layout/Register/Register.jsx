@@ -79,26 +79,6 @@ export function Register() {
     { value: 'recreational', text: 'Recreacional' },
   ];
 
-  const levelsOptions = [
-    { value: 'serieA', text: 'Serie A' },
-    { value: 'serieB', text: 'Serie B' },
-    { value: 'serieC', text: 'Serie C' },
-    { value: 'serieD', text: 'Serie D' },
-  ];
-
-  const universityLevelsOptions = [
-    { value: 'ncaa1', text: 'NCAA 1 (EUA)' },
-    { value: 'ncaa2', text: 'NCAA 2 (EUA)' },
-    { value: 'ncaa3', text: 'NCAA 3 (EUA)' },
-    { value: 'naia1', text: 'NAIA 1 (EUA)' },
-    { value: 'naia2', text: 'NAIA 2 (EUA)' },
-    { value: 'nccaa1', text: 'NCCAA 1 (EUA)' },
-    { value: 'nccaa2', text: 'NCCAA 2 (EUA)' },
-    { value: 'njcaa1', text: 'NJCAA 1 (EUA)' },
-    { value: 'njcaa2', text: 'NJCAA 2 (EUA)' },
-    { value: 'njcaa3', text: 'NJCAA 3 (EUA)' },
-  ];
-
   const teamCategoryOptions = [
     { value: 'male', text: 'Masculino' },
     { value: 'female', text: 'Feminino' },
@@ -237,28 +217,6 @@ export function Register() {
                 onDropdownChange={(value) => setCompetitiveCategory(value)}
                 required
               />
-
-              {/* -------------------------Nível competitivo------------------------- */}
-              {profileType === 'university' ? (
-                <AuthDropdown
-                  title="Qual o nível competitivo?"
-                  id="competitiveLevel"
-                  placeholder="Escolha o nível"
-                  options={universityLevelsOptions}
-                  otheroption
-                  selectedvalue={competitiveLevel}
-                  onDropdownChange={(value) => setCompetitiveLevel(value)}
-                />
-              ) : (
-                <AuthDropdown
-                  title="Qual o nível competitivo?"
-                  id="competitiveLevel"
-                  placeholder="Escolha o nível"
-                  options={levelsOptions}
-                  selectedvalue={competitiveLevel}
-                  onDropdownChange={(value) => setCompetitiveLevel(value)}
-                />
-              )}
 
               {/* -------------------------Modalidade------------------------- */}
               {profileType === 'player' && (

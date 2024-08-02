@@ -18,6 +18,7 @@ import { Row } from '../../../../../../components/RowContainer/Row';
 import { AuthFile } from '../../../../../../components/elements/AuthElements/AuthFile/AuthFile';
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { ClubContext } from '../../../../../../contexts/userContext/ClubProvider/ClubContext';
+import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
 
 export function Club() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ export function Club() {
 
   const [profileData, setProfileData] = useState({
     representative: '',
+    competitiveLevel: '',
     foundationDate: '',
     country: '',
     state: '',
@@ -34,6 +36,13 @@ export function Club() {
     stadium: '',
     coach: '',
   });
+
+  const competitiveLevelsOptions = [
+    { value: 'serieA', text: 'Serie A' },
+    { value: 'serieB', text: 'Serie B' },
+    { value: 'serieC', text: 'Serie C' },
+    { value: 'serieD', text: 'Serie D' },
+  ];
 
   const [competitionHistory, setCompetitionHistory] = useState(
     {
@@ -128,6 +137,15 @@ export function Club() {
               title="Representante"
               placeholder="Nome do representante do Clube"
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
+            />
+
+            <AuthDropdown
+              title="Qual o nível competitivo do clube?"
+              id="clubCompetitiveLevel"
+              placeholder="Escolha o nível"
+              options={competitiveLevelsOptions}
+              otheroption
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
             <AuthInput

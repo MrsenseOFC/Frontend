@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import * as Styled from './TextSlide-Styles';
@@ -8,12 +8,11 @@ import { ImageText } from '../ImageText/ImageText';
 import { Text } from '../Text/Text';
 
 export function TextSlide({ items, title }) {
-  const [orderedItems, setOrderedItems] = useState();
-
-  useEffect(() => {
-    if (items) {
-      setOrderedItems(items.sort((a, b) => b.year - a.year)); // Ano de b menos ano de a
+  const orderedItems = useMemo(() => {
+    if (items && items.length > 0) {
+      return items.sort((a, b) => b.year - a.year);
     }
+    return [];
   }, [items]);
 
   return (
@@ -56,7 +55,7 @@ export function TextSlide({ items, title }) {
             ))}
           </>
         ) : (
-          <Text text="Nenhum dado encontrado." />
+          <Text text="Nenhum dado foi encontrado..." />
         ) }
 
       </Swiper>

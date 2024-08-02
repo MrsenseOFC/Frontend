@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Prop from 'prop-types';
 import * as Styled from './GridProposals-Styles';
 import { Title } from '../Title/Title';
 import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles';
 import { ProposalCard } from '../ProposalCard/ProposalCard';
 import { ProposalModal } from '../ProposalModal/ProposalModal';
-import { AuthSearch } from '../AuthElements/AuthSearch/AuthSearch';
 import { FilterProposals } from '../FilterProposals/FilterProposals';
 import { Text } from '../Text/Text';
 
@@ -13,9 +12,15 @@ export function GridProposals({ items, title }) {
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
-
   const pagesVisited = pageNumber * itemsPerPage;
-  const displayItems = items ? items.slice(pagesVisited, pagesVisited + itemsPerPage) : [];
+
+  const displayItems = useMemo(() => {
+    if (items) {
+      return items.slice(pagesVisited, pagesVisited + itemsPerPage);
+    }
+
+    return [];
+  }, [items]);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -53,7 +58,7 @@ export function GridProposals({ items, title }) {
 
       <Styled.ModalContainer>
 
-        {displayItems.length > 0 ? (
+        {displayItems && displayItems.length > 0 ? (
           <GridLayoutContainer>
             {displayItems.map((item) => (
               <ProposalCard
@@ -75,7 +80,7 @@ export function GridProposals({ items, title }) {
           </GridLayoutContainer>
         ) : (
 
-          <Text text="Nenhuma oportunidade encontrada" />
+          <Text text="Nenhuma oportunidade foi encontrada...." />
         )}
 
         {displayItems.length > 0 && (
@@ -83,7 +88,7 @@ export function GridProposals({ items, title }) {
             previousLabel="Anterior"
             nextLabel="Próximo"
             breakLabel="..."
-            pageCount={Math.ceil(items.length / itemsPerPage)}
+            pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
             pageRangeDisplayed={3}
             marginPagesDisplayed={1}
             onPageChange={changePage}

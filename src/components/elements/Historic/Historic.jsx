@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as Styled from './Historic-Styles';
 import { GridOneColumn } from '../../GridOneColumn/GridOneColumn';
 import { Title } from '../Title/Title';
 import { Text } from '../Text/Text';
 
 export function Historic({ items, title }) {
-  const [orderedItems, setOrderedItems] = useState();
-
-  useEffect(() => {
+  const orderedItems = useMemo(() => {
     if (items) {
-      setOrderedItems(items.sort((a, b) => {
+      return [...items].sort((a, b) => {
         const parseDate = (dateString) => {
           const date = new Date(dateString);
           return Number.isNaN(date.getTime()) ? null : date; // Trata datas inválidas
@@ -26,8 +24,9 @@ export function Historic({ items, title }) {
         }
 
         return earliestYearB - earliestYearA; // Ordena por earliestDate em ordem crescente
-      }));
+      });
     }
+    return [];
   }, [items]);
 
   return (
@@ -55,15 +54,10 @@ export function Historic({ items, title }) {
           </>
         ) : (
           <>
-            <Text text="Nenhum dado encontrado." />
+            <Text text="Nenhum dado foi encontrado..." />
           </>
         )}
       </GridOneColumn>
     </Styled.HistoricContainer>
   );
 }
-
-Historic.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  title: PropTypes.string.isRequired,
-};

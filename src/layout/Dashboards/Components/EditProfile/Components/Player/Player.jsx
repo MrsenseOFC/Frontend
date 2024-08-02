@@ -30,6 +30,7 @@ export function Player() {
 
   const [profileData, setProfileData] = useState({
     bestLeg: '',
+    competitiveLevel: '',
     ageCategory: '',
     birthDate: '',
     age: 0,
@@ -69,10 +70,17 @@ export function Player() {
     calculateAge();
   }, [profileData.birthDate]);
 
-  // Dropdown Options
+  // Inputs Options
   const legOptions = [
     { value: 'right', label: 'Direita' },
     { value: 'left', label: 'Esquerda' },
+  ];
+
+  const competitiveLevelsOptions = [
+    { value: 'serieA', text: 'Serie A' },
+    { value: 'serieB', text: 'Serie B' },
+    { value: 'serieC', text: 'Serie C' },
+    { value: 'serieD', text: 'Serie D' },
   ];
 
   const ageCategoryOptions = [
@@ -240,6 +248,14 @@ export function Player() {
               options={legOptions}
               groupname="playerLegOptions"
               onClick={(e) => setProfileData((prevData) => ({ ...prevData, bestLeg: e.target.value }))}
+            />
+
+            <AuthDropdown
+              title="Qual o seu nível competitivo?"
+              id="playerCompetitiveLevel"
+              placeholder="Escolha o nível"
+              options={competitiveLevelsOptions}
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
             <AuthDropdown

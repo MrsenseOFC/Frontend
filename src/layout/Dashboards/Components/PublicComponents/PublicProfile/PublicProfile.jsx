@@ -15,16 +15,16 @@ export function PublicProfile() {
   return (
     <Styled.PublicProfileContainer>
 
-      {/* <ProfileInfo items={playerState.profile.info} /> */}
+      {/* <ProfileInfo items={playerState.profile.info} />
 
       <PublicSlide items={playerState.profile.photos} title="Fotos / Vídeos" publicview />
 
-      {/* <Row>
+      <Row>
         <Historic items={playerState.profile.leagues} title="Competições em disputa" />
-        <Historic items={clubState.profile.studies} title="Histórico acadêmico" />
-      </Row> */}
+        <Historic items={playerState.profile.studies} title="Histórico acadêmico" />
+      </Row>
 
-      {/* <TextSlide items={playerState.profile.championships} title="Títulos:" /> */}
+      <TextSlide items={playerState.profile.championships} title="Títulos:" /> */}
 
     </Styled.PublicProfileContainer>
   );

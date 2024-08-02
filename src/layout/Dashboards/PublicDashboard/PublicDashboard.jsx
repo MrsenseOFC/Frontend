@@ -110,6 +110,7 @@ export function PublicDashboard() {
           imagesrc={clubState.profile.banner.profileImageSrc}
           badge={clubState.profile.banner.badge}
           type="Clube"
+          competitivelevel="Profissional"
         />
         <ProfileName name={clubState.profile.banner.name} />
 

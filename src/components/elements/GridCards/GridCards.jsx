@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Prop from 'prop-types';
 import * as Styled from './GridCards-Styles';
 import { ImageCard } from '../ImageCard/ImageCard';
@@ -6,10 +6,19 @@ import { GridLayoutContainer, ItemContainer } from '../../GridLayout/GridLayout-
 import { theme } from '../../../styles/theme';
 import { Button } from '../Button/Button';
 import { Subtitle } from '../Subtitle/Subtitle';
+import { Text } from '../Text/Text';
 
 export function GridCards({ items, title }) {
   const [showMoreItems, setShowMoreItems] = useState(false);
-  const itemsToShow = showMoreItems ? items : items.slice(0, 12);
+
+  // Usando useMemo para memorizar os itens a serem renderizados
+  const itemsToShow = useMemo(() => {
+    if (items && items.length > 0) {
+      return showMoreItems ? items : items.slice(0, 12);
+    }
+    return [];
+  }, [items, showMoreItems]);
+
   const handleShowMore = () => setShowMoreItems(!showMoreItems);
 
   return (
@@ -19,15 +28,23 @@ export function GridCards({ items, title }) {
       <Styled.GridCardsContainer>
 
         <GridLayoutContainer>
-          {itemsToShow.map((item) => (
-            <ItemContainer key={item.id}>
-              <ImageCard
-                src={item.profileImageSrc}
-                title={item.name}
-                path={item.path}
-              />
-            </ItemContainer>
-          ))}
+          {itemsToShow && itemsToShow.length > 0 ? (
+            <>
+              {itemsToShow.map((item) => (
+                <ItemContainer key={item.id}>
+                  <ImageCard
+                    src={item.profileImageSrc}
+                    title={item.name}
+                    path={item.path}
+                  />
+                </ItemContainer>
+              ))}
+            </>
+          ) : (
+            <>
+              <Text text="Nenhum dado foi encontrado..." />
+            </>
+          )}
         </GridLayoutContainer>
 
       </Styled.GridCardsContainer>
