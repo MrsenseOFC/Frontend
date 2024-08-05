@@ -19,7 +19,7 @@ export function UniversityNav() {
     <>
       <Styled.UniversityNav>
         <StyledLink
-          active={activeLink === '/university-dashboard'}
+          active={activeLink === '/university-dashboard' || activeLink === '/university-dashboard'}
           path=""
           text="Home"
           color={theme.colors.white}

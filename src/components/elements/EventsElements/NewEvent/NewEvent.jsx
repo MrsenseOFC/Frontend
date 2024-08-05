@@ -25,7 +25,7 @@ export function NewEvent({ onclick }) {
   const { s2tState, s2tDispatch } = s2tContext;
 
   const [eventData, setEventData] = useState({
-    id: 1,
+    id: '',
     title: '',
     subtitle: '',
     description: '',
@@ -39,10 +39,17 @@ export function NewEvent({ onclick }) {
     zipCode: '',
     adress: '',
     path: '/',
-    src: '/assets/images/others/leagues.png',
-    picture: [],
+    bannerImage: '',
     termsAndConditions: '',
   });
+
+  const handleEventImage = (e) => {
+    const newFile = e.target.files[0];
+
+    if (newFile) {
+      setEventData((prevData) => ({ ...prevData, bannerImage: newFile }));
+    }
+  };
 
   const handleSubmit = (e) => {
     addEvent(s2tDispatch, eventData);
@@ -196,7 +203,7 @@ export function NewEvent({ onclick }) {
             <AuthFile
               id="eventImage_input"
               text="Selecione a imagem de capa para o seu evento (16:9)"
-              onChange={handleEventPicture}
+              onChange={(e) => handleEventImage(e)}
             />
 
           </AuthLayout>

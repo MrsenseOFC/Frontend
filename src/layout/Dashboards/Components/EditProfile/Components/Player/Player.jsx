@@ -388,7 +388,6 @@ export function Player() {
               id="playerLeague"
               placeholder="Escolha sua Liga"
               options={leagueOptions}
-              onDropdownChange={(option) => setLeague(option.value)}
               otheroption
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, league: option }))}
             />

@@ -15,7 +15,7 @@ import { ReportIcon } from '../../ReportIcon/ReportIcon';
 export function PublicSlide({
   items, title,
 }) {
-  const [reportingMedia, setReportingMedia] = useState('');
+  const [reportingImage, setReportingImage] = useState('');
   const [fullscreenImage, setFullscreenImage] = useState('');
 
   const handleFullscreen = (item) => {
@@ -23,7 +23,7 @@ export function PublicSlide({
   };
 
   const handleReporting = (item) => {
-    setReportingMedia(reportingMedia ? '' : item.id);
+    setReportingImage(reportingImage ? '' : item.id);
   };
 
   return (
@@ -56,7 +56,7 @@ export function PublicSlide({
                 <Styled.TopIconsWrapper>
 
                   <ReportIcon
-                    isreporting={reportingMedia === item.id}
+                    isreporting={reportingImage === item.id}
                     onclick={() => handleReporting(item)}
                   />
 
@@ -97,7 +97,7 @@ export function PublicSlide({
 
       </Styled.PublicSlideElement>
 
-      <ReportModal imageid={reportingMedia} onclick={() => setReportingMedia('')} />
+      <ReportModal imageid={reportingImage} onclick={() => setReportingImage('')} />
 
       <ImageModal imagesrc={fullscreenImage} onclick={() => setFullscreenImage('')} />
 

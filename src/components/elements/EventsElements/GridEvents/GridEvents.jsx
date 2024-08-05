@@ -15,13 +15,14 @@ export function GridEvents({ items }) {
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
   const pagesVisited = pageNumber * itemsPerPage;
+
   const displayItems = useMemo(() => {
     if (items) {
       return items.slice(pagesVisited, pagesVisited + itemsPerPage);
     }
 
     return [];
-  }, [items]);
+  }, [items, pageNumber, itemsPerPage]);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -50,31 +51,27 @@ export function GridEvents({ items }) {
 
       <FilterEvents />
 
-      <GridLayout>
-        {displayItems && displayItems.length > 0 ? (
-          <>
-            {displayItems.map((item) => (
-              <EventCard
-                key={item.id}
-                imagesrc={item.src}
-                title={item.title}
-                subtitle={item.subtitle}
-                organizer={item.organizer}
-                startDate={item.startDate}
-                startHour={item.startHour}
-                country={item.country}
-                state={item.state}
-                platform={item.platform}
-                onClick={() => setSelectedEvent(item)}
-              />
-            ))}
-          </>
-        ) : (
-          <>
-            <Text text="Nenhum evento foi encontrado..." />
-          </>
-        )}
-      </GridLayout>
+      {displayItems && displayItems.length ? (
+        <GridLayout>
+          {displayItems.map((item) => (
+            <EventCard
+              key={item.id}
+              imagesrc={item.src}
+              title={item.title}
+              subtitle={item.subtitle}
+              organizer={item.organizer}
+              startDate={item.startDate}
+              startHour={item.startHour}
+              country={item.country}
+              state={item.state}
+              platform={item.platform}
+              onClick={() => setSelectedEvent(item)}
+            />
+          ))}
+        </GridLayout>
+      ) : (
+        <Text text="Nenhum evento foi encontrado..." />
+      )}
 
       {displayItems.length > 0 && (
       <Styled.StyledPaginate

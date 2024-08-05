@@ -19,7 +19,7 @@ export function ClubNav() {
     <>
       <Styled.ClubNav>
         <StyledLink
-          active={activeLink === '/club-dashboard'}
+          active={activeLink === '/club-dashboard' || activeLink === '/club-dashboard/'}
           path=""
           text="Home"
           color={theme.colors.white}

@@ -183,7 +183,7 @@ export const s2tData = {
   events: [
     {
       id: 1,
-      title: 'Tour',
+      title: 'Tour 1',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitaaaaaaaaaaaaaaaaa',
       organizer: 'Talent 2 Show',
@@ -202,7 +202,7 @@ export const s2tData = {
 
     {
       id: 2,
-      title: 'Transmissão de partida',
+      title: 'Transmissão de partida 2',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       organizer: 'Talent 2 Show',
@@ -221,7 +221,7 @@ export const s2tData = {
 
     {
       id: 3,
-      title: 'Viagem',
+      title: 'Viagem 3',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       organizer: 'Talent 2 Show',
@@ -240,7 +240,7 @@ export const s2tData = {
 
     {
       id: 4,
-      title: 'Encontro com craque',
+      title: 'Encontro com craque 4',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       organizer: 'Talent 2 Show',
@@ -259,7 +259,7 @@ export const s2tData = {
 
     {
       id: 5,
-      title: 'Tour',
+      title: 'Tour 5',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       organizer: 'Talent 2 Show',
@@ -278,7 +278,7 @@ export const s2tData = {
 
     {
       id: 6,
-      title: 'Partida',
+      title: 'Partida 6',
       subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       organizer: 'Talent 2 Show',

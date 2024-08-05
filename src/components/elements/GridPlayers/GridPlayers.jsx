@@ -22,7 +22,7 @@ export function GridPlayers({
     }
 
     return [];
-  }, [items]);
+  }, [items, pageNumber, itemsPerPage]);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);

@@ -18,7 +18,7 @@ export function PlayerNav() {
     <>
       <Styled.PlayerNav>
         <StyledLink
-          active={activeLink === '/player-dashboard'}
+          active={activeLink === '/player-dashboard' || activeLink === '/player-dashboard/'}
           path=""
           text="Home"
           color={theme.colors.white}

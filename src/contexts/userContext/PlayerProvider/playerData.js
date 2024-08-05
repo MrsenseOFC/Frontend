@@ -27,6 +27,7 @@ export const playerData = {
       { title: 'ACT', info: 'N/A' },
       { title: 'SAT', info: 'N/A' },
     ],
+
     photos: [
       {
         id: '1',
@@ -71,6 +72,22 @@ export const playerData = {
         isfavorite: false,
       },
     ],
+
+    videos: [
+      {
+        id: '1',
+        src: '/assets/videos/silas.mp4',
+        isfavorite: true,
+      },
+
+      {
+        id: '2',
+        src: '/assets/videos/silas2.mp4',
+        isfavorite: true,
+      },
+
+    ],
+
     clubs: [
       {
         id: 1,

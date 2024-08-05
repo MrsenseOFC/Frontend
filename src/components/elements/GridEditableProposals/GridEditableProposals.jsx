@@ -24,7 +24,7 @@ export function GridEditableProposals({ items, title }) {
     }
 
     return [];
-  }, [items]);
+  }, [items, pageNumber, itemsPerPage]);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);

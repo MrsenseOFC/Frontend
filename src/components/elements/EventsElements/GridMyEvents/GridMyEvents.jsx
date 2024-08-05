@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Add as AddIcon } from '@styled-icons/material-outlined';
 import * as Styled from './GridMyEvents-Styles';
 import { GridLayout } from '../../../GridLayout/GridLayout';
@@ -9,6 +9,7 @@ import { NewEvent } from '../NewEvent/NewEvent';
 import { Row } from '../../../RowContainer/Row';
 import { IconDiv } from '../../IconDiv/IconDiv';
 import { Title } from '../../Title/Title';
+import { Text } from '../../Text/Text';
 
 export function GridMyEvents({ items }) {
   const [selectedEvent, setSelectedEvent] = useState();
@@ -19,7 +20,15 @@ export function GridMyEvents({ items }) {
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
   const pagesVisited = pageNumber * itemsPerPage;
-  const displayItems = items ? items.slice(pagesVisited, pagesVisited + itemsPerPage) : [];
+
+  const displayItems = useMemo(() => {
+    if (items) {
+      return items.slice(pagesVisited, pagesVisited + itemsPerPage);
+    }
+
+    return [];
+  }, [items, pageNumber, itemsPerPage]);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -55,30 +64,34 @@ export function GridMyEvents({ items }) {
             </IconDiv>
           </Row>
 
-          <GridLayout>
-            {displayItems.map((item) => (
-              <EventCard
-                key={item.id}
-                imagesrc={item.src}
-                title={item.title}
-                subtitle={item.subtitle}
-                organizer={item.organizer}
-                startDate={item.startDate}
-                startHour={item.startHour}
-                country={item.country}
-                state={item.state}
-                platform={item.platform}
-                onClick={() => setSelectedEvent(item)}
-              />
-            ))}
-          </GridLayout>
+          {displayItems && displayItems.length ? (
+            <GridLayout>
+              {displayItems.map((item) => (
+                <EventCard
+                  key={item.id}
+                  imagesrc={item.src}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  organizer={item.organizer}
+                  startDate={item.startDate}
+                  startHour={item.startHour}
+                  country={item.country}
+                  state={item.state}
+                  platform={item.platform}
+                  onClick={() => setSelectedEvent(item)}
+                />
+              ))}
+            </GridLayout>
+          ) : (
+            <Text text="Você ainda não publicou nenhum evento. Que tal começar agora? Clique no ícone de ‘+’ acima para criar o seu primeiro evento" />
+          )}
 
           {displayItems.length > 0 && (
           <Styled.StyledPaginate
             previousLabel="Anterior"
             nextLabel="Próximo"
             breakLabel="..."
-            pageCount={Math.ceil(items.length / itemsPerPage)}
+            pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
             pageRangeDisplayed={3}
             marginPagesDisplayed={1}
             onPageChange={changePage}

@@ -57,7 +57,7 @@ export function EventModal({ event, onclick }) {
           {event.description && <Text text={event.description} />}
         </ColumnContainer>
 
-        {isRegistering && (
+        {/* {isRegistering && (
           <AuthForm>
             <AuthInput
               title="Nome"
@@ -113,7 +113,7 @@ export function EventModal({ event, onclick }) {
               required
             />
 
-            <StyledLink path="https://x.com/home" newtab>
+            <StyledLink path="#" newtab>
               <IconDiv name="Documentos">
                 <DocumentTableArrowRight />
               </IconDiv>
@@ -126,9 +126,9 @@ export function EventModal({ event, onclick }) {
               id="acceptEventTerms"
             />
           </AuthForm>
-        )}
+        )} */}
 
-        {isRegistering ? (
+        {/* {isRegistering ? (
           <Button
             text="Registrar"
             bgcolor={theme.colors.quaternary}
@@ -150,6 +150,19 @@ export function EventModal({ event, onclick }) {
             borderhover={theme.colors.white}
             onclick={() => setIsRegistering(!isRegistering)}
           />
+        )} */}
+
+        {event.path && (
+        <Button
+          path={event.path}
+          text="Participar"
+          bgcolor={theme.colors.quaternary}
+          bghover={theme.colors.secondary}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.white}
+          border={theme.colors.tertiary}
+          borderhover={theme.colors.white}
+        />
         )}
 
       </>

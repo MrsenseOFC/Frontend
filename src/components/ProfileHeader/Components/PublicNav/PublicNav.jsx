@@ -16,7 +16,7 @@ export function PublicNav({ username, type }) {
       setActiveLink(location.pathname);
     };
 
-    // Chame updateActiveLink na renderização inicial e sempre que o username muda
+    // Chama updateActiveLink na renderização inicial e sempre que o username muda
     updateActiveLink();
 
     return () => updateActiveLink(); // Função de limpeza para evitar memory leaks
@@ -26,7 +26,7 @@ export function PublicNav({ username, type }) {
     <Styled.PublicNav>
 
       <StyledLink
-        active={activeLink === `/user/${username}/profile`}
+        active={activeLink === `/user/${username}/profile` || activeLink === `/user/${username}/profile/`}
         path="profile"
         text="Perfil"
         color={theme.colors.white}

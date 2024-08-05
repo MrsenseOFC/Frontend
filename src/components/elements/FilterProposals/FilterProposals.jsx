@@ -15,15 +15,27 @@ import { SearchWrapper } from '../AuthElements/AuthSearch/AuthSearch-Styles';
 
 export function FilterProposals() {
   const [isOpen, setIsOpen] = useState(true);
-  const [opportunityType, setOpportunityType] = useState('all');
-  const [category, setCategory] = useState('  ');
+
+  const [filterData, setFilterData] = useState({
+    opportunityType: '',
+    ageCategory: '',
+    position: '',
+    bestLeg: '',
+    country: '',
+    league: '',
+    competitiveLevel: '',
+    minimumAge: '',
+    maximumAge: '',
+    minimumPayment: '',
+    minimumHeight: '',
+  });
 
   const legOptions = [
     { value: 'right', text: 'Direita' },
     { value: 'left', text: 'Esquerda' },
   ];
 
-  const categoryOptions = [
+  const ageCategoryOptions = [
     { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
     { value: 'sub8', text: 'Sub-8 (8 anos)' },
     { value: 'sub9', text: 'Sub-9 (8 e 9 anos)' },
@@ -68,7 +80,7 @@ export function FilterProposals() {
     { value: 'injured', text: 'Lesionado - Com contrato' },
   ];
 
-  const levelsOptions = [
+  const competitiveLevelsOptions = [
     { value: 'serieA', text: 'Serie A' },
     { value: 'serieB', text: 'Serie B' },
     { value: 'serieC', text: 'Serie C' },
@@ -83,6 +95,8 @@ export function FilterProposals() {
     { value: 'exchangeAgencies', text: 'Agências de intercâmbio' },
   ];
 
+  console.log(filterData);
+
   return (
     <Styled.FilterProposalsContainer isopen={isOpen ? 'isopen' : undefined}>
       <AuthWrapper>
@@ -90,10 +104,10 @@ export function FilterProposals() {
 
           <Row>
             <AuthDropdown
-              id="opportunityType"
+              id="filterOpportunityType"
               options={opportunityTypeOptions}
               placeholder="Todas"
-              onDropdownChange={(option) => setOpportunityType(option.value)}
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, opportunityType: option }))}
             />
 
             <SearchWrapper>
@@ -108,74 +122,88 @@ export function FilterProposals() {
           <AuthLayout isopen={isOpen}>
 
             <AuthDropdown
-              id="competitiveLevel"
+              id="filterCompetitiveLevel"
               placeholder="Nível competitivo"
-              options={levelsOptions}
+              options={competitiveLevelsOptions}
               otheroption
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
             <AuthDropdown
-              id="category"
+              id="filterAgeCategory"
               placeholder="Categoria"
-              options={categoryOptions}
-              onDropdownChange={(option) => setCategory(option.value)}
-              otheroption
-              selectedvalue={category}
+              options={ageCategoryOptions}
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, ageCategory: option }))}
             />
 
             <AuthDropdown
               placeholder="Posição"
-              id="mainPosition"
+              id="filterPosition"
               options={positionsOptions}
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, position: option }))}
             />
 
             <AuthDropdown
-              id="league"
+              id="filterLeague"
               placeholder="Liga"
               options={leagueOptions}
               otheroption
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, league: option }))}
+            />
+
+            <AuthDropdown
+              id="filterLeg"
+              placeholder="Melhor perna"
+              options={legOptions}
+              onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, bestLeg: option }))}
             />
 
             <AuthInput
               type="number"
-              name="minimumAge_input"
-              id="minimumAge_input"
+              name="filterMinimumAge_input"
+              id="filterMinimumAge_input"
               placeholder="Idade mínima"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, league: e.target.value }))}
             />
 
             <AuthInput
               type="number"
-              name="maximumAge_input"
-              id="maximumAge_input"
+              name="filterMaximumAge_input"
+              id="filterMaximumAge_input"
               placeholder="Idade máxima"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, maximumAge: e.target.value }))}
             />
 
             <AuthInput
               type="number"
-              name="minimumHeight_input"
-              id="minimumHeight_input"
+              name="filterMinimumHeigth_input"
+              id="filterMinimumHeight_input"
               placeholder="Altura mínima"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, minimumAge: e.target.value }))}
             />
 
             <AuthInput
               type="number"
-              name="minimumPayment_input"
-              id="minimumPayment_input"
+              name="filterMinimumPayment_input"
+              id="filterMinimumPayment_input"
               placeholder="Salário mínimo"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, minimumPayment: e.target.value }))}
             />
 
             <AuthInput
               type="number"
-              name="maximumPayment_input"
-              id="maximumPayment_input"
+              name="filterMaximumPayment_input"
+              id="filterMaximumPayment_input"
               placeholder="Salário máximo"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, maximumPayment: e.target.value }))}
             />
 
             <AuthInput
               type="text"
-              name="country_input"
-              id="country_input"
+              name="filterCountry_input"
+              id="filterCountrycountry_input"
               placeholder="País"
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 
           </AuthLayout>

@@ -20,7 +20,7 @@ export function GridProposals({ items, title }) {
     }
 
     return [];
-  }, [items]);
+  }, [items, pageNumber, itemsPerPage]);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };

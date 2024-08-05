@@ -18,7 +18,7 @@ export function StaffNav() {
     <>
       <Styled.StaffNav>
         <StyledLink
-          active={activeLink === '/staff-dashboard'}
+          active={activeLink === '/staff-dashboard' || activeLink === '/staff-dashboard/'}
           path=""
           text="Home"
           color={theme.colors.white}

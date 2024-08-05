@@ -7,6 +7,7 @@ import { TextSlide } from '../../../../../components/elements/TextSlide/TextSlid
 import { PlayerContext } from '../../../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { Row } from '../../../../../components/RowContainer/Row';
 import { OwnerSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerSlide/OwnerSlide';
+import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function PlayerProfile() {
   const playerContext = useContext(PlayerContext);
@@ -18,6 +19,7 @@ export function PlayerProfile() {
       <ProfileInfo items={playerState.profile.info} />
 
       <OwnerSlide items={playerState.profile.photos} title="Fotos" ownerview />
+      <OwnerVideoSlide items={playerState.profile.videos} title="Vídeos" ownerview />
 
       <Row>
         <Historic items={playerState.profile.clubs} title="Histórico de clubes" />
