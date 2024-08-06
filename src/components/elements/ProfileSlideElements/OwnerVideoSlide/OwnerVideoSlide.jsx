@@ -15,6 +15,7 @@ import { Popup } from '../../Popup/Popup';
 import { Column } from '../../../ColumnContainer/Column';
 import { useAuth } from '../../../../contexts/AuthContext/AuthContext';
 
+// Galeria de vídeos utilizada quando o usuário acessa o próprio perfil
 export function OwnerVideoSlide({
   items, title,
 }) {
@@ -43,9 +44,11 @@ export function OwnerVideoSlide({
     }
 
     const newFile = event.target.files[0];
-    if (newVideo) {
+    console.log(newFile);
+
+    if (newFile) {
       const formData = new FormData();
-      formData.append('video_file', newVideo);
+      formData.append('video_file', newFile);
 
       try {
         const response = await axios.post(`https://talent2show.onrender.com/api/userVideos/${currentUser.id}/upload`, formData, {
@@ -139,7 +142,7 @@ export function OwnerVideoSlide({
           <SwiperSlide>
             <AuthIconFile
               onChange={handleAddVideo}
-              id="addMoreMedia"
+              id="addVideo"
               accept="video/*"
               hovercolor={theme.colors.secondary}
               name="Botão para adicionar uma novo foto ou um novo vídeo ao seu perfil"

@@ -12,6 +12,7 @@ import { ReportModal } from '../../ReportModal/ReportModal';
 import { ImageModal } from '../../ImageModal/ImageModal';
 import { ReportIcon } from '../../ReportIcon/ReportIcon';
 
+// Galeria de fotos utilizada quando o usuário acessa o perfil de outra pessoa
 export function PublicSlide({
   items, title,
 }) {

@@ -16,6 +16,7 @@ import { Popup } from '../../Popup/Popup';
 import { Column } from '../../../ColumnContainer/Column';
 import { useAuth } from '../../../../contexts/AuthContext/AuthContext';
 
+// Galeria de fotos utilizada quando o usuário acessa o próprio perfil
 export function OwnerSlide({
   items, title,
 }) {
@@ -45,6 +46,8 @@ export function OwnerSlide({
     }
 
     const newFile = event.target.files[0];
+    console.log(newFile);
+
     if (newFile) {
       const formData = new FormData();
       formData.append('image_file', newFile);
@@ -138,7 +141,7 @@ export function OwnerSlide({
           ))}
 
           <SwiperSlide>
-            <AuthIconFile onChange={handleAddImage} id="addMoreMedia" accept="image/*,video/*" hovercolor={theme.colors.secondary} name="Botão para adicionar uma novo foto ou um novo vídeo ao seu perfil">
+            <AuthIconFile onChange={handleAddImage} id="addImage" accept="image/*" hovercolor={theme.colors.secondary} name="Botão para adicionar uma novo foto ou um novo vídeo ao seu perfil">
               <AddIcon />
             </AuthIconFile>
           </SwiperSlide>

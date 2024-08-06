@@ -11,6 +11,7 @@ import { RateIcons } from '../../RateIcons/RateIcons';
 import { ReportModal } from '../../ReportModal/ReportModal';
 import { ReportIcon } from '../../ReportIcon/ReportIcon';
 
+// Galeria de vídeos utilizada quando o usuário acessa o perfil de outro usuário
 export function PublicVideoSlide({
   items, title,
 }) {
