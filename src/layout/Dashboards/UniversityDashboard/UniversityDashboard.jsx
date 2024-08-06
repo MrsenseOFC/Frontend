@@ -54,7 +54,7 @@ export function UniversityDashboard() {
           />
 
           <Button
-            path="/player-dashboard"
+            path="/university-dashboard"
             text="Minha área"
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}

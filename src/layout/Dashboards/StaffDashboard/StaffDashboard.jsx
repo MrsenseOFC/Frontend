@@ -50,7 +50,7 @@ export function StaffDashboard() {
           />
 
           <Button
-            path="/player-dashboard"
+            path="/staff-dashboard"
             text="Minha área"
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
