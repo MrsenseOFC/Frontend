@@ -5,6 +5,7 @@ import 'swiper/css/bundle';
 import * as Styled from './Slide-Styles';
 import { Title } from '../Title/Title';
 import { ImageCard } from '../ImageCard/ImageCard';
+import { Text } from '../Text/Text';
 
 export function Slide({
   items, title,
@@ -50,17 +51,24 @@ export function Slide({
         }}
       >
 
-        {orderedItems.length > 0 && orderedItems.map((item) => (
-          <SwiperSlide key={item.id}>
-            <ImageCard
-              src={item.src}
-              alt="Imagem do card"
-              title={item.title}
-              islocked={item.islocked}
-              path={item.islocked ? '/plans' : item.path}
-            />
-          </SwiperSlide>
-        ))}
+        {orderedItems && orderedItems.length > 0 ? (
+          <>
+            {orderedItems.map((item) => (
+              <SwiperSlide key={item.id}>
+                <ImageCard
+                  src={item.src}
+                  alt="Imagem do card"
+                  title={item.title}
+                  islocked={item.islocked}
+                  path={item.islocked ? '/plans' : item.path}
+                />
+              </SwiperSlide>
+            ))}
+          </>
+        ) : (
+          <Text text="Nenhum dado foi encontrado..." />
+
+        )}
 
       </Swiper>
     </Styled.SlideElement>

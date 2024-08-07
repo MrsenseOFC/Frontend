@@ -42,7 +42,7 @@ export function TextSlide({ items, title }) {
         }}
       >
 
-        {orderedItems ? (
+        {orderedItems && orderedItems.length > 0 ? (
           <>
             {orderedItems.map((item) => (
               <SwiperSlide key={item.id}>

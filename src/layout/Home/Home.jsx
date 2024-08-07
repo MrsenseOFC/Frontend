@@ -312,7 +312,7 @@ export function Home() {
       </BannerSlide>
       <Slide items={s2tState.photos?.benefits || []} title="Benefícios" />
 
-      <MiniSlide type="partners" title="Parceiros" autoplay items={s2tState.partners || []} />
+      <MiniSlide type="partners" title="Parceiros e apoiadores" autoplay items={s2tState.partners || []} />
     </Styled.HomePage>
   );
 }

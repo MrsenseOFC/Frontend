@@ -98,7 +98,7 @@ export function PublicVideoSlide({
 
       </Styled.PublicVideoSlideElement>
 
-      <ReportModal imageid={reportingVideo} onclick={() => setReportingVideo('')} />
+      <ReportModal id={reportingVideo} onclick={() => setReportingVideo('')} />
 
     </Styled.PublicVideoSlideWrapper>
   );

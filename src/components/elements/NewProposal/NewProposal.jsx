@@ -77,6 +77,7 @@ export function NewProposal({ onclick }) {
     { value: 'left winger', text: 'Ponta Esquerda' },
     { value: 'right winger', text: 'Ponta Direito' },
     { value: 'center forward', text: 'Centroavante' },
+    { value: 'notSpecified', text: 'Não especificado' },
   ];
 
   const currencyOptions = [

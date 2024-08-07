@@ -159,7 +159,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="contacts" element={<h1>Em construção... :)</h1>} />
                     <Route path="friends" element={<Friends friends={clubData.friends} />} />
                     <Route path="store" element={<Store />} />
-                    <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
+                    {/* <Route path="my-events" element={<MyEvents events={s2tData.events} />} /> */}
                     <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
                     <Route path="s2t+" element={<S2TPlus />} />
                   </Route>

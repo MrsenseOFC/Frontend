@@ -11,7 +11,7 @@ export function ProfileInfo({ items }) {
   return (
     <Styled.ProfileInfoElement>
       <GridTwoColumn>
-        {items ? (
+        {items && items.length > 0 ? (
           <>
             {items.map((item) => (
               <InfoInRow key={item.title} infotitle={item.title} info={item.info} uppercase />

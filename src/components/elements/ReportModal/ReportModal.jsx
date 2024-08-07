@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
+import axios from 'axios';
 import * as Styled from './ReportModal-Styles';
 import { AuthDropdown } from '../AuthElements/AuthDropdown/AuthDropdown';
 import { IconDiv } from '../IconDiv/IconDiv';
@@ -16,23 +17,20 @@ import { Text } from '../Text/Text';
 import { Button } from '../Button/Button';
 import { FloatingMenu } from '../../FloatingMenu/FloatingMenu';
 
-export function ReportModal({ onclick, imageid }) {
+export function ReportModal({ onclick, id }) {
   const [reported, setReported] = useState(false);
+
+  const [reportData, setReportData] = useState({
+    reportReason: '',
+    reportDetails: '',
+  });
+
   const reportOptions = [
     { value: 'inappropriateContent', text: 'Contéudo inadequado' },
     { value: 'copyright', text: 'Direitos Autorais' },
     { value: 'mediaManipulation', text: 'Manipulação de Mídia' },
     { value: 'poorQuality', text: 'Qualidade Ruim' },
   ];
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // lógica necessária para constar que a imagem do ID X foi reportada
-
-    // Seta o reported para true para o componente renderizar uma mensagem de agradecimento quando
-    // o usuário terminar de reportar
-    setReported(true);
-  };
 
   const handleEndReport = () => {
     // Seta o reported de volta para false para quando o componente ser chamado de novo ele estar resetado
@@ -42,12 +40,29 @@ export function ReportModal({ onclick, imageid }) {
     onclick();
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (reportData) {
+      try {
+        const response = await axios.post('api', reportData);
+        console.log('Conteúdo reportado com sucesso:', response.data);
+        // lógica necessária para constar que o conteúdo do ID foi reportado (é possível pegar o ID do conteúdo pela prop "id")
+
+        // Seta o reported para true para o componente renderizar uma mensagem de agradecimento quando
+        // o usuário terminar de reportar
+        setReported(true);
+      } catch (error) {
+        console.error('Erro ao reportar:', error);
+      }
+    }
+  };
+
   return (
     <>
-      {imageid && (
+      {id && (
         <FloatingMenu>
           <Styled.ReportModalElement>
-
             {!reported && (
             <>
               <Row>
@@ -63,25 +78,29 @@ export function ReportModal({ onclick, imageid }) {
 
               </Row>
 
-              <AuthForm>
+              <AuthForm onSubmit={handleSubmit}>
                 <AuthDropdown
                   title="Por qual motivo está reportando essa foto ou vídeo?"
                   id="competitiveCategory"
                   placeholder="Escolha o motivo"
                   options={reportOptions}
+                  onDropdownChange={(option) => setReportData((prevData) => ({ ...prevData, reportReason: option }))}
                   required
                 />
 
                 <Column>
-                  {/* <Subtitle text="Insira mais detalhes" uppercase /> */}
-                  <TextArea placeholder="Insira mais detalhes sobre o motivo (Opcional)" info="description" />
+                  <TextArea
+                    placeholder="Insira mais detalhes sobre o motivo (Opcional)"
+                    info="reportDetails"
+                    name="reportDetails"
+                    onChange={(e) => setReportData((prevData) => ({ ...prevData, reportDetails: e.target.value }))}
+                  />
                 </Column>
 
                 <AuthButton
                   name="report_submit"
                   id="report_submit"
                   value="Confirmar"
-                  onclick={handleSubmit}
                 />
 
               </AuthForm>
@@ -114,4 +133,5 @@ export function ReportModal({ onclick, imageid }) {
 
 ReportModal.propTypes = {
   onclick: Prop.func,
+  id: Prop.oneOfType([Prop.string, Prop.number]),
 };

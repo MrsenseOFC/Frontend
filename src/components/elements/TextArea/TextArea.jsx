@@ -3,7 +3,7 @@ import React from 'react';
 import * as Styled from './TextArea-Styles';
 
 export function TextArea({
-  placeholder = '', name = 'text-area', onchange, value,
+  placeholder = '', name = 'text-area', onChange, value,
 }) {
   return (
     <Styled.TextAreaElement
@@ -11,7 +11,7 @@ export function TextArea({
       name={name}
       data-name={name}
       placeholder={placeholder}
-      onChange={onchange}
+      onChange={onChange}
       value={value}
       maxLength="5000"
     />
@@ -22,5 +22,5 @@ TextArea.propTypes = {
   placeholder: Prop.string,
   name: Prop.string,
   value: Prop.string,
-  onchange: Prop.func,
+  onChange: Prop.func,
 };

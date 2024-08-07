@@ -33,7 +33,7 @@ export function Historic({ items, title }) {
     <Styled.HistoricContainer>
       <GridOneColumn>
         <Title text={title} uppercase />
-        {orderedItems ? (
+        {orderedItems && orderedItems.length > 0 ? (
           <>
             {orderedItems.map((item) => (
               <Styled.HistoricElement key={item.id}>

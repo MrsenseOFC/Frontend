@@ -21,7 +21,7 @@ export function MiniSlide({
 
         <Swiper
           spaceBetween={30}
-          slidesPerView={4}
+          slidesPerView={8}
           autoplay={autoplay ? { delay: 2000, disableOnInteraction: true } : false}
           loop
           navigation

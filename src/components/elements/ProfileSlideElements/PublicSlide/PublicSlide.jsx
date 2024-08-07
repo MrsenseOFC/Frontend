@@ -98,7 +98,7 @@ export function PublicSlide({
 
       </Styled.PublicSlideElement>
 
-      <ReportModal imageid={reportingImage} onclick={() => setReportingImage('')} />
+      <ReportModal id={reportingImage} onclick={() => setReportingImage('')} />
 
       <ImageModal imagesrc={fullscreenImage} onclick={() => setFullscreenImage('')} />
 

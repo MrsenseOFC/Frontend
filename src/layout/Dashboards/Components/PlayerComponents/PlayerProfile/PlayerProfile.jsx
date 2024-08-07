@@ -18,8 +18,8 @@ export function PlayerProfile() {
 
       <ProfileInfo items={playerState.profile.info} />
 
-      <OwnerSlide items={playerState.profile.photos} title="Fotos" ownerview />
-      <OwnerVideoSlide items={playerState.profile.videos} title="Vídeos" ownerview />
+      <OwnerSlide items={playerState.profile.photos} title="Fotos" />
+      <OwnerVideoSlide items={playerState.profile.videos} title="Vídeos" />
 
       <Row>
         <Historic items={playerState.profile.clubs} title="Histórico de clubes" />

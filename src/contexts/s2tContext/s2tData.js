@@ -5,49 +5,87 @@ export const s2tData = {
     {
       id: 1,
       name: 'ansa',
-      imagesrc: '/assets/images/logos/ansa.png',
+      imagesrc: '/assets/images/partners/ansa.png',
     },
 
     {
       id: 2,
       name: 'ansep',
-      imagesrc: '/assets/images/logos/ansep.png',
+      imagesrc: '/assets/images/partners/ansep.png',
     },
 
     {
       id: 3,
       name: 'lions-bank',
-      imagesrc: '/assets/images/logos/lionsbank.png',
+      imagesrc: '/assets/images/partners/lionsbank.png',
     },
 
     {
       id: 4,
-      name: 'brazusa',
-      imagesrc: '/assets/images/logos/brazusa.png',
+      name: 'texas-lions',
+      imagesrc: '/assets/images/partners/texas_lions.png',
     },
+
     {
       id: 5,
-      name: 'ansa',
-      imagesrc: '/assets/images/logos/ansa.png',
+      name: 'brazusa',
+      imagesrc: '/assets/images/partners/brazusa.png',
     },
 
     {
       id: 6,
-      name: 'ansep',
-      imagesrc: '/assets/images/logos/ansep.png',
+      name: 'florida-lions',
+      imagesrc: '/assets/images/partners/florida_lions.png',
     },
 
     {
       id: 7,
-      name: 'lions-bank',
-      imagesrc: '/assets/images/logos/lionsbank.png',
+      name: 'ce-jenlai',
+      imagesrc: '/assets/images/partners/ce_jenlai.png',
     },
 
     {
       id: 8,
-      name: 'brazusa',
-      imagesrc: '/assets/images/logos/brazusa.png',
+      name: 'ansa',
+      imagesrc: '/assets/images/partners/ansa.png',
     },
+
+    {
+      id: 9,
+      name: 'ansep',
+      imagesrc: '/assets/images/partners/ansep.png',
+    },
+
+    {
+      id: 10,
+      name: 'lions-bank',
+      imagesrc: '/assets/images/partners/lionsbank.png',
+    },
+
+    {
+      id: 11,
+      name: 'texas-lions',
+      imagesrc: '/assets/images/partners/texas_lions.png',
+    },
+
+    {
+      id: 12,
+      name: 'brazusa',
+      imagesrc: '/assets/images/partners/brazusa.png',
+    },
+
+    {
+      id: 13,
+      name: 'florida-lions',
+      imagesrc: '/assets/images/partners/florida_lions.png',
+    },
+
+    {
+      id: 14,
+      name: 'ce-jenlai',
+      imagesrc: '/assets/images/partners/ce_jenlai.png',
+    },
+
   ],
 
   products: {
@@ -393,8 +431,8 @@ export const s2tData = {
       {
         id: '2',
         src: '/assets/images/benefits/tv.png',
-        title: 'Sport TV',
-        path: '/benefits/sporttv',
+        title: 'Sports Channels',
+        path: '/benefits/sport-channels',
       },
 
       {
@@ -409,6 +447,7 @@ export const s2tData = {
         src: '/assets/images/benefits/benefits.png',
         title: 'Clube de benefícios',
         path: '/benefits/club',
+        islocked: true,
       },
 
       {
@@ -420,9 +459,9 @@ export const s2tData = {
 
       {
         id: '6',
-        src: '/assets/images/benefits/visibility.png',
-        title: 'Visibilidade',
-        path: '/benefits/visibility',
+        src: '/assets/images/benefits/crypto_wallet.png',
+        title: 'Crypto Wallet',
+        path: '/benefits/crypto-wallet',
       },
 
       {
@@ -437,6 +476,27 @@ export const s2tData = {
         src: '/assets/images/benefits/english.jpg',
         title: 'Inglês',
         path: '/benefits/english',
+      },
+
+      {
+        id: '9',
+        src: '/assets/images/benefits/lions_platform.jpg',
+        title: 'Plataforma Lions',
+        path: '/benefits/lions-platform',
+      },
+
+      {
+        id: '10',
+        src: '/assets/images/benefits/crowdfunding.jpg',
+        title: 'Crowdfunding',
+        path: '/benefits/crowdfunding.',
+      },
+
+      {
+        id: '11',
+        src: '/assets/images/benefits/schools.jpg',
+        title: 'Escolas',
+        path: '/benefits/schools',
       },
     ],
   },

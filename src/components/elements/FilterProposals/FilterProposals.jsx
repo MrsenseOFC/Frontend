@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { OptionsOutline as OptionsIcons } from '@styled-icons/evaicons-outline/OptionsOutline';
+import axios from 'axios';
 import * as Styled from './FilterProposals-Styles';
 import { AuthInput } from '../AuthElements/AuthInput/AuthInput';
 import { AuthDropdown } from '../AuthElements/AuthDropdown/AuthDropdown';
@@ -30,6 +31,8 @@ export function FilterProposals() {
     minimumHeight: '',
   });
 
+  const [searchData, setSearchData] = useState('');
+
   const legOptions = [
     { value: 'right', text: 'Direita' },
     { value: 'left', text: 'Esquerda' },
@@ -48,20 +51,19 @@ export function FilterProposals() {
   ];
 
   const positionsOptions = [
-    { value: 'goleiro', text: 'Goleiro' },
-    { value: 'lateral esquerdo', text: 'Lateral Esquerdo' },
-    { value: 'lateral direito', text: 'Lateral Direito' },
-    { value: 'zagueiro', text: 'Zagueiro' },
-    { value: 'ala', text: 'Ala' },
-    { value: 'primeiro volante', text: 'Primeiro Volante' },
-    { value: 'segundo volante', text: 'Segundo Volante' },
-    { value: 'meio-campista', text: 'Meio-Campista' },
-    { value: 'meia-ofensivo', text: 'Meia Ofensivo' },
-    { value: 'meia-lateral', text: 'Meia Lateral' },
-    { value: 'segundo atacante', text: 'Segundo atacante' },
-    { value: 'ponta esquerda', text: 'Ponta Esquerda' },
-    { value: 'ponta direita', text: 'Ponta Direito' },
-    { value: 'centroavante', text: 'Centroavante' },
+    { value: 'goalkeeper', text: 'Goleiro' },
+    { value: 'left-back', text: 'Lateral Esquerdo' },
+    { value: 'right-back', text: 'Lateral Direito' },
+    { value: 'center-back', text: 'Zagueiro' },
+    { value: 'wing-back', text: 'Ala' },
+    { value: 'defensive midfielder', text: 'Primeiro Volante' },
+    { value: 'central midfielder', text: 'Meio-Campista' },
+    { value: 'attacking midfielder', text: 'Meia Ofensivo' },
+    { value: 'wide midfielder', text: 'Meia Lateral' },
+    { value: 'second striker', text: 'Segundo atacante' },
+    { value: 'left winger', text: 'Ponta Esquerda' },
+    { value: 'right winger', text: 'Ponta Direito' },
+    { value: 'center forward', text: 'Centroavante' },
   ];
 
   const leagueOptions = [
@@ -95,7 +97,35 @@ export function FilterProposals() {
     { value: 'exchangeAgencies', text: 'Agências de intercâmbio' },
   ];
 
-  console.log(filterData);
+  useEffect(() => {
+    const handleFilter = async () => {
+      if (filterData) {
+        try {
+          const response = await axios.post('api', filterData);
+          console.log('Filtro atualizado:', response.data);
+        } catch (error) {
+          console.error('Erro ao filtrar', error);
+        }
+      }
+    };
+
+    handleFilter();
+  }, [filterData]);
+
+  useEffect(() => {
+    const handleSearch = async () => {
+      if (searchData) {
+        try {
+          const response = await axios.post('api', searchData);
+          console.log('Pesquisa atualizada:', response.data);
+        } catch (error) {
+          console.error('Erro ao pesquisar', error);
+        }
+      }
+    };
+
+    handleSearch();
+  }, [searchData]);
 
   return (
     <Styled.FilterProposalsContainer isopen={isOpen ? 'isopen' : undefined}>
@@ -114,7 +144,11 @@ export function FilterProposals() {
               <IconDiv onclick={() => setIsOpen(!isOpen)} name="Filtrar oportunidades">
                 <OptionsIcons />
               </IconDiv>
-              <AuthSearch name="proposalSearch" id="proposalSearch" />
+              <AuthSearch
+                name="searchProposals"
+                id="searchProposals"
+                onChange={(e) => setSearchData(e.target.value)}
+              />
             </SearchWrapper>
 
           </Row>

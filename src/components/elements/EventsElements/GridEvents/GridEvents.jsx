@@ -4,7 +4,7 @@ import * as Styled from './GridEvents-Styles';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { EventModal } from '../EventModal/EventModal';
 import { EventCard } from '../EventCard/EventCard';
-import { FilterEvents } from '../FilterEvents/FilterProposals/FilterEvents';
+import { FilterEvents } from '../FilterEvents/FilterEvents';
 import { Text } from '../../Text/Text';
 
 export function GridEvents({ items }) {

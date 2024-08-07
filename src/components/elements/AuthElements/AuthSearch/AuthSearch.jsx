@@ -4,7 +4,7 @@ import { Search as SearchIcon } from '@styled-icons/material-outlined/Search';
 import * as Styled from './AuthSearch-Styles';
 
 export function AuthSearch({
-  name, id, onchange, value, title = '', autocomplete = '', required = false, children,
+  name, id, onChange, value, title = '', autocomplete = '', required = false, children,
 }) {
   return (
     <Styled.SearchWrapper>
@@ -18,7 +18,7 @@ export function AuthSearch({
           type="search"
           name={name}
           id={id}
-          onChange={onchange}
+          onChange={onChange}
           value={value}
           autoComplete={autocomplete}
           required={required}
@@ -39,7 +39,7 @@ AuthSearch.propTypes = {
   id: Prop.string.isRequired,
   value: Prop.string,
   title: Prop.string,
-  onchange: Prop.func,
+  onChange: Prop.func,
   autocomplete: Prop.string,
   required: Prop.bool,
 };

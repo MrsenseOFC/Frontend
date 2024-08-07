@@ -48,8 +48,8 @@ export function Login() {
         navigate('/scout-dashboard');
       } else if (user.profile_type === 'club') {
         navigate('/club-dashboard');
-      } else {
-        navigate('/default-dashboard');
+      } else if (user.profile_type === 'university') {
+        navigate('/university-dashboard');
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
