@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import * as Styled from './Player-Styles';
 
@@ -137,8 +137,8 @@ export function Player() {
   // Submit principal
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     changeProfileInfo(playerDispatch, profileData);
+    navigate(-1);
   };
 
   return (

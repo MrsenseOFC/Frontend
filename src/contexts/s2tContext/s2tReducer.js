@@ -21,6 +21,12 @@ export const s2tReducer = (state, action) => {
         },
       };
 
+    case types.report_media:
+
+      console.log(...action.payload);
+
+      return { ...state };
+
     default: {
       return { ...state };
     }

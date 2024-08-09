@@ -11,3 +11,7 @@ export const addProposal = (dispatch, proposalData) => {
 export const addEvent = (dispatch, eventData) => {
   dispatch({ type: types.add_event, payload: [eventData] });
 };
+
+export const reportMedia = (dispatch, mediaData) => {
+  dispatch({ type: types.report_media, payload: [mediaData] });
+};

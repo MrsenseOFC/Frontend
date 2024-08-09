@@ -9,6 +9,7 @@ import { Text } from '../Text/Text';
 
 export function ProfileInfo({ items }) {
   const infoLabel = {
+    // players
     bestLeg: 'Melhor Perna',
     competitiveLevel: 'Nível competitivo',
     birthDate: 'Data de nascimento',
@@ -33,6 +34,14 @@ export function ProfileInfo({ items }) {
     graduationDate: 'Data de graduação',
     gradePointAverage: 'Nota média final',
 
+    // clubs
+    representative: 'Representante',
+    foundationDate: 'Data de fundação',
+    country: 'País',
+    state: 'Estado',
+    trainingCenter: 'Centro de treinamento',
+    stadium: 'Estádio',
+    coach: 'Técnico/Treinador',
   };
 
   return (
@@ -64,5 +73,5 @@ export function ProfileInfo({ items }) {
 }
 
 ProfileInfo.propTypes = {
-  items: Prop.arrayOf(Prop.object).isRequired, // n faço ideia oq é isso, só está assim pq foi o unico q n deu erro no console
+  items: Prop.arrayOf(Prop.object).isRequired,
 };
