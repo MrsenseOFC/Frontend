@@ -18,16 +18,16 @@ export const universityData = {
 
     // Informações que são exibidas abaixo do banner
     info:
-      [
-        { title: 'País', info: 'Brasil' },
-        { title: 'Estado', info: 'São Paulo' },
-        { title: 'Fundação', info: '1930' },
-        { title: 'Local de Treinamento', info: 'Barra funda - SP' },
-        { title: 'Nivel de competição', info: 'Serie A' },
-        { title: 'Representante', info: 'Júlio Casares' },
-        { title: 'Técnico', info: 'Luis Zubeldía' },
-        { title: 'Estádio', info: 'MorumBis' },
-      ],
+      {
+        representative: '',
+        competitiveLevel: '',
+        foundationDate: '',
+        country: '',
+        state: '',
+        trainingCenter: '',
+        stadium: '',
+        coach: '',
+      },
 
     // Fotos ou vídeos no perfil do usuário
     photos: [
@@ -107,7 +107,7 @@ export const universityData = {
     ],
 
     // Títulos já conquistados pelo usuário
-    championships: [
+    awards: [
       {
         id: '1',
         name: 'Sul Americana',

@@ -39,27 +39,9 @@ export function ProposalCard({
         {org && <StyledLink path={orgpath} text={org} />}
       </CenterColumn>
 
-      {publicview && <FavoriteIcon is={id} />}
+      {publicview && <FavoriteIcon id={id} />}
       {ownerview && <RemoveIcon id={id} message="Tem certeza de que deseja excluir esta oportunidade?" />}
 
     </Styled.ProposalCardElement>
   );
 }
-
-ProposalCard.propTypes = {
-  from: Prop.string,
-  id: Prop.oneOfType([
-    Prop.string, Prop.number,
-  ]),
-  date: Prop.string,
-  opportunity: Prop.string,
-  country: Prop.string,
-  org: Prop.string,
-  orglogo: Prop.string,
-  orgpath: Prop.string,
-  category: Prop.string,
-  onclick: Prop.func,
-  publicview: Prop.bool,
-  ownerview: Prop.bool,
-  isapplied: Prop.bool,
-};

@@ -5,11 +5,11 @@ import * as Styled from './AuthInfo-Styles';
 import { IconDiv } from '../../IconDiv/IconDiv';
 import { theme } from '../../../../styles/theme';
 
-export function AuthInfo({ text, onclick }) {
+export function AuthInfo({ text, name, onclick }) {
   return (
     <Styled.AuthInfoContainer>
       <Styled.AuthInfoText>{text}</Styled.AuthInfoText>
-      <IconDiv hovercolor={theme.colors.mediumred} onclick={onclick}>
+      <IconDiv hovercolor={theme.colors.mediumred} onclick={onclick} name="Remover">
         <CloseIcon />
       </IconDiv>
     </Styled.AuthInfoContainer>

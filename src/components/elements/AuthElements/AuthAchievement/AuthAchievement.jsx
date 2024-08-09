@@ -1,17 +1,24 @@
 import Prop from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Styled from './AuthAchievement-Styles';
 import { AuthInfo } from '../AuthInfo/AuthInfo';
 import { AuthInput } from '../AuthInput/AuthInput';
 import { Button } from '../../Button/Button';
 import { theme } from '../../../../styles/theme';
+import { removeAcademicHistory, removeAwardHistory } from '../../../../contexts/userContext/PlayerProvider/playerActions';
+import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
 
 export function AuthAchievement({
   title = '', id, inputtitle, placeholder, achievements, onChangeName, onChangeDate, onClick,
   nameValue, dateValue,
 }) {
+  const playerContext = useContext(PlayerContext);
+  const { playerState, playerDispatch } = playerContext;
+
   const handleRemoveItem = (item) => {
-    window.alert('Acessar AuthHistoric e inserir lógica para remover o item clicado no backend');
+    if (id === 'playerAwardHistory') {
+      removeAwardHistory(playerDispatch, item);
+    }
   };
 
   return (

@@ -26,7 +26,7 @@ export function PlayerProfile() {
         <Historic items={playerState.profile.studies} title="Histórico acadêmico" />
       </Row>
 
-      <TextSlide items={playerState.profile.championships} title="Títulos e prêmios:" />
+      <TextSlide items={playerState.profile.awards} title="Títulos e prêmios:" />
 
     </Styled.PlayerProfileContainer>
   );

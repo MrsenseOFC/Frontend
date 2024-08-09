@@ -23,7 +23,7 @@ export function UniversityProfile() {
         <Historic items={universityState.profile.leagues} title="Competições em disputa" />
       </Row>
 
-      <TextSlide items={universityState.profile.championships} title="Títulos:" />
+      <TextSlide items={universityState.profile.awards} title="Títulos:" />
     </Styled.UniversityProfileContainer>
   );
 }

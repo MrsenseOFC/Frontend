@@ -10,23 +10,32 @@ export const playerData = {
       badge: '/assets/images/pngs/medal.png',
       backgroundImageSrc: '/assets/images/profile/banner.png',
     },
-    info: [
-      { title: 'Nascimento', info: '05/02/1992' },
-      { title: 'Idade', info: 32 },
-      { title: 'Local de nascimento', info: 'Mogi das cruzes' },
-      { title: 'Nacionalidade', info: 'Brasil' },
-      { title: 'Passaporte', info: 'N/A' },
-      { title: 'Time', info: 'Masculino' },
-      { title: 'Altura', info: '1,72M' },
-      { title: 'Peso', info: '75 KG' },
-      { title: 'Melhor perna', info: 'Direita' },
-      { title: 'Posição Principal', info: 'Ponta Esquerda' },
-      { title: 'Posição Secundária', info: 'Centroavante' },
-      { title: 'Categoria', info: 'Adulto' },
-      { title: 'TOEFL', info: 'N/A' },
-      { title: 'ACT', info: 'N/A' },
-      { title: 'SAT', info: 'N/A' },
-    ],
+
+    info: {
+      ageCategory: 'adult',
+      competitiveLevel: 'serie-A',
+      primaryPosition: 'center-forward',
+      secondaryPosition: 'right-winger',
+      tertiaryPosition: 'left-winger',
+      bestLeg: 'right',
+      birthDate: '1992-05-02',
+      age: 32,
+      weight: '72',
+      height: '1,75',
+      birthCity: 'Mogi das cruzes',
+      primaryNationality: 'Brasil',
+      secondaryNationality: 'Portugal',
+      passports: 'Estados Unidos',
+      payment: '1.500,000',
+      transferValue: '10.000.000',
+      league: 'lifa',
+      hasManager: 'no',
+      toefl: '8.8',
+      act: 'n/a',
+      sat: 'n/a',
+      graduationDate: '2002-02-05',
+      gradePointAverage: '8.8',
+    },
 
     photos: [
       {
@@ -169,7 +178,7 @@ export const playerData = {
         image: '/assets/images/background.png',
       },
     ],
-    championships: [
+    awards: [
       {
         id: '1',
         name: 'Sul Americana',

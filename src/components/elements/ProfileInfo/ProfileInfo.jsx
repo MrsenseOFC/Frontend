@@ -8,13 +8,51 @@ import { theme } from '../../../styles/theme';
 import { Text } from '../Text/Text';
 
 export function ProfileInfo({ items }) {
+  const infoLabel = {
+    bestLeg: 'Melhor Perna',
+    competitiveLevel: 'Nível competitivo',
+    birthDate: 'Data de nascimento',
+    ageCategory: 'Categoria',
+    age: 'Idade',
+    birthCity: 'Nascimento',
+    weight: 'Peso',
+    height: 'Altura',
+    primaryNationality: 'Nacionalidade primária',
+    secondaryNationality: 'Nacionalidade secundária',
+    passports: 'Passaportes',
+    payment: 'Salário base',
+    transferValue: 'Valor de transferência',
+    primaryPosition: 'Posição principal',
+    secondaryPosition: 'Posição secundária',
+    tertiaryPosition: 'Posição terciária',
+    league: 'Liga',
+    hasManager: 'Possui empresário',
+    toefl: 'TOEFL',
+    act: 'ACT',
+    sat: 'SAT',
+    graduationDate: 'Data de graduação',
+    gradePointAverage: 'Nota média final',
+
+  };
+
   return (
     <Styled.ProfileInfoElement>
       <GridTwoColumn>
-        {items && items.length > 0 ? (
+        {/* Verifica se items existe */}
+        {items && Object.keys(items).length > 0 ? (
           <>
-            {items.map((item) => (
-              <InfoInRow key={item.title} infotitle={item.title} info={item.info} uppercase />
+            {Object.keys(items).map((key) => (
+              <>
+                {/* Verifica se a informação foi preenchida ou não pelo usuário */}
+                {items[key] && (
+                <InfoInRow
+                  key={key}
+                  infotitle={infoLabel[key] || key}
+                  info={items[key]}
+                  uppercase
+                />
+                )}
+              </>
             ))}
           </>
         ) : (

@@ -52,7 +52,7 @@ export function AuthDropdown({
       </Styled.DropdownButton>
 
       {isOpen && (
-        <Styled.DropdownContent>
+        <Styled.DropdownContent onClick={toggleDropdown}>
           {placeholder && (
             <Styled.DropdownItem onClick={resetItem}>
               {placeholder}

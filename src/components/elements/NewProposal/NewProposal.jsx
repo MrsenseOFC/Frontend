@@ -51,40 +51,9 @@ export function NewProposal({ onclick }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(proposalData);
     addProposal(s2tDispatch, proposalData);
+    onclick();
   };
-
-  const competitiveCategoryOptions = [
-    { value: 'pro', text: 'Profissional' },
-    { value: 'semiPro', text: 'Semi-Profissional' },
-    { value: 'academic', text: 'Universitário' },
-    { value: 'amateur', text: 'Amador' },
-    { value: 'recreational', text: 'Recreacional' },
-  ];
-
-  const positionsOptions = [
-    { value: 'goalkeeper', text: 'Goleiro' },
-    { value: 'left-back', text: 'Lateral Esquerdo' },
-    { value: 'right-back', text: 'Lateral Direito' },
-    { value: 'center-back', text: 'Zagueiro' },
-    { value: 'wing-back', text: 'Ala' },
-    { value: 'defensive midfielder', text: 'Primeiro Volante' },
-    { value: 'central midfielder', text: 'Meio-Campista' },
-    { value: 'attacking midfielder', text: 'Meia Ofensivo' },
-    { value: 'wide midfielder', text: 'Meia Lateral' },
-    { value: 'second striker', text: 'Segundo atacante' },
-    { value: 'left winger', text: 'Ponta Esquerda' },
-    { value: 'right winger', text: 'Ponta Direito' },
-    { value: 'center forward', text: 'Centroavante' },
-    { value: 'notSpecified', text: 'Não especificado' },
-  ];
-
-  const currencyOptions = [
-    { value: 'R$', text: 'Real' },
-    { value: '$', text: 'Dolar (Americano)' },
-    { value: '€', text: 'Euro' },
-  ];
 
   return (
     <Styled.NewProposalContainer>
@@ -128,7 +97,7 @@ export function NewProposal({ onclick }) {
               placeholder="Escolha a posição"
               id="position"
               required
-              options={positionsOptions}
+              options={s2tState.formOptions.positions}
               onDropdownChange={(option) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, opportunity: option } }))}
             />
 
@@ -136,7 +105,7 @@ export function NewProposal({ onclick }) {
               title="Para qual categoria é a oportunidade?"
               id="competitiveCategory"
               placeholder="Escolha a categoria"
-              options={competitiveCategoryOptions}
+              options={s2tState.formOptions.competitiveCategory}
               onDropdownChange={(option) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, category: option } }))}
               required
             />
@@ -205,7 +174,7 @@ export function NewProposal({ onclick }) {
               title="Qual moeda será usada para o pagamento?"
               placeholder="Escolha a moeda"
               id="paymentCurrency"
-              options={currencyOptions}
+              options={s2tState.formOptions.currency}
               required
               onDropdownChange={(option) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, payment: { ...prevData.details.payment, currency: option } } }))}
             />
@@ -218,7 +187,7 @@ export function NewProposal({ onclick }) {
               placeholder="Insira a descrição da sua proposta"
               name="description"
               value={proposalData.description}
-              onchange={(e) => setProposalData((prevData) => ({ ...prevData, description: e.target.value }))}
+              onChange={(e) => setProposalData((prevData) => ({ ...prevData, description: e.target.value }))}
             />
           </ColumnContainer>
 
@@ -228,7 +197,7 @@ export function NewProposal({ onclick }) {
               placeholder="Insira outros requisitos para sua proposta"
               name="requirements"
               value={proposalData.requirements}
-              onchange={(e) => setProposalData((prevData) => ({ ...prevData, requirements: e.target.value }))}
+              onChange={(e) => setProposalData((prevData) => ({ ...prevData, requirements: e.target.value }))}
             />
           </ColumnContainer>
 

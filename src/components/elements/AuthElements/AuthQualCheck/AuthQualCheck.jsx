@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Prop from 'prop-types';
 import * as Styled from './AuthQualCheck-Styles';
 import {
@@ -7,20 +7,19 @@ import {
 import { AuthInput } from '../AuthInput/AuthInput';
 import { AuthFile } from '../AuthFile/AuthFile';
 import { AuthRadio } from '../AuthRadio/AuthRadio';
+import { S2tContext } from '../../../../contexts/s2tContext/S2tContext';
 
 export function AuthQualCheck({
-  title, groupname, onChange,
+  title, groupname, onChange, selectedvalue,
 }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
 
-  const qualOptions = [
-    { value: 'yes', label: 'Sim' },
-    { value: 'n/a', label: 'Não' },
-  ];
+  const [selectedOption, setSelectedOption] = useState(selectedvalue);
 
-  const handleRadioChange = (e) => {
-    setSelectedOption(e.target.value);
-    onChange(e);
+  const handleRadioChange = (option) => {
+    setSelectedOption(option);
+    onChange(option);
   };
 
   return (
@@ -30,12 +29,13 @@ export function AuthQualCheck({
 
         <AuthRadio
           title={title}
-          options={qualOptions}
+          options={s2tState.formOptions.qual}
           groupname={groupname}
-          onClick={(e) => handleRadioChange(e)}
+          selectedvalue={selectedOption !== 'n/a' ? 'yes' : selectedOption}
+          onChange={(option) => handleRadioChange(option)}
         />
 
-        {selectedOption === 'yes' && (
+        {selectedOption !== 'n/a' && (
           <>
             <AuthInput
               type="string"
@@ -43,8 +43,9 @@ export function AuthQualCheck({
               id="qualNote_input"
               title="Nota"
               placeholder="Insira sua nota final"
+              value={selectedvalue === 'yes' ? '' : selectedvalue}
+              onChange={(e) => onChange(e.target.value)}
               required
-              onChange={onChange}
             />
 
             {/* Função de receber certificado desativada */}
@@ -60,4 +61,5 @@ AuthQualCheck.propTypes = {
   title: Prop.string.isRequired,
   groupname: Prop.string.isRequired,
   onChange: Prop.func,
+  selectedvalue: Prop.string,
 };

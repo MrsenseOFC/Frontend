@@ -1,11 +1,13 @@
 import Prop from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as Styled from './AuthHistoric-Styles';
 import { AuthInput } from '../AuthInput/AuthInput';
 import { theme } from '../../../../styles/theme';
 import { Button } from '../../Button/Button';
 import { AuthCheckbox } from '../AuthCheckbox/AuthCheckbox';
 import { AuthInfo } from '../AuthInfo/AuthInfo';
+import { removeAcademicHistory, removeClubHistory } from '../../../../contexts/userContext/PlayerProvider/playerActions';
+import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
 
 export function AuthHistoric({
   title = '', id, inputtitle, placeholder, historic, onChangeName, onChangeEarliestDate, onChangeLatestDate, onClick,
@@ -13,13 +15,22 @@ export function AuthHistoric({
 }) {
   const [isActual, setIsActual] = useState(false);
 
+  const playerContext = useContext(PlayerContext);
+  const { playerState, playerDispatch } = playerContext;
+
   const handleIsActual = (e) => {
     setIsActual(!isActual);
     onChangeLatestDate(e);
   };
 
   const handleRemoveItem = (item) => {
-    window.alert('Acessar AuthHistoric e inserir lógica para remover o item clicado no backend');
+    if (id === 'playerClubHistory') {
+      removeClubHistory(playerDispatch, item);
+    }
+
+    if (id === 'playerAcademicHistory') {
+      removeAcademicHistory(playerDispatch, item);
+    }
   };
 
   return (

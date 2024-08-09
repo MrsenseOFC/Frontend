@@ -16,42 +16,26 @@ import { AuthContainer } from '../../../../../../components/elements/AuthElement
 import { AuthRadio } from '../../../../../../components/elements/AuthElements/AuthRadio/AuthRadio';
 import { AuthHistoric } from '../../../../../../components/elements/AuthElements/AuthHistoric/AuthHistoric';
 import { Row } from '../../../../../../components/RowContainer/Row';
-import { AuthFile } from '../../../../../../components/elements/AuthElements/AuthFile/AuthFile';
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { AuthQualCheck } from '../../../../../../components/elements/AuthElements/AuthQualCheck/AuthQualCheck';
 import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
 import { PlayerContext } from '../../../../../../contexts/userContext/PlayerProvider/PlayerContext';
+import { S2tContext } from '../../../../../../contexts/s2tContext/S2tContext';
+import {
+  addAcademicHistory, addAwardHistory, addClubHistory, changeProfileInfo,
+} from '../../../../../../contexts/userContext/PlayerProvider/playerActions';
 
 export function Player() {
   const navigate = useNavigate();
+
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
 
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
 
   const [profileData, setProfileData] = useState({
-    bestLeg: '',
-    competitiveLevel: '',
-    ageCategory: '',
-    birthDate: '',
-    age: 0,
-    birthCity: '',
-    weight: '',
-    height: '',
-    primaryNationality: '',
-    secondaryNationality: '',
-    passports: '',
-    payment: '',
-    transferValue: '',
-    mainPosition: '',
-    secondaryPosition: '',
-    tertiaryPosition: '',
-    league: '',
-    hasManager: '',
-    toefl: '',
-    act: '',
-    sat: '',
-    graduationDate: '',
-    gradePointAverage: '',
+    ...playerState.profile.info,
   });
 
   // Calcula a idade do usuário baseado na data de nascimento
@@ -70,56 +54,6 @@ export function Player() {
     calculateAge();
   }, [profileData.birthDate]);
 
-  // Inputs Options
-  const legOptions = [
-    { value: 'right', label: 'Direita' },
-    { value: 'left', label: 'Esquerda' },
-  ];
-
-  const competitiveLevelsOptions = [
-    { value: 'serieA', text: 'Serie A' },
-    { value: 'serieB', text: 'Serie B' },
-    { value: 'serieC', text: 'Serie C' },
-    { value: 'serieD', text: 'Serie D' },
-  ];
-
-  const ageCategoryOptions = [
-    { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
-    { value: 'sub8', text: 'Sub-8 (8 anos)' },
-    { value: 'sub9', text: 'Sub-9 (8 e 9 anos)' },
-    { value: 'sub11', text: 'Sub-11 (10 e 11 anos)' },
-    { value: 'sub13', text: 'Sub-13 (12 e 13 anos)' },
-    { value: 'sub15', text: 'Sub-15 (14 e 15 anos)' },
-    { value: 'sub17', text: 'Sub-17 (16 e 17 anos)' },
-    { value: 'sub20', text: 'Sub-20 (18, 19 e 20 anos)' },
-    { value: 'adult', text: 'Adulto (Já atua no time principal)' },
-  ];
-
-  const positionsOptions = [
-    { value: 'goalkeeper', text: 'Goleiro' },
-    { value: 'left-back', text: 'Lateral Esquerdo' },
-    { value: 'right-back', text: 'Lateral Direito' },
-    { value: 'center-back', text: 'Zagueiro' },
-    { value: 'wing-back', text: 'Ala' },
-    { value: 'defensive midfielder', text: 'Primeiro Volante' },
-    { value: 'central midfielder', text: 'Meio-Campista' },
-    { value: 'attacking midfielder', text: 'Meia Ofensivo' },
-    { value: 'wide midfielder', text: 'Meia Lateral' },
-    { value: 'second striker', text: 'Segundo atacante' },
-    { value: 'left winger', text: 'Ponta Esquerda' },
-    { value: 'right winger', text: 'Ponta Direito' },
-    { value: 'center forward', text: 'Centroavante' },
-  ];
-
-  const managerOptions = [
-    { value: 'yes', label: 'Sim' },
-    { value: 'no', label: 'Não' },
-  ];
-
-  const leagueOptions = [
-    { value: 'lifa', text: 'LIFA' },
-  ];
-
   // Historic Handlers
   const [clubHistory, setClubHistory] = useState(
     {
@@ -135,20 +69,13 @@ export function Player() {
 
     // Verifica se os campos estão preenchidos
     if (clubHistory.name && clubHistory.earliestDate) {
-      // lógica para alterar o histórico de clubes no backend
-      try {
-        const response = await axios.post('api', clubHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
+      addClubHistory(playerDispatch, clubHistory);
 
-        // Reseta o estado local
-        setClubHistory({
-          name: '',
-          earliestDate: '',
-          latestDate: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      setClubHistory({
+        name: '',
+        earliestDate: '',
+        latestDate: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
@@ -168,18 +95,13 @@ export function Player() {
     // Verifica se os campos estão preenchidos
     if (awardHistory.name && awardHistory.date) {
       // lógica para alterar o histórico de títulos e prêmios no backend
-      try {
-        const response = await axios.post('api', awardHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
 
-        // Reseta o estado local
-        setAwardHistory({
-          name: '',
-          date: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      addAwardHistory(playerDispatch, awardHistory);
+
+      setAwardHistory({
+        name: '',
+        date: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
@@ -199,20 +121,14 @@ export function Player() {
 
     // Verifica se os campos estão preenchidos
     if (academicHistory.name && academicHistory.earliestDate) {
-      // lógica para alterar o histórico acadêmico no backend
-      try {
-        const response = await axios.post('api', academicHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
+      addAcademicHistory(playerDispatch, academicHistory);
 
-        // Reseta o estado local
-        setAcademicHistory({
-          name: '',
-          earliestDate: '',
-          latestDate: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      // Reseta o estado local
+      setAcademicHistory({
+        name: '',
+        earliestDate: '',
+        latestDate: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
@@ -222,14 +138,7 @@ export function Player() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (profileData) {
-      try {
-        const response = await axios.post('api', profileData);
-        console.log('Perfil alterado com sucesso:', response.data);
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
-    }
+    changeProfileInfo(playerDispatch, profileData);
   };
 
   return (
@@ -245,16 +154,18 @@ export function Player() {
 
             <AuthRadio
               title="Qual sua melhor perna?"
-              options={legOptions}
+              options={s2tState.formOptions.leg}
               groupname="playerLegOptions"
-              onClick={(e) => setProfileData((prevData) => ({ ...prevData, bestLeg: e.target.value }))}
+              selectedvalue={profileData.bestLeg}
+              onChange={(option) => setProfileData((prevData) => ({ ...prevData, bestLeg: option }))}
             />
 
             <AuthDropdown
               title="Qual o seu nível competitivo?"
               id="playerCompetitiveLevel"
               placeholder="Escolha o nível"
-              options={competitiveLevelsOptions}
+              options={s2tState.formOptions.competitiveLevels}
+              selectedvalue={profileData.competitiveLevel}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
@@ -262,9 +173,9 @@ export function Player() {
               title="Você atua em qual categoria?"
               id="playerAgeCategory"
               placeholder="Escolha sua categoria"
-              options={ageCategoryOptions}
+              options={s2tState.formOptions.ageCategory}
+              selectedvalue={profileData.ageCategory}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, ageCategory: option }))}
-              required
             />
 
             <AuthInput
@@ -274,7 +185,6 @@ export function Player() {
               title="Data de nascimento"
               value={profileData.birthDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthDate: e.target.value }))}
-              required
             />
 
             <AuthInput
@@ -362,16 +272,17 @@ export function Player() {
               title="Posição Principal"
               placeholder="Sua posição principal"
               id="playerMainPosition"
-              options={positionsOptions}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, mainPosition: option }))}
-              required
+              options={s2tState.formOptions.positions}
+              selectedvalue={profileData.primaryPosition}
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, primaryPosition: option }))}
             />
 
             <AuthDropdown
               title="Posição Secundária"
               placeholder="Sua posição secundária"
               id="playerSecondaryPosition"
-              options={positionsOptions}
+              options={s2tState.formOptions.positions}
+              selectedvalue={profileData.secondaryPosition}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, secondaryPosition: option }))}
             />
 
@@ -379,7 +290,8 @@ export function Player() {
               title="Posição terciária"
               placeholder="Sua posição terciária"
               id="playerTertiaryPosition"
-              options={positionsOptions}
+              options={s2tState.formOptions.positions}
+              selectedvalue={profileData.tertiaryPosition}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, tertiaryPosition: option }))}
             />
 
@@ -387,16 +299,18 @@ export function Player() {
               title="Você atua em alguma liga?"
               id="playerLeague"
               placeholder="Escolha sua Liga"
-              options={leagueOptions}
+              options={s2tState.formOptions.league}
               otheroption
+              selectedvalue={profileData.league}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, league: option }))}
             />
 
             <AuthRadio
               title="Você possui algum empresário?"
-              options={managerOptions}
+              options={s2tState.formOptions.manager}
               groupname="playerManagerOptions"
-              onClick={(e) => setProfileData((prevData) => ({ ...prevData, hasManager: e.target.value }))}
+              selectedvalue={profileData.hasManager}
+              onChange={(option) => setProfileData((prevData) => ({ ...prevData, hasManager: option }))}
             />
 
             <Subtitle text="Sua história esportiva" size={theme.sizes.xlarge} />
@@ -423,11 +337,11 @@ export function Player() {
 
               <AuthAchievement
                 title="Histórico de títulos e prêmios"
-                id="playerAwardsHistory"
+                id="playerAwardHistory"
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-                achievements={playerState.profile.championships}
+                achievements={playerState.profile.awards}
               // OnChanges para atualizar o awardHistory
                 onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}
@@ -443,17 +357,22 @@ export function Player() {
             <AuthQualCheck
               title="Realizou a prova TOEFL?"
               groupname="playerToefl"
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, toefl: e.target.value }))}
+              selectedvalue={profileData.toefl}
+              onChange={(option) => setProfileData((prevData) => ({ ...prevData, toefl: option }))}
             />
+
             <AuthQualCheck
               title="Realizou a prova ACT?"
               groupname="playeAct"
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, act: e.target.value }))}
+              selectedvalue={profileData.act}
+              onChange={(option) => setProfileData((prevData) => ({ ...prevData, act: option }))}
             />
+
             <AuthQualCheck
               title="Realizou a prova SAT?"
               groupname="playerSat"
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, sat: e.target.value }))}
+              selectedvalue={profileData.sat}
+              onChange={(option) => setProfileData((prevData) => ({ ...prevData, sat: option }))}
             />
 
             <AuthInput

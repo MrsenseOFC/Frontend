@@ -63,8 +63,6 @@ export function EditProposal({ onclick, proposal }) {
     editProposal(s2tDispatch, proposalData);
   };
 
-  console.log(proposalData);
-
   return (
     <Styled.EditProposalContainer>
       <Row>

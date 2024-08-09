@@ -3,8 +3,12 @@ import React from 'react';
 import * as Styled from './AuthRadio-Styles';
 
 export function AuthRadio({
-  title, options, groupname, onClick, required,
+  title, options, groupname, onChange, required, selectedvalue,
 }) {
+  const handleClick = (option) => {
+    onChange(option.value);
+  };
+
   return (
     <Styled.AuthRadioContainer>
       <Styled.AuthRadioTitle>
@@ -15,12 +19,13 @@ export function AuthRadio({
       {options.map((option) => (
         <Styled.AuthRadioElement key={option.value}>
           <Styled.AuthRadioInput
-            onClick={onClick}
+            onChange={() => handleClick(option)}
             type="radio"
             name={groupname}
             id={`${groupname}:${option.value}`}
             value={option.value}
             required={required}
+            checked={option.value === selectedvalue}
           />
           <Styled.AuthRadioLabel htmlFor={`${groupname}:${option.value}`}>{option.label}</Styled.AuthRadioLabel>
         </Styled.AuthRadioElement>
@@ -40,5 +45,5 @@ AuthRadio.propTypes = {
   title: Prop.string.isRequired,
   groupname: Prop.string.isRequired,
   required: Prop.bool,
-  onClick: Prop.func,
+  onChange: Prop.func,
 };

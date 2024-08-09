@@ -1021,4 +1021,76 @@ export const s2tData = {
     },
 
   },
+
+  formOptions: {
+    competitiveCategory: [
+      { value: 'professional', text: 'Profissional' },
+      { value: 'semi-professional', text: 'Semi-Profissional' },
+      { value: 'academic', text: 'Universitário' },
+      { value: 'amateur', text: 'Amador' },
+      { value: 'recreational', text: 'Recreacional' },
+    ],
+
+    competitiveLevels: [
+      { value: 'serie-A', text: 'Serie A' },
+      { value: 'serie-B', text: 'Serie B' },
+      { value: 'serie-C', text: 'Serie C' },
+      { value: 'serie-D', text: 'Serie D' },
+    ],
+
+    ageCategory: [
+      { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
+      { value: 'sub8', text: 'Sub-8 (8 anos)' },
+      { value: 'sub9', text: 'Sub-9 (8 e 9 anos)' },
+      { value: 'sub11', text: 'Sub-11 (10 e 11 anos)' },
+      { value: 'sub13', text: 'Sub-13 (12 e 13 anos)' },
+      { value: 'sub15', text: 'Sub-15 (14 e 15 anos)' },
+      { value: 'sub17', text: 'Sub-17 (16 e 17 anos)' },
+      { value: 'sub20', text: 'Sub-20 (18, 19 e 20 anos)' },
+      { value: 'adult', text: 'Adulto (Já atua no time principal)' },
+    ],
+
+    positions: [
+      { value: 'goalkeeper', text: 'Goleiro' },
+      { value: 'left-back', text: 'Lateral Esquerdo' },
+      { value: 'right-back', text: 'Lateral Direito' },
+      { value: 'center-back', text: 'Zagueiro' },
+      { value: 'wing-back', text: 'Ala' },
+      { value: 'defensive-midfielder', text: 'Primeiro Volante' },
+      { value: 'central-midfielder', text: 'Meio-Campista' },
+      { value: 'attacking-midfielder', text: 'Meia Ofensivo' },
+      { value: 'wide-midfielder', text: 'Meia Lateral' },
+      { value: 'second-striker', text: 'Segundo atacante' },
+      { value: 'left-winger', text: 'Ponta Esquerda' },
+      { value: 'right-winger', text: 'Ponta Direita' },
+      { value: 'center-forward', text: 'Centroavante' },
+      { value: 'not-specified', text: 'Não especificado' },
+    ],
+
+    currency: [
+      { value: 'R$', text: 'Real' },
+      { value: '$', text: 'Dolar (Americano)' },
+      { value: '€', text: 'Euro' },
+    ],
+
+    leg: [
+      { value: 'right', label: 'Direita' },
+      { value: 'left', label: 'Esquerda' },
+    ],
+
+    manager: [
+      { value: 'yes', label: 'Sim' },
+      { value: 'no', label: 'Não' },
+    ],
+
+    league: [
+      { value: 'lifa', text: 'LIFA' },
+    ],
+
+    qual: [
+      { value: 'yes', label: 'Sim' },
+      { value: 'n/a', label: 'Não' },
+    ],
+
+  },
 };

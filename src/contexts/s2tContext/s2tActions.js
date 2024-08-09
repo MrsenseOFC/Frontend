@@ -5,7 +5,7 @@ export const showData = (dispatch) => {
 };
 
 export const addProposal = (dispatch, proposalData) => {
-  dispatch({ type: types.add_proposal, payload: [proposalData] });
+  dispatch({ type: types.add_proposal, payload: proposalData });
 };
 
 export const addEvent = (dispatch, eventData) => {

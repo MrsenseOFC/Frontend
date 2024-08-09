@@ -23,7 +23,7 @@ export function ClubProfile() {
         <Historic items={clubState.profile.leagues} title="Competições em disputa" />
       </Row>
 
-      <TextSlide items={clubState.profile.championships} title="Títulos:" />
+      <TextSlide items={clubState.profile.awards} title="Títulos:" />
     </Styled.ClubProfileContainer>
   );
 }
