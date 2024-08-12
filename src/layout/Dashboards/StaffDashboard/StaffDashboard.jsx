@@ -4,7 +4,6 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Settings } from '@styled-icons/fluentui-system-filled';
 import * as Styled from './StaffDashboard-Styles';
-import { PlayerContext } from '../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { theme } from '../../../styles/theme';
 
 import { ProfilePicture } from '../../../components/elements/ProfilePicture/ProfilePicture';
@@ -24,10 +23,12 @@ import { StaffNav } from '../../../components/ProfileHeader/Components/StaffNav/
 import { StaffMenu } from '../../../components/MobileMenu/Components/StaffMenu/PlayerMenu';
 import { FloatingHeader } from '../../../components/Headers/FloatingHeader/FloatingHeader';
 import { Nav } from '../../../components/Nav/Nav';
+import { StaffContext } from '../../../contexts/userContext/StaffProvider/StaffContext';
 
 export function StaffDashboard() {
-  const playerContext = useContext(PlayerContext);
-  const { playerState, playerDispatch } = playerContext;
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
+
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [settingsMenuVisibility, setSettingsMenuVisibility] = useState(false);
   const [mobileHeader, setMobileHeader] = useState(false);
@@ -99,7 +100,7 @@ export function StaffDashboard() {
         />
 
         <Button
-          path="/player-dashboard"
+          path="/staff-dashboard"
           text="Minha área"
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
@@ -125,14 +126,14 @@ export function StaffDashboard() {
 
       )}
 
-      <ProfileBanner backgroundimagesrc={playerState.profile.banner.backgroundImageSrc}>
+      <ProfileBanner backgroundimagesrc={staffState.profile.banner.backgroundImageSrc}>
         <ProfilePicture
-          imagesrc={playerState.profile.banner.profileImageSrc}
-          badge={playerState.profile.banner.badge}
+          imagesrc={staffState.profile.banner.profileImageSrc}
+          badge={staffState.profile.banner.badge}
           ownerview
         />
 
-        <ProfileName name={playerState.profile.banner.name} />
+        <ProfileName name={staffState.profile.banner.name} />
 
         <Row>
           <Button
@@ -177,7 +178,7 @@ export function StaffDashboard() {
         <Outlet />
       </Column>
 
-      <Slide items={playerState.benefits} title="Meus benefícios" />
+      <Slide items={staffState.benefits} title="Meus benefícios" />
 
     </Styled.StaffDashboardContainer>
   );

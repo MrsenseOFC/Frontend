@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as Styled from './Player-Styles';
+import * as Styled from './Staff-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
 import { AuthButton } from '../../../../../../components/elements/AuthElements/AuthButton/AuthButton';
@@ -18,23 +18,23 @@ import { Row } from '../../../../../../components/RowContainer/Row';
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { AuthQualCheck } from '../../../../../../components/elements/AuthElements/AuthQualCheck/AuthQualCheck';
 import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
-import { PlayerContext } from '../../../../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { S2tContext } from '../../../../../../contexts/s2tContext/S2tContext';
+import { StaffContext } from '../../../../../../contexts/userContext/StaffProvider/StaffContext';
 import {
-  addAcademicHistory, addAwardHistory, addClubHistory, changeProfileInfo,
-} from '../../../../../../contexts/userContext/PlayerProvider/playerActions';
+  addAcademicHistory, addClubHistory, addAwardHistory, changeProfileInfo,
+} from '../../../../../../contexts/userContext/StaffProvider/staffActions';
 
-export function Player() {
+export function Staff() {
   const navigate = useNavigate();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
 
-  const playerContext = useContext(PlayerContext);
-  const { playerState, playerDispatch } = playerContext;
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
 
   const [profileData, setProfileData] = useState({
-    ...playerState.profile.info,
+    ...staffState.profile.info,
   });
 
   // Calcula a idade do usuário baseado na data de nascimento
@@ -68,7 +68,7 @@ export function Player() {
 
     // Verifica se os campos estão preenchidos
     if (clubHistory.name && clubHistory.earliestDate) {
-      addClubHistory(playerDispatch, clubHistory);
+      addClubHistory(staffDispatch, clubHistory);
 
       setClubHistory({
         name: '',
@@ -95,7 +95,7 @@ export function Player() {
     if (awardHistory.name && awardHistory.date) {
       // lógica para alterar o histórico de títulos e prêmios no backend
 
-      addAwardHistory(playerDispatch, awardHistory);
+      addAwardHistory(staffDispatch, awardHistory);
 
       setAwardHistory({
         name: '',
@@ -120,7 +120,7 @@ export function Player() {
 
     // Verifica se os campos estão preenchidos
     if (academicHistory.name && academicHistory.earliestDate) {
-      addAcademicHistory(playerDispatch, academicHistory);
+      addAcademicHistory(staffDispatch, academicHistory);
 
       // Reseta o estado local
       setAcademicHistory({
@@ -137,13 +137,13 @@ export function Player() {
   const handleSubmit = async (e) => {
     if (profileData) {
       e.preventDefault();
-      changeProfileInfo(playerDispatch, profileData);
+      changeProfileInfo(staffDispatch, profileData);
       navigate(-1);
     }
   };
 
   return (
-    <Styled.PlayerContainer>
+    <Styled.StaffContainer>
 
       <AuthWrapper>
 
@@ -153,66 +153,19 @@ export function Player() {
 
             <Subtitle text="Seu perfil" size={theme.sizes.xlarge} />
 
-            <AuthRadio
-              title="Qual sua melhor perna?"
-              options={s2tState.formOptions.leg}
-              groupname="playerLegOptions"
-              selectedvalue={profileData.bestLeg}
-              onChange={(option) => setProfileData((prevData) => ({ ...prevData, bestLeg: option }))}
-            />
-
             <AuthDropdown
               title="Qual o seu nível competitivo?"
-              id="playerCompetitiveLevel"
+              id="staffCompetitiveLevel"
               placeholder="Escolha o nível"
               options={s2tState.formOptions.competitiveLevels}
               selectedvalue={profileData.competitiveLevel}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
-            <AuthDropdown
-              title="Você atua em qual categoria?"
-              id="playerAgeCategory"
-              placeholder="Escolha sua categoria"
-              options={s2tState.formOptions.ageCategory}
-              selectedvalue={profileData.ageCategory}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, ageCategory: option }))}
-            />
-
-            <AuthInput
-              type="date"
-              name="playerBirthDate_input"
-              id="playerBirthDate_input"
-              title="Data de nascimento"
-              value={profileData.birthDate}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthDate: e.target.value }))}
-            />
-
             <AuthInput
               type="text"
-              name="playerWeight_input"
-              id="playerWeight_input"
-              title="Peso"
-              placeholder="Seu peso atual (em KG)"
-              value={profileData.weight}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, weight: e.target.value }))}
-
-            />
-
-            <AuthInput
-              type="text"
-              name="playerHeight_input"
-              id="playerHeight_input"
-              placeholder="Sua altura atual (Ex: 1,70)"
-              title="Altura"
-              value={profileData.height}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, height: e.target.value }))}
-            />
-
-            <AuthInput
-              type="text"
-              name="playerPrimaryBirthCountry_input"
-              id="playerPrimaryBirthCountry_input"
+              name="staffPrimaryBirthCountry_input"
+              id="staffPrimaryBirthCountry_input"
               title="Nacionalidade primária"
               placeholder="Sua nacionalidade primária"
               value={profileData.primaryNationality}
@@ -221,8 +174,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="playerSecondaryBirthCountry_input"
-              id="playerSecondaryBirthCountry_input"
+              name="staffSecondaryBirthCountry_input"
+              id="staffSecondaryBirthCountry_input"
               title="Nacionalidade secundária"
               placeholder="Sua nacionalidade secundária"
               value={profileData.secondaryNationality}
@@ -231,18 +184,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="playerBirthCity_input"
-              id="playerBirthCity_input"
-              title="Cidade"
-              placeholder="Sua cidade de nascimento"
-              value={profileData.birthCity}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthCity: e.target.value }))}
-            />
-
-            <AuthInput
-              type="text"
-              name="playerPassports_input"
-              id="playerPassports_input"
+              name="staffPassports_input"
+              id="staffPassports_input"
               title="Possui passporte para algum país?"
               placeholder="Caso sim, liste os países"
               value={profileData.passports}
@@ -251,8 +194,8 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="playerPayment_input"
-              id="playerPayment_input"
+              name="staffPayment_input"
+              id="staffPayment_input"
               title="Salário"
               placeholder="Seu salário base"
               value={profileData.payment}
@@ -261,57 +204,12 @@ export function Player() {
 
             <AuthInput
               type="text"
-              name="playerTransferValue_input"
-              id="playerTransferValue_input"
+              name="staffTransferValue_input"
+              id="staffTransferValue_input"
               title="Valor de transferência"
               placeholder="Seu valor de transferência"
               value={profileData.transferValue}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, transferValue: e.target.value }))}
-            />
-
-            <AuthDropdown
-              title="Posição Principal"
-              placeholder="Sua posição principal"
-              id="playerMainPosition"
-              options={s2tState.formOptions.positions}
-              selectedvalue={profileData.primaryPosition}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, primaryPosition: option }))}
-            />
-
-            <AuthDropdown
-              title="Posição Secundária"
-              placeholder="Sua posição secundária"
-              id="playerSecondaryPosition"
-              options={s2tState.formOptions.positions}
-              selectedvalue={profileData.secondaryPosition}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, secondaryPosition: option }))}
-            />
-
-            <AuthDropdown
-              title="Posição terciária"
-              placeholder="Sua posição terciária"
-              id="playerTertiaryPosition"
-              options={s2tState.formOptions.positions}
-              selectedvalue={profileData.tertiaryPosition}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, tertiaryPosition: option }))}
-            />
-
-            <AuthDropdown
-              title="Você atua em alguma liga?"
-              id="playerLeague"
-              placeholder="Escolha sua Liga"
-              options={s2tState.formOptions.league}
-              otheroption
-              selectedvalue={profileData.league}
-              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, league: option }))}
-            />
-
-            <AuthRadio
-              title="Você possui algum empresário?"
-              options={s2tState.formOptions.manager}
-              groupname="playerManagerOptions"
-              selectedvalue={profileData.hasManager}
-              onChange={(option) => setProfileData((prevData) => ({ ...prevData, hasManager: option }))}
             />
 
             <Subtitle text="Sua história esportiva" size={theme.sizes.xlarge} />
@@ -320,11 +218,11 @@ export function Player() {
               <AuthHistoric
               // Dados padrão do componente
                 title="Histórico de clubes"
-                id="playerClubHistory"
+                id="staffClubHistory"
                 inputtitle="Clube"
                 placeholder="Nome do Clube"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-                historic={playerState.profile.clubs}
+                historic={staffState.profile.clubs}
               // OnChanges para atualizar o clubHistory
                 onChangeName={(e) => setClubHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeEarliestDate={(e) => setClubHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
@@ -338,11 +236,11 @@ export function Player() {
 
               <AuthAchievement
                 title="Histórico de títulos e prêmios"
-                id="playerAwardHistory"
+                id="staffAwardsHistory"
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-                achievements={playerState.profile.awards}
+                achievements={staffState.profile.awards}
               // OnChanges para atualizar o awardHistory
                 onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}
@@ -355,53 +253,13 @@ export function Player() {
 
             <Subtitle text="Sua história acadêmica" size={theme.sizes.xlarge} />
 
-            <AuthQualCheck
-              title="Realizou a prova TOEFL?"
-              groupname="playerToefl"
-              selectedvalue={profileData.toefl}
-              onChange={(option) => setProfileData((prevData) => ({ ...prevData, toefl: option }))}
-            />
-
-            <AuthQualCheck
-              title="Realizou a prova ACT?"
-              groupname="playeAct"
-              selectedvalue={profileData.act}
-              onChange={(option) => setProfileData((prevData) => ({ ...prevData, act: option }))}
-            />
-
-            <AuthQualCheck
-              title="Realizou a prova SAT?"
-              groupname="playerSat"
-              selectedvalue={profileData.sat}
-              onChange={(option) => setProfileData((prevData) => ({ ...prevData, sat: option }))}
-            />
-
-            <AuthInput
-              type="date"
-              name="secondGradeYear_input"
-              id="secondGradeYear_input"
-              title="Data de formatura do segundo grau"
-              value={profileData.graduationDate}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, graduationDate: e.target.value }))}
-            />
-
-            <AuthInput
-              type="text"
-              name="playerGpa_input"
-              id="playerGpa_input"
-              title="GPA (Grade Point Average)"
-              placeholder="Nota média final"
-              value={profileData.gradePointAverage}
-              onChange={(e) => setProfileData((prevData) => ({ ...prevData, gradePointAverage: e.target.value }))}
-            />
-
             <AuthHistoric
               title="Conhecimentos"
-              id="playerAcademicHistory"
+              id="staffAcademicHistory"
               inputtitle="Formação"
               placeholder="Nome da formação"
             // Histórico do usuário (Dados anteriores que já estão salvos)
-              historic={playerState.profile.studies}
+              historic={staffState.profile.studies}
             // OnChanges para atualizar o clubHistory
               onChangeName={(e) => setAcademicHistory((prevData) => ({ ...prevData, name: e.target.value }))}
               onChangeEarliestDate={(e) => setAcademicHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
@@ -412,10 +270,9 @@ export function Player() {
               latestDateValue={academicHistory.latestDate}
               onClick={(e) => handleAddAcademic(e)}
             />
-
             <AuthButton
-              name="editOPlayerProfile_submit"
-              id="editPlayerProfile_submit"
+              name="editOStaffProfile_submit"
+              id="editStaffProfile_submit"
               value="Confirmar alteração"
             />
 
@@ -423,7 +280,7 @@ export function Player() {
         </AuthContainer>
 
       </AuthWrapper>
-    </Styled.PlayerContainer>
+    </Styled.StaffContainer>
 
   );
 }

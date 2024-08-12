@@ -1,164 +1,190 @@
-// armazena todos os dados do atleta
-export const clubData = {
-
+export const staffData = {
   type: {
+    gender: 'male',
     category: 'professional',
-    team: 'male',
   },
-  // dados gerais do perfil
-  profile:
-  {
-    // dados usados no banner do atleta. Badge = icone referente ao atual plano dele
+  profile: {
     banner: {
-      name: 'São Paulo FC',
-      profileImageSrc: '/assets/images/profile/spfc.jpg',
+      name: 'Bernardo da Silva',
+      profileImageSrc: {},
       badge: '/assets/images/pngs/medal.png',
-      backgroundImageSrc: '/assets/images/backgrounds/slider-bg-1.png',
+      backgroundImageSrc: '/assets/images/profile/banner.png',
     },
 
-    // Informações que são exibidas abaixo do banner
-    info:
-      {
-        representative: 'Júlio Casares',
-        competitiveLevel: 'serie-A',
-        foundationDate: '1930-01-25',
-        country: 'Brasil',
-        state: 'São Paulo',
-        trainingCenter: 'Barra funda - SP',
-        stadium: 'MorumBis',
-        coach: 'Luis Zubeldia',
-      },
+    info: {
+      competitiveLevel: 'serie-A',
+      birthDate: '1992-05-02',
+      age: '32',
+      primaryNationality: 'Brasil',
+      secondaryNationality: 'Portugal',
+      passports: 'Estados Unidos',
+      payment: '1.500,000',
+      transferValue: '10.000.000',
+    },
 
-    // Fotos ou vídeos no perfil do usuário
     photos: [
       {
-        id: 1,
+        id: '1',
         src: '/assets/images/profile/photo-1.png',
         type: 'photo',
         isfavorite: true,
       },
-
       {
-        id: 2,
+        id: '2',
         src: '/assets/images/profile/photo-2.png',
         type: 'photo',
         isfavorite: false,
       },
-
       {
-        id: 3,
+        id: '3',
         src: '/assets/images/profile/photo-3.png',
         type: 'photo',
         isfavorite: true,
       },
-
       {
-        id: 4,
+        id: '4',
         src: '/assets/images/profile/photo-4.png',
         type: 'photo',
         isfavorite: true,
-
       },
-
       {
-        id: 5,
+        id: '5',
         src: '/assets/images/profile/photo-1.png',
         type: 'photo',
         isfavorite: false,
       },
-
       {
-        id: 6,
+        id: '6',
         src: '/assets/images/profile/photo-2.png',
         type: 'photo',
         isfavorite: false,
       },
-
       {
-        id: 7,
+        id: '7',
         src: '/assets/images/profile/photo-3.png',
         type: 'photo',
-        isfavorite: true,
+        isfavorite: false,
       },
     ],
 
-    // Histórico de clubes do usuário
-    competitions: [
+    videos: [
       {
         id: '1',
-        name: 'Brasileirão Serie A',
-        image: '/assets/images/background.png',
-        earliestDate: '2024-09-01',
+        src: '/assets/videos/silas.mp4',
+        isfavorite: true,
       },
 
       {
         id: '2',
-        name: 'Conmebol Libertadores',
-        image: '/assets/images/background.png',
-        earliestDate: '2024-09-01',
+        src: '/assets/videos/silas2.mp4',
+        isfavorite: true,
       },
 
-      {
-        id: '3',
-        name: 'Copa do brasil',
-        image: '/assets/images/background.png',
-        earliestDate: '2024-09-01',
-      },
     ],
 
-    // Títulos já conquistados pelo usuário
+    clubs: [
+      {
+        id: 1,
+        name: 'São Paulo',
+        earliestDate: '2012-08-01',
+        latestDate: '2015-08-01',
+      },
+      {
+        id: 2,
+        name: 'Barcelona',
+        earliestDate: '2015-08-01',
+        latestDate: '2015-08-01',
+      },
+      {
+        id: 3,
+        name: 'PSG',
+        earliestDate: '2015-08-01',
+        latestDate: '2019-08-01',
+      },
+      {
+        id: 4,
+        name: 'Bayern München',
+        earliestDate: '2019-08-01',
+        latestDate: '2023-08-01',
+      },
+      {
+        id: 5,
+        name: 'Juventus',
+        earliestDate: '2023-08-01',
+        latestDate: '2025-08-01',
+      },
+      {
+        id: 6,
+        name: 'São Paulo',
+        earliestDate: '2025-08-01',
+        latestDate: '',
+      },
+    ],
+    studies: [
+      {
+        id: '1',
+        name: 'Ensino Fundamental',
+        earliestDate: '2000-08-01',
+        latestDate: '2008-08-01',
+      },
+      {
+        id: '2',
+        name: 'Ensino Médio',
+        earliestDate: '2008-08-01',
+        latestDate: '2012-08-01',
+      },
+      {
+        id: '3',
+        name: 'Curso técnico de Ti',
+        earliestDate: '2013-08-01',
+        latestDate: '2015-08-01',
+      },
+      {
+        id: '4',
+        name: 'Ciência da Computação',
+        earliestDate: '2015-08-01',
+        latestDate: '2020-08-01',
+      },
+      {
+        id: '5',
+        name: 'Curso de React.js',
+        earliestDate: '2021-08-01',
+        latestDate: '2021-08-01',
+      },
+    ],
     awards: [
       {
         id: '1',
         name: 'Sul Americana',
-        image: '/assets/images/pngs/trophy.png',
-        date: '2012-09-09',
+        date: '2012-09-01',
       },
-
       {
         id: '2',
-        name: 'Conmebol Libertadores',
-        date: '2005-09-09',
+        name: 'La Liga',
+        date: '2017-09-01',
       },
-
       {
         id: '3',
-        name: 'Mundial de Interclubes',
-        date: '2005-09-09',
+        name: 'Uefa Champions League',
+        date: '2018-09-01',
       },
-
       {
         id: '4',
-        name: 'Copa do Brasil',
-        date: '2023-09-09',
+        name: 'Copa do mundo',
+        date: '2018-09-01',
       },
-
       {
         id: '5',
-        name: 'Brasileirão',
-        date: '2008-09-09',
+        name: 'Taça guanabara',
+        date: '2019-09-01',
       },
-
       {
         id: '6',
-        name: 'Supercopa Rei',
-        date: '2024-09-09',
+        name: 'Campeonato Gáucho',
+        date: '2022-09-01',
       },
-
-      {
-        id: '7',
-        name: 'Campeonato Paulista',
-        date: '2021-09-09',
-      },
-
     ],
-
   },
-
-  //  lista de benefícios da conta do usuário.
-  //  Ao clicar é direcionado a página do benefício clicado.
-  //  Caso tenha isLocked como true, a estilização do componente
-  //  vai ser alterada e ao clicar ele vai direcionar automaticamente para a página de planos
   benefits: [
     {
       id: '1',
@@ -166,42 +192,39 @@ export const clubData = {
       title: 'podcast',
       path: '/podcast',
     },
-
     {
       id: '2',
       src: '/assets/images/benefits/tv.png',
       title: 'Sport TV',
       path: '/sporttv',
     },
-
     {
       id: '3',
       src: '/assets/images/benefits/investments.png',
       title: 'Sports Invest',
+      islocked: true,
       path: '/sportsinvest',
     },
-
     {
       id: '4',
       src: '/assets/images/benefits/benefits.png',
       title: 'Benefícios',
+      islocked: true,
       path: '/benefits',
     },
-
     {
       id: '5',
       src: '/assets/images/benefits/exchange.png',
       title: 'Intercâmbio',
+      islocked: true,
       path: '/interchange',
     },
-
     {
       id: '6',
       src: '/assets/images/benefits/visibility.png',
       title: 'Visibilidade',
       path: '/visibility',
     },
-
     {
       id: '7',
       src: '/assets/images/benefits/events.png',
@@ -209,7 +232,6 @@ export const clubData = {
       islocked: true,
       path: '/events',
     },
-
     {
       id: '8',
       src: '/assets/images/benefits/exchange.png',
@@ -218,18 +240,17 @@ export const clubData = {
       path: '/english',
     },
   ],
-
   friends: [
     {
       id: '1',
       name: 'Eduardo Silva',
-      path: 'eduardo',
+      path: '/user/SPFC',
       profileImageSrc: '/assets/images/background.png',
     },
     {
       id: '2',
       name: 'Victor Souza',
-      path: 'victor',
+      path: '/user/victor',
       profileImageSrc: '/assets/images/background.png',
     },
     {
@@ -292,6 +313,5 @@ export const clubData = {
       path: 'cesar',
       profileImageSrc: '/assets/images/background.png',
     },
-
   ],
 };

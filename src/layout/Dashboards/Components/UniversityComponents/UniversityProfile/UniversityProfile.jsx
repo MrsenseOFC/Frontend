@@ -20,7 +20,7 @@ export function UniversityProfile() {
       <OwnerSlide items={universityState.profile.photos} title="Fotos" ownerview />
 
       <Row>
-        <Historic items={universityState.profile.leagues} title="Competições em disputa" />
+        <Historic items={universityState.profile.competitions} title="Competições em disputa" />
       </Row>
 
       <TextSlide items={universityState.profile.awards} title="Títulos:" />

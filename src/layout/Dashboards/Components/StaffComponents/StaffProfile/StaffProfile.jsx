@@ -7,24 +7,25 @@ import { TextSlide } from '../../../../../components/elements/TextSlide/TextSlid
 import { PlayerContext } from '../../../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { Row } from '../../../../../components/RowContainer/Row';
 import { OwnerSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerSlide/OwnerSlide';
+import { StaffContext } from '../../../../../contexts/userContext/StaffProvider/StaffContext';
 
 export function StaffProfile() {
-  const playerContext = useContext(PlayerContext);
-  const { playerState, playerDispatch } = playerContext;
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
 
   return (
     <Styled.StaffProfileContainer>
 
-      <ProfileInfo items={playerState.profile.info} />
+      <ProfileInfo items={staffState.profile.info} />
 
-      <OwnerSlide items={playerState.profile.photos} title="Fotos" ownerview />
+      <OwnerSlide items={staffState.profile.photos} title="Fotos" ownerview />
 
       <Row>
-        <Historic items={playerState.profile.clubs} title="Histórico de clubes" />
-        <Historic items={playerState.profile.studies} title="Histórico acadêmico" />
+        <Historic items={staffState.profile.clubs} title="Histórico de clubes" />
+        <Historic items={staffState.profile.studies} title="Histórico acadêmico" />
       </Row>
 
-      <TextSlide items={playerState.profile.awards} title="Títulos e prêmios:" />
+      <TextSlide items={staffState.profile.awards} title="Títulos e prêmios:" />
 
     </Styled.StaffProfileContainer>
   );

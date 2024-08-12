@@ -1038,6 +1038,19 @@ export const s2tData = {
       { value: 'serie-D', text: 'Serie D' },
     ],
 
+    universityCompetitiveLevels: [
+      { value: 'ncaa1', text: 'NCAA 1 (EUA)' },
+      { value: 'ncaa2', text: 'NCAA 2 (EUA)' },
+      { value: 'ncaa3', text: 'NCAA 3 (EUA)' },
+      { value: 'naia1', text: 'NAIA 1 (EUA)' },
+      { value: 'naia2', text: 'NAIA 2 (EUA)' },
+      { value: 'nccaa1', text: 'NCCAA 1 (EUA)' },
+      { value: 'nccaa2', text: 'NCCAA 2 (EUA)' },
+      { value: 'njcaa1', text: 'NJCAA 1 (EUA)' },
+      { value: 'njcaa2', text: 'NJCAA 2 (EUA)' },
+      { value: 'njcaa3', text: 'NJCAA 3 (EUA)' },
+    ],
+
     ageCategory: [
       { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
       { value: 'sub8', text: 'Sub-8 (8 anos)' },
@@ -1090,6 +1103,12 @@ export const s2tData = {
     qual: [
       { value: 'yes', label: 'Sim' },
       { value: 'n/a', label: 'Não' },
+    ],
+
+    language: [
+      { value: 'portuguese-br', text: 'Português' },
+      { value: 'english', text: 'Inglês' },
+      { value: 'spanish', text: 'Espanhol' },
     ],
 
   },

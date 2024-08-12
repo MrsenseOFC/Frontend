@@ -50,7 +50,7 @@ export function EditProposal({ onclick, proposal }) {
     { value: 'second striker', text: 'Segundo atacante' },
     { value: 'left winger', text: 'Ponta Esquerda' },
     { value: 'right winger', text: 'Ponta Direito' },
-    { value: 'center forward', text: 'Centroavante' },
+    { value: 'center-forward', text: 'Centroavante' },
   ];
 
   const currencyOptions = [

@@ -26,105 +26,22 @@ export function Home() {
   const { currentUser } = useAuth();
 
   const [menuVisibility, setMenuVisibility] = useState(false);
-  const [devMode, setDevMode] = useState(false);
-
-  const languageOptions = [
-    { value: 'portuguese-br', text: 'Português' },
-    { value: 'english', text: 'Inglês' },
-    { value: 'spanish', text: 'Espanhol' },
-  ];
 
   return (
     <Styled.HomePage>
       <StandardHeader>
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
         {menuVisibility ? (
-          <IconDiv name="Menu" onClick={() => setMenuVisibility(!menuVisibility)}>
+          <IconDiv name="Menu" onclick={() => setMenuVisibility(!menuVisibility)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onClick={() => setMenuVisibility(!menuVisibility)}>
+          <IconDiv name="Fechar menu" onclick={() => setMenuVisibility(!menuVisibility)}>
             <MenuIcon />
           </IconDiv>
         )}
         <Nav>
-          <AuthDropdown id="languageOptions" placeholder="Escolha o idioma" options={languageOptions} />
-          {devMode && (
-            <>
-              <Button
-                path="/register"
-                newtab
-                text="Criar uma conta"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                path="/login"
-                newtab
-                text="Entrar"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                path="/reset-password"
-                text="Resetar senha"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text="Dashboard - Jogador"
-                path="/player-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text="Dashboard - Clube"
-                path="/club-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text="Dashboard - Universidade"
-                path="/university-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text="Dashboard - Público"
-                path="/user/SPFC"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-            </>
-          )}
+          <AuthDropdown id="languageOptions" placeholder="Escolha o idioma" options={s2tState.formOptions.language} />
           {currentUser ? (
             <>
               <Button
@@ -189,7 +106,11 @@ export function Home() {
       </StandardHeader>
       {menuVisibility && (
         <MobileNav>
-          <AuthDropdown id="languageOptions" placeholder="Escolha o idioma" options={languageOptions} />
+          <AuthDropdown
+            id="languageOptions"
+            placeholder="Escolha o idioma"
+            options={s2tState.formOptions.language}
+          />
           {currentUser ? (
             <>
               <Button

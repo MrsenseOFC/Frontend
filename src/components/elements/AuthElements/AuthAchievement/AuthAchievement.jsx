@@ -8,7 +8,14 @@ import { theme } from '../../../../styles/theme';
 import { removeAcademicHistory, removeAwardHistory } from '../../../../contexts/userContext/PlayerProvider/playerActions';
 import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { removeCompetitionHistory, removeAwardHistory as removeClubAwardHistory } from '../../../../contexts/userContext/ClubProvider/clubActions';
+import {
+  removeCompetitionHistory as removeUniversityCompetitionHistory,
+  removeAwardHistory as removeUniversityAwardHistory,
+} from '../../../../contexts/userContext/UniversityProvider/universityActions';
+import { removeAwardHistory as removeStaffAwardHistory } from '../../../../contexts/userContext/StaffProvider/staffActions';
 import { ClubContext } from '../../../../contexts/userContext/ClubProvider/ClubContext';
+import { UniversityContext } from '../../../../contexts/userContext/UniversityProvider/UniversityContext';
+import { StaffContext } from '../../../../contexts/userContext/StaffProvider/StaffContext';
 
 export function AuthAchievement({
   title = '', id, inputtitle, placeholder, achievements, onChangeName, onChangeDate, onClick,
@@ -20,17 +27,24 @@ export function AuthAchievement({
   const clubContext = useContext(ClubContext);
   const { clubState, clubDispatch } = clubContext;
 
+  const universityContext = useContext(UniversityContext);
+  const { universityState, universityDispatch } = universityContext;
+
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
+
   const handleRemoveItem = (item) => {
-    if (id === 'playerAwardHistory') {
-      removeAwardHistory(playerDispatch, item);
-    }
+    const actions = {
+      playerAwardHistory: () => removeAwardHistory(playerDispatch, item),
+      clubCompetitionsHistory: () => removeCompetitionHistory(clubDispatch, item),
+      clubAwardsHistory: () => removeClubAwardHistory(clubDispatch, item),
+      universityCompetitionsHistory: () => removeUniversityCompetitionHistory(universityDispatch, item),
+      universityAwardsHistory: () => removeUniversityAwardHistory(universityDispatch, item),
+      staffAwardsHistory: () => removeStaffAwardHistory(staffDispatch, item),
+    };
 
-    if (id === 'clubCompetitionsHistory') {
-      removeCompetitionHistory(clubDispatch, item);
-    }
-
-    if (id === 'clubAwardsHistory') {
-      removeClubAwardHistory(clubDispatch, item);
+    if (actions[id]) {
+      actions[id]();
     }
   };
 

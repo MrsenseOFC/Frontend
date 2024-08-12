@@ -18,41 +18,26 @@ import { AuthFile } from '../../../../../../components/elements/AuthElements/Aut
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { UniversityContext } from '../../../../../../contexts/userContext/UniversityProvider/UniversityContext';
 import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
+import { S2tContext } from '../../../../../../contexts/s2tContext/S2tContext';
+import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../../../../../../contexts/userContext/UniversityProvider/universityActions';
 
 export function University() {
   const navigate = useNavigate();
 
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
+
   const universityContext = useContext(UniversityContext);
-  const { universityState, univeristyDispatch } = universityContext;
+  const { universityState, universityDispatch } = universityContext;
 
   const [profileData, setProfileData] = useState({
-    representative: '',
-    competitiveLevel: '',
-    foundationDate: '',
-    country: '',
-    state: '',
-    trainingCenter: '',
-    stadium: '',
-    coach: '',
+    ...universityState.profile.info,
   });
-
-  const competitiveLevelsOptions = [
-    { value: 'ncaa1', text: 'NCAA 1 (EUA)' },
-    { value: 'ncaa2', text: 'NCAA 2 (EUA)' },
-    { value: 'ncaa3', text: 'NCAA 3 (EUA)' },
-    { value: 'naia1', text: 'NAIA 1 (EUA)' },
-    { value: 'naia2', text: 'NAIA 2 (EUA)' },
-    { value: 'nccaa1', text: 'NCCAA 1 (EUA)' },
-    { value: 'nccaa2', text: 'NCCAA 2 (EUA)' },
-    { value: 'njcaa1', text: 'NJCAA 1 (EUA)' },
-    { value: 'njcaa2', text: 'NJCAA 2 (EUA)' },
-    { value: 'njcaa3', text: 'NJCAA 3 (EUA)' },
-  ];
 
   const [awardHistory, setAwardHistory] = useState(
     {
       name: '',
-      date: '',
+      earliestDate: '',
     },
   );
 
@@ -61,39 +46,51 @@ export function University() {
     e.stopPropagation();
 
     // Verifica se os campos estão preenchidos
-    if (awardHistory.name && awardHistory.date) {
+    if (awardHistory.name && awardHistory.earliestDate) {
       // lógica para alterar o histórico de títulos e prêmios no backend
-      try {
-        const response = await axios.post('api', awardHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
 
-        // Reseta o estado local
-        setAwardHistory({
-          name: '',
-          date: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      addAwardHistory(universityDispatch, awardHistory);
+      setAwardHistory({
+        name: '',
+        earliestDate: '',
+      });
+    } else {
+      console.error('Por favor, preencha todos os campos.');
+    }
+  };
+
+  const [competitionHistory, setCompetitionHistory] = useState(
+    {
+      name: '',
+      earliestDate: '',
+    },
+  );
+
+  const handleAddCompetition = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Verifica se os campos estão preenchidos
+    if (competitionHistory.name && competitionHistory.earliestDate) {
+      // lógica para alterar o histórico de títulos e prêmios no backend
+
+      addCompetitionHistory(universityDispatch, competitionHistory);
+      setCompetitionHistory({
+        name: '',
+        earliestDate: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     if (profileData) {
-      try {
-        const response = await axios.post('api', profileData);
-        console.log('Perfil alterado com sucesso:', response.data);
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      e.preventDefault();
+      changeProfileInfo(universityDispatch, profileData);
+      navigate(-1);
     }
   };
-
-  console.log(universityState.profile.leagues);
 
   return (
     <Styled.UniversityContainer>
@@ -112,6 +109,7 @@ export function University() {
               id="universityRepresentative_input"
               title="Representante"
               placeholder="Nome do representante da universidade"
+              value={profileData.representative}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
             />
 
@@ -119,7 +117,8 @@ export function University() {
               title="Qual o nível competitivo da universidade?"
               id="universityCompetitiveLevel"
               placeholder="Escolha o nível"
-              options={competitiveLevelsOptions}
+              options={s2tState.formOptions.universityCompetitiveLevels}
+              selectedvalue={profileData.competitiveLevel}
               otheroption
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
@@ -129,6 +128,7 @@ export function University() {
               name="universityFoundationDate_input"
               id="universityFoundationDate_input"
               title="Data de fundação"
+              value={profileData.foundationDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
             />
 
@@ -138,6 +138,7 @@ export function University() {
               id="universityCountry_input"
               title="País"
               placeholder="De qual país é a universidade"
+              value={profileData.country}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 
@@ -147,6 +148,7 @@ export function University() {
               id="universityState_input"
               title="Estado"
               placeholder="De qual estado é a universidade"
+              value={profileData.state}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
             />
 
@@ -156,6 +158,7 @@ export function University() {
               id="universityTrainingCenter_input"
               title="Local de treinamento"
               placeholder="Onde a universidade realiza os treinamentos"
+              value={profileData.trainingCenter}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, trainingCenter: e.target.value }))}
             />
 
@@ -165,6 +168,7 @@ export function University() {
               id="universityStadium_input"
               title="Nome do estádio"
               placeholder="Estádio ou arena da universidade"
+              value={profileData.stadium}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, stadium: e.target.value }))}
             />
 
@@ -174,20 +178,38 @@ export function University() {
               id="universityCoach_input"
               title="Treinador"
               placeholder="Atual treinador da universidade"
+              value={profileData.coach}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, coach: e.target.value }))}
             />
 
             <Row>
+
+              <AuthAchievement
+                title="Competições em disputa"
+                id="universityCompetitionsHistory"
+                inputtitle="Competição"
+                placeholder="Nome da competição"
+              // Histórico do usuário (Dados anteriores que já estão salvos)
+                achievements={universityState.profile.competitions}
+              // OnChanges para atualizar o competionHistory
+                onChangeName={(e) => setCompetitionHistory((prevData) => ({ ...prevData, name: e.target.value }))}
+                onChangeDate={(e) => setCompetitionHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
+              // Values para sincronizar os inputs com o estado do competionHistory
+                nameValue={competitionHistory.name}
+                DateValue={competitionHistory.earliestDate}
+                onClick={(e) => handleAddCompetition(e)}
+              />
+
               <AuthAchievement
                 title="Histórico de títulos e prêmios"
                 id="universityAwardsHistory"
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
-              // Histórico do usuário (Dados anteriores que já estão salvos)
-                achievements={universityState.profile.leagues}
-              // OnChanges para atualizar o competionHistory
+                // Histórico do usuário (Dados anteriores que já estão salvos)
+                achievements={universityState.profile.awards}
+              // OnChanges para atualizar o awardHistory
                 onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
-                onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}
+                onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
               // Values para sincronizar os inputs com o estado do awardHistory
                 nameValue={awardHistory.name}
                 dateValue={awardHistory.date}

@@ -7,7 +7,10 @@ import { Button } from '../../Button/Button';
 import { AuthCheckbox } from '../AuthCheckbox/AuthCheckbox';
 import { AuthInfo } from '../AuthInfo/AuthInfo';
 import { removeAcademicHistory, removeClubHistory } from '../../../../contexts/userContext/PlayerProvider/playerActions';
+import { removeAcademicHistory as removeStaffAcademicHistory, removeClubHistory as removeStaffClubHistory } from '../../../../contexts/userContext/StaffProvider/staffActions';
+
 import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
+import { StaffContext } from '../../../../contexts/userContext/StaffProvider/StaffContext';
 
 export function AuthHistoric({
   title = '', id, inputtitle, placeholder, historic, onChangeName, onChangeEarliestDate, onChangeLatestDate, onClick,
@@ -18,18 +21,24 @@ export function AuthHistoric({
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
 
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
+
   const handleIsActual = (e) => {
     setIsActual(!isActual);
     onChangeLatestDate(e);
   };
 
   const handleRemoveItem = (item) => {
-    if (id === 'playerClubHistory') {
-      removeClubHistory(playerDispatch, item);
-    }
+    const actions = {
+      playerClubHistory: () => removeClubHistory(playerDispatch, item),
+      playerAcademicHistory: () => removeAcademicHistory(playerDispatch, item),
+      staffClubHistory: () => removeStaffClubHistory(staffDispatch, item),
+      staffAcademicHistory: () => removeStaffAcademicHistory(staffDispatch, item),
+    };
 
-    if (id === 'playerAcademicHistory') {
-      removeAcademicHistory(playerDispatch, item);
+    if (actions[id]) {
+      actions[id]();
     }
   };
 

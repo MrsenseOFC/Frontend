@@ -51,7 +51,6 @@ export function Club() {
       // lógica para alterar o histórico de títulos e prêmios no backend
 
       addCompetitionHistory(clubDispatch, competitionHistory);
-      console.log('a');
       setCompetitionHistory({
         name: '',
         earliestDate: '',
