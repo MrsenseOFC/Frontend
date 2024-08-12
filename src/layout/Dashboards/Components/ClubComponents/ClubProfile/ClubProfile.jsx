@@ -20,7 +20,7 @@ export function ClubProfile() {
       <OwnerSlide items={clubState.profile.photos} title="Fotos" ownerview />
 
       <Row>
-        <Historic items={clubState.profile.leagues} title="Competições em disputa" />
+        <Historic items={clubState.profile.competitions} title="Competições em disputa" />
       </Row>
 
       <TextSlide items={clubState.profile.awards} title="Títulos:" />

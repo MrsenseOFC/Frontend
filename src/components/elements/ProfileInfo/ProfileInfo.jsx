@@ -8,7 +8,7 @@ import { theme } from '../../../styles/theme';
 import { Text } from '../Text/Text';
 
 export function ProfileInfo({ items }) {
-  const infoLabel = {
+  const titleLabel = {
     // players
     bestLeg: 'Melhor Perna',
     competitiveLevel: 'Nível competitivo',
@@ -44,6 +44,14 @@ export function ProfileInfo({ items }) {
     coach: 'Técnico/Treinador',
   };
 
+  const infoLabel = {
+    // players
+
+    age: 'Anos',
+    weight: 'KG',
+    height: 'M',
+  };
+
   return (
     <Styled.ProfileInfoElement>
       <GridTwoColumn>
@@ -56,8 +64,8 @@ export function ProfileInfo({ items }) {
                 {items[key] && (
                 <InfoInRow
                   key={key}
-                  infotitle={infoLabel[key] || key}
-                  info={items[key]}
+                  infotitle={titleLabel[key] || key}
+                  info={`${items[key]} ${infoLabel[key] || ''}`}
                   uppercase
                 />
                 )}

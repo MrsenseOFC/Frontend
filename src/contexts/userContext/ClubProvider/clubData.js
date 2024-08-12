@@ -20,8 +20,8 @@ export const clubData = {
     info:
       {
         representative: 'Júlio Casares',
-        competitiveLevel: 'Serie A',
-        foundationDate: '1930',
+        competitiveLevel: 'serie-A',
+        foundationDate: '1930-01-25',
         country: 'Brasil',
         state: 'São Paulo',
         trainingCenter: 'Barra funda - SP',
@@ -83,7 +83,7 @@ export const clubData = {
     ],
 
     // Histórico de clubes do usuário
-    leagues: [
+    competitions: [
       {
         id: '1',
         name: 'Brasileirão Serie A',
@@ -111,50 +111,43 @@ export const clubData = {
       {
         id: '1',
         name: 'Sul Americana',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2012,
+        date: '2012-09-09',
       },
 
       {
         id: '2',
         name: 'Conmebol Libertadores',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2005,
+        date: '2005-09-09',
       },
 
       {
         id: '3',
         name: 'Mundial de Interclubes',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2005,
+        date: '2005-09-09',
       },
 
       {
         id: '4',
         name: 'Copa do Brasil',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2023,
+        date: '2023-09-09',
       },
 
       {
         id: '5',
         name: 'Brasileirão',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2008,
+        date: '2008-09-09',
       },
 
       {
         id: '6',
         name: 'Supercopa Rei',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2024,
+        date: '2024-09-09',
       },
 
       {
         id: '7',
         name: 'Campeonato Paulista',
-        image: '/assets/images/pngs/trophy.png',
-        year: 2021,
+        date: '2021-09-09',
       },
 
     ],

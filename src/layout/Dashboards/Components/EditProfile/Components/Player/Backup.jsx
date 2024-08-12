@@ -63,6 +63,10 @@ export function Player() {
     },
   );
 
+  const [clubHistoryData, setClubHistoryData] = useState(
+    ...playerState.profile.clubs,
+  );
+
   const handleAddClub = async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -136,11 +140,9 @@ export function Player() {
 
   // Submit principal
   const handleSubmit = async (e) => {
-    if (profileData) {
-      e.preventDefault();
-      changeProfileInfo(playerDispatch, profileData);
-      navigate(-1);
-    }
+    e.preventDefault();
+    changeProfileInfo(playerDispatch, profileData);
+    navigate(-1);
   };
 
   return (

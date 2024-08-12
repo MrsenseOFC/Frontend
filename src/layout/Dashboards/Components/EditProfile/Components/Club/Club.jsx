@@ -19,30 +19,21 @@ import { AuthFile } from '../../../../../../components/elements/AuthElements/Aut
 import { AuthAchievement } from '../../../../../../components/elements/AuthElements/AuthAchievement/AuthAchievement';
 import { ClubContext } from '../../../../../../contexts/userContext/ClubProvider/ClubContext';
 import { AuthDropdown } from '../../../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
+import { S2tContext } from '../../../../../../contexts/s2tContext/S2tContext';
+import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../../../../../../contexts/userContext/ClubProvider/clubActions';
 
 export function Club() {
   const navigate = useNavigate();
 
-  // const clubContext = useContext();
-  // const { clubState, clubDispatch } = ClubContext;
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
+
+  const clubContext = useContext(ClubContext);
+  const { clubState, clubDispatch } = clubContext;
 
   const [profileData, setProfileData] = useState({
-    representative: '',
-    competitiveLevel: '',
-    foundationDate: '',
-    country: '',
-    state: '',
-    trainingCenter: '',
-    stadium: '',
-    coach: '',
+    ...clubState.profile.info,
   });
-
-  const competitiveLevelsOptions = [
-    { value: 'serieA', text: 'Serie A' },
-    { value: 'serieB', text: 'Serie B' },
-    { value: 'serieC', text: 'Serie C' },
-    { value: 'serieD', text: 'Serie D' },
-  ];
 
   const [competitionHistory, setCompetitionHistory] = useState(
     {
@@ -57,19 +48,14 @@ export function Club() {
 
     // Verifica se os campos estão preenchidos
     if (competitionHistory.name && competitionHistory.earliestDate) {
-      // lógica para alterar o histórico de clubes no backend
-      try {
-        const response = await axios.post('api', competitionHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
+      // lógica para alterar o histórico de títulos e prêmios no backend
 
-        // Reseta o estado local
-        setCompetitionHistory({
-          name: '',
-          earliestDate: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      addCompetitionHistory(clubDispatch, competitionHistory);
+      console.log('a');
+      setCompetitionHistory({
+        name: '',
+        earliestDate: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
@@ -89,33 +75,23 @@ export function Club() {
     // Verifica se os campos estão preenchidos
     if (awardHistory.name && awardHistory.date) {
       // lógica para alterar o histórico de títulos e prêmios no backend
-      try {
-        const response = await axios.post('api', awardHistory);
-        console.log('Perfil alterado com sucesso:', response.data);
 
-        // Reseta o estado local
-        setAwardHistory({
-          name: '',
-          date: '',
-        });
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      addAwardHistory(clubDispatch, awardHistory);
+
+      setAwardHistory({
+        name: '',
+        date: '',
+      });
     } else {
       console.error('Por favor, preencha todos os campos.');
     }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     if (profileData) {
-      try {
-        const response = await axios.post('api', profileData);
-        console.log('Perfil alterado com sucesso:', response.data);
-      } catch (error) {
-        console.error('Erro ao editar perfil:', error);
-      }
+      e.preventDefault();
+      changeProfileInfo(clubDispatch, profileData);
+      navigate(-1);
     }
   };
 
@@ -136,6 +112,7 @@ export function Club() {
               id="clubRepresentative_input"
               title="Representante"
               placeholder="Nome do representante do Clube"
+              value={profileData.representative}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
             />
 
@@ -143,8 +120,8 @@ export function Club() {
               title="Qual o nível competitivo do clube?"
               id="clubCompetitiveLevel"
               placeholder="Escolha o nível"
-              options={competitiveLevelsOptions}
-              otheroption
+              options={s2tState.formOptions.competitiveLevels}
+              selectedvalue={profileData.competitiveLevel}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
             />
 
@@ -153,6 +130,7 @@ export function Club() {
               name="clubRoundationDate_input"
               id="clubFoundationDate_input"
               title="Data de fundação"
+              value={profileData.foundationDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
             />
 
@@ -162,6 +140,7 @@ export function Club() {
               id="clubCountry_input"
               title="País"
               placeholder="De qual país é o clube"
+              value={profileData.country}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 
@@ -171,6 +150,7 @@ export function Club() {
               id="clubState_input"
               title="Estado"
               placeholder="De qual estado é o clube"
+              value={profileData.state}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
             />
 
@@ -180,6 +160,7 @@ export function Club() {
               id="clubTrainingCenter_input"
               title="Local de treinamento"
               placeholder="Onde o clube realiza os treinamentos"
+              value={profileData.trainingCenter}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, trainingCenter: e.target.value }))}
             />
 
@@ -189,6 +170,7 @@ export function Club() {
               id="clubStadium_input"
               title="Nome do estádio"
               placeholder="Estádio ou arena do clube"
+              value={profileData.stadium}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, stadium: e.target.value }))}
             />
 
@@ -198,23 +180,24 @@ export function Club() {
               id="clubCoach_input"
               title="Técnico ou treinador"
               placeholder="Atual técnico ou treinador do clube"
+              value={profileData.coach}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, coach: e.target.value }))}
             />
 
             <Row>
               <AuthAchievement
                 title="Competições em disputa"
-                id="clubCompetitions"
+                id="clubCompetitionsHistory"
                 inputtitle="Competição"
                 placeholder="Nome da competição"
               // Histórico do usuário (Dados anteriores que já estão salvos)
-              // achievements={clubState.profile.leagues} desabilitado temporariamente
+                achievements={clubState.profile.competitions}
               // OnChanges para atualizar o competionHistory
                 onChangeName={(e) => setCompetitionHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeDate={(e) => setCompetitionHistory((prevData) => ({ ...prevData, earliestDate: e.target.value }))}
               // Values para sincronizar os inputs com o estado do competionHistory
                 nameValue={competitionHistory.name}
-                DateValue={competitionHistory.date}
+                DateValue={competitionHistory.earliestDate}
                 onClick={(e) => handleAddCompetition(e)}
               />
 
@@ -224,7 +207,7 @@ export function Club() {
                 inputtitle="Competição / Prêmio"
                 placeholder="Nome da competição ou prêmio"
                 // Histórico do usuário (Dados anteriores que já estão salvos)
-                // achievements={clubState.profile.championships} temporariamente desabilitado
+                achievements={clubState.profile.awards}
               // OnChanges para atualizar o awardHistory
                 onChangeName={(e) => setAwardHistory((prevData) => ({ ...prevData, name: e.target.value }))}
                 onChangeDate={(e) => setAwardHistory((prevData) => ({ ...prevData, date: e.target.value }))}

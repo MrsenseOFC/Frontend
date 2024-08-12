@@ -7,6 +7,8 @@ import { Button } from '../../Button/Button';
 import { theme } from '../../../../styles/theme';
 import { removeAcademicHistory, removeAwardHistory } from '../../../../contexts/userContext/PlayerProvider/playerActions';
 import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
+import { removeCompetitionHistory, removeAwardHistory as removeClubAwardHistory } from '../../../../contexts/userContext/ClubProvider/clubActions';
+import { ClubContext } from '../../../../contexts/userContext/ClubProvider/ClubContext';
 
 export function AuthAchievement({
   title = '', id, inputtitle, placeholder, achievements, onChangeName, onChangeDate, onClick,
@@ -15,9 +17,20 @@ export function AuthAchievement({
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
 
+  const clubContext = useContext(ClubContext);
+  const { clubState, clubDispatch } = clubContext;
+
   const handleRemoveItem = (item) => {
     if (id === 'playerAwardHistory') {
       removeAwardHistory(playerDispatch, item);
+    }
+
+    if (id === 'clubCompetitionsHistory') {
+      removeCompetitionHistory(clubDispatch, item);
+    }
+
+    if (id === 'clubAwardsHistory') {
+      removeClubAwardHistory(clubDispatch, item);
     }
   };
 
@@ -29,7 +42,11 @@ export function AuthAchievement({
       </Styled.AuthAchievementTitle>
 
       {achievements && achievements.map((item) => (
-        <AuthInfo key={item.id} text={`${item.name} | ${item.date.slice(0, 4)}`} onclick={() => handleRemoveItem(item)} />
+        <AuthInfo
+          key={item.id}
+          text={`${item.name} | ${(item.date && item.date.slice(0, 4)) || (item.earliestDate && item.earliestDate.slice(0, 4))}`}
+          onclick={() => handleRemoveItem(item)}
+        />
       ))}
 
       <AuthInput

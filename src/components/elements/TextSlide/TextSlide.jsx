@@ -10,7 +10,7 @@ import { Text } from '../Text/Text';
 export function TextSlide({ items, title }) {
   const orderedItems = useMemo(() => {
     if (items && items.length > 0) {
-      return items.sort((a, b) => b.year - a.year);
+      return items.sort((a, b) => new Date(a.date) - new Date(b.date));
     }
     return [];
   }, [items]);
@@ -47,9 +47,9 @@ export function TextSlide({ items, title }) {
             {orderedItems.map((item) => (
               <SwiperSlide key={item.id}>
                 <ImageText
-                  imagesrc={item.image}
+                  imagesrc={item.image || '/assets/images/pngs/trophy.png'}
                   primarytext={item.name}
-                  secondarytext={item.year}
+                  secondarytext={item.date ? new Date(item.date).getFullYear() : ''}
                 />
               </SwiperSlide>
             ))}

@@ -37,7 +37,7 @@ export function Historic({ items, title }) {
           <>
             {orderedItems.map((item) => (
               <Styled.HistoricElement key={item.id}>
-                <Styled.Image src={item.image} alt="Imagem que representa o item" />
+                <Styled.Image src={item.image || '/assets/images/background.png'} alt="Imagem que representa o item" />
                 <Styled.Item>{item.name}</Styled.Item>
                 <Styled.Years>
                   (
