@@ -130,6 +130,7 @@ export function StaffDashboard() {
         <ProfilePicture
           imagesrc={staffState.profile.banner.profileImageSrc}
           badge={staffState.profile.banner.badge}
+          type={staffState.profile.info.profileType}
           ownerview
         />
 

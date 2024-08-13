@@ -28,7 +28,7 @@ export function AuthDropdown({
   const handleItemClick = (option) => {
     onDropdownChange(option.value);
     setDropdownText(option.text);
-    setIsOpen(false); // Close dropdown after selection
+    setIsOpen(false); // Fecha o dropdown após a seleção
   };
 
   const resetItem = () => {

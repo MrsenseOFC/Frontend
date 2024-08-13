@@ -19,7 +19,7 @@ export function Favorites() {
 
       <ProfileSlide items={s2tState.videos.trending} title="Meus vídeos favoritos" publicview />
 
-      <GridProposals title="Oportunidades favoritas" items={s2tState.proposals[playerState.type.gender][playerState.type.category].agents} />
+      <GridProposals title="Oportunidades favoritas" items={s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents} />
     </Styled.FavoritesContainer>
   );
 }

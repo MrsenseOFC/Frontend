@@ -10,6 +10,7 @@ import { Text } from '../Text/Text';
 export function ProfileInfo({ items }) {
   const titleLabel = {
     // players
+    modality: 'Modalidade',
     bestLeg: 'Melhor Perna',
     competitiveLevel: 'Nível competitivo',
     birthDate: 'Data de nascimento',
@@ -35,6 +36,7 @@ export function ProfileInfo({ items }) {
     gradePointAverage: 'Nota média final',
 
     // clubs
+    teamModality: 'Modalidade',
     representative: 'Representante',
     foundationDate: 'Data de fundação',
     country: 'País',
@@ -42,6 +44,10 @@ export function ProfileInfo({ items }) {
     trainingCenter: 'Centro de treinamento',
     stadium: 'Estádio',
     coach: 'Técnico/Treinador',
+
+    // Geral
+    competitiveCategory: 'Categoria Competitiva',
+    profileType: 'Tipo de perfil',
   };
 
   const infoLabel = {

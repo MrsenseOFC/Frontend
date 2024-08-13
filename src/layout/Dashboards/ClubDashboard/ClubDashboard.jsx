@@ -136,6 +136,7 @@ export function ClubDashboard() {
           imagesrc={clubState.profile.banner.profileImageSrc}
           badge={clubState.profile.banner.badge}
           ownerview
+          type={clubState.profile.info.profileType}
         />
         <ProfileName name={clubState.profile.banner.name} />
         <Row>

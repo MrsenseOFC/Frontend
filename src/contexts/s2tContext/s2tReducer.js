@@ -21,10 +21,38 @@ export const s2tReducer = (state, action) => {
         },
       };
 
+    case types.add_event:
+      return {
+        ...state,
+        events: [
+          ...state.events, action.payload,
+        ],
+      };
+
     case types.report_media:
 
-      console.log(...action.payload);
+      // insira a função aqui
+      return { ...state };
 
+      // filters
+    case types.filter_players:
+
+      // insira a função aqui
+      return { ...state };
+
+    case types.search_players:
+
+      // insira a função aqui
+      return { ...state };
+
+    case types.search_player_proposals:
+
+      // insira a função aqui
+      return { ...state };
+
+    case types.filter_player_proposals:
+
+      // insira a função aqui
       return { ...state };
 
     default: {

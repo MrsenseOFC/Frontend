@@ -52,13 +52,12 @@ export function NewEvent({ onclick }) {
   };
 
   const handleSubmit = (e) => {
-    addEvent(s2tDispatch, eventData);
-  };
+    e.preventDefault();
 
-  const eventFormatOptions = [
-    { value: 'online', text: 'Online' },
-    { value: 'inPerson', text: 'Presencial' },
-  ];
+    if (eventData) {
+      addEvent(s2tDispatch, eventData);
+    }
+  };
 
   return (
     <Styled.NewEventContainer>
@@ -71,7 +70,7 @@ export function NewEvent({ onclick }) {
       </Row>
 
       <AuthWrapper>
-        <AuthForm>
+        <AuthForm onSubmit={handleSubmit}>
           <Subtitle text="Detalhes" uppercase />
           <AuthLayout isopen>
             <AuthInput
@@ -108,7 +107,7 @@ export function NewEvent({ onclick }) {
 
             <AuthDropdown
               id="eventFormat"
-              options={eventFormatOptions}
+              options={s2tState.formOptions.eventFormat}
               placeholder="Escolha"
               title="Qual o formato do evento?"
               onDropdownChange={(value) => setEventData((prevData) => ({ ...prevData, format: value }))}
@@ -214,7 +213,7 @@ export function NewEvent({ onclick }) {
               placeholder="Insira mais detalhes sobre o evento"
               name="description"
               value={eventData.description}
-              onchange={(e) => setEventData((prevData) => ({ ...prevData, description: e.target.value }))}
+              onChange={(e) => setEventData((prevData) => ({ ...prevData, description: e.target.value }))}
             />
           </ColumnContainer>
 
@@ -233,7 +232,6 @@ export function NewEvent({ onclick }) {
             name="createEvent_submit"
             id="createEvent_submit"
             value="Publicar Evento"
-            onclick={(e) => handleSubmit(e)}
           />
         </AuthForm>
       </AuthWrapper>

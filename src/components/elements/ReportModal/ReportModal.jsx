@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import * as Styled from './ReportModal-Styles';
 import { AuthDropdown } from '../AuthElements/AuthDropdown/AuthDropdown';
@@ -25,16 +25,14 @@ export function ReportModal({ onclick, id }) {
   const { s2tState, s2tDispatch } = s2tContext;
 
   const [reportData, setReportData] = useState({
+    mediaId: '',
     reportReason: '',
     reportDetails: '',
   });
 
-  const reportOptions = [
-    { value: 'inappropriateContent', text: 'Contéudo inadequado' },
-    { value: 'copyright', text: 'Direitos Autorais' },
-    { value: 'mediaManipulation', text: 'Manipulação de Mídia' },
-    { value: 'poorQuality', text: 'Qualidade Ruim' },
-  ];
+  useEffect(() => {
+    setReportData((prevData) => ({ ...prevData, mediaId: id }));
+  }, [id]);
 
   const handleEndReport = () => {
     // Seta o reported de volta para false para quando o componente ser chamado de novo ele estar resetado
@@ -49,6 +47,12 @@ export function ReportModal({ onclick, id }) {
 
     if (reportData.reportReason) {
       reportMedia(s2tDispatch, reportData);
+      setReported(!reported);
+      setReportData({
+        mediaId: '',
+        reportReason: '',
+        reportDetails: '',
+      });
     }
   };
 
@@ -77,7 +81,7 @@ export function ReportModal({ onclick, id }) {
                   title="Por qual motivo está reportando essa foto ou vídeo?"
                   id="competitiveCategory"
                   placeholder="Escolha o motivo"
-                  options={reportOptions}
+                  options={s2tState.formOptions.reportMedia}
                   onDropdownChange={(option) => setReportData((prevData) => ({ ...prevData, reportReason: option }))}
                   required
                 />
@@ -91,11 +95,13 @@ export function ReportModal({ onclick, id }) {
                   />
                 </Column>
 
+                {reportData.reportReason && (
                 <AuthButton
                   name="report_submit"
                   id="report_submit"
                   value="Confirmar"
                 />
+                )}
 
               </AuthForm>
             </>

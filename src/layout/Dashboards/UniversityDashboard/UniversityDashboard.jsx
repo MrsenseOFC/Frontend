@@ -134,6 +134,8 @@ export function UniversityDashboard() {
           imagesrc={universityState.profile.banner.profileImageSrc}
           badge={universityState.profile.banner.badge}
           ownerview
+          type={universityState.profile.info.profileType}
+
         />
         <ProfileName name={universityState.profile.banner.name} />
         <Row>

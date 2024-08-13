@@ -15,8 +15,8 @@ export function Opportunities() {
   const { playerState, playerDispatch } = playerContext;
 
   const proposals = [
-    ...s2tState.proposals[playerState.type.gender][playerState.type.category].agents,
-    ...s2tState.proposals[playerState.type.gender][playerState.type.category].clubs,
+    ...s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents,
+    ...s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].clubs,
   ];
 
   return (

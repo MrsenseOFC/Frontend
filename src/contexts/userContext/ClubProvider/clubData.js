@@ -1,10 +1,6 @@
 // armazena todos os dados do atleta
 export const clubData = {
 
-  type: {
-    category: 'professional',
-    team: 'male',
-  },
   // dados gerais do perfil
   profile:
   {
@@ -19,6 +15,9 @@ export const clubData = {
     // Informações que são exibidas abaixo do banner
     info:
       {
+        profileType: 'club',
+        competitiveCategory: 'professional',
+        teamModality: 'male',
         representative: 'Júlio Casares',
         competitiveLevel: 'serie-A',
         foundationDate: '1930-01-25',

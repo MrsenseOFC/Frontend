@@ -56,7 +56,7 @@ export function GridEvents({ items }) {
           {displayItems.map((item) => (
             <EventCard
               key={item.id}
-              imagesrc={item.src}
+              imagesrc={item.src || '/assets/images/others/leagues.png'}
               title={item.title}
               subtitle={item.subtitle}
               organizer={item.organizer}

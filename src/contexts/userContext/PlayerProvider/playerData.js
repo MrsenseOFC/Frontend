@@ -1,8 +1,5 @@
 export const playerData = {
-  type: {
-    gender: 'male',
-    category: 'professional',
-  },
+
   profile: {
     banner: {
       name: 'Bernardo da Silva',
@@ -12,6 +9,9 @@ export const playerData = {
     },
 
     info: {
+      profileType: 'Player',
+      modality: 'male',
+      competitiveCategory: 'professional',
       ageCategory: 'adult',
       competitiveLevel: 'serie-A',
       primaryPosition: 'center-forward',

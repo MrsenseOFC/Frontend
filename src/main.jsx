@@ -132,7 +132,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="/staff-dashboard/" element={<StaffDashboard />}>
                       <Route path="" element={<StaffHome />} />
                       <Route path="profile" element={<StaffProfile />} />
-                      <Route path="profile-edit" element={<EditProfile type="staff" />} />
+                      <Route path="profile-edit" element={<EditProfile type="player" />} />
                       <Route path="opportunities" element={<Opportunities />} />
                       <Route path="scouts" element={<Scouts />} />
                       <Route path="clubs" element={<Clubs />} />
@@ -161,7 +161,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                       <Route path="contacts" element={<h1>Em construção... :)</h1>} />
                       <Route path="friends" element={<Friends friends={clubData.friends} />} />
                       <Route path="store" element={<Store />} />
-                      {/* <Route path="my-events" element={<MyEvents events={s2tData.events} />} /> */}
+                      <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
                       <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
                       <Route path="s2t+" element={<S2TPlus />} />
                     </Route>

@@ -1,0 +1,7 @@
+import i18n from 'i18next';
+
+i18n.changeLanguage('pt'); // Mudar para português
+i18n.changeLanguage('es'); // Mudar para espanhol
+
+qualquer coisa observe a HOME
+lembre-se de atualizar o arquivo i18n.js

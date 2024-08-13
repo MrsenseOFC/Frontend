@@ -20,7 +20,7 @@ export function PlayerFavorites() {
 
       {/* A ideia é chamar o componente passando para ele no items as oportunidades que o usuário favoritou.
       Aqui estou passando apenas as oportunidades dos clubs para ter um exemplo */}
-      <GridProposals title="Oportunidades favoritas" items={s2tState.proposals[playerState.type.gender][playerState.type.category].agents} />
+      <GridProposals title="Oportunidades favoritas" items={s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents} />
     </Styled.PlayerFavoritesContainer>
   );
 }

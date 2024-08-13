@@ -66,6 +66,7 @@ export const HomePage = styled.main`
     position: absolute;
     top: 80px;
     padding: ${theme.spacings.huge};
+
     @media ${theme.medias.smallpc} {
       display: flex;
     }

@@ -7,7 +7,13 @@ import { PlayerDashboard } from './layout/Dashboards/PlayerDashboard/PlayerDashb
 import { ClubDashboard } from './layout/Dashboards/ClubDashboard/ClubDashboard';
 import { PrivateRoute } from './routes/PrivateRoute';
 
+// Importar o i18next para suporte a múltiplos idiomas
+import { useTranslation } from 'react-i18next';
+
 function App() {
+  // Hook para gerenciar a tradução
+  const { t } = useTranslation();
+
   return (
     <Router>
       <AuthProvider>

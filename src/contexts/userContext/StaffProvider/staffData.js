@@ -1,8 +1,4 @@
 export const staffData = {
-  type: {
-    gender: 'male',
-    category: 'professional',
-  },
   profile: {
     banner: {
       name: 'Bernardo da Silva',
@@ -12,6 +8,8 @@ export const staffData = {
     },
 
     info: {
+      profileType: 'coach',
+      competitiveCategory: 'professional',
       competitiveLevel: 'serie-A',
       birthDate: '1992-05-02',
       age: '32',

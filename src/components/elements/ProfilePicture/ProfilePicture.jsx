@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import Prop from 'prop-types';
 import { ImageAdd as AddImageIcon } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
 import * as Styled from './ProfilePicture-Styles';
@@ -9,7 +9,7 @@ import { AuthIconFile } from '../AuthElements/AuthIconFile/AuthIconFile';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext.tsx';
 
 export function ProfilePicture({
-  badge = '', type = '', competitivelevel, ownerview,
+  badge = '', type = '', competitivecategory, ownerview,
 }) {
   const { currentUser } = useAuth();
   const [profilePicture, setProfilePicture] = useState(currentUser?.profileImage || '');
@@ -26,15 +26,19 @@ export function ProfilePicture({
       formData.append('image_file', newFile);
 
       try {
-        const response = await axios.post(`https://talent2show.onrender.com/api/userPhotos/${currentUser.id}/upload`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
+        const response = await axios.post(
+          `http://localhost:7320/api/userPhotos/${currentUser.id}/upload`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
           },
-        });
+        );
 
         setProfilePicture(response.data.image_file);
       } catch (error) {
-        console.error('Erro ao enviar a imagem:', error);
+        console.error('Erro ao enviar a imagem:', error.response ? error.response.data : error.message);
       }
     }
   };
@@ -46,7 +50,14 @@ export function ProfilePicture({
   return (
     <Styled.ProfilePictureContainer>
       <Styled.ProfilePictureElement>
-        <Styled.Picture src={profilePicture ? `https://oficial-dvgv.onrender.com/uploads/${profilePicture}` : '/assets/images/logos/vertical-background.png'} alt="Foto de perfil do usuário" />
+        <Styled.Picture
+          src={
+            profilePicture
+              ? `http://localhost:7320/uploads/${profilePicture}`
+              : '/assets/images/logos/vertical-background.png'
+          }
+          alt="Foto de perfil do usuário"
+        />
         {ownerview && (
           <Styled.Badge>
             <AuthIconFile
@@ -62,7 +73,7 @@ export function ProfilePicture({
       </Styled.ProfilePictureElement>
       {type && (
         <Button
-          text={`${type}  ${competitivelevel || ''}`}
+          text={`${type}  ${competitivecategory || ''}`}
           bgcolor={theme.colors.secondary}
           bghover={theme.colors.secondary}
           textcolor={theme.colors.black}
@@ -71,13 +82,13 @@ export function ProfilePicture({
           borderhover={theme.colors.black}
         />
       )}
-
     </Styled.ProfilePictureContainer>
   );
 }
 
 ProfilePicture.propTypes = {
-  badge: PropTypes.string,
-  type: PropTypes.string,
-  ownerview: PropTypes.bool.isRequired,
+  competitivecategory: Prop.string,
+  badge: Prop.string,
+  type: Prop.string,
+  ownerview: Prop.bool.isRequired,
 };

@@ -1,0 +1,28 @@
+{
+    "welcome": "Bienvenue",
+    "description": "Ceci est une description d'exemple.",
+    "home": "Accueil",
+    "select_language": "Choisissez la langue",
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "reset_password": "Réinitialiser le mot de passe",
+    "create_account": "Créer un compte",
+    "dashboard_player": "Tableau de bord - Joueur",
+    "dashboard_club": "Tableau de bord - Club",
+    "dashboard_university": "Tableau de bord - Université",
+    "dashboard_public": "Tableau de bord - Public",
+    "home_page": "Page d'accueil",
+    "my_area": "Mon espace",
+    "events": "Événements",
+    "social": "Social",
+    "news": "Nouvelles",
+    "professional": "Professionnel",
+    "semi_professional": "Semi-Professionnel",
+    "university": "Universitaire",
+    "amateur": "Amateur",
+    "recreational": "Récréatif",
+    "trending_videos": "Vidéos tendance",
+    "benefits": "Avantages",
+    "partners_supporters": "Partenaires et Supporteurs"
+  }
+  

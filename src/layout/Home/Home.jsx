@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next'; // Hook do i18next para tradução
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import * as Styled from './Home-Styles';
@@ -21,11 +22,24 @@ import { MiniSlide } from '../../components/elements/MiniSlide/MiniSlide';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 
 export function Home() {
+  const { t, i18n } = useTranslation(); // Hook do i18next para tradução
   const s2tContext = useContext(S2tContext);
   const { s2tState } = s2tContext;
   const { currentUser } = useAuth();
 
   const [menuVisibility, setMenuVisibility] = useState(false);
+  const [devMode, setDevMode] = useState(false);
+
+  const languageOptions = [
+    { value: 'pt', text: 'Português' },
+    { value: 'en', text: 'Inglês' },
+    { value: 'es', text: 'Espanhol' },
+    { value: 'fr', text: 'Francês' },
+  ];
+
+  const handleLanguageChange = (lang) => {
+    i18n.changeLanguage(lang); // Muda o idioma no i18next
+  };
 
   return (
     <Styled.HomePage>
@@ -41,12 +55,92 @@ export function Home() {
           </IconDiv>
         )}
         <Nav>
-          <AuthDropdown id="languageOptions" placeholder="Escolha o idioma" options={s2tState.formOptions.language} />
+          <AuthDropdown
+            id="languageOptions"
+            placeholder={t('select_language')} // Traduz o placeholder
+            options={languageOptions}
+            onDropdownChange={handleLanguageChange} // Handler para mudar o idioma
+            selectedvalue={i18n.language} // Valor selecionado atualmente
+          />
+          {devMode && (
+            <>
+              <Button
+                path="/register"
+                text={t('create_account')} // Traduz o texto do botão
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                path="/login"
+                text={t('login')} // Traduz o texto do botão
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                path="/reset-password"
+                text={t('reset_password')} // Traduz o texto do botão
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                text={t('dashboard_player')} // Traduz o texto do botão
+                path="/player-dashboard"
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                text={t('dashboard_club')} // Traduz o texto do botão
+                path="/club-dashboard"
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                text={t('dashboard_university')} // Traduz o texto do botão
+                path="/university-dashboard"
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+              <Button
+                text={t('dashboard_public')} // Traduz o texto do botão
+                path="/user/SPFC"
+                bgcolor={theme.colors.lightprimary}
+                bghover={theme.colors.primary}
+                textcolor={theme.colors.black}
+                texthover={theme.colors.black}
+                border={theme.colors.lightprimary}
+                borderhover={theme.colors.primary}
+              />
+            </>
+          )}
           {currentUser ? (
             <>
               <Button
                 path="/"
-                text="Página principal"
+                text={t('home_page')} // Traduz o texto do botão
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.black}
                 textcolor={theme.colors.primary}
@@ -57,7 +151,7 @@ export function Home() {
               />
               <Button
                 path="/player-dashboard"
-                text="Minha área"
+                text={t('my_area')} // Traduz o texto do botão
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -70,7 +164,7 @@ export function Home() {
             <>
               <Button
                 path="/"
-                text="Página principal"
+                text={t('home_page')} // Traduz o texto do botão
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.black}
                 textcolor={theme.colors.primary}
@@ -81,8 +175,7 @@ export function Home() {
               />
               <Button
                 path="/login"
-                text="Login"
-                newtab
+                text={t('login')} // Traduz o texto do botão
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -92,7 +185,7 @@ export function Home() {
               />
               <Button
                 path="/register"
-                text="Registre-se"
+                text={t('register')} // Traduz o texto do botão
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -108,14 +201,16 @@ export function Home() {
         <MobileNav>
           <AuthDropdown
             id="languageOptions"
-            placeholder="Escolha o idioma"
-            options={s2tState.formOptions.language}
+            placeholder={t('select_language')} // Traduz o placeholder
+            options={languageOptions}
+            onDropdownChange={handleLanguageChange}
+            selectedvalue={i18n.language}
           />
           {currentUser ? (
             <>
               <Button
                 path="/"
-                text="Página principal"
+                text={t('home_page')}
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.black}
                 textcolor={theme.colors.primary}
@@ -126,7 +221,7 @@ export function Home() {
               />
               <Button
                 path="/player-dashboard"
-                text="Minha área"
+                text={t('my_area')}
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -139,7 +234,7 @@ export function Home() {
             <>
               <Button
                 path="/"
-                text="Página principal"
+                text={t('home_page')}
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.black}
                 textcolor={theme.colors.primary}
@@ -150,8 +245,7 @@ export function Home() {
               />
               <Button
                 path="/login"
-                text="Login"
-                newtab
+                text={t('login')}
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -161,7 +255,7 @@ export function Home() {
               />
               <Button
                 path="/register"
-                text="Registre-se"
+                text={t('register')}
                 bgcolor={theme.colors.mediumblack}
                 bghover={theme.colors.mediumblack}
                 textcolor={theme.colors.white}
@@ -174,13 +268,13 @@ export function Home() {
         </MobileNav>
       )}
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png" backgroundfixed>
-        <VerticalMiniSlide title="Eventos" type="events" items={s2tState.events || []} />
-        <VerticalSoloSlide title="Social" size="400px" items={s2tState.news || []} />
-        <VerticalMiniSlide title="Notícias" type="news" items={s2tState.news || []} />
+        <VerticalMiniSlide title={t('events')} type="events" items={s2tState.events || []} />
+        <VerticalSoloSlide title={t('social')} size="400px" items={s2tState.news || []} />
+        <VerticalMiniSlide title={t('news')} type="news" items={s2tState.news || []} />
       </BannerSlide>
       <GridLayout>
         <Button
-          text="Profissional"
+          text={t('professional')}
           bgcolor={theme.colors.black}
           textcolor={theme.colors.black}
           border={theme.colors.black}
@@ -188,7 +282,7 @@ export function Home() {
           gradient
         />
         <Button
-          text="Semi-Profissional"
+          text={t('semi_professional')}
           bgcolor={theme.colors.black}
           textcolor={theme.colors.black}
           border={theme.colors.black}
@@ -196,7 +290,7 @@ export function Home() {
           gradient
         />
         <Button
-          text="Universitário"
+          text={t('university')}
           bgcolor={theme.colors.black}
           textcolor={theme.colors.black}
           border={theme.colors.black}
@@ -204,7 +298,7 @@ export function Home() {
           gradient
         />
         <Button
-          text="Amador"
+          text={t('amateur')}
           bgcolor={theme.colors.black}
           textcolor={theme.colors.black}
           border={theme.colors.black}
@@ -212,7 +306,7 @@ export function Home() {
           gradient
         />
         <Button
-          text="Recreacional"
+          text={t('recreational')}
           bgcolor={theme.colors.black}
           textcolor={theme.colors.black}
           border={theme.colors.black}
@@ -224,16 +318,16 @@ export function Home() {
 
       <Slide items={s2tState.photos?.usersType || []} />
 
-      <BannerSlide title="Vídeos em alta" lazy backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" backgroundfixed>
-        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title="Profissional" />
-        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title="Semi-profissional" />
-        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title="Universitário" />
-        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title="Amador" />
-        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title="Recreacional" />
+      <BannerSlide title={t('trending_videos')} lazy backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" backgroundfixed>
+        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('professional')} />
+        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('semi_professional')} />
+        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('university')} />
+        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('amateur')} />
+        <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('recreational')} />
       </BannerSlide>
-      <Slide items={s2tState.photos?.benefits || []} title="Benefícios" />
+      <Slide items={s2tState.photos?.benefits || []} title={t('benefits')} />
 
-      <MiniSlide type="partners" title="Parceiros e apoiadores" autoplay items={s2tState.partners || []} />
+      <MiniSlide type="partners" title={t('partners_supporters')} autoplay items={s2tState.partners || []} />
     </Styled.HomePage>
   );
 }

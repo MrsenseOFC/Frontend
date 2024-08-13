@@ -1,92 +1,76 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import Cookies from 'js-cookie';
+import axiosInstance from '../../axios';  // Importa a instância customizada do axios
 
-const AuthContext = createContext({
-	currentUser: null,
-	login: async () => {},
-	logout: () => {},
+interface User {
+  id: string;
+  email: string;
+  profile_type: string;
+  profileImage?: string;
+}
+
+interface AuthContextType {
+  currentUser: User | null;
+  logout: () => void;
+  error: string | null;
+}
+
+const AuthContext = createContext<AuthContextType>({
+  currentUser: null,
+  logout: () => {},
+  error: null,
 });
 
 export const useAuth = () => useContext(AuthContext);
 
-export function AuthProvider({ children }) {
-	const [currentUser, setCurrentUser] = useState(null);
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-	useEffect(() => {
-		const fetchCurrentUser = async () => {
-			const user = JSON.parse(localStorage.getItem('user'));
-			if (user) {
-				axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`;
-				setCurrentUser(user);
+  const fetchProfileImage = async (userId: string) => {
+    try {
+      const response = await axiosInstance.get(`https://talent2show.onrender.com/api/userPhotos/${userId}`);
+      if (response.data.profile_image) {
+        setCurrentUser(prevUser => ({
+          ...prevUser,
+          profileImage: response.data.profile_image,
+        } as User));
+      }
+    } catch (error) {
+      console.error('Erro ao carregar a imagem de perfil:', error);
+    }
+  };
 
-				try {
-					const response = await axios.get(
-						`https://talent2show.onrender.com/api/userPhotos/${user.id}`
-					);
-					if (response.data.profile_image) {
-						setCurrentUser(prevUser => ({
-							...prevUser,
-							profileImage: response.data.profile_image,
-						}));
-					}
-				} catch (error) {
-					console.error('Erro ao carregar a imagem de perfil:', error);
-				}
-			}
-		};
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null;
+        const token = Cookies.get('token');
 
-		fetchCurrentUser();
-	}, []);
+        if (user && token) {
+          axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+          setCurrentUser(user);
+          await fetchProfileImage(user.id);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar o usuário atual:', error);
+      }
+    };
 
-	const login = async (email, password) => {
-		try {
-			const response = await axios.post(
-				'https://talent2show.onrender.com/api/auth/login',
-				{ email, password }
-			);
+    fetchCurrentUser();
+  }, []);
 
-			if (response.data && response.data.token && response.data.user) {
-				const { token, user } = response.data;
-				localStorage.setItem('token', token);
-				localStorage.setItem('user', JSON.stringify(user));
-				axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-				setCurrentUser(user);
+  const logout = () => {
+    Cookies.remove('token');
+    localStorage.removeItem('user');
+    delete axiosInstance.defaults.headers.common.Authorization;
+    setCurrentUser(null);
+    setError(null);
+  };
 
-				try {
-					const profileImageResponse = await axios.get(
-						`https://talent2show.onrender.com/api/userPhotos/${user.id}`
-					);
-					if (profileImageResponse.data.profile_image) {
-						setCurrentUser(prevUser => ({
-							...prevUser,
-							profileImage: profileImageResponse.data.profile_image,
-						}));
-					}
-				} catch (error) {
-					console.error(
-						'Erro ao carregar a imagem de perfil após login:',
-						error
-					);
-				}
-			} else {
-				throw new Error('Resposta da API inválida');
-			}
-		} catch (error) {
-			console.error('Erro ao fazer login:', error.message || error);
-			throw new Error('Erro ao fazer login. Por favor, tente novamente.');
-		}
-	};
-
-	const logout = () => {
-		localStorage.removeItem('token');
-		localStorage.removeItem('user');
-		delete axios.defaults.headers.common.Authorization;
-		setCurrentUser(null);
-	};
-
-	return (
-		<AuthContext.Provider value={{ currentUser, login, logout }}>
-			{children}
-		</AuthContext.Provider>
-	);
+  return (
+    <AuthContext.Provider value={{ currentUser, logout, error }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

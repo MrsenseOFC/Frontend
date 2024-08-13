@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
-import { slideIn } from '../../../styles/animations';
+import { fadeIn, slideIn } from '../../../styles/animations';
 import { SubtitleElement } from '../Subtitle/Subtitle-Styles';
 import { RowContainer } from '../../RowContainer/Row-Styles.js';
 import { TextElement } from '../Text/Text-Styles.js';
 import { ButtonElement } from '../Button/Button-Styles.js';
 import { IconContainer } from '../IconDiv/IconDiv-Styles.js';
+import { AuthButtonElement } from '../AuthElements/AuthButton/AuthButton-Styles.js';
 
 export const ReportModalElement = styled.div`
   ${({ theme }) => css`
@@ -24,6 +25,11 @@ export const ReportModalElement = styled.div`
       padding: ${theme.spacings.medium};
      }
 
+     ${AuthButtonElement} {
+        animation: ${slideIn} 500ms;
+
+      }
+
      & ${IconContainer} {
       animation: none;
      }
@@ -42,6 +48,8 @@ export const ReportModalElement = styled.div`
       > ${SubtitleElement} {
         margin: auto 0;
       }
+
+     
      }
      
   `}

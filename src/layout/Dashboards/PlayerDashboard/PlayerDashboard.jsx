@@ -130,6 +130,7 @@ export function PlayerDashboard() {
         <ProfilePicture
           imagesrc={playerState.profile.banner.profileImageSrc}
           badge={playerState.profile.banner.badge}
+          type={playerState.profile.info.profileType}
           ownerview
         />
 

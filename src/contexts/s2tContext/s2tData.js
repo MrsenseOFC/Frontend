@@ -1111,5 +1111,30 @@ export const s2tData = {
       { value: 'spanish', text: 'Espanhol' },
     ],
 
+    avaliability: [
+      { value: 'activeFree', text: 'Ativo - Sem contrato' },
+      { value: 'active', text: 'Ativo - Com contrato' },
+      { value: 'injuredFree', text: 'Lesionado - Sem contrato' },
+      { value: 'injured', text: 'Lesionado - Com contrato' },
+    ],
+
+    opportunityType: [
+      { value: 'scouts', text: 'Scouts' },
+      { value: 'agents', text: 'Agentes' },
+      { value: 'clubs', text: 'Clubes' },
+    ],
+
+    reportMedia: [
+      { value: 'inappropriateContent', text: 'Contéudo inadequado' },
+      { value: 'copyright', text: 'Direitos Autorais' },
+      { value: 'mediaManipulation', text: 'Manipulação de Mídia' },
+      { value: 'poorQuality', text: 'Qualidade Ruim' },
+    ],
+
+    eventFormat: [
+      { value: 'online', text: 'Online' },
+      { value: 'inPerson', text: 'Presencial' },
+    ],
+
   },
 };

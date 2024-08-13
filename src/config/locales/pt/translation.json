@@ -1,0 +1,28 @@
+{
+    "welcome": "Bem-vindo",
+    "description": "Esta é uma descrição de exemplo.",
+    "home": "Início",
+    "select_language": "Escolha o Idioma",
+    "login": "Entrar",
+    "register": "Registrar-se",
+    "reset_password": "Redefinir Senha",
+    "create_account": "Criar uma Conta",
+    "dashboard_player": "Dashboard - Jogador",
+    "dashboard_club": "Dashboard - Clube",
+    "dashboard_university": "Dashboard - Universidade",
+    "dashboard_public": "Dashboard - Público",
+    "home_page": "Página Principal",
+    "my_area": "Minha Área",
+    "events": "Eventos",
+    "social": "Social",
+    "news": "Notícias",
+    "professional": "Profissional",
+    "semi_professional": "Semi-Profissional",
+    "university": "Universitário",
+    "amateur": "Amador",
+    "recreational": "Recreacional",
+    "trending_videos": "Vídeos em Alta",
+    "benefits": "Benefícios",
+    "partners_supporters": "Parceiros e Apoiadores"
+  }
+  

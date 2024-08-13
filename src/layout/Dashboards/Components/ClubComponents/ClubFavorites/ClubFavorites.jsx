@@ -12,6 +12,8 @@ export function ClubFavorites() {
 
   return (
     <Styled.ClubFavoritesContainer>
+      {/* A ideia é chamar o componente passando para ele no items os jogadores que o usuário favoritou.
+      Aqui estou passando todos apenas para ter um exemplo */}
       <GridPlayers title="Jogadores favoritos" items={s2tState.users.players} publicview />
 
       <PublicVideoSlide items={s2tState.videos.trending} title="Vídeos em alta" publicview />

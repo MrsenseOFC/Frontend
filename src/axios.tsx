@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://talent2show.onrender.com', // URL base da sua API
+  baseURL: 'http://localhost:7320', // URL base da sua API
   timeout: 5000, // Timeout de 5 segundos (opcional)
   headers: {
     'Content-Type': 'application/json',

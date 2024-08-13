@@ -1,10 +1,10 @@
-// src/routes/PrivateRoute.jsx
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext/AuthContext';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext/AuthContext.tsx';
 
-export function PrivateRoute({ element }) {
+export function PrivateRoute({ element: Component, ...rest }) {
   const { currentUser } = useAuth();
 
-  return currentUser ? element : <Navigate to="/login" />;
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return currentUser ? <Component {...rest} /> : <Navigate to="/login" replace />;
 }

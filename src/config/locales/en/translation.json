@@ -1,0 +1,28 @@
+{
+    "welcome": "Welcome",
+    "description": "This is a sample description.",
+    "home": "Home",
+    "select_language": "Select Language",
+    "login": "Login",
+    "register": "Register",
+    "reset_password": "Reset Password",
+    "create_account": "Create an Account",
+    "dashboard_player": "Dashboard - Player",
+    "dashboard_club": "Dashboard - Club",
+    "dashboard_university": "Dashboard - University",
+    "dashboard_public": "Dashboard - Public",
+    "home_page": "Home Page",
+    "my_area": "My Area",
+    "events": "Events",
+    "social": "Social",
+    "news": "News",
+    "professional": "Professional",
+    "semi_professional": "Semi-Professional",
+    "university": "University",
+    "amateur": "Amateur",
+    "recreational": "Recreational",
+    "trending_videos": "Trending Videos",
+    "benefits": "Benefits",
+    "partners_supporters": "Partners and Supporters"
+  }
+  
