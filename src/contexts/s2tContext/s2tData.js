@@ -425,7 +425,7 @@ export const s2tData = {
         id: '1',
         src: '/assets/images/benefits/podcast.png',
         title: 'podcast',
-        path: 'https://showcase2transfer.eitvcloud.com/pages/4',
+        path: 'https://showcase2transfer.eitvcloud.com/pages/5',
       },
 
       {
@@ -480,24 +480,32 @@ export const s2tData = {
 
       {
         id: '9',
+        src: '/assets/images/benefits/crowdfunding.jpg',
+        title: 'Crowdfunding',
+        path: '/benefits/crowdfunding',
+      },
+
+      {
+        id: '10',
         src: '/assets/images/benefits/lions_platform.jpg',
         title: 'Plataforma Lions',
         path: '/benefits/lions-platform',
       },
 
       {
-        id: '10',
-        src: '/assets/images/benefits/crowdfunding.jpg',
-        title: 'Crowdfunding',
-        path: '/benefits/crowdfunding.',
+        id: '11',
+        src: '/assets/images/benefits/studies.jpg',
+        title: 'Estudos',
+        path: '/benefits/studies',
       },
 
       {
-        id: '11',
-        src: '/assets/images/benefits/schools.jpg',
-        title: 'Escolas',
-        path: '/benefits/schools',
+        id: '12',
+        src: '/assets/images/benefits/american_studies.jpg',
+        title: 'American Studies',
+        path: '/benefits/american-studies',
       },
+
     ],
   },
 

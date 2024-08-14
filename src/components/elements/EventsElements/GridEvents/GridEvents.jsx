@@ -7,8 +7,9 @@ import { EventCard } from '../EventCard/EventCard';
 import { FilterEvents } from '../FilterEvents/FilterEvents';
 import { Text } from '../../Text/Text';
 
-export function GridEvents({ items }) {
-  const [selectedEvent, setSelectedEvent] = useState();
+export function GridEvents({ items, selectedevent }) {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  useEffect(() => { setSelectedEvent(selectedevent); }, [selectedevent]);
 
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
@@ -99,4 +100,5 @@ export function GridEvents({ items }) {
 
 GridEvents.propTypes = {
   items: Prop.arrayOf(Prop.object).isRequired,
+  selectedevent: Prop.object,
 };

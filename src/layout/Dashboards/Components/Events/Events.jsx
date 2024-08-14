@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as Styled from './Events-Styles';
 import { Row } from '../../../../components/RowContainer/Row';
 import { Title } from '../../../../components/elements/Title/Title';
@@ -11,10 +12,13 @@ export function Events({ children }) {
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
 
+  const location = useLocation();
+  const selectedEvent = location.state?.selectedEvent || null;
+
   return (
     <Styled.EventsContainer>
       <Title text="Eventos" uppercase />
-      <GridEvents items={s2tState.events} />
+      <GridEvents items={s2tState.events} selectedevent={selectedEvent} />
     </Styled.EventsContainer>
   );
 }

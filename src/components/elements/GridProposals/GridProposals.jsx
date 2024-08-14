@@ -8,7 +8,7 @@ import { ProposalModal } from '../ProposalModal/ProposalModal';
 import { FilterProposals } from '../FilterProposals/FilterProposals';
 import { Text } from '../Text/Text';
 
-export function GridProposals({ items, title }) {
+export function GridProposals({ items, title, selectedproposal }) {
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -38,6 +38,10 @@ export function GridProposals({ items, title }) {
 
   // Recebe os dados do card clicado pelo usuário
   const [selectedProposal, setSelectedProposal] = useState(null);
+
+  useEffect(() => {
+    setSelectedProposal(selectedproposal);
+  }, [selectedproposal]);
 
   const handleCardClick = (item) => {
     setSelectedProposal(item);

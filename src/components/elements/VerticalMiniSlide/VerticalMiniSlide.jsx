@@ -7,6 +7,7 @@ import { EventMiniCard } from '../EventsElements/EventMiniCard/EventMiniCard';
 import { NewsCard } from '../NewsCard/NewsCard';
 import { RankCard } from '../RankCard/RankCard';
 import { ContactCard } from '../ContactCard/ContactCard';
+import { ProposalMiniCard } from '../ProposalMiniCard/ProposalMiniCard';
 
 export function VerticalMiniSlide({ items, title, type }) {
   const normalizedType = type.toLowerCase();
@@ -34,7 +35,7 @@ export function VerticalMiniSlide({ items, title, type }) {
             },
 
             0: {
-              slidesPerView: type === 'events' ? 2 : 1,
+              slidesPerView: type === 'news' || type === 'referralrank' ? 1 : 2,
             },
           }}
         >
@@ -44,10 +45,7 @@ export function VerticalMiniSlide({ items, title, type }) {
               {items.map((item) => (
                 <SwiperSlide key={item.id}>
                   <EventMiniCard
-                    title={item.startHour}
-                    subtitle={item.title}
-                    text={item.subtitle}
-                    path={item.path}
+                    item={item}
                   />
                 </SwiperSlide>
               ))}
@@ -74,6 +72,18 @@ export function VerticalMiniSlide({ items, title, type }) {
             {items.map((item) => (
               <SwiperSlide key={item.position}>
                 <RankCard name={item.name} position={item.position} imagesrc={item.imagesrc} />
+              </SwiperSlide>
+            ))}
+          </>
+          )}
+
+          {normalizedType === 'proposals' && (
+          <>
+            {items.map((item) => (
+              <SwiperSlide key={item.id}>
+                <ProposalMiniCard
+                  item={item}
+                />
               </SwiperSlide>
             ))}
           </>

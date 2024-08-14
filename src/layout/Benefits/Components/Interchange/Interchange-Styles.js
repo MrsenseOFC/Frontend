@@ -6,7 +6,7 @@ import { LinkContainer } from '../../../../components/elements/StyledLink/Styled
 import { ListContainer, ListItem } from '../../../../components/elements/List/List-Styles';
 import { slideIn, slideOut } from '../../../../styles/animations';
 
-export const EnglishContainer = styled.article`
+export const InterchangeContainer = styled.article`
   ${({ theme }) => css`
      text-align: center;
      display: flex;
@@ -27,6 +27,7 @@ export const EnglishContainer = styled.article`
       }
      }
 
+
      & ${ListContainer} {
       animation: ${slideIn} 500ms;
 
@@ -37,11 +38,11 @@ export const EnglishContainer = styled.article`
       padding: ${theme.spacings.xsmall};
       border-radius: 12px;
       border: ${theme.borders.white};
-
+      
       @media ${theme.medias.mobile} {
         padding: ${theme.spacings.xxsmall};
       }
-
+      
      }
 
      > ${TitleElement} {
@@ -55,6 +56,6 @@ export const EnglishContainer = styled.article`
      > ${TextElement} {
       animation: ${slideIn} 500ms;
      }
-
+ 
   `}
 `;

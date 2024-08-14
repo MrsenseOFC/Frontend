@@ -75,6 +75,13 @@ import { Logo } from './components/elements/Logo/Logo';
 import { ClubPage } from './layout/Users/Components/Club/ClubPage';
 import { MyEvents } from './layout/Dashboards/Components/MyEvents/MyEvents';
 import { StaffProvider } from './contexts/userContext/StaffProvider/StaffProvider';
+import { Interchange } from './layout/Benefits/Components/Interchange/Interchange';
+import { CryptoWallet } from './layout/Benefits/Components/CryptoWallet/CryptoWallet';
+import { English } from './layout/Benefits/Components/English/English';
+import { Crowdfunding } from './layout/Benefits/Components/Crowdfunding/Crowdfunding';
+import { LionsPlatform } from './layout/Benefits/Components/LionsPlatform/LionsPlatform';
+import { Studies } from './layout/Benefits/Components/Studies/Studies';
+import { AmericanStudies } from './layout/Benefits/Components/AmericanStudies/AmericanStudies';
 
 register();
 
@@ -104,7 +111,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="/benefits" element={<Benefits />}>
                       <Route path="club" element={<BenefitsClub />} />
                       <Route path="investments" element={<Investments />} />
+                      <Route path="interchange" element={<Interchange />} />
+                      <Route path="english" element={<English />} />
+                      <Route path="crypto-wallet" element={<CryptoWallet />} />
+                      <Route path="crowdfunding" element={<Crowdfunding />} />
+                      <Route path="studies" element={<Studies />} />
+                      <Route path="american-studies" element={<AmericanStudies />} />
+                      <Route path="lions-platform" element={<LionsPlatform />} />
+                      <Route path="benefits-club" element={<BenefitsClub />} />
                       <Route path="events" element={<EventsPage items={s2tData.events} />} />
+
                     </Route>
 
                     <Route path="/users" element={<Users />}>

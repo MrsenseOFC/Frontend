@@ -270,8 +270,10 @@ export function Home() {
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png" backgroundfixed>
         <VerticalMiniSlide title={t('events')} type="events" items={s2tState.events || []} />
         <VerticalSoloSlide title={t('social')} size="400px" items={s2tState.news || []} />
+        <VerticalMiniSlide title={t('opportunities')} type="proposals" items={s2tState.proposals.male.professional.agents || []} />
         <VerticalMiniSlide title={t('news')} type="news" items={s2tState.news || []} />
       </BannerSlide>
+
       <GridLayout>
         <Button
           text={t('professional')}

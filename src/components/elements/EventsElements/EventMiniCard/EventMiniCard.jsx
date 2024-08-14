@@ -1,24 +1,31 @@
 import Prop from 'prop-types';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Styled from './EventMiniCard-Styles';
 import { Subtitle } from '../../Subtitle/Subtitle';
 import { Text } from '../../Text/Text';
 import { StyledLink } from '../../StyledLink/StyledLink';
 
 export function EventMiniCard({
-  title, subtitle, text, path,
+  item,
 }) {
-  return (
-    <Styled.EventMiniCardContainer>
-      <StyledLink path={path}>
+  const navigate = useNavigate();
 
-        {title && <Subtitle text={title} as="h4" />}
+  const handleCardClick = (selectedEvent) => {
+    navigate('/player-dashboard/events', { state: { selectedEvent } });
+  };
+
+  return (
+    <Styled.EventMiniCardContainer onClick={() => handleCardClick(item)}>
+      <StyledLink path={item.path || ''}>
+
+        {item.startHour && <Subtitle text={item.startHour} as="h4" />}
 
         <Styled.Line />
 
         <Styled.EventInfo>
-          {subtitle && <Subtitle text={subtitle} as="h5" />}
-          <Text text={text} />
+          {item.title && <Subtitle text={item.title} as="h5" />}
+          {item.subtitle && <Text text={item.subtitle} />}
         </Styled.EventInfo>
       </StyledLink>
 
@@ -27,14 +34,5 @@ export function EventMiniCard({
 }
 
 EventMiniCard.propTypes = {
-  title: Prop.oneOfType([
-    Prop.string,
-    Prop.number,
-  ]),
-  subtitle: Prop.oneOfType([
-    Prop.string,
-    Prop.number,
-  ]),
-  text: Prop.string,
-  path: Prop.string,
+  item: Prop.object,
 };

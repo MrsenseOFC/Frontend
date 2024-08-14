@@ -1,6 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
-import * as Styled from './English-Styles';
+import * as Styled from './Crowdfunding-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
 import { Title } from '../../../../components/elements/Title/Title';
 import { BannerSlide } from '../../../../components/elements/BannerSlide/BannerSlide';
@@ -13,14 +13,14 @@ import { ListContainer, ListItem, ListWrapper } from '../../../../components/ele
 import { s2tData } from '../../../../contexts/s2tContext/s2tData';
 import { Banner } from '../../../../components/elements/Banner/Banner';
 
-export function English() {
+export function Crowdfunding() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
 
   return (
-    <Styled.EnglishContainer>
+    <Styled.CrowdfundingContainer>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
@@ -92,9 +92,9 @@ export function English() {
         <VerticalMiniSlide title="Notícias" type="news" items={s2tData.news} />
       </BannerSlide>
 
-    </Styled.EnglishContainer>
+    </Styled.CrowdfundingContainer>
   );
 }
 
-English.propTypes = {
+Crowdfunding.propTypes = {
 };

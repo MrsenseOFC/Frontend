@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react';
+import Prop from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import * as Styled from './Opportunities-Styles';
 import { GridProposals } from '../../../../components/elements/GridProposals/GridProposals';
 import { S2tContext } from '../../../../contexts/s2tContext/S2tContext';
@@ -6,6 +8,7 @@ import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/P
 import { Title } from '../../../../components/elements/Title/Title';
 import { AuthDropdown } from '../../../../components/elements/AuthElements/AuthDropdown/AuthDropdown';
 import { AuthSearch } from '../../../../components/elements/AuthElements/AuthSearch/AuthSearch';
+import { ProposalModal } from '../../../../components/elements/ProposalModal/ProposalModal';
 
 export function Opportunities() {
   const s2tContext = useContext(S2tContext);
@@ -13,6 +16,9 @@ export function Opportunities() {
 
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
+
+  const location = useLocation();
+  const selectedProposal = location.state?.selectedProposal || null;
 
   const proposals = [
     ...s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents,
@@ -22,8 +28,12 @@ export function Opportunities() {
   return (
     <Styled.OpportunitiesContainer>
 
-      <GridProposals title="Oportunidades" items={proposals} />
+      <GridProposals title="Oportunidades" items={proposals} selectedproposal={selectedProposal} />
 
     </Styled.OpportunitiesContainer>
   );
 }
+
+Opportunities.propTypes = {
+  selectedproposal: Prop.object,
+};

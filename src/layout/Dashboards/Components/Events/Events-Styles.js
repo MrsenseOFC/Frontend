@@ -5,7 +5,6 @@ import { LinkContainer } from '../../../../components/elements/StyledLink/Styled
 
 export const EventsContainer = styled.article`
   ${({ theme }) => css`
-    animation: ${slideIn} 500ms;
     display: flex;
     flex-direction: column;
     width: 100%;

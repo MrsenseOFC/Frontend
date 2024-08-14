@@ -55,6 +55,16 @@ export const HomePage = styled.main`
 
   ${StandardHeaderContainer} {
 
+
+    ${IconContainer} {
+    display: none;
+    animation: none;
+
+    @media ${theme.medias.smallpc} {
+      display: flex;
+    }
+  }
+
     ${NavContainer} {
       @media ${theme.medias.smallpc} {
       display: none;
@@ -76,14 +86,7 @@ export const HomePage = styled.main`
     }
   }
 
-  ${IconContainer} {
-    display: none;
-    animation: none;
-
-    @media ${theme.medias.smallpc} {
-      display: flex;
-    }
-  }
+ 
 
   ${NavContainer} {
     @media ${theme.medias.mobile} {
