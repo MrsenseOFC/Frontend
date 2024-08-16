@@ -24,7 +24,7 @@ export function English() {
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Boas-vindas à area de investimentos da T2S!" uppercase />
+        <Title text="Boas-vindas à area de inglês da T2S!" uppercase />
 
         <Text text="Aqui, você encontrará informações essenciais para otimizar seus investimentos e fazer seu patrimônio crescer" />
         <Text text="
@@ -56,8 +56,8 @@ export function English() {
 
       <BannerSlide autoplay slidesperview={3}>
 
-        <StyledLink path="https://beneficios.plataformalions.com/categoria/novidades/" newtab>
-          <img src="/assets/images/others/business.png" alt="" />
+        <StyledLink path="https://immediateenglish.com/ansep" newtab>
+          <img src="/assets/images/benefits/components/english/ansep_immediate.jpg" alt="" />
         </StyledLink>
 
         <StyledLink path="https://beneficios.plataformalions.com/categoria/novidades/" newtab>

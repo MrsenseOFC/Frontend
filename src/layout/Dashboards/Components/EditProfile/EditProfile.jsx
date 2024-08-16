@@ -12,6 +12,7 @@ export function EditProfile({ type }) {
 
       {type === 'club' && <Club />}
       {type === 'player' && <Player />}
+      {type === 'league' && <Club />}
       {type === 'university' && <University />}
       {type === 'staff' && <Staff />}
 

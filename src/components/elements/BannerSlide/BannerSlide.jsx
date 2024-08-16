@@ -15,7 +15,7 @@ export function BannerSlide({
       gradientdirection={gradientdirection}
       backgroundfixed={backgroundfixed ? 'backgroundfixed' : undefined}
     >
-      {title && <Subtitle text="Vídeos em alta" uppercase size="25px" />}
+      {title && <Subtitle text={title} uppercase size="25px" />}
 
       <Styled.BannerSlideContainer>
         <Swiper

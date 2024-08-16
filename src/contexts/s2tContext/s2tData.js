@@ -380,7 +380,7 @@ export const s2tData = {
       {
         id: 5,
         src: '/assets/images/users/facultys.png',
-        title: 'Faculdades',
+        title: 'Universidades',
         path: '/register',
       },
 

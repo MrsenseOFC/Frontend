@@ -8,7 +8,7 @@ import { S2tContext } from '../../../../contexts/s2tContext/S2tContext';
 import { VerticalSoloSlide } from '../../../../components/elements/VerticalSoloSlide/VerticalSoloSlide';
 import { GridEvents } from '../../../../components/elements/EventsElements/GridEvents/GridEvents';
 
-export function Events({ children }) {
+export function Events() {
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
 

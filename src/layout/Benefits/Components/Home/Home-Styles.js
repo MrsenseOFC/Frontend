@@ -6,7 +6,7 @@ import { LinkContainer } from '../../../../components/elements/StyledLink/Styled
 import { ListContainer, ListItem } from '../../../../components/elements/List/List-Styles';
 import { slideIn, slideOut } from '../../../../styles/animations';
 
-export const EnglishContainer = styled.article`
+export const HomeContainer = styled.article`
   ${({ theme }) => css`
      text-align: center;
      display: flex;
@@ -26,7 +26,6 @@ export const EnglishContainer = styled.article`
       }
       }
      }
-     
 
      & ${ListContainer} {
       animation: ${slideIn} 500ms;

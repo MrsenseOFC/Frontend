@@ -24,31 +24,24 @@ export function Studies() {
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Boas-vindas à area de investimentos da T2S!" uppercase />
+        <Title text="Boas vindas à Área de Estudos da T2S!" uppercase />
 
-        <Text text="Aqui, você encontrará informações essenciais para otimizar seus investimentos e fazer seu patrimônio crescer" />
-        <Text text="
-        A area de investimentos da T2S tem seu próprio site, onde você encontra tudo o que precisa para aproveitar ao máximo.
-        Para acessar:
-       "
-        />
+        <Text text="Aqui, você encontrará informações essenciais para aprimorar seus conhecimentos e expandir seu aprendizado." />
+        <Text text="A Área de Estudos da T2S possui uma lista de sites dedicados, onde você encontrará recursos valiosos para aproveitar ao máximo sua jornada acadêmica." />
+        <Text text="Para acessar:" />
 
         <ListWrapper>
           <ListContainer>
             <ListItem>
-              Clique em qualquer um dos tipos des investimentos abaixo.
+              Clique em qualquer um dos tipos de estudos abaixo;
             </ListItem>
 
             <ListItem>
-              Você será direcionado automaticamente para o nosso site de investimentos.
+              Você será direcionado automaticamente para o site responsável
             </ListItem>
 
             <ListItem>
-              Crie sua conta ou faça login, se já tiver uma.
-            </ListItem>
-
-            <ListItem>
-              Comece a explorar e aproveitar as vantagens exclusivas que te esperam!
+              Comece a aprimorar os seus conhecimentos!
             </ListItem>
           </ListContainer>
         </ListWrapper>

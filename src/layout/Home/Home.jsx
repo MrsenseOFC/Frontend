@@ -28,7 +28,6 @@ export function Home() {
   const { currentUser } = useAuth();
 
   const [menuVisibility, setMenuVisibility] = useState(false);
-  const [devMode, setDevMode] = useState(false);
 
   const languageOptions = [
     { value: 'pt', text: 'Português' },
@@ -46,11 +45,11 @@ export function Home() {
       <StandardHeader>
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
         {menuVisibility ? (
-          <IconDiv name="Menu" onclick={() => setMenuVisibility(!menuVisibility)}>
+          <IconDiv name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMenuVisibility(!menuVisibility)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
             <MenuIcon />
           </IconDiv>
         )}
@@ -62,80 +61,7 @@ export function Home() {
             onDropdownChange={handleLanguageChange} // Handler para mudar o idioma
             selectedvalue={i18n.language} // Valor selecionado atualmente
           />
-          {devMode && (
-            <>
-              <Button
-                path="/register"
-                text={t('create_account')} // Traduz o texto do botão
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                path="/login"
-                text={t('login')} // Traduz o texto do botão
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                path="/reset-password"
-                text={t('reset_password')} // Traduz o texto do botão
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text={t('dashboard_player')} // Traduz o texto do botão
-                path="/player-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text={t('dashboard_club')} // Traduz o texto do botão
-                path="/club-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text={t('dashboard_university')} // Traduz o texto do botão
-                path="/university-dashboard"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-              <Button
-                text={t('dashboard_public')} // Traduz o texto do botão
-                path="/user/SPFC"
-                bgcolor={theme.colors.lightprimary}
-                bghover={theme.colors.primary}
-                textcolor={theme.colors.black}
-                texthover={theme.colors.black}
-                border={theme.colors.lightprimary}
-                borderhover={theme.colors.primary}
-              />
-            </>
-          )}
+
           {currentUser ? (
             <>
               <Button

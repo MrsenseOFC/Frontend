@@ -24,7 +24,7 @@ export function LionsPlatform() {
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Boas-vindas à area de investimentos da T2S!" uppercase />
+        <Title text="Boas-vindas à plataforma Lions da T2S!" uppercase />
 
         <Text text="Aqui, você encontrará informações essenciais para otimizar seus investimentos e fazer seu patrimônio crescer" />
         <Text text="

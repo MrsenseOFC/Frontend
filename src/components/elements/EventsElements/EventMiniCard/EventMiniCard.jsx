@@ -12,6 +12,7 @@ export function EventMiniCard({
   const navigate = useNavigate();
 
   const handleCardClick = (selectedEvent) => {
+    // Player é substituido pelo dashboard do usuário dinamicamente
     navigate('/player-dashboard/events', { state: { selectedEvent } });
   };
 

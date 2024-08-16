@@ -36,7 +36,7 @@ export function Investments() {
         <ListWrapper>
           <ListContainer>
             <ListItem>
-              Clique em qualquer um dos tipos des investimentos abaixo.
+              Clique em qualquer um dos tipos de investimentos abaixo.
             </ListItem>
 
             <ListItem>

@@ -81,7 +81,14 @@ import { English } from './layout/Benefits/Components/English/English';
 import { Crowdfunding } from './layout/Benefits/Components/Crowdfunding/Crowdfunding';
 import { LionsPlatform } from './layout/Benefits/Components/LionsPlatform/LionsPlatform';
 import { Studies } from './layout/Benefits/Components/Studies/Studies';
+import { Home as BenefitsHome } from './layout/Benefits/Components/Home/Home';
+
 import { AmericanStudies } from './layout/Benefits/Components/AmericanStudies/AmericanStudies';
+import { LeagueDashboard } from './layout/Dashboards/LeagueDashboard/LeagueDashboard';
+import { LeagueProvider } from './contexts/userContext/LeagueProvider/LeagueProvider';
+import { leagueData } from './contexts/userContext/LeagueProvider/leagueData';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './config/i18n';
 
 register();
 
@@ -91,149 +98,172 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
 
-        <S2tProvider>
+        <I18nextProvider i18n={i18n}>
+          <S2tProvider>
+            <PlayerProvider>
+              <ClubProvider>
+                <UniversityProvider>
+                  <StaffProvider>
+                    <LeagueProvider>
 
-          <PlayerProvider>
-            <ClubProvider>
-              <UniversityProvider>
-                <StaffProvider>
+                      <GlobalStyles />
 
-                  <GlobalStyles />
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/reset-password" element={<ResetPassword />} />
 
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/logout" element={<Logout />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="/reset-password" element={<ResetPassword />} />
+                        <Route path="/benefits" element={<Benefits />}>
+                          <Route path="" element={<BenefitsHome />} />
+                          <Route path="club" element={<BenefitsClub />} />
+                          <Route path="investments" element={<Investments />} />
+                          <Route path="interchange" element={<Interchange />} />
+                          <Route path="english" element={<English />} />
+                          <Route path="crypto-wallet" element={<CryptoWallet />} />
+                          <Route path="crowdfunding" element={<Crowdfunding />} />
+                          <Route path="studies" element={<Studies />} />
+                          <Route path="american-studies" element={<AmericanStudies />} />
+                          <Route path="lions-platform" element={<LionsPlatform />} />
+                          <Route path="benefits-club" element={<BenefitsClub />} />
+                          <Route path="events" element={<EventsPage items={s2tData.events} />} />
+                        </Route>
 
-                    <Route path="/benefits" element={<Benefits />}>
-                      <Route path="club" element={<BenefitsClub />} />
-                      <Route path="investments" element={<Investments />} />
-                      <Route path="interchange" element={<Interchange />} />
-                      <Route path="english" element={<English />} />
-                      <Route path="crypto-wallet" element={<CryptoWallet />} />
-                      <Route path="crowdfunding" element={<Crowdfunding />} />
-                      <Route path="studies" element={<Studies />} />
-                      <Route path="american-studies" element={<AmericanStudies />} />
-                      <Route path="lions-platform" element={<LionsPlatform />} />
-                      <Route path="benefits-club" element={<BenefitsClub />} />
-                      <Route path="events" element={<EventsPage items={s2tData.events} />} />
+                        <Route path="/users" element={<Users />}>
+                          <Route path="player" element={<PlayerPage />} />
+                          <Route path="club" element={<ClubPage />} />
+                        </Route>
 
-                    </Route>
+                        {/* Rota do dashboard para jogadores + subrotas dele */}
+                        <Route path="/player-dashboard/" element={<PlayerDashboard />}>
+                          <Route path="" element={<PlayerHome />} />
+                          <Route path="profile" element={<PlayerProfile />} />
+                          <Route path="profile-edit" element={<EditProfile type="player" />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="scouts" element={<Scouts />} />
+                          <Route path="clubs" element={<Clubs />} />
+                          <Route path="favorites" element={<PlayerFavorites />} />
+                          <Route path="contacts" element={<PlayerContacts />} />
+                          <Route path="events" element={<Events />} />
+                          <Route path="friends" element={<Friends friends={playerData.friends} />} />
+                          <Route path="store" element={<Store />} />
+                          <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
+                          <Route path="s2t+" element={<S2TPlus />} />
+                        </Route>
 
-                    <Route path="/users" element={<Users />}>
-                      <Route path="player" element={<PlayerPage />} />
-                      <Route path="club" element={<ClubPage />} />
-                    </Route>
+                        <Route path="/staff-dashboard/" element={<StaffDashboard />}>
+                          <Route path="" element={<StaffHome />} />
+                          <Route path="profile" element={<StaffProfile />} />
+                          <Route path="profile-edit" element={<EditProfile type="player" />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="scouts" element={<Scouts />} />
+                          <Route path="clubs" element={<Clubs />} />
+                          <Route path="favorites" element={<StaffFavorites />} />
+                          <Route path="contacts" element={<h1>Em construção... :)</h1>} />
+                          <Route path="events" element={<Events />} />
+                          <Route path="friends" element={<Friends friends={playerData.friends} />} />
+                          <Route path="store" element={<Store />} />
+                          <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
+                          <Route path="s2t+" element={<S2TPlus />} />
+                        </Route>
 
-                    {/* Rota do dashboard para jogadores + subrotas dele */}
-                    <Route path="/player-dashboard/" element={<PlayerDashboard />}>
-                      <Route path="" element={<PlayerHome />} />
-                      <Route path="profile" element={<PlayerProfile />} />
-                      <Route path="profile-edit" element={<EditProfile type="player" />} />
-                      <Route path="opportunities" element={<Opportunities />} />
-                      <Route path="scouts" element={<Scouts />} />
-                      <Route path="clubs" element={<Clubs />} />
-                      <Route path="favorites" element={<PlayerFavorites />} />
-                      <Route path="contacts" element={<PlayerContacts />} />
-                      <Route path="events" element={<Events />} />
-                      <Route path="friends" element={<Friends friends={playerData.friends} />} />
-                      <Route path="store" element={<Store />} />
-                      <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
-                      <Route path="s2t+" element={<S2TPlus />} />
-                    </Route>
+                        {/* Rota do dashboard para clubes + subrotas dele */}
+                        <Route path="/club-dashboard/" element={<ClubDashboard />}>
+                          <Route path="" element={<ClubHome />} />
+                          <Route path="profile" element={<ClubProfile />} />
+                          <Route path="my-squad" element={<MySquad />} />
+                          <Route path="profile-edit" element={<EditProfile type="club" />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.agents} />} />
+                          <Route path="scouts" element={<Scouts />} />
+                          <Route path="clubs" element={<Clubs />} />
+                          <Route path="players" element={<Players />} />
+                          <Route path="favorites" element={<ClubFavorites />} />
+                          <Route path="events" element={<Events />} />
+                          <Route path="contacts" element={<h1>Em construção... :)</h1>} />
+                          <Route path="friends" element={<Friends friends={clubData.friends} />} />
+                          <Route path="store" element={<Store />} />
+                          <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
+                          <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
+                          <Route path="s2t+" element={<S2TPlus />} />
+                        </Route>
 
-                    <Route path="/staff-dashboard/" element={<StaffDashboard />}>
-                      <Route path="" element={<StaffHome />} />
-                      <Route path="profile" element={<StaffProfile />} />
-                      <Route path="profile-edit" element={<EditProfile type="player" />} />
-                      <Route path="opportunities" element={<Opportunities />} />
-                      <Route path="scouts" element={<Scouts />} />
-                      <Route path="clubs" element={<Clubs />} />
-                      <Route path="favorites" element={<StaffFavorites />} />
-                      <Route path="contacts" element={<h1>Em construção... :)</h1>} />
-                      <Route path="events" element={<Events />} />
-                      <Route path="friends" element={<Friends friends={playerData.friends} />} />
-                      <Route path="store" element={<Store />} />
-                      <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
-                      <Route path="s2t+" element={<S2TPlus />} />
-                    </Route>
+                        <Route path="/league-dashboard/" element={<LeagueDashboard />}>
+                          <Route path="" element={<ClubHome />} />
+                          <Route path="profile" element={<ClubProfile />} />
+                          <Route path="my-squad" element={<MySquad />} />
+                          <Route path="profile-edit" element={<EditProfile type="club" />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.agents} />} />
+                          <Route path="scouts" element={<Scouts />} />
+                          <Route path="clubs" element={<Clubs />} />
+                          <Route path="players" element={<Players />} />
+                          <Route path="favorites" element={<ClubFavorites />} />
+                          <Route path="events" element={<Events />} />
+                          <Route path="contacts" element={<h1>Em construção... :)</h1>} />
+                          <Route path="friends" element={<Friends friends={leagueData.friends} />} />
+                          <Route path="store" element={<Store />} />
+                          <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
+                          <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
+                          <Route path="s2t+" element={<S2TPlus />} />
+                        </Route>
 
-                    {/* Rota do dashboard para clubes + subrotas dele */}
-                    <Route path="/club-dashboard/" element={<ClubDashboard />}>
-                      <Route path="" element={<ClubHome />} />
-                      <Route path="profile" element={<ClubProfile />} />
-                      <Route path="my-squad" element={<MySquad />} />
-                      <Route path="profile-edit" element={<EditProfile type="club" />} />
-                      <Route path="opportunities" element={<Opportunities />} />
-                      <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.agents} />} />
-                      <Route path="scouts" element={<Scouts />} />
-                      <Route path="clubs" element={<Clubs />} />
-                      <Route path="players" element={<Players />} />
-                      <Route path="favorites" element={<ClubFavorites />} />
-                      <Route path="events" element={<Events />} />
-                      <Route path="contacts" element={<h1>Em construção... :)</h1>} />
-                      <Route path="friends" element={<Friends friends={clubData.friends} />} />
-                      <Route path="store" element={<Store />} />
-                      <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
-                      <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
-                      <Route path="s2t+" element={<S2TPlus />} />
-                    </Route>
+                        <Route path="/university-dashboard/" element={<UniversityDashboard />}>
+                          <Route path="" element={<UniversityHome />} />
+                          <Route path="profile" element={<UniversityProfile />} />
+                          <Route path="my-squad" element={<MySquad />} />
+                          <Route path="profile-edit" element={<EditProfile type="university" />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="my-opportunities" element={<MyOpportunities />} />
+                          <Route path="scouts" element={<Scouts />} />
+                          <Route path="clubs" element={<Clubs />} />
+                          <Route path="players" element={<Players />} />
+                          <Route path="favorites" element={<ClubFavorites />} />
+                          <Route path="events" element={<Events />} />
+                          <Route path="contacts" element={<h1>Em construção... :)</h1>} />
+                          <Route path="friends" element={<Friends friends={clubData.friends} />} />
+                          <Route path="store" element={<Store />} />
+                          <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
+                          <Route path="s2t+" element={<S2TPlus />} />
+                        </Route>
 
-                    <Route path="/university-dashboard/" element={<UniversityDashboard />}>
-                      <Route path="" element={<UniversityHome />} />
-                      <Route path="profile" element={<UniversityProfile />} />
-                      <Route path="my-squad" element={<MySquad />} />
-                      <Route path="profile-edit" element={<EditProfile type="university" />} />
-                      <Route path="opportunities" element={<Opportunities />} />
-                      <Route path="my-opportunities" element={<MyOpportunities />} />
-                      <Route path="scouts" element={<Scouts />} />
-                      <Route path="clubs" element={<Clubs />} />
-                      <Route path="players" element={<Players />} />
-                      <Route path="favorites" element={<ClubFavorites />} />
-                      <Route path="events" element={<Events />} />
-                      <Route path="contacts" element={<h1>Em construção... :)</h1>} />
-                      <Route path="friends" element={<Friends friends={clubData.friends} />} />
-                      <Route path="store" element={<Store />} />
-                      <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />
-                      <Route path="s2t+" element={<S2TPlus />} />
-                    </Route>
+                        <Route path="/user/:username" element={<PublicDashboard />}>
+                          <Route path="profile" element={<PublicProfile />} />
+                          <Route path="squad" element={<Players />} />
+                          <Route path="opportunities" element={<Opportunities />} />
+                          <Route path="friends" element={<Friends friends={clubData.friends} />} />
+                        </Route>
 
-                    <Route path="/user/:username" element={<PublicDashboard />}>
-                      <Route path="profile" element={<PublicProfile />} />
-                      <Route path="squad" element={<Players />} />
-                      <Route path="opportunities" element={<Opportunities />} />
-                      <Route path="friends" element={<Friends friends={clubData.friends} />} />
-                    </Route>
+                      </Routes>
 
-                  </Routes>
+                      <Footer>
+                        <Row>
+                          <SocialLink type="facebook" />
+                          <SocialLink type="instagram" />
+                          <SocialLink type="twitter" />
+                          <SocialLink type="youtube" />
+                          <SocialLink type="tiktok" />
+                        </Row>
 
-                  <Footer>
-                    <Row>
-                      <SocialLink type="facebook" />
-                      <SocialLink type="instagram" />
-                      <SocialLink type="twitter" />
-                      <SocialLink type="youtube" />
-                      <SocialLink type="tiktok" />
-                    </Row>
+                        <Nav>
+                          <StyledLink text="Privacidade" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
+                          <StyledLink text="Termos de uso" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
+                          <StyledLink text="Sobre nós" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
+                          <StyledLink text="Precisa de ajuda?" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
+                        </Nav>
 
-                    <Nav>
-                      <StyledLink text="Privacidade" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                      <StyledLink text="Termos de uso" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                      <StyledLink text="Sobre nós" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                      <StyledLink text="Precisa de ajuda?" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                    </Nav>
+                        <Text text="© 2024 Talent 2 Show" color={theme.colors.primary} uppercase />
+                      </Footer>
 
-                    <Text text="© 2024 Talent 2 Show" color={theme.colors.primary} uppercase />
-                  </Footer>
-
-                </StaffProvider>
-              </UniversityProvider>
-            </ClubProvider>
-          </PlayerProvider>
-        </S2tProvider>
+                    </LeagueProvider>
+                  </StaffProvider>
+                </UniversityProvider>
+              </ClubProvider>
+            </PlayerProvider>
+          </S2tProvider>
+        </I18nextProvider>
 
       </BrowserRouter>
     </ThemeProvider>
