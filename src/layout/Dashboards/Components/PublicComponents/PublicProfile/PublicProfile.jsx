@@ -24,7 +24,7 @@ export function PublicProfile() {
       <ProfileInfo items={clubState.profile.info} />
 
       <PublicSlide items={clubState.profile.photos} title="Fotos" />
-      <PublicVideoSlide items={playerState.profile.videos} title="Vídeos" />
+      <PublicVideoSlide items={clubState.profile.videos} title="Vídeos" />
 
       <Row>
         <Historic items={clubState.profile.leagues} title="Competições em disputa" />

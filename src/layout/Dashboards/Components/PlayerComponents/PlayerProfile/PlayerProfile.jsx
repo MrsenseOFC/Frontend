@@ -16,17 +16,17 @@ export function PlayerProfile() {
   return (
     <Styled.PlayerProfileContainer>
 
-      <ProfileInfo items={playerState.profile.info} />
+      <ProfileInfo items={playerState?.profile?.info || []} />
 
-      <OwnerSlide items={playerState.profile.photos} title="Fotos" />
-      <OwnerVideoSlide items={playerState.profile.videos} title="Vídeos" />
+      <OwnerSlide items={playerState?.profile?.photos || []} title="Fotos" />
+      <OwnerVideoSlide items={playerState?.profile?.videos || []} title="Vídeos" />
 
       <Row>
-        <Historic items={playerState.profile.clubs} title="Histórico de clubes" />
-        <Historic items={playerState.profile.studies} title="Histórico acadêmico" />
+        <Historic items={playerState?.profile?.clubs || []} title="Histórico de clubes" />
+        <Historic items={playerState?.profile?.studies || []} title="Histórico acadêmico" />
       </Row>
 
-      <TextSlide items={playerState.profile.awards} title="Títulos e prêmios:" />
+      <TextSlide items={playerState?.profile?.awards || []} title="Títulos e prêmios:" />
 
     </Styled.PlayerProfileContainer>
   );

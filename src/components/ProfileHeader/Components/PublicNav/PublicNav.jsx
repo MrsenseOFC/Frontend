@@ -1,11 +1,13 @@
 import Prop from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PublicNav-Styles';
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { theme } from '../../../../styles/theme';
 
 export function PublicNav({ username, type }) {
+  const { t } = useTranslation();
   const [activeLink, setActiveLink] = useState('');
   const location = useLocation();
 
@@ -28,14 +30,14 @@ export function PublicNav({ username, type }) {
       <StyledLink
         active={activeLink === `/user/${username}/profile` || activeLink === `/user/${username}/profile/`}
         path="profile"
-        text="Perfil"
+        text={t('profile')}
         color={theme.colors.white}
         hovercolor={theme.colors.black}
       />
       <StyledLink
         active={activeLink === `/user/${username}/squad`}
         path="squad"
-        text="Plantel"
+        text={t('squad')}
         color={theme.colors.white}
         hovercolor={theme.colors.black}
       />
@@ -44,7 +46,7 @@ export function PublicNav({ username, type }) {
         <StyledLink
           active={activeLink === `/user/${username}/opportunities`}
           path="opportunities"
-          text="Oportunidades"
+          text={t('opportunities')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -53,7 +55,7 @@ export function PublicNav({ username, type }) {
       <StyledLink
         active={activeLink === `/user/${username}/friends`}
         path="friends"
-        text="Amigos"
+        text={t('friends')}
         color={theme.colors.white}
         hovercolor={theme.colors.black}
       />

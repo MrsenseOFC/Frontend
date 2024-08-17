@@ -7,6 +7,7 @@ import { TextSlide } from '../../../../../components/elements/TextSlide/TextSlid
 import { Row } from '../../../../../components/RowContainer/Row';
 import { UniversityContext } from '../../../../../contexts/userContext/UniversityProvider/UniversityContext';
 import { OwnerSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerSlide/OwnerSlide';
+import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function UniversityProfile() {
   const universityContext = useContext(UniversityContext);
@@ -15,15 +16,15 @@ export function UniversityProfile() {
   return (
     <Styled.UniversityProfileContainer>
 
-      <ProfileInfo items={universityState.profile.info} />
+      <ProfileInfo items={universityState?.profile?.info || []} />
 
-      <OwnerSlide items={universityState.profile.photos} title="Fotos" ownerview />
-
+      <OwnerSlide items={universityState?.profile?.photos || []} title="Fotos" ownerview />
+      <OwnerVideoSlide items={universityState?.profil?.videos || []} title="Vídeos" />
       <Row>
-        <Historic items={universityState.profile.competitions} title="Competições em disputa" />
+        <Historic items={universityState?.profile?.competitions || []} title="Competições em disputa" />
       </Row>
 
-      <TextSlide items={universityState.profile.awards} title="Títulos:" />
+      <TextSlide items={universityState?.profile?.awards || []} title="Títulos:" />
     </Styled.UniversityProfileContainer>
   );
 }

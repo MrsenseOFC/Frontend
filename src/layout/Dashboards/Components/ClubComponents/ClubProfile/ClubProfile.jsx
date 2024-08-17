@@ -7,6 +7,7 @@ import { TextSlide } from '../../../../../components/elements/TextSlide/TextSlid
 import { Row } from '../../../../../components/RowContainer/Row';
 import { ClubContext } from '../../../../../contexts/userContext/ClubProvider/ClubContext';
 import { OwnerSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerSlide/OwnerSlide';
+import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function ClubProfile() {
   const clubContext = useContext(ClubContext);
@@ -15,15 +16,16 @@ export function ClubProfile() {
   return (
     <Styled.ClubProfileContainer>
 
-      <ProfileInfo items={clubState.profile.info} />
+      <ProfileInfo items={clubState?.profile?.info || []} />
 
-      <OwnerSlide items={clubState.profile.photos} title="Fotos" ownerview />
+      <OwnerSlide items={clubState?.profile?.photos || []} title="Fotos" ownerview />
+      <OwnerVideoSlide items={clubState?.profile?.videos || []} title="Vídeos" />
 
       <Row>
-        <Historic items={clubState.profile.competitions} title="Competições em disputa" />
+        <Historic items={clubState?.profile?.competitions || []} title="Competições em disputa" />
       </Row>
 
-      <TextSlide items={clubState.profile.awards} title="Títulos:" />
+      <TextSlide items={clubState?.profile?.awards || []} title="Títulos:" />
     </Styled.ClubProfileContainer>
   );
 }

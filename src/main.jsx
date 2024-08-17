@@ -176,7 +176,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                           <Route path="my-squad" element={<MySquad />} />
                           <Route path="profile-edit" element={<EditProfile type="club" />} />
                           <Route path="opportunities" element={<Opportunities />} />
-                          <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.agents} />} />
+                          <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.clubs} />} />
                           <Route path="scouts" element={<Scouts />} />
                           <Route path="clubs" element={<Clubs />} />
                           <Route path="players" element={<Players />} />

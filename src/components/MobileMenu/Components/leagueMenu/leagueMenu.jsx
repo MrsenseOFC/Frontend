@@ -19,11 +19,13 @@ import {
   PersonSearch as PersonSearchIcon,
 } from '@styled-icons/material-outlined';
 
+import { useTranslation } from 'react-i18next';
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { theme } from '../../../../styles/theme';
 
 export function LeagueMenu() {
+  const { t } = useTranslation();
   return (
     <GridLayout>
       <StyledLink
@@ -32,7 +34,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <HomeIcon />
-        Home
+        {t('home')}
       </StyledLink>
 
       <StyledLink
@@ -41,7 +43,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <PersonIcon />
-        Perfil
+        {t('profile')}
 
       </StyledLink>
 
@@ -51,7 +53,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <SquadIcon />
-        Meu Plantel
+        {t('my-squad')}
 
       </StyledLink>
 
@@ -61,7 +63,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <ViewCarouselIcon />
-        Oportunidades
+        {t('opportunities')}
 
       </StyledLink>
 
@@ -71,7 +73,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <HandshakeIcon />
-        Minhas oportunidades
+        {t('my-opportunities')}
 
       </StyledLink>
 
@@ -81,7 +83,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <WorkIcon />
-        Scouts
+        {t('scouts')}
 
       </StyledLink>
 
@@ -91,7 +93,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <SportsSoccerIcon />
-        Clubes
+        {t('clubs')}
 
       </StyledLink>
 
@@ -101,7 +103,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <PersonSearchIcon />
-        Jogadores
+        {t('players')}
 
       </StyledLink>
 
@@ -111,7 +113,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <FavoriteIcon />
-        Favoritos
+        {t('favorites')}
 
       </StyledLink>
 
@@ -121,7 +123,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <EventsIcon />
-        Eventos
+        {t('eventos')}
 
       </StyledLink>
 
@@ -131,7 +133,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <SendIcon />
-        Contatos
+        {t('contacts')}
 
       </StyledLink>
 
@@ -141,7 +143,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <GroupIcon />
-        Amigos
+        {t('friends')}
 
       </StyledLink>
 
@@ -151,7 +153,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <StoreIcon />
-        Loja
+        {t('store')}
 
       </StyledLink>
 
@@ -161,7 +163,7 @@ export function LeagueMenu() {
         hovercolor={theme.colors.primary}
       >
         <PlusIcon />
-        S2T+
+        {t('t2s+')}
 
       </StyledLink>
 
@@ -171,7 +173,7 @@ export function LeagueMenu() {
       >
         <CloseIcon />
 
-        Fechar
+        {t('close')}
 
       </StyledLink>
 

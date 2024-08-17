@@ -17,11 +17,13 @@ import {
   Close as CloseIcon,
 } from '@styled-icons/material-outlined';
 
+import { useTranslation } from 'react-i18next';
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { theme } from '../../../../styles/theme';
 
 export function PlayerMenu() {
+  const { t } = useTranslation();
   return (
     <GridLayout>
       <StyledLink
@@ -30,7 +32,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <HomeIcon />
-        Home
+        {t('home')}
       </StyledLink>
 
       <StyledLink
@@ -39,7 +41,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <PersonIcon />
-        Perfil
+        {t('profile')}
 
       </StyledLink>
 
@@ -49,7 +51,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <ViewCarouselIcon />
-        Oportunidades
+        {t('opportunities')}
 
       </StyledLink>
 
@@ -59,7 +61,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <WorkIcon />
-        Scouts
+        {t('scouts')}
 
       </StyledLink>
 
@@ -69,7 +71,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <SportsSoccerIcon />
-        Clubes
+        {t('clubs')}
 
       </StyledLink>
 
@@ -79,7 +81,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <FavoriteIcon />
-        Favoritos
+        {t('favorites')}
 
       </StyledLink>
 
@@ -89,7 +91,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <EventsIcon />
-        Eventos
+        {t('events')}
 
       </StyledLink>
 
@@ -99,7 +101,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <SendIcon />
-        Contatos
+        {t('contacts')}
 
       </StyledLink>
 
@@ -109,7 +111,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <GroupIcon />
-        Amigos
+        {t('friends')}
 
       </StyledLink>
 
@@ -119,7 +121,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <StoreIcon />
-        Loja
+        {t('store')}
 
       </StyledLink>
 
@@ -129,7 +131,7 @@ export function PlayerMenu() {
         hovercolor={theme.colors.primary}
       >
         <PlusIcon />
-        S2T+
+        {t('t2s+')}
 
       </StyledLink>
 
@@ -139,7 +141,7 @@ export function PlayerMenu() {
       >
         <CloseIcon />
 
-        Fechar
+        {t('close')}
 
       </StyledLink>
 

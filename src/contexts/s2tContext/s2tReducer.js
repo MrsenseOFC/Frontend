@@ -21,6 +21,22 @@ export const s2tReducer = (state, action) => {
         },
       };
 
+    case types.edit_proposal:
+      const updatedProposals = state.proposals.male.professional.clubs.map((proposal) => (proposal.opportunityId === action.payload.opportunityId ? action.payload : proposal));
+      return {
+        ...state,
+        proposals: {
+          ...state.proposals,
+          male: {
+            ...state.proposals.male,
+            professional: {
+              ...state.proposals.male.professional,
+              clubs: updatedProposals,
+            },
+          },
+        },
+      };
+
     case types.add_event:
       return {
         ...state,

@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './UniversityNav-Styles';
 
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
@@ -8,6 +9,7 @@ import { theme } from '../../../../styles/theme';
 import { Nav } from '../../../Nav/Nav';
 
 export function UniversityNav() {
+  const { t } = useTranslation();
   const [activeLink, setActiveLink] = useState('');
   const location = useLocation();
 
@@ -21,14 +23,14 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard' || activeLink === '/university-dashboard'}
           path=""
-          text="Home"
+          text={t('home')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
         <StyledLink
           active={activeLink === '/university-dashboard/profile'}
           path="profile"
-          text="Perfil"
+          text={t('profile')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -36,7 +38,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/my-squad'}
           path="my-squad"
-          text="Meu plantel"
+          text={t('my-squad')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -44,7 +46,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/opportunities'}
           path="opportunities"
-          text="Oportunidades"
+          text={t('opportunities')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -52,7 +54,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/my-opportunities'}
           path="my-opportunities"
-          text="Minhas oportunidades"
+          text={t('my-opportunities')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -60,7 +62,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/scouts'}
           path="scouts"
-          text="Scouts"
+          text={t('scouts')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -68,7 +70,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/clubs'}
           path="clubs"
-          text="Clubes"
+          text={t('clubs')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -78,7 +80,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/players'}
           path="players"
-          text="Jogadores"
+          text={t('players')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -86,7 +88,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/events'}
           path="events"
-          text="Eventos"
+          text={t('events')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -94,7 +96,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/favorites'}
           path="favorites"
-          text="Favoritos"
+          text={t('favorites')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -102,7 +104,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/contacts'}
           path="contacts"
-          text="Contatos"
+          text={t('contacts')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -110,7 +112,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/friends'}
           path="friends"
-          text="Amigos"
+          text={t('friends')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -118,7 +120,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/store'}
           path="store"
-          text="Loja"
+          text={t('store')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -126,7 +128,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/my-affiliates'}
           path="my-affiliates"
-          text="Meus afiliados"
+          text={t('my-affiliates')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
@@ -134,7 +136,7 @@ export function UniversityNav() {
         <StyledLink
           active={activeLink === '/university-dashboard/s2t+'}
           path="s2t+"
-          text="S2T+"
+          text={t('t2s+')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />

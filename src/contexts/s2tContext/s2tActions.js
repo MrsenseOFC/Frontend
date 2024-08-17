@@ -8,6 +8,10 @@ export const addProposal = (dispatch, proposalData) => {
   dispatch({ type: types.add_proposal, payload: proposalData });
 };
 
+export const editProposal = (dispatch, proposalData) => {
+  dispatch({ type: types.edit_proposal, payload: proposalData });
+};
+
 export const addEvent = (dispatch, eventData) => {
   dispatch({ type: types.add_event, payload: eventData });
 };

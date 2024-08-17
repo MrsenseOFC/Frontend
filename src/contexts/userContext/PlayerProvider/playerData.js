@@ -38,62 +38,10 @@ export const playerData = {
     },
 
     photos: [
-      {
-        id: '1',
-        src: '/assets/images/profile/photo-1.png',
-        type: 'photo',
-        isfavorite: true,
-      },
-      {
-        id: '2',
-        src: '/assets/images/profile/photo-2.png',
-        type: 'photo',
-        isfavorite: false,
-      },
-      {
-        id: '3',
-        src: '/assets/images/profile/photo-3.png',
-        type: 'photo',
-        isfavorite: true,
-      },
-      {
-        id: '4',
-        src: '/assets/images/profile/photo-4.png',
-        type: 'photo',
-        isfavorite: true,
-      },
-      {
-        id: '5',
-        src: '/assets/images/profile/photo-1.png',
-        type: 'photo',
-        isfavorite: false,
-      },
-      {
-        id: '6',
-        src: '/assets/images/profile/photo-2.png',
-        type: 'photo',
-        isfavorite: false,
-      },
-      {
-        id: '7',
-        src: '/assets/images/profile/photo-3.png',
-        type: 'photo',
-        isfavorite: false,
-      },
+
     ],
 
     videos: [
-      {
-        id: '1',
-        src: '/assets/videos/silas.mp4',
-        isfavorite: true,
-      },
-
-      {
-        id: '2',
-        src: '/assets/videos/silas2.mp4',
-        isfavorite: true,
-      },
 
     ],
 

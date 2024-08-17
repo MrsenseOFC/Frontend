@@ -19,12 +19,14 @@ import {
   PersonSearch as PersonSearchIcon,
 } from '@styled-icons/material-outlined';
 
+import { useTranslation } from 'react-i18next';
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { theme } from '../../../../styles/theme';
 
 export function PublicMenu({ type }) {
   const normalizedType = type.toLowerCase();
+  const { t } = useTranslation();
 
   return (
     <GridLayout>
@@ -35,8 +37,7 @@ export function PublicMenu({ type }) {
         hovercolor={theme.colors.primary}
       >
         <PersonIcon />
-        Perfil
-
+        {t('profile')}
       </StyledLink>
 
       <StyledLink
@@ -45,7 +46,7 @@ export function PublicMenu({ type }) {
         hovercolor={theme.colors.primary}
       >
         <SquadIcon />
-        Plantel
+        {t('squad')}
 
       </StyledLink>
 
@@ -56,7 +57,7 @@ export function PublicMenu({ type }) {
           hovercolor={theme.colors.primary}
         >
           <ViewCarouselIcon />
-          Oportunidades
+          {t('opportunities')}
 
         </StyledLink>
       )}
@@ -67,7 +68,7 @@ export function PublicMenu({ type }) {
         hovercolor={theme.colors.primary}
       >
         <GroupIcon />
-        Amigos
+        {t('friends')}
 
       </StyledLink>
 
@@ -77,7 +78,7 @@ export function PublicMenu({ type }) {
       >
         <CloseIcon />
 
-        Fechar
+        {t('close')}
 
       </StyledLink>
 
