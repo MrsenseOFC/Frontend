@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Prop from 'prop-types';
 import { ImageAdd as AddImageIcon } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ProfilePicture-Styles';
 import { Button } from '../Button/Button';
 import { theme } from '../../../styles/theme';
@@ -13,10 +14,11 @@ export function ProfilePicture({
 }) {
   const { currentUser } = useAuth();
   const [profilePicture, setProfilePicture] = useState(currentUser?.profileImage || '');
+  const { t } = useTranslation();
 
   const handlePictureChange = async (event) => {
     if (!currentUser) {
-      console.error('Usuário não está logado ou não possui um ID válido');
+      console.error(t('not_logged'));
       return;
     }
 
@@ -38,7 +40,7 @@ export function ProfilePicture({
 
         setProfilePicture(response.data.image_file);
       } catch (error) {
-        console.error('Erro ao enviar a imagem:', error.response ? error.response.data : error.message);
+        console.error(t('image_upload_error'), error.response ? error.response.data : error.message);
       }
     }
   };
@@ -56,14 +58,14 @@ export function ProfilePicture({
               ? `http://localhost:7320/uploads/${profilePicture}`
               : '/assets/images/logos/vertical-background.png'
           }
-          alt="Foto de perfil do usuário"
+          alt={t('profile_picture')}
         />
         {ownerview && (
           <Styled.Badge>
             <AuthIconFile
               id="changeProfilePicture"
               hovercolor={theme.colors.primary}
-              name="Botão para alterar a foto do seu perfil"
+              name={t('change_profile_picture_button')}
               onChange={handlePictureChange}
             >
               <AddImageIcon />

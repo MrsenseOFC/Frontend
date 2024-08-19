@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './GridPlayers-Styles';
 import { Title } from '../Title/Title';
 import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles';
@@ -10,6 +11,7 @@ import { Text } from '../Text/Text';
 export function GridPlayers({
   title, items, publicview, ownerview,
 }) {
+  const { t } = useTranslation();
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -72,13 +74,13 @@ export function GridPlayers({
           ))}
         </GridLayoutContainer>
       ) : (
-        <Text text="Nenhum jogador foi encontrado..." />
+        <Text text={t('no_players')} />
       )}
 
       {displayItems.length > 0 && (
       <Styled.Paginate
-        previousLabel="Anterior"
-        nextLabel="Próximo"
+        previousLabel={t('previous')}
+        nextLabel={t('next')}
         breakLabel="..."
         pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
         pageRangeDisplayed={3}

@@ -5,6 +5,7 @@ import { Club } from './Components/Club/Club';
 import { Player } from './Components/Player/Player';
 import { University } from './Components/University/University';
 import { Staff } from './Components/Staff/Staff';
+import { Fan } from './Components/Fan/Fan';
 
 export function EditProfile({ type }) {
   return (
@@ -15,6 +16,7 @@ export function EditProfile({ type }) {
       {type === 'league' && <Club />}
       {type === 'university' && <University />}
       {type === 'staff' && <Staff />}
+      {type === 'fan' && <Fan />}
 
     </Styled.EditProfileContainer>
   );

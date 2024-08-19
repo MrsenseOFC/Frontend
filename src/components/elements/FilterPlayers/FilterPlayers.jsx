@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { OptionsOutline as OptionsIcons } from '@styled-icons/evaicons-outline/OptionsOutline';
 import axios from 'axios';
 import { Password } from '@styled-icons/material-outlined';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './FilterPlayers-Styles';
 import { AuthInput } from '../AuthElements/AuthInput/AuthInput';
 import { AuthDropdown } from '../AuthElements/AuthDropdown/AuthDropdown';
@@ -21,6 +22,7 @@ import { S2tContext } from '../../../contexts/s2tContext/S2tContext';
 export function FilterPlayers() {
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
+  const { t } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -63,7 +65,7 @@ export function FilterPlayers() {
             <AuthDropdown
               id="competitiveCategory"
               options={s2tState.formOptions.competitiveCategory}
-              placeholder="Categoria competitiva"
+              placeholder={t('competitive_category')}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, competitiveCategory: option }))}
             />
 
@@ -83,7 +85,7 @@ export function FilterPlayers() {
 
             <AuthDropdown
               id="filterCompetitiveLevel"
-              placeholder="Nível competitivo"
+              placeholder={t('competitive_level')}
               options={s2tState.formOptions.competitiveLevels}
               otheroption
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, competitiveLevel: option }))}
@@ -91,13 +93,13 @@ export function FilterPlayers() {
 
             <AuthDropdown
               id="filterAgeCategory"
-              placeholder="Categoria"
+              placeholder={t('category')}
               options={s2tState.formOptions.ageCategory}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, ageCategory: option }))}
             />
 
             <AuthDropdown
-              placeholder="Posição"
+              placeholder={t('position')}
               id="filterPosition"
               options={s2tState.formOptions.positions}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, position: option }))}
@@ -105,7 +107,7 @@ export function FilterPlayers() {
 
             <AuthDropdown
               id="filterLeague"
-              placeholder="Liga"
+              placeholder={t('league')}
               options={s2tState.formOptions.league}
               otheroption
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, league: option }))}
@@ -113,21 +115,21 @@ export function FilterPlayers() {
 
             <AuthDropdown
               id="filterLeg"
-              placeholder="Melhor perna"
+              placeholder={t('best_leg')}
               options={s2tState.formOptions.leg}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, bestLeg: option }))}
             />
 
             <AuthDropdown
-              id="filterAvailability"
-              placeholder="Disponibilidade"
+              id="filterAvaliability"
+              placeholder={t('avaliability')}
               options={s2tState.formOptions.avaliability}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, avaliability: option }))}
             />
 
             <AuthDropdown
               id="hasManager"
-              placeholder="Possui empresário?"
+              placeholder={t('has_manager_question')}
               options={s2tState.formOptions.manager}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, hasManager: option }))}
             />
@@ -136,7 +138,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMinimumAge_input"
               id="filterMinimumAge_input"
-              placeholder="Idade mínima"
+              placeholder={t('minimum_age')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, minimumAge: e.target.value }))}
             />
 
@@ -144,7 +146,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMaximumAge_input"
               id="filterMaximumAge_input"
-              placeholder="Idade máxima"
+              placeholder={t('maximum_age')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, maximumAge: e.target.value }))}
             />
 
@@ -152,7 +154,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMinimumPayment_input"
               id="filterMinimumPayment_input"
-              placeholder="Salário mínimo"
+              placeholder={t('minimum_payment')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, minimumPayment: e.target.value }))}
             />
 
@@ -160,7 +162,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMaximumPayment_input"
               id="filterMaximumPayment_input"
-              placeholder="Salário máximo"
+              placeholder={t('maximum_payment')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, maximumPayment: e.target.value }))}
             />
 
@@ -168,7 +170,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMinimumTransferValue_input"
               id="filterMinimumTransferValue_input"
-              placeholder="Valor mínimo de transferência"
+              placeholder={t('minimum_transfer_value')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, minimumTransferValue: e.target.value }))}
             />
 
@@ -176,7 +178,7 @@ export function FilterPlayers() {
               type="number"
               name="filterMaximumTransferValue_input"
               id="filterMaximumTransferValue_input"
-              placeholder="Valor máximo de transferência"
+              placeholder={t('maximum_transfer_value')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, maximumTransferValue: e.target.value }))}
             />
 
@@ -184,7 +186,7 @@ export function FilterPlayers() {
               type="text"
               name="filterBirthCountry_input"
               id="filterBirthCountrycountry_input"
-              placeholder="País de nascimento"
+              placeholder={t('birth_country')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, birthCountry: e.target.value }))}
             />
 
@@ -192,7 +194,7 @@ export function FilterPlayers() {
               type="text"
               name="filterPassport_input"
               id="filterPassport_input"
-              placeholder="Passaporte"
+              placeholder={t('passport')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, passport: e.target.value }))}
             />
 

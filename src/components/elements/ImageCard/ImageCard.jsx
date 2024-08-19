@@ -1,5 +1,7 @@
 import Prop from 'prop-types';
 import React from 'react';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ImageCard-Styles';
 
 import { StyledLink } from '../StyledLink/StyledLink';
@@ -7,6 +9,7 @@ import { StyledLink } from '../StyledLink/StyledLink';
 export function ImageCard({
   src, alt, title = '', islocked, path = '',
 }) {
+  const { t } = useTranslation();
   return (
 
     <Styled.ImageCardElement islocked={islocked ? 'islocked' : undefined}>
@@ -18,7 +21,7 @@ export function ImageCard({
           <Styled.LockDiv islocked={islocked ? 'islocked' : undefined}>
             <img
               src="/assets/images/pngs/padlock.png"
-              alt="cadeado"
+              alt={t('blocked')}
             />
           </Styled.LockDiv>
         )}

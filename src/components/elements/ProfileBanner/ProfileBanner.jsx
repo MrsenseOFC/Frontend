@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { ImageAdd as AddImageIcon } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ProfileBanner-Styles';
 import { AuthIconFile } from '../AuthElements/AuthIconFile/AuthIconFile';
 import { theme } from '../../../styles/theme';
@@ -12,15 +13,15 @@ import { useAuth } from '../../../contexts/AuthContext/AuthContext';
 export function ProfileBanner({ backgroundimagesrc, children, ownerview }) {
   const { currentUser } = useAuth();
   const [bannerPicture, setBannerPicture] = useState(currentUser?.profileImage || '');
+  const { t } = useTranslation();
 
   const handleBannerChange = async (event) => {
     if (!currentUser) {
-      console.error('Usuário não está logado ou não possui um ID válido');
+      console.error(t('not_logged'));
       return;
     }
 
     const newFile = event.target.files[0];
-    console.log(newFile);
 
     if (newFile) {
       const formData = new FormData();
@@ -35,7 +36,7 @@ export function ProfileBanner({ backgroundimagesrc, children, ownerview }) {
 
         setBannerPicture(response.data.image_file);
       } catch (error) {
-        console.error('Erro ao enviar a imagem:', error);
+        console.error(t('image_upload_error'), error);
       }
     }
   };
@@ -54,7 +55,7 @@ export function ProfileBanner({ backgroundimagesrc, children, ownerview }) {
       {ownerview && (
         <AuthIconFile
           id="changeBannerPicture"
-          name="Botão para alterar o banner do seu perfil"
+          name={t('change_banner_button')}
           hovercolor={theme.colors.primary}
           onChange={handleBannerChange}
         >

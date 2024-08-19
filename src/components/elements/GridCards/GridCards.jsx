@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import Prop from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './GridCards-Styles';
 import { ImageCard } from '../ImageCard/ImageCard';
 import { GridLayoutContainer, ItemContainer } from '../../GridLayout/GridLayout-Styles';
@@ -10,6 +11,7 @@ import { Text } from '../Text/Text';
 
 export function GridCards({ items, title }) {
   const [showMoreItems, setShowMoreItems] = useState(false);
+  const { t } = useTranslation();
 
   // Usando useMemo para memorizar os itens a serem renderizados
   const itemsToShow = useMemo(() => {
@@ -42,7 +44,7 @@ export function GridCards({ items, title }) {
             </>
           ) : (
             <>
-              <Text text="Nenhum dado foi encontrado..." />
+              <Text text={t('data_not_found')} />
             </>
           )}
         </GridLayoutContainer>
@@ -53,7 +55,7 @@ export function GridCards({ items, title }) {
 
       <Button
         onclick={handleShowMore}
-        text={showMoreItems ? 'Mostrar menos' : 'Mostrar mais'}
+        text={showMoreItems ? t('show_less') : t('show_more')}
         bgcolor={theme.colors.black}
         bghover={theme.colors.white}
         textcolor={theme.colors.white}

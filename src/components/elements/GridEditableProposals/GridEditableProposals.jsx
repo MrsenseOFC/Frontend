@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Prop from 'prop-types';
 import { Add } from '@styled-icons/material-outlined';
+import { t } from 'i18next';
 import * as Styled from './GridEditableProposals-Styles';
 import { Title } from '../Title/Title';
 import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles';
@@ -67,7 +68,7 @@ export function GridEditableProposals({ items, title }) {
             <>
               <Row>
                 <Title text={title} uppercase />
-                <IconDiv name="Criar nova proposta" onclick={() => setIsAddNewProposal(!isAddNewProposal)}>
+                <IconDiv name={t('create_new_opportunity')} onclick={() => setIsAddNewProposal(!isAddNewProposal)}>
                   <Add />
                 </IconDiv>
               </Row>
@@ -92,13 +93,13 @@ export function GridEditableProposals({ items, title }) {
                   </GridLayoutContainer>
                 )
                   : (
-                    <Text text="Você ainda não publicou nenhuma proposta. Que tal começar agora? Clique no ícone de ‘+’ acima para criar a sua primeira oportunidade!" />
+                    <Text text={t('no_owner_opportunities')} />
                   )}
 
               {displayItems.length > 0 && (
                 <Styled.StyledPaginate
-                  previousLabel="Anterior"
-                  nextLabel="Próximo"
+                  previousLabel={t('previous')}
+                  nextLabel={t('next')}
                   breakLabel="..."
                   pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
                   pageRangeDisplayed={3}

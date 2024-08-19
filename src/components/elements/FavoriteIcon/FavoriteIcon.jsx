@@ -2,11 +2,13 @@ import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { Favorite } from '@styled-icons/material-outlined/Favorite';
 
+import { useTranslation } from 'react-i18next';
 import * as Styled from './FavoriteIcon-Styles';
 import { IconDiv } from '../IconDiv/IconDiv';
 import { theme } from '../../../styles/theme';
 
 export function FavoriteIcon({ isfavorite, id }) {
+  const { t } = useTranslation();
   const [favorite, setFavorite] = useState(isfavorite);
 
   const handleFavoriteClick = (event) => {
@@ -21,7 +23,7 @@ export function FavoriteIcon({ isfavorite, id }) {
   return (
     <Styled.FavoriteIconElement isfavorite={favorite ? 'favorite' : undefined}>
       <IconDiv
-        name={favorite ? 'Desfavoritar' : 'Favoritar'}
+        name={favorite ? t('remove_from_favorites') : t('make_favorite')}
         hovercolor={favorite ? theme.colors.red : theme.colors.white}
         onclick={handleFavoriteClick}
       >

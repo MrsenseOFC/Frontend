@@ -142,6 +142,8 @@ export function Staff() {
     }
   };
 
+  console.log(profileData);
+
   return (
     <Styled.StaffContainer>
 
@@ -152,6 +154,15 @@ export function Staff() {
           <AuthForm onSubmit={handleSubmit}>
 
             <Subtitle text="Seu perfil" size={theme.sizes.xlarge} />
+
+            <AuthDropdown
+              title="Qual o seu tipo de perfil?"
+              id="staffProfileType"
+              placeholder="Escolha o tipo"
+              options={s2tState.formOptions.staffProfileType}
+              selectedvalue={profileData.profileType}
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, profileType: option }))}
+            />
 
             <AuthDropdown
               title="Qual o seu nível competitivo?"

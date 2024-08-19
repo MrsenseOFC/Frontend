@@ -2,13 +2,13 @@ import Prop from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import * as Styled from './LeagueNav-Styles';
+import * as Styled from './FanNav-Styles';
 
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { theme } from '../../../../styles/theme';
 import { Nav } from '../../../Nav/Nav';
 
-export function LeagueNav() {
+export function FanNav() {
   const { t } = useTranslation();
   const [activeLink, setActiveLink] = useState('');
   const location = useLocation();
@@ -19,16 +19,16 @@ export function LeagueNav() {
 
   return (
     <>
-      <Styled.LeagueNav>
+      <Styled.FanNav>
         <StyledLink
-          active={activeLink === '/league-dashboard' || activeLink === 'league-dashboard/'}
+          active={activeLink === '/fan-dashboard' || activeLink === '/fan-dashboard/'}
           path=""
           text={t('home')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
         <StyledLink
-          active={activeLink === '/league-dashboard/profile'}
+          active={activeLink === '/fan-dashboard/profile'}
           path="profile"
           text={t('profile')}
           color={theme.colors.white}
@@ -36,15 +36,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/my-squad'}
-          path="my-squad"
-          text={t('my-squad')}
-          color={theme.colors.white}
-          hovercolor={theme.colors.black}
-        />
-
-        <StyledLink
-          active={activeLink === '/league-dashboard/opportunities'}
+          active={activeLink === '/fan-dashboard/opportunities'}
           path="opportunities"
           text={t('opportunities')}
           color={theme.colors.white}
@@ -52,15 +44,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/my-opportunities'}
-          path="my-opportunities"
-          text={t('my-opportunities')}
-          color={theme.colors.white}
-          hovercolor={theme.colors.black}
-        />
-
-        <StyledLink
-          active={activeLink === '/league-dashboard/scouts'}
+          active={activeLink === '/fan-dashboard/scouts'}
           path="scouts"
           text={t('scouts')}
           color={theme.colors.white}
@@ -68,17 +52,17 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/clubs'}
+          active={activeLink === '/fan-dashboard/clubs'}
           path="clubs"
           text={t('clubs')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
-      </Styled.LeagueNav>
+      </Styled.FanNav>
 
-      <Styled.LeagueNav>
+      <Styled.FanNav>
         <StyledLink
-          active={activeLink === '/league-dashboard/players'}
+          active={activeLink === '/fan-dashboard/players'}
           path="players"
           text={t('players')}
           color={theme.colors.white}
@@ -86,7 +70,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/events'}
+          active={activeLink === '/fan-dashboard/events'}
           path="events"
           text={t('events')}
           color={theme.colors.white}
@@ -94,7 +78,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/favorites'}
+          active={activeLink === '/fan-dashboard/favorites'}
           path="favorites"
           text={t('favorites')}
           color={theme.colors.white}
@@ -102,15 +86,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/contacts'}
-          path="contacts"
-          text={t('contacts')}
-          color={theme.colors.white}
-          hovercolor={theme.colors.black}
-        />
-
-        <StyledLink
-          active={activeLink === '/league-dashboard/friends'}
+          active={activeLink === '/fan-dashboard/friends'}
           path="friends"
           text={t('friends')}
           color={theme.colors.white}
@@ -118,7 +94,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/store'}
+          active={activeLink === '/fan-dashboard/store'}
           path="store"
           text={t('store')}
           color={theme.colors.white}
@@ -126,7 +102,7 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/my-affiliates'}
+          active={activeLink === '/fan-dashboard/my-affiliates'}
           path="my-affiliates"
           text={t('my-affiliates')}
           color={theme.colors.white}
@@ -134,17 +110,17 @@ export function LeagueNav() {
         />
 
         <StyledLink
-          active={activeLink === '/league-dashboard/s2t+'}
+          active={activeLink === '/fan-dashboard/s2t+'}
           path="s2t+"
           text={t('t2s+')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />
 
-      </Styled.LeagueNav>
+      </Styled.FanNav>
     </>
   );
 }
 
-LeagueNav.propTypes = {
+FanNav.propTypes = {
 };

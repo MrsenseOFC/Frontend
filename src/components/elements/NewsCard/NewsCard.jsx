@@ -12,7 +12,7 @@ export function NewsCard({
     <Styled.NewsCardContainer>
       <StyledLink path={path}>
 
-        <Styled.NewsThumbnail src={thumbnail} alt="Thumbnail da notícia" />
+        <Styled.NewsThumbnail src={thumbnail} alt={title} />
 
         <Styled.NewsInfo>
           <Subtitle text={title} as="h5" />

@@ -6,6 +6,7 @@ import { Add as AddIcon } from '@styled-icons/material-outlined/Add';
 import { Fullscreen } from '@styled-icons/material-outlined';
 import { Delete } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './OwnerSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -23,7 +24,7 @@ export function OwnerSlide({
   const [fullscreenImage, setFullscreenImage] = useState('');
   const [deleteImage, setDeleteImage] = useState('');
   const [newImage, setNewImage] = useState('');
-
+  const { t } = useTranslation();
   const { currentUser } = useAuth();
 
   const handleFullscreen = (item) => {
@@ -41,7 +42,7 @@ export function OwnerSlide({
 
   const handleAddImage = async (event) => {
     if (!currentUser) {
-      console.error('Usuário não está logado ou não possui um ID válido');
+      console.error(t('not_logged'));
       return;
     }
 
@@ -61,7 +62,7 @@ export function OwnerSlide({
 
         setNewImage(response.data.image_file);
       } catch (error) {
-        console.error('Erro ao enviar a imagem:', error);
+        console.error(t('image_upload_error'), error);
       }
     }
   };
@@ -116,7 +117,7 @@ export function OwnerSlide({
 
                   <IconDiv
                     active={fullscreenImage === item.src}
-                    name="Tela cheia"
+                    name={t('fullscreen')}
                     onclick={() => handleFullscreen(item)}
                   >
                     <Fullscreen />
@@ -127,9 +128,9 @@ export function OwnerSlide({
                 <Column>
                   <Popup
                     isopen={deleteImage === item.id}
-                    title="Tem certeza que deseja excluir essa imagem?"
-                    firstoption="Sim"
-                    secondoption="Não"
+                    title={t('delete_image_question')}
+                    firstoption={t('yes')}
+                    secondoption={t('no')}
                     onfirstclick={() => handleConfirmDelete(item)}
                     onsecondclick={() => handleIsDeleting('')}
                   />

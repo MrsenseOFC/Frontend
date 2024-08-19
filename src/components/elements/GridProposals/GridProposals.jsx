@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Prop from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './GridProposals-Styles';
 import { Title } from '../Title/Title';
 import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles';
@@ -9,6 +10,7 @@ import { FilterProposals } from '../FilterProposals/FilterProposals';
 import { Text } from '../Text/Text';
 
 export function GridProposals({ items, title, selectedproposal }) {
+  const { t } = useTranslation();
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
@@ -84,13 +86,13 @@ export function GridProposals({ items, title, selectedproposal }) {
           </GridLayoutContainer>
         ) : (
 
-          <Text text="Nenhuma oportunidade foi encontrada...." />
+          <Text text={t('no_opportunities')} />
         )}
 
         {displayItems.length > 0 && (
           <Styled.StyledPaginate
-            previousLabel="Anterior"
-            nextLabel="Próximo"
+            previousLabel={t('previous')}
+            nextLabel={t('next')}
             breakLabel="..."
             pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
             pageRangeDisplayed={3}

@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Historic-Styles';
 import { GridOneColumn } from '../../GridOneColumn/GridOneColumn';
 import { Title } from '../Title/Title';
 import { Text } from '../Text/Text';
 
 export function Historic({ items, title }) {
+  const { t } = useTranslation();
   const orderedItems = useMemo(() => {
     if (items) {
       return [...items].sort((a, b) => {
@@ -37,7 +39,7 @@ export function Historic({ items, title }) {
           <>
             {orderedItems.map((item) => (
               <Styled.HistoricElement key={item.id}>
-                <Styled.Image src={item.image || '/assets/images/background.png'} alt="Imagem que representa o item" />
+                <Styled.Image src={item.image || '/assets/images/background.png'} alt={item.name} />
                 <Styled.Item>{item.name}</Styled.Item>
                 <Styled.Years>
                   (
@@ -54,7 +56,7 @@ export function Historic({ items, title }) {
           </>
         ) : (
           <>
-            <Text text="Nenhum dado foi encontrado..." />
+            <Text text={t('data_not_found')} />
           </>
         )}
       </GridOneColumn>

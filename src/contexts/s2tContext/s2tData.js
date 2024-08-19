@@ -1031,6 +1031,27 @@ export const s2tData = {
   },
 
   formOptions: {
+
+    staffProfileType: [
+      { value: 'performanceAnalyst', text: 'Analista de desempenho' },
+      { value: 'coachAssistant', text: 'Auxiliar Técnico' },
+      { value: 'coordinator', text: 'Coordenador' },
+      { value: 'director', text: 'Diretor' },
+      { value: 'businessMan', text: 'Empresário' },
+      { value: 'physiologist', text: 'Fisiologista' },
+      { value: 'physiotherapist', text: 'Fisioterapeuta' },
+      { value: 'manager', text: 'Gerente' },
+      { value: 'massageTherapist', text: 'Massagista' },
+      { value: 'doctor', text: 'Médico' },
+      { value: 'nutritionist', text: 'Nutricionista' },
+      { value: 'goalkeeperTrainer', text: 'Preparador de goleiro' },
+      { value: 'fitnessTrainer', text: 'Preparador físico' },
+      { value: 'tacticalTrainer', text: 'Preparador tático' },
+      { value: 'psychologist', text: 'Psicólogo' },
+      { value: 'scout', text: 'Scout' },
+      { value: 'coach', text: 'Técnico' },
+    ],
+
     competitiveCategory: [
       { value: 'professional', text: 'Profissional' },
       { value: 'semi-professional', text: 'Semi-Profissional' },
