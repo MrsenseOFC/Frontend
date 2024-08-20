@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -17,8 +17,13 @@ import { Button } from '../../components/elements/Button/Button';
 import { ListContainer, ListItem } from '../../components/elements/List/List-Styles';
 import { Bubble } from '../../components/Bubble/Bubble';
 import { theme } from '../../styles/theme';
+import { S2tContext } from '../../contexts/s2tContext/S2tContext';
 
 export function Register() {
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
+
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +31,9 @@ export function Register() {
   const [profileType, setProfileType] = useState('');
   const [competitiveCategory, setCompetitiveCategory] = useState('');
   const [competitiveLevel, setCompetitiveLevel] = useState('');
-  const [teamCategory, setTeamCategory] = useState('');
+  const [modality, setModality] = useState('');
+  const [teamModality, setTeamModality] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -38,13 +45,14 @@ export function Register() {
     }
 
     const input = {
+      name,
       username,
       email,
       password,
       profile_type: profileType,
       competitive_category: competitiveCategory,
       competitive_level: competitiveLevel,
-      team_category: profileType === 'player' ? teamCategory : '',
+      modality: profileType === 'player' ? modality : '',
     };
 
     try {
@@ -58,31 +66,6 @@ export function Register() {
       alert('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
     }
   };
-
-  const profileTypeOptions = [
-    { value: 'player', text: 'Atleta' },
-    { value: 'scout', text: 'Scout' },
-    { value: 'club', text: 'Clube' },
-    { value: 'agent', text: 'Agente' },
-    { value: 'league', text: 'Liga' },
-    { value: 'university', text: 'Universidade' },
-    { value: 'staff', text: 'Staff' },
-    { value: 'exchangeAgencie', text: 'Agência de intercâmbio' },
-    { value: 'fan', text: 'Fã' },
-  ];
-
-  const competitiveCategoryOptions = [
-    { value: 'pro', text: 'Profissional' },
-    { value: 'semiPro', text: 'Semi-Profissional' },
-    { value: 'academic', text: 'Universitário' },
-    { value: 'amateur', text: 'Amador' },
-    { value: 'recreational', text: 'Recreacional' },
-  ];
-
-  const teamCategoryOptions = [
-    { value: 'male', text: 'Masculino' },
-    { value: 'female', text: 'Feminino' },
-  ];
 
   return (
     <>
@@ -154,16 +137,18 @@ export function Register() {
         <AuthContainer>
           <Subtitle text="Registre-se" uppercase as="h4" size={theme.sizes.xlarge} />
           <AuthForm onSubmit={handleSubmit}>
+
             <AuthInput
               type="text"
               name="username"
               id="username"
-              title="Nome"
-              placeholder="Seu nome de usuário"
+              title="Nome de usuário"
+              placeholder="Seu nome de usuário na T2S"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
+
             <AuthInput
               type="email"
               name="email"
@@ -198,11 +183,33 @@ export function Register() {
               title="Qual o seu tipo de perfil?"
               id="profileType"
               placeholder="Escolha seu tipo de perfil"
-              options={profileTypeOptions}
+              options={s2tState.formOptions.profileType}
               selectedvalue={profileType}
               onDropdownChange={(value) => setProfileType(value)}
               required
             />
+
+            {(profileType && profileType.length > 0) && (
+              <AuthInput
+                type="text"
+                name="name"
+                id="name"
+                title="Nome"
+                placeholder={
+               {
+                 player: 'Qual o seu nome completo',
+                 club: 'Qual o nome do seu clube',
+                 university: 'Qual o nome da sua universidade',
+                 agency: 'Qual o nome da sua agência',
+                 league: 'Qual o nome da sua liga',
+                 staff: 'Qual o seu nome completo',
+                 fan: 'Qual o seu nome completo',
+               }[profileType] || '' // string vazia se nenhum perfil corresponder
+               }
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            )}
 
             {(profileType !== 'fan' && profileType !== 'exchangeAgencie') && (
 
@@ -212,7 +219,7 @@ export function Register() {
                 title="Qual categoria competitiva?"
                 id="competitiveCategory"
                 placeholder="Escolha a categoria"
-                options={competitiveCategoryOptions}
+                options={s2tState.formOptions.competitiveCategory}
                 selectedvalue={competitiveCategory}
                 onDropdownChange={(value) => setCompetitiveCategory(value)}
                 required
@@ -221,12 +228,23 @@ export function Register() {
               {/* -------------------------Modalidade------------------------- */}
               {profileType === 'player' && (
               <AuthDropdown
-                title="Deseja atuar em um time de qual categoria?"
-                id="teamCategory"
-                placeholder="Escolha a categoria do time"
-                options={teamCategoryOptions}
-                selectedvalue={teamCategory}
-                onDropdownChange={(value) => setTeamCategory(value)}
+                title="Deseja atuar em qual modalidade?"
+                id="playerModality"
+                placeholder="Escolha a modalidade"
+                options={s2tState.formOptions.modality}
+                selectedvalue={modality}
+                onDropdownChange={(value) => setModality(value)}
+              />
+              )}
+
+              {profileType === 'club' && (
+              <AuthDropdown
+                title="Qual a modalidade do seu Clube?"
+                id="clubModality"
+                placeholder="Escolha a modalidade"
+                options={s2tState.formOptions.modality}
+                selectedvalue={modality}
+                onDropdownChange={(value) => setModality(value)}
               />
               )}
             </>

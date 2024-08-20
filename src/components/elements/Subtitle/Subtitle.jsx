@@ -1,9 +1,10 @@
 import Prop from 'prop-types';
 import React from 'react';
 import * as Styled from './Subtitle-Styles';
+import { theme } from '../../../styles/theme';
 
 export function Subtitle({
-  text = '', color = 'white', size = '18px', uppercase = false, as = 'h2',
+  text = '', color = theme.colors.white, size = theme.sizes.large, uppercase = false, as = 'h2',
 }) {
   return (
     <Styled.SubtitleElement as={as} color={color} size={size} uppercase={uppercase ? 'uppercase' : 'none'}>

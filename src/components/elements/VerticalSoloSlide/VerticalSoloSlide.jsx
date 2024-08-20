@@ -40,7 +40,16 @@ export function VerticalSoloSlide({
           <>
             {items.map((item) => (
               <SwiperSlide key={item.id} lazy={lazy}>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/5-sXTlF6Sd4?si=-FVFNX-zSAhGhulp" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen />
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/5-sXTlF6Sd4?si=-FVFNX-zSAhGhulp"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                />
               </SwiperSlide>
             ))}
           </>

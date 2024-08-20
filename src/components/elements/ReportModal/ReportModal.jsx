@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
+import { t } from 'i18next';
 import * as Styled from './ReportModal-Styles';
 import { AuthDropdown } from '../AuthElements/AuthDropdown/AuthDropdown';
 import { IconDiv } from '../IconDiv/IconDiv';
@@ -64,11 +65,11 @@ export function ReportModal({ onclick, id }) {
             {!reported && (
             <>
               <Row>
-                <Subtitle text="Reportar" uppercase size={theme.sizes.xxlarge} />
+                <Subtitle text={t('report')} uppercase size={theme.sizes.xxlarge} />
 
                 <IconDiv
                   onclick={onclick}
-                  name="Fechar"
+                  name={t('close')}
                   hovercolor={theme.colors.red}
                 >
                   <CloseIcon />
@@ -78,9 +79,9 @@ export function ReportModal({ onclick, id }) {
 
               <AuthForm onSubmit={handleSubmit}>
                 <AuthDropdown
-                  title="Por qual motivo está reportando essa foto ou vídeo?"
-                  id="competitiveCategory"
-                  placeholder="Escolha o motivo"
+                  title={t('report_reason_question')}
+                  id="reportReason"
+                  placeholder={t('select_reason')}
                   options={s2tState.formOptions.reportMedia}
                   onDropdownChange={(option) => setReportData((prevData) => ({ ...prevData, reportReason: option }))}
                   required
@@ -88,7 +89,7 @@ export function ReportModal({ onclick, id }) {
 
                 <Column>
                   <TextArea
-                    placeholder="Insira mais detalhes sobre o motivo (Opcional)"
+                    placeholder={t('select_report_details')}
                     info="reportDetails"
                     name="reportDetails"
                     onChange={(e) => setReportData((prevData) => ({ ...prevData, reportDetails: e.target.value }))}
@@ -99,7 +100,7 @@ export function ReportModal({ onclick, id }) {
                 <AuthButton
                   name="report_submit"
                   id="report_submit"
-                  value="Confirmar"
+                  value={t('confirm')}
                 />
                 )}
 

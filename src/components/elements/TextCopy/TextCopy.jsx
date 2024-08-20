@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { ContentCopy as CopyIcon } from '@styled-icons/material-outlined';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './TextCopy-Styles';
 import { Text } from '../Text/Text';
 import { IconDiv } from '../IconDiv/IconDiv';
@@ -9,16 +10,17 @@ import { Row } from '../../RowContainer/Row';
 import { theme } from '../../../styles/theme';
 
 export function TextCopy({ title, text }) {
+  const { t } = useTranslation();
   const [message, setMessage] = useState(''); // Armazena a mensagem exibida
   const [isCopied, setIsCopied] = useState(false); // Indica se o texto foi copiado
 
   const handleCopyText = async () => {
     try {
       await navigator.clipboard.writeText(text); // Assume que 'text' está definido em outro lugar
-      setMessage('Texto copiado com sucesso!');
+      setMessage(t('text_copied_sucess'));
       setIsCopied(true);
     } catch (error) {
-      setMessage('Erro ao copiar o texto!');
+      setMessage(t('text_copy_error'));
       setIsCopied(false);
     }
   };
@@ -44,7 +46,7 @@ export function TextCopy({ title, text }) {
       <Row>
         <Styled.TextCopyElement active={isCopied ? 'active' : undefined}>
           <Text text={text} color={isCopied ? theme.colors.primary : theme.colors.white} />
-          <IconDiv name="Copiar" onclick={handleCopyText} active={isCopied}>
+          <IconDiv name={t('copy')} onclick={handleCopyText} active={isCopied}>
             <CopyIcon />
           </IconDiv>
         </Styled.TextCopyElement>
@@ -56,8 +58,3 @@ export function TextCopy({ title, text }) {
 
   );
 }
-
-TextCopy.propTypes = {
-  title: Prop.string,
-  text: Prop.string.isRequired,
-};

@@ -511,18 +511,13 @@ export const s2tData = {
 
   videos: {
     trending: [
-      { id: '1', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '2', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '3', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '4', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '5', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '6', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '7', src: '/assets/videos/video.mp4', type: 'video' },
-      { id: '8', src: '/assets/videos/video.mp4', type: 'video' },
+      { id: '1', src: '/assets/videos/silas.mp4' },
+      { id: '2', src: '/assets/videos/silas2.mp4' },
     ],
   },
 
   leagues: [
+
     { id: '1', name: 'Brasileirão', profileImageSrc: '/assets/images/pngs/brasileirao.png' },
   ],
 
@@ -1032,24 +1027,38 @@ export const s2tData = {
 
   formOptions: {
 
+    profileType: [
+      { value: 'player', text: 'Atleta' },
+      { value: 'club', text: 'Clube' },
+      { value: 'league', text: 'Liga' },
+      { value: 'university', text: 'Universidade' },
+      { value: 'staff', text: 'Comissão técnica' },
+      { value: 'agency', text: 'Agência' },
+      { value: 'fan', text: 'Fã' },
+    ],
+
     staffProfileType: [
-      { value: 'performanceAnalyst', text: 'Analista de desempenho' },
-      { value: 'coachAssistant', text: 'Auxiliar Técnico' },
+      { value: 'performance-analyst', text: 'Analista de desempenho' },
+      { value: 'coach-assistant', text: 'Auxiliar Técnico' },
       { value: 'coordinator', text: 'Coordenador' },
       { value: 'director', text: 'Diretor' },
-      { value: 'businessMan', text: 'Empresário' },
+      { value: 'business-man', text: 'Empresário' },
       { value: 'physiologist', text: 'Fisiologista' },
       { value: 'physiotherapist', text: 'Fisioterapeuta' },
       { value: 'manager', text: 'Gerente' },
-      { value: 'massageTherapist', text: 'Massagista' },
+      { value: 'massage-therapist', text: 'Massagista' },
       { value: 'doctor', text: 'Médico' },
       { value: 'nutritionist', text: 'Nutricionista' },
-      { value: 'goalkeeperTrainer', text: 'Preparador de goleiro' },
-      { value: 'fitnessTrainer', text: 'Preparador físico' },
-      { value: 'tacticalTrainer', text: 'Preparador tático' },
+      { value: 'goalkeeper-trainer', text: 'Preparador de goleiro' },
+      { value: 'fitness-trainer', text: 'Preparador físico' },
+      { value: 'tactical-trainer', text: 'Preparador tático' },
       { value: 'psychologist', text: 'Psicólogo' },
       { value: 'scout', text: 'Scout' },
       { value: 'coach', text: 'Técnico' },
+    ],
+
+    agencyProfileType: [
+      { value: 'exchange-agency', text: 'Agência de intercâmbio' },
     ],
 
     competitiveCategory: [
@@ -1081,14 +1090,14 @@ export const s2tData = {
     ],
 
     ageCategory: [
-      { value: 'sub7', text: 'Sub-7 (6 e 7 anos)' },
-      { value: 'sub8', text: 'Sub-8 (8 anos)' },
-      { value: 'sub9', text: 'Sub-9 (8 e 9 anos)' },
-      { value: 'sub11', text: 'Sub-11 (10 e 11 anos)' },
-      { value: 'sub13', text: 'Sub-13 (12 e 13 anos)' },
-      { value: 'sub15', text: 'Sub-15 (14 e 15 anos)' },
-      { value: 'sub17', text: 'Sub-17 (16 e 17 anos)' },
-      { value: 'sub20', text: 'Sub-20 (18, 19 e 20 anos)' },
+      { value: 'sub-7', text: 'Sub-7 (6 e 7 anos)' },
+      { value: 'sub-8', text: 'Sub-8 (8 anos)' },
+      { value: 'sub-9', text: 'Sub-9 (8 e 9 anos)' },
+      { value: 'sub-11', text: 'Sub-11 (10 e 11 anos)' },
+      { value: 'sub-13', text: 'Sub-13 (12 e 13 anos)' },
+      { value: 'sub-15', text: 'Sub-15 (14 e 15 anos)' },
+      { value: 'sub-17', text: 'Sub-17 (16 e 17 anos)' },
+      { value: 'sub-20', text: 'Sub-20 (18, 19 e 20 anos)' },
       { value: 'adult', text: 'Adulto (Já atua no time principal)' },
     ],
 
@@ -1120,6 +1129,11 @@ export const s2tData = {
       { value: 'left', label: 'Esquerda' },
     ],
 
+    modality: [
+      { value: 'male', text: 'Masculino' },
+      { value: 'female', text: 'Feminino' },
+    ],
+
     manager: [
       { value: 'yes', label: 'Sim' },
       { value: 'no', label: 'Não' },
@@ -1141,9 +1155,9 @@ export const s2tData = {
     ],
 
     avaliability: [
-      { value: 'activeFree', text: 'Ativo - Sem contrato' },
+      { value: 'active-tree', text: 'Ativo - Sem contrato' },
       { value: 'active', text: 'Ativo - Com contrato' },
-      { value: 'injuredFree', text: 'Lesionado - Sem contrato' },
+      { value: 'injured-free', text: 'Lesionado - Sem contrato' },
       { value: 'injured', text: 'Lesionado - Com contrato' },
     ],
 
@@ -1154,15 +1168,15 @@ export const s2tData = {
     ],
 
     reportMedia: [
-      { value: 'inappropriateContent', text: 'Contéudo inadequado' },
+      { value: 'inappropriate-content', text: 'Contéudo inadequado' },
       { value: 'copyright', text: 'Direitos Autorais' },
-      { value: 'mediaManipulation', text: 'Manipulação de Mídia' },
-      { value: 'poorQuality', text: 'Qualidade Ruim' },
+      { value: 'media-manipulation', text: 'Manipulação de Mídia' },
+      { value: 'poor-quality', text: 'Qualidade Ruim' },
     ],
 
     eventFormat: [
       { value: 'online', text: 'Online' },
-      { value: 'inPerson', text: 'Presencial' },
+      { value: 'in-person', text: 'Presencial' },
     ],
 
   },

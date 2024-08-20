@@ -142,7 +142,7 @@ export function OwnerSlide({
           ))}
 
           <SwiperSlide>
-            <AuthIconFile onChange={handleAddImage} id="addImage" accept="image/*" hovercolor={theme.colors.secondary} name="Botão para adicionar uma novo foto ou um novo vídeo ao seu perfil">
+            <AuthIconFile onChange={handleAddImage} id="addImage" accept="image/*" hovercolor={theme.colors.secondary} name={t('add_photo_button')}>
               <AddIcon />
             </AuthIconFile>
           </SwiperSlide>

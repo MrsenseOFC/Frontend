@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React, { useState } from 'react';
 
 import { Delete } from '@styled-icons/fluentui-system-filled/Delete';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './RemoveIcon-Styles';
 import { IconDiv } from '../IconDiv/IconDiv';
 import { theme } from '../../../styles/theme';
@@ -12,6 +13,7 @@ import { Row } from '../../RowContainer/Row';
 
 export function RemoveIcon({ id, message }) {
   const [isRemoving, setIsRemoving] = useState();
+  const { t } = useTranslation();
 
   const handleRemoveClick = (e) => {
     e.stopPropagation();
@@ -37,7 +39,7 @@ export function RemoveIcon({ id, message }) {
 
           <Styled.OptionsContainer>
             <Button
-              text="Sim"
+              text={t('yes')}
               onclick={(e) => HandleRemove(e)}
               bgcolor={theme.colors.white}
               bghover={theme.colors.mediumred}
@@ -48,7 +50,7 @@ export function RemoveIcon({ id, message }) {
             />
 
             <Button
-              text="Não"
+              text={t('no')}
               onclick={(e) => HandleCancelRemove(e)}
               bgcolor={theme.colors.white}
               bghover={theme.colors.primary}
@@ -64,7 +66,7 @@ export function RemoveIcon({ id, message }) {
         <Styled.RemoveIconElement isremoving={isRemoving ? 'isremoving' : undefined}>
           <IconDiv
             hovercolor={theme.colors.red}
-            name="Remover"
+            name={t('remove')}
             onclick={handleRemoveClick}
           >
             <Delete />

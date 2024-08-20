@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Slide-Styles';
 import { Title } from '../Title/Title';
 import { ImageCard } from '../ImageCard/ImageCard';
@@ -10,6 +11,8 @@ import { Text } from '../Text/Text';
 export function Slide({
   items, title,
 }) {
+  const { t } = useTranslation();
+
   // Organiza os itens para que os que estejam bloqueados venham após os que não estejam
   const orderedItems = [...items].sort((itemA, itemB) => {
     if (itemA.islocked && !itemB.islocked) {
@@ -57,7 +60,7 @@ export function Slide({
               <SwiperSlide key={item.id}>
                 <ImageCard
                   src={item.src}
-                  alt="Imagem do card"
+                  alt={item.title}
                   title={item.title}
                   islocked={item.islocked}
                   path={item.islocked ? '/plans' : item.path}
@@ -66,7 +69,7 @@ export function Slide({
             ))}
           </>
         ) : (
-          <Text text="Nenhum dado foi encontrado..." />
+          <Text text={t('data_not_found')} />
 
         )}
 

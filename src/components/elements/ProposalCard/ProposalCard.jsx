@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React from 'react';
 import { FormNew, SportSoccer } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ProposalCard-Styles';
 import { StyledLink } from '../StyledLink/StyledLink';
 import { InfoInRow } from '../InfoInRow/InfoInRow';
@@ -15,6 +16,7 @@ import { theme } from '../../../styles/theme';
 export function ProposalCard({
   id, from = '', date = '', opportunity = '', country = '', org = '', orglogo = '', orgpath = '', category = '', onclick, publicview, ownerview, isapplied,
 }) {
+  const { t } = useTranslation();
   return (
     <Styled.ProposalCardElement onClick={onclick}>
 
@@ -26,9 +28,9 @@ export function ProposalCard({
 
       <CenterColumn>
 
-        {from && <InfoInRow infotitle="Pedido de" info={from} />}
-        {date && <InfoInRow infotitle="Publicada em" info={date} />}
-        {category && <InfoInRow infotitle="Categoria" info={category} />}
+        {from && <InfoInRow infotitle={t('opportunity_from')} info={from} />}
+        {date && <InfoInRow infotitle={t('published_in')} info={date} />}
+        {category && <InfoInRow infotitle={t('category')} info={category} />}
 
       </CenterColumn>
 
@@ -40,7 +42,7 @@ export function ProposalCard({
       </CenterColumn>
 
       {publicview && <FavoriteIcon id={id} />}
-      {ownerview && <RemoveIcon id={id} message="Tem certeza de que deseja excluir esta oportunidade?" />}
+      {ownerview && <RemoveIcon id={id} message={t('delete_opportunity_question')} />}
 
     </Styled.ProposalCardElement>
   );

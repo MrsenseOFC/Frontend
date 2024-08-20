@@ -1,9 +1,10 @@
 import Prop from 'prop-types';
 import React from 'react';
 import * as Styled from './StyledLink-Styles';
+import { theme } from '../../../styles/theme';
 
 export function StyledLink({
-  newtab = false, color = 'white', hovercolor = 'lightgray', text = '', path, children = '', active, onclick,
+  newtab = false, color = theme.colors.white, hovercolor = theme.colors.lightgray, text = '', path, children = '', active, onclick,
 }) {
   return (
     <Styled.LinkContainer onClick={onclick} to={path} color={color} hovercolor={hovercolor} active={active ? 'active' : undefined} target={newtab ? '_blank' : '_self'}>

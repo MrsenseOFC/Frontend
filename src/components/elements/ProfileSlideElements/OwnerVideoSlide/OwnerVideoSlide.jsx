@@ -6,6 +6,7 @@ import { Add as AddIcon } from '@styled-icons/material-outlined/Add';
 import { Fullscreen } from '@styled-icons/material-outlined';
 import { Delete } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './OwnerVideoSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -19,6 +20,7 @@ import { useAuth } from '../../../../contexts/AuthContext/AuthContext';
 export function OwnerVideoSlide({
   items, title,
 }) {
+  const { t } = useTranslation();
   const [fullscreenVideo, setFullscreenVideo] = useState('');
   const [deleteVideo, setDeleteVideo] = useState('');
   const [newVideo, setNewVideo] = useState('');
@@ -39,7 +41,7 @@ export function OwnerVideoSlide({
 
   const handleAddVideo = async (event) => {
     if (!currentUser) {
-      console.error('Usuário não está logado ou não possui um ID válido');
+      console.error(t('not_logged'));
       return;
     }
 
@@ -59,7 +61,7 @@ export function OwnerVideoSlide({
 
         setNewVideo(response.data.video_file);
       } catch (error) {
-        console.error('Erro ao enviar o vídeo:', error);
+        console.error(t('video_upload_error'), error);
       }
     }
   };
@@ -116,7 +118,7 @@ export function OwnerVideoSlide({
                   <IconDiv
                     active={fullscreenVideo === item.src}
                     onclick={() => handleFullscreen(item)}
-                    name="Tela cheia"
+                    name={t('fullscreen')}
                   >
                     <Fullscreen />
                   </IconDiv>
@@ -126,7 +128,7 @@ export function OwnerVideoSlide({
                 <Column>
                   <Popup
                     isopen={deleteVideo === item.id}
-                    title="Tem certeza que deseja excluir esse vídeo?"
+                    title={t('delete_video_question')}
                     firstoption="Sim"
                     secondoption="Não"
                     onfirstclick={() => handleConfirmDelete(item)}
@@ -145,7 +147,7 @@ export function OwnerVideoSlide({
               id="addVideo"
               accept="video/*"
               hovercolor={theme.colors.secondary}
-              name="Botão para adicionar uma novo foto ou um novo vídeo ao seu perfil"
+              name={t('add_video_button')}
             >
               <AddIcon />
             </AuthIconFile>

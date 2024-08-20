@@ -246,7 +246,7 @@ export function Home() {
 
       <Slide items={s2tState.photos?.usersType || []} />
 
-      <BannerSlide title={t('trending_videos')} lazy backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" backgroundfixed>
+      <BannerSlide title={t('trending_videos')} backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" backgroundfixed>
         <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('professional')} />
         <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('semi_professional')} />
         <VerticalVideoSlide size="300px" items={s2tState.videos?.trending || []} title={t('university')} />

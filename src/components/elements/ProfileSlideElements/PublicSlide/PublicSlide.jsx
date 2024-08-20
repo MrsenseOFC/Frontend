@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import { Fullscreen } from '@styled-icons/material-outlined';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PublicSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -16,6 +17,7 @@ import { ReportIcon } from '../../ReportIcon/ReportIcon';
 export function PublicSlide({
   items, title,
 }) {
+  const { t } = useTranslation();
   const [reportingImage, setReportingImage] = useState('');
   const [fullscreenImage, setFullscreenImage] = useState('');
 
@@ -81,7 +83,7 @@ export function PublicSlide({
 
                   <IconDiv
                     active={fullscreenImage === item.src}
-                    name="Tela cheia"
+                    name={t('fullscreen')}
                     onclick={() => handleFullscreen(item)}
                   >
                     <Fullscreen />

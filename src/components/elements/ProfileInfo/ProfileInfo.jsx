@@ -19,6 +19,7 @@ export function ProfileInfo({ items }) {
     birthCity: 'Nascimento',
     weight: 'Peso',
     height: 'Altura',
+    nationality: 'Nacionalidade',
     primaryNationality: 'Nacionalidade primária',
     secondaryNationality: 'Nacionalidade secundária',
     passports: 'Passaportes',

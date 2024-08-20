@@ -2,12 +2,15 @@ import Prop from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './TextSlide-Styles';
 import { Title } from '../Title/Title';
 import { ImageText } from '../ImageText/ImageText';
 import { Text } from '../Text/Text';
 
 export function TextSlide({ items, title }) {
+  const { t } = useTranslation();
+
   const orderedItems = useMemo(() => {
     if (items && items.length > 0) {
       return items.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -55,7 +58,7 @@ export function TextSlide({ items, title }) {
             ))}
           </>
         ) : (
-          <Text text="Nenhum dado foi encontrado..." />
+          <Text text={t('data_not_found')} />
         ) }
 
       </Swiper>
