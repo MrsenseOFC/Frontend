@@ -516,11 +516,6 @@ export const s2tData = {
     ],
   },
 
-  leagues: [
-
-    { id: '1', name: 'Brasileirão', profileImageSrc: '/assets/images/pngs/brasileirao.png' },
-  ],
-
   users: {
     scouts: [
       { id: '1', name: 'Melissa de Lima', profileImageSrc: '/assets/images/background.png' },
@@ -1038,84 +1033,84 @@ export const s2tData = {
     ],
 
     staffProfileType: [
-      { value: 'performance-analyst', text: 'Analista de desempenho' },
-      { value: 'coach-assistant', text: 'Auxiliar Técnico' },
+      { value: 'performance_analyst', text: 'Analista de desempenho' },
+      { value: 'coach_assistant', text: 'Auxiliar Técnico' },
       { value: 'coordinator', text: 'Coordenador' },
       { value: 'director', text: 'Diretor' },
-      { value: 'business-man', text: 'Empresário' },
+      { value: 'business_man', text: 'Empresário' },
       { value: 'physiologist', text: 'Fisiologista' },
       { value: 'physiotherapist', text: 'Fisioterapeuta' },
       { value: 'manager', text: 'Gerente' },
-      { value: 'massage-therapist', text: 'Massagista' },
+      { value: 'massage_therapist', text: 'Massagista' },
       { value: 'doctor', text: 'Médico' },
       { value: 'nutritionist', text: 'Nutricionista' },
-      { value: 'goalkeeper-trainer', text: 'Preparador de goleiro' },
-      { value: 'fitness-trainer', text: 'Preparador físico' },
-      { value: 'tactical-trainer', text: 'Preparador tático' },
+      { value: 'goalkeeper_trainer', text: 'Preparador de goleiro' },
+      { value: 'physical_trainer', text: 'Preparador físico' },
+      { value: 'tactical_trainer', text: 'Preparador tático' },
       { value: 'psychologist', text: 'Psicólogo' },
       { value: 'scout', text: 'Scout' },
       { value: 'coach', text: 'Técnico' },
     ],
 
     agencyProfileType: [
-      { value: 'exchange-agency', text: 'Agência de intercâmbio' },
+      { value: 'exchange_agency', text: 'Agência de intercâmbio' },
     ],
 
     competitiveCategory: [
       { value: 'professional', text: 'Profissional' },
-      { value: 'semi-professional', text: 'Semi-Profissional' },
+      { value: 'semi_professional', text: 'Semi-Profissional' },
       { value: 'academic', text: 'Universitário' },
       { value: 'amateur', text: 'Amador' },
       { value: 'recreational', text: 'Recreacional' },
     ],
 
     competitiveLevels: [
-      { value: 'serie-A', text: 'Serie A' },
-      { value: 'serie-B', text: 'Serie B' },
-      { value: 'serie-C', text: 'Serie C' },
-      { value: 'serie-D', text: 'Serie D' },
+      { value: 'serie_a', text: 'Serie A' },
+      { value: 'serie_b', text: 'Serie B' },
+      { value: 'serie_c', text: 'Serie C' },
+      { value: 'serie_d', text: 'Serie D' },
     ],
 
     universityCompetitiveLevels: [
-      { value: 'ncaa1', text: 'NCAA 1 (EUA)' },
-      { value: 'ncaa2', text: 'NCAA 2 (EUA)' },
-      { value: 'ncaa3', text: 'NCAA 3 (EUA)' },
-      { value: 'naia1', text: 'NAIA 1 (EUA)' },
-      { value: 'naia2', text: 'NAIA 2 (EUA)' },
-      { value: 'nccaa1', text: 'NCCAA 1 (EUA)' },
-      { value: 'nccaa2', text: 'NCCAA 2 (EUA)' },
-      { value: 'njcaa1', text: 'NJCAA 1 (EUA)' },
-      { value: 'njcaa2', text: 'NJCAA 2 (EUA)' },
-      { value: 'njcaa3', text: 'NJCAA 3 (EUA)' },
+      { value: 'ncaa_1', text: 'NCAA 1 (EUA)' },
+      { value: 'ncaa_2', text: 'NCAA 2 (EUA)' },
+      { value: 'ncaa_3', text: 'NCAA 3 (EUA)' },
+      { value: 'naia_1', text: 'NAIA 1 (EUA)' },
+      { value: 'naia_2', text: 'NAIA 2 (EUA)' },
+      { value: 'nccaa_1', text: 'NCCAA 1 (EUA)' },
+      { value: 'nccaa_2', text: 'NCCAA 2 (EUA)' },
+      { value: 'njcaa_1', text: 'NJCAA 1 (EUA)' },
+      { value: 'njcaa_2', text: 'NJCAA 2 (EUA)' },
+      { value: 'njcaa_3', text: 'NJCAA 3 (EUA)' },
     ],
 
     ageCategory: [
-      { value: 'sub-7', text: 'Sub-7 (6 e 7 anos)' },
-      { value: 'sub-8', text: 'Sub-8 (8 anos)' },
-      { value: 'sub-9', text: 'Sub-9 (8 e 9 anos)' },
-      { value: 'sub-11', text: 'Sub-11 (10 e 11 anos)' },
-      { value: 'sub-13', text: 'Sub-13 (12 e 13 anos)' },
-      { value: 'sub-15', text: 'Sub-15 (14 e 15 anos)' },
-      { value: 'sub-17', text: 'Sub-17 (16 e 17 anos)' },
-      { value: 'sub-20', text: 'Sub-20 (18, 19 e 20 anos)' },
+      { value: 'sub_7', text: 'Sub-7 (6 e 7 anos)' },
+      { value: 'sub_8', text: 'Sub-8 (8 anos)' },
+      { value: 'sub_9', text: 'Sub-9 (8 e 9 anos)' },
+      { value: 'sub_11', text: 'Sub-11 (10 e 11 anos)' },
+      { value: 'sub_13', text: 'Sub-13 (12 e 13 anos)' },
+      { value: 'sub_15', text: 'Sub-15 (14 e 15 anos)' },
+      { value: 'sub_17', text: 'Sub-17 (16 e 17 anos)' },
+      { value: 'sub_20', text: 'Sub-20 (18, 19 e 20 anos)' },
       { value: 'adult', text: 'Adulto (Já atua no time principal)' },
     ],
 
     positions: [
       { value: 'goalkeeper', text: 'Goleiro' },
-      { value: 'left-back', text: 'Lateral Esquerdo' },
-      { value: 'right-back', text: 'Lateral Direito' },
-      { value: 'center-back', text: 'Zagueiro' },
-      { value: 'wing-back', text: 'Ala' },
-      { value: 'defensive-midfielder', text: 'Primeiro Volante' },
-      { value: 'central-midfielder', text: 'Meio-Campista' },
-      { value: 'attacking-midfielder', text: 'Meia Ofensivo' },
-      { value: 'wide-midfielder', text: 'Meia Lateral' },
-      { value: 'second-striker', text: 'Segundo atacante' },
-      { value: 'left-winger', text: 'Ponta Esquerda' },
-      { value: 'right-winger', text: 'Ponta Direita' },
-      { value: 'center-forward', text: 'Centroavante' },
-      { value: 'not-specified', text: 'Não especificado' },
+      { value: 'left_back', text: 'Lateral Esquerdo' },
+      { value: 'right_back', text: 'Lateral Direito' },
+      { value: 'center_back', text: 'Zagueiro' },
+      { value: 'wing_back', text: 'Ala' },
+      { value: 'defensive_midfielder', text: 'Primeiro Volante' },
+      { value: 'central_midfielder', text: 'Meio-Campista' },
+      { value: 'attacking_midfielder', text: 'Meia Ofensivo' },
+      { value: 'wide_midfielder', text: 'Meia Lateral' },
+      { value: 'second_striker', text: 'Segundo atacante' },
+      { value: 'left_winger', text: 'Ponta Esquerda' },
+      { value: 'right_winger', text: 'Ponta Direita' },
+      { value: 'center_forward', text: 'Centroavante' },
+      { value: 'not_specified', text: 'Não especificado' },
     ],
 
     currency: [
@@ -1149,34 +1144,33 @@ export const s2tData = {
     ],
 
     language: [
-      { value: 'portuguese-br', text: 'Português' },
+      { value: 'portuguese_br', text: 'Português' },
       { value: 'english', text: 'Inglês' },
       { value: 'spanish', text: 'Espanhol' },
     ],
 
     avaliability: [
-      { value: 'active-tree', text: 'Ativo - Sem contrato' },
+      { value: 'active_tree', text: 'Ativo - Sem contrato' },
       { value: 'active', text: 'Ativo - Com contrato' },
-      { value: 'injured-free', text: 'Lesionado - Sem contrato' },
+      { value: 'injured_free', text: 'Lesionado - Sem contrato' },
       { value: 'injured', text: 'Lesionado - Com contrato' },
     ],
 
     opportunityType: [
       { value: 'scouts', text: 'Scouts' },
-      { value: 'agents', text: 'Agentes' },
       { value: 'clubs', text: 'Clubes' },
     ],
 
     reportMedia: [
-      { value: 'inappropriate-content', text: 'Contéudo inadequado' },
+      { value: 'inappropriate_content', text: 'Contéudo inapropriado' },
       { value: 'copyright', text: 'Direitos Autorais' },
-      { value: 'media-manipulation', text: 'Manipulação de Mídia' },
-      { value: 'poor-quality', text: 'Qualidade Ruim' },
+      { value: 'media_manipulation', text: 'Manipulação de Mídia' },
+      { value: 'poor_quality', text: 'Qualidade Ruim' },
     ],
 
     eventFormat: [
       { value: 'online', text: 'Online' },
-      { value: 'in-person', text: 'Presencial' },
+      { value: 'in_person', text: 'Presencial' },
     ],
 
   },

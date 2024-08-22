@@ -3,12 +3,19 @@ import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import 'swiper/css/autoplay';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './BannerSlide-Styles';
 import { Subtitle } from '../Subtitle/Subtitle';
+import { Text } from '../Text/Text';
 
 export function BannerSlide({
   children, lazy, title = '', slidesperview, backgroundimagesrc, gradientdirection, backgroundfixed, autoplay,
 }) {
+  const { t } = useTranslation();
+
+  // Verifica se children é um array
+  const childArray = Array.isArray(children) ? children : [];
+
   return (
     <Styled.BannerSlideWrapper
       backgroundimagesrc={backgroundimagesrc}
@@ -26,32 +33,24 @@ export function BannerSlide({
           autoplay={autoplay ? { delay: 2000, disableOnInteraction: true } : false}
           lazy={lazy ? 'true' : undefined}
           breakpoints={{
-
             1425: {
               slidesPerView: slidesperview || 3,
             },
-
             1050: {
               slidesPerView: slidesperview || 2,
             },
-
             0: {
               slidesPerView: 1,
             },
-
           }}
         >
-          <>
-            {children.map((child, index) => (
-              <SwiperSlide key={index} lazy={lazy}>
-                {child}
-              </SwiperSlide>
-            ))}
-          </>
-
+          {childArray.map((child, index) => (
+            <SwiperSlide key={index} lazy={lazy}>
+              {child}
+            </SwiperSlide>
+          ))}
         </Swiper>
       </Styled.BannerSlideContainer>
-
     </Styled.BannerSlideWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Events-Styles';
 import { Row } from '../../../../components/RowContainer/Row';
 import { Title } from '../../../../components/elements/Title/Title';
@@ -9,6 +10,7 @@ import { VerticalSoloSlide } from '../../../../components/elements/VerticalSoloS
 import { GridEvents } from '../../../../components/elements/EventsElements/GridEvents/GridEvents';
 
 export function Events() {
+  const { t } = useTranslation();
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
 
@@ -17,8 +19,8 @@ export function Events() {
 
   return (
     <Styled.EventsContainer>
-      <Title text="Eventos" uppercase />
-      <GridEvents items={s2tState.events} selectedevent={selectedEvent} />
+      <Title text={t('events')} uppercase />
+      <GridEvents items={s2tState.events || []} selectedevent={selectedEvent} />
     </Styled.EventsContainer>
   );
 }

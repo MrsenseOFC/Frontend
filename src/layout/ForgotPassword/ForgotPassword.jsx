@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ForgotPassword-Styles';
 import { AuthWrapper } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper';
 import { AuthContainer } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper-Styles';
@@ -17,6 +18,7 @@ import { Nav } from '../../components/Nav/Nav';
 import { FloatingHeader } from '../../components/Headers/FloatingHeader/FloatingHeader';
 
 export function ForgotPassword() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ export function ForgotPassword() {
 
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -48,7 +50,7 @@ export function ForgotPassword() {
 
           <Button
             path="/login"
-            text="Login"
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -59,7 +61,7 @@ export function ForgotPassword() {
 
           <Button
             path="/forgot-password"
-            text="Esqueci a senha"
+            text={t('forgot_password')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -71,7 +73,7 @@ export function ForgotPassword() {
 
           <Button
             path="/register"
-            text="Registre-se"
+            text={t('register')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -82,7 +84,7 @@ export function ForgotPassword() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -98,24 +100,23 @@ export function ForgotPassword() {
 
           <AuthContainer>
 
-            <Title text="Alterar senha" size={theme.sizes.xxlarge} />
+            <Title text={t('change_password')} size={theme.sizes.xxlarge} />
 
-            <AuthForm>
+            <AuthForm onSubmit={handleSubmit}>
 
               <AuthInput
                 type="email"
                 name="email_input"
                 id="email_input"
-                placeholder="Seu email"
-                title="Insira o seu e-mail cadastrado"
+                placeholder={t('your_email')}
+                title={t('insert_your_email')}
                 required
               />
 
               <AuthButton
                 name="login_submit"
                 id="login_submit"
-                value="Próximo"
-                onclick={handleSubmit}
+                value={t('next')}
               />
 
             </AuthForm>
@@ -123,10 +124,10 @@ export function ForgotPassword() {
 
           {isOpen && (
           <Popup
-            title="Um email de verificação foi enviado para este endereço de email"
-            firstoption="Fechar"
+            title={t('verification_email_sended')}
+            firstoption={t('close')}
             firstpath="/"
-            subtitle="Por favor, verifique!"
+            subtitle={t('please_check')}
             isopen={isOpen}
             onclick={() => setIsOpen(!isOpen)}
           />

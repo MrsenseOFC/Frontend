@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PublicProfile-Styles';
 import { ProfileInfo } from '../../../../../components/elements/ProfileInfo/ProfileInfo';
 import { Historic } from '../../../../../components/elements/Historic/Historic';
@@ -11,6 +12,7 @@ import { ClubContext } from '../../../../../contexts/userContext/ClubProvider/Cl
 import { PublicVideoSlide } from '../../../../../components/elements/ProfileSlideElements/PublicVideoSlide/PublicVideoSlide';
 
 export function PublicProfile() {
+  const { t } = useTranslation();
   const clubContext = useContext(ClubContext);
   const { clubState, clubDispatch } = clubContext;
 
@@ -23,14 +25,14 @@ export function PublicProfile() {
       {/* Todos os dados aqui são polaceholder, necessário substituir posteriormente pelos dados do perfil acessado */}
       <ProfileInfo items={clubState.profile.info} />
 
-      <PublicSlide items={clubState.profile.photos} title="Fotos" />
-      <PublicVideoSlide items={clubState.profile.videos} title="Vídeos" />
+      <PublicSlide items={clubState.profile.photos} title={t('photos')} />
+      <PublicVideoSlide items={clubState.profile.videos} title={t('videos')} />
 
       <Row>
-        <Historic items={clubState.profile.leagues} title="Competições em disputa" />
+        <Historic items={clubState.profile.leagues} title={t('current_competitions')} />
       </Row>
 
-      <TextSlide items={clubState.profile.championships} title="Títulos:" />
+      <TextSlide items={clubState.profile.championships} title={t('titles_and_awards')} />
 
     </Styled.PublicProfileContainer>
   );

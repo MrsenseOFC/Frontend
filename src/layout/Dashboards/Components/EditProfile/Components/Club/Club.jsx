@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Club-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -24,6 +25,7 @@ import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../..
 
 export function Club() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
@@ -56,7 +58,7 @@ export function Club() {
         earliestDate: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -82,7 +84,7 @@ export function Club() {
         date: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -103,22 +105,22 @@ export function Club() {
 
           <AuthForm onSubmit={handleSubmit}>
 
-            <Subtitle text="Seu perfil (Clube)" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_profile')} size={theme.sizes.xlarge} />
 
             <AuthInput
               type="text"
               name="clubRepresentative_input"
               id="clubRepresentative_input"
-              title="Representante"
-              placeholder="Nome do representante do Clube"
+              title={t('representative')}
+              placeholder={t('representative_club_name')}
               value={profileData.representative}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
             />
 
             <AuthDropdown
-              title="Qual o nível competitivo do clube?"
+              title={t('which_club_competitive_level')}
               id="clubCompetitiveLevel"
-              placeholder="Escolha o nível"
+              placeholder={t('select_level')}
               options={s2tState.formOptions.competitiveLevels}
               selectedvalue={profileData.competitiveLevel}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
@@ -128,7 +130,7 @@ export function Club() {
               type="date"
               name="clubRoundationDate_input"
               id="clubFoundationDate_input"
-              title="Data de fundação"
+              title={t('foundation_date')}
               value={profileData.foundationDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
             />
@@ -137,8 +139,8 @@ export function Club() {
               type="text"
               name="clubCountry_input"
               id="clubCountry_input"
-              title="País"
-              placeholder="De qual país é o clube"
+              title={t('country')}
+              placeholder={t('which_country_club')}
               value={profileData.country}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
@@ -147,8 +149,8 @@ export function Club() {
               type="text"
               name="clubState_input"
               id="clubState_input"
-              title="Estado"
-              placeholder="De qual estado é o clube"
+              title={t('state')}
+              placeholder={t('which_state_club')}
               value={profileData.state}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
             />
@@ -157,8 +159,8 @@ export function Club() {
               type="text"
               name="clubTrainingCenter_input"
               id="clubTrainingCenter_input"
-              title="Local de treinamento"
-              placeholder="Onde o clube realiza os treinamentos"
+              title={t('training_center')}
+              placeholder={t('where_club_train')}
               value={profileData.trainingCenter}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, trainingCenter: e.target.value }))}
             />
@@ -167,8 +169,8 @@ export function Club() {
               type="text"
               name="clubStadium_input"
               id="clubStadium_input"
-              title="Nome do estádio"
-              placeholder="Estádio ou arena do clube"
+              title={t('stadium_name')}
+              placeholder={t('club_stadium')}
               value={profileData.stadium}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, stadium: e.target.value }))}
             />
@@ -177,18 +179,18 @@ export function Club() {
               type="text"
               name="clubCoach_input"
               id="clubCoach_input"
-              title="Técnico ou treinador"
-              placeholder="Atual técnico ou treinador do clube"
+              title={t('coach_or_trainer')}
+              placeholder={t('actual_club_coach')}
               value={profileData.coach}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, coach: e.target.value }))}
             />
 
             <Row>
               <AuthAchievement
-                title="Competições em disputa"
+                title={t('current_competitions')}
                 id="clubCompetitionsHistory"
-                inputtitle="Competição"
-                placeholder="Nome da competição"
+                inputtitle={t('competition')}
+                placeholder={t('competition_name')}
               // Histórico do usuário (Dados anteriores que já estão salvos)
                 achievements={clubState.profile.competitions}
               // OnChanges para atualizar o competionHistory
@@ -201,10 +203,10 @@ export function Club() {
               />
 
               <AuthAchievement
-                title="Histórico de títulos e prêmios"
+                title={t('titles_and_awards_history')}
                 id="clubAwardsHistory"
-                inputtitle="Competição / Prêmio"
-                placeholder="Nome da competição ou prêmio"
+                inputtitle={t('competition_award')}
+                placeholder={t('competition_award_name')}
                 // Histórico do usuário (Dados anteriores que já estão salvos)
                 achievements={clubState.profile.awards}
               // OnChanges para atualizar o awardHistory
@@ -220,7 +222,7 @@ export function Club() {
             <AuthButton
               name="editClubProfile_submit"
               id="editClubProfile_submit"
-              value="Confirmar alteração"
+              value={t('confirm_changes')}
             />
 
           </AuthForm>

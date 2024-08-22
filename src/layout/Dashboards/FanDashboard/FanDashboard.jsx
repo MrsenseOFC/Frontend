@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './FanDashboard-Styles';
 import { FanContext } from '../../../contexts/userContext/FanProvider/FanContext';
 import { theme } from '../../../styles/theme';
@@ -27,6 +28,7 @@ import { Nav } from '../../../components/Nav/Nav';
 import { MobileNav } from '../../../components/MobileNav/MobileNav';
 
 export function FanDashboard() {
+  const { t } = useTranslation();
   const fanContext = useContext(FanContext);
   const { fanState, fanDispatch } = fanContext;
   const [menuVisibility, setMenuVisibility] = useState(false);
@@ -41,7 +43,7 @@ export function FanDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -52,7 +54,7 @@ export function FanDashboard() {
 
           <Button
             path="/fan-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -64,7 +66,7 @@ export function FanDashboard() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -75,11 +77,11 @@ export function FanDashboard() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -90,7 +92,7 @@ export function FanDashboard() {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -101,7 +103,7 @@ export function FanDashboard() {
 
         <Button
           path="/fan-dashboard"
-          text="Minha área"
+          text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
           textcolor={theme.colors.primary}
@@ -113,7 +115,7 @@ export function FanDashboard() {
 
         <Button
           path="/benefits"
-          text="Benefícios"
+          text={t('benefits')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -139,7 +141,7 @@ export function FanDashboard() {
         <Row>
           <Button
             path="profile-edit"
-            text="Editar Perfil"
+            text={t('edit_profile')}
             bgcolor={theme.colors.primary}
             bghover={theme.colors.black}
             textcolor={theme.colors.black}
@@ -150,7 +152,7 @@ export function FanDashboard() {
           <IconDiv
             active={settingsMenuVisibility}
             hovercolor={theme.colors.primary}
-            name="Configurações"
+            name={t('settings')}
             onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}
           >
             <SettingsIcon />
@@ -183,7 +185,7 @@ export function FanDashboard() {
         <Outlet />
       </Column>
 
-      <Slide items={fanState.benefits} title="Meus benefícios" />
+      <Slide items={fanState.benefits} title={t('my_benefits')} />
 
     </Styled.FanDashboardContainer>
   );

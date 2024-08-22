@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Staff-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -26,6 +27,7 @@ import {
 
 export function Staff() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
@@ -76,7 +78,7 @@ export function Staff() {
         latestDate: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -102,7 +104,7 @@ export function Staff() {
         date: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -129,7 +131,7 @@ export function Staff() {
         latestDate: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -153,21 +155,21 @@ export function Staff() {
 
           <AuthForm onSubmit={handleSubmit}>
 
-            <Subtitle text="Seu perfil" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_profile')} size={theme.sizes.xlarge} />
 
             <AuthDropdown
-              title="Qual o seu tipo de perfil?"
+              title={t('profile_type_question')}
               id="staffProfileType"
-              placeholder="Escolha o tipo"
+              placeholder={t('select_type')}
               options={s2tState.formOptions.staffProfileType}
               selectedvalue={profileData.profileType}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, profileType: option }))}
             />
 
             <AuthDropdown
-              title="Qual o seu nível competitivo?"
+              title={t('which_competitive_level')}
               id="staffCompetitiveLevel"
-              placeholder="Escolha o nível"
+              placeholder={t('select_level')}
               options={s2tState.formOptions.competitiveLevels}
               selectedvalue={profileData.competitiveLevel}
               onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
@@ -177,8 +179,8 @@ export function Staff() {
               type="text"
               name="staffPrimaryBirthCountry_input"
               id="staffPrimaryBirthCountry_input"
-              title="Nacionalidade primária"
-              placeholder="Sua nacionalidade primária"
+              title={t('primary_nationality')}
+              placeholder={t('your_primary_nationality')}
               value={profileData.primaryNationality}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, primaryNationality: e.target.value }))}
             />
@@ -187,8 +189,8 @@ export function Staff() {
               type="text"
               name="staffSecondaryBirthCountry_input"
               id="staffSecondaryBirthCountry_input"
-              title="Nacionalidade secundária"
-              placeholder="Sua nacionalidade secundária"
+              title={t('secondary_nationality')}
+              placeholder={t('your_secondary_nationality')}
               value={profileData.secondaryNationality}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, secondaryNationality: e.target.value }))}
             />
@@ -197,8 +199,8 @@ export function Staff() {
               type="text"
               name="staffPassports_input"
               id="staffPassports_input"
-              title="Possui passporte para algum país?"
-              placeholder="Caso sim, liste os países"
+              title={t('have_passports_question')}
+              placeholder={t('if_yes_list_the_countries')}
               value={profileData.passports}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, passports: e.target.value }))}
             />
@@ -207,8 +209,8 @@ export function Staff() {
               type="text"
               name="staffPayment_input"
               id="staffPayment_input"
-              title="Salário"
-              placeholder="Seu salário base"
+              title={t('payment')}
+              placeholder={t('your_base_payment')}
               value={profileData.payment}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, payment: e.target.value }))}
             />
@@ -217,21 +219,21 @@ export function Staff() {
               type="text"
               name="staffTransferValue_input"
               id="staffTransferValue_input"
-              title="Valor de transferência"
-              placeholder="Seu valor de transferência"
+              title={t('transfer_value')}
+              placeholder={t('your_transfer_value')}
               value={profileData.transferValue}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, transferValue: e.target.value }))}
             />
 
-            <Subtitle text="Sua história esportiva" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_sporting_history')} size={theme.sizes.xlarge} />
 
             <Row>
               <AuthHistoric
               // Dados padrão do componente
-                title="Histórico de clubes"
+                title={t('club_history')}
                 id="staffClubHistory"
-                inputtitle="Clube"
-                placeholder="Nome do Clube"
+                inputtitle={t('club')}
+                placeholder={t('club_name')}
               // Histórico do usuário (Dados anteriores que já estão salvos)
                 historic={staffState.profile.clubs}
               // OnChanges para atualizar o clubHistory
@@ -246,10 +248,10 @@ export function Staff() {
               />
 
               <AuthAchievement
-                title="Histórico de títulos e prêmios"
+                title={t('titles_and_awards_history')}
                 id="staffAwardsHistory"
-                inputtitle="Competição / Prêmio"
-                placeholder="Nome da competição ou prêmio"
+                inputtitle={t('competition_award')}
+                placeholder={t('competition_award_name')}
               // Histórico do usuário (Dados anteriores que já estão salvos)
                 achievements={staffState.profile.awards}
               // OnChanges para atualizar o awardHistory
@@ -262,13 +264,13 @@ export function Staff() {
               />
             </Row>
 
-            <Subtitle text="Sua história acadêmica" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_academic_history')} size={theme.sizes.xlarge} />
 
             <AuthHistoric
-              title="Conhecimentos"
+              title={t('certifications')}
               id="staffAcademicHistory"
-              inputtitle="Formação"
-              placeholder="Nome da formação"
+              inputtitle={t('certification')}
+              placeholder={t('certification_name')}
             // Histórico do usuário (Dados anteriores que já estão salvos)
               historic={staffState.profile.studies}
             // OnChanges para atualizar o clubHistory
@@ -284,7 +286,7 @@ export function Staff() {
             <AuthButton
               name="editOStaffProfile_submit"
               id="editStaffProfile_submit"
-              value="Confirmar alteração"
+              value={t('confirm_changes')}
             />
 
           </AuthForm>

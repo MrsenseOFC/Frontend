@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './LeagueDashboard-Styles';
 import { theme } from '../../../styles/theme';
 import { ProfilePicture } from '../../../components/elements/ProfilePicture/ProfilePicture';
@@ -27,6 +28,7 @@ import { FloatingHeader } from '../../../components/Headers/FloatingHeader/Float
 import { Nav } from '../../../components/Nav/Nav';
 
 export function LeagueDashboard() {
+  const { t } = useTranslation();
   const leagueContext = useContext(LeagueContext);
   const { leagueState, leagueDispatch } = leagueContext;
 
@@ -46,7 +48,7 @@ export function LeagueDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -57,7 +59,7 @@ export function LeagueDashboard() {
 
           <Button
             path="/league-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -69,7 +71,7 @@ export function LeagueDashboard() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -80,11 +82,11 @@ export function LeagueDashboard() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -95,7 +97,7 @@ export function LeagueDashboard() {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -106,7 +108,7 @@ export function LeagueDashboard() {
 
         <Button
           path="/player-dashboard"
-          text="Minha área"
+          text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
           textcolor={theme.colors.primary}
@@ -118,7 +120,7 @@ export function LeagueDashboard() {
 
         <Button
           path="/benefits"
-          text="Benefícios"
+          text={t('benefits')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -142,7 +144,7 @@ export function LeagueDashboard() {
         <Row>
           <Button
             path="profile-edit"
-            text="Editar Perfil"
+            text={t('edit_profile')}
             bgcolor={theme.colors.primary}
             bghover={theme.colors.black}
             textcolor={theme.colors.black}
@@ -150,7 +152,12 @@ export function LeagueDashboard() {
             border={theme.colors.black}
             borderhover={theme.colors.primary}
           />
-          <IconDiv active={settingsMenuVisibility} hovercolor={theme.colors.primary} name="Configurações" onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}>
+          <IconDiv
+            active={settingsMenuVisibility}
+            hovercolor={theme.colors.primary}
+            name={t('settings')}
+            onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}
+          >
             <SettingsIcon />
           </IconDiv>
 
@@ -175,7 +182,7 @@ export function LeagueDashboard() {
           <LeagueMenu />
         </MobileMenu>
       ) : (
-        <FloatingIcon name="Menu" onclick={() => setMenuVisibility(!menuVisibility)}>
+        <FloatingIcon name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
           <MenuIcon />
         </FloatingIcon>
       )}
@@ -188,7 +195,7 @@ export function LeagueDashboard() {
         </PlayerProvider>
       </S2tProvider>
 
-      <Slide items={leagueState.benefits} title="Meus benefícios" />
+      <Slide items={leagueState.benefits} title={t('my_benefits')} />
 
     </Styled.LeagueDashboardContainer>
   );

@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AgencyProfile-Styles';
 import { ProfileInfo } from '../../../../../components/elements/ProfileInfo/ProfileInfo';
 import { Historic } from '../../../../../components/elements/Historic/Historic';
@@ -10,6 +11,7 @@ import { OwnerSlide } from '../../../../../components/elements/ProfileSlideEleme
 import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function AgencyProfile() {
+  const { t } = useTranslation();
   const agencyContext = useContext(AgencyContext);
   const { agencyState, agencyDispatch } = agencyContext;
 
@@ -18,8 +20,8 @@ export function AgencyProfile() {
 
       <ProfileInfo items={agencyState?.profile?.info || []} />
 
-      <OwnerSlide items={agencyState?.profile?.photos || []} title="Fotos" ownerview />
-      <OwnerVideoSlide items={agencyState?.profile?.videos || []} title="Vídeos" />
+      <OwnerSlide items={agencyState?.profile?.photos || []} title={t('photos')} ownerview />
+      <OwnerVideoSlide items={agencyState?.profile?.videos || []} title={t('videos')} />
 
     </Styled.AgencyProfileContainer>
   );

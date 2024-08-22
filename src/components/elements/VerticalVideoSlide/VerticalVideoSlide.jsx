@@ -39,7 +39,7 @@ export function VerticalVideoSlide({
           </>
         )
           : (
-            <Text text={t('not_found')} />
+            <Text text={t('data_not_found')} />
           )}
 
       </Swiper>

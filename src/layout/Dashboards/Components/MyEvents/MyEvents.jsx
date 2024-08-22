@@ -12,5 +12,5 @@ export function MyEvents({ events }) {
 }
 
 MyEvents.propTypes = {
-  children: Prop.node.isRequired,
+  events: Prop.arrayOf(Prop.object),
 };

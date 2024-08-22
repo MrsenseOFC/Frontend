@@ -54,7 +54,7 @@ export function ClubMenu() {
         hovercolor={theme.colors.primary}
       >
         <SquadIcon />
-        {t('my-squad')}
+        {t('my_squad')}
 
       </StyledLink>
 
@@ -74,7 +74,7 @@ export function ClubMenu() {
         hovercolor={theme.colors.primary}
       >
         <HandshakeIcon />
-        {t('my-opportunities')}
+        {t('my_opportunities')}
 
       </StyledLink>
 

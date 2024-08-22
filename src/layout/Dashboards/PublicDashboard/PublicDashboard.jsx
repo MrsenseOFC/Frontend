@@ -3,6 +3,7 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import Prop from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PublicDashboard-Styles';
 import { PlayerContext } from '../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { theme } from '../../../styles/theme';
@@ -29,6 +30,7 @@ import { IconDiv } from '../../../components/elements/IconDiv/IconDiv';
 import { FloatingMenu } from '../../../components/FloatingMenu/FloatingMenu';
 
 export function PublicDashboard() {
+  const { t } = useTranslation();
   const clubContext = useContext(ClubContext);
   const { clubState, clubDispatch } = clubContext;
   const [menuVisibility, setMenuVisibility] = useState(false);
@@ -45,7 +47,7 @@ export function PublicDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -68,11 +70,11 @@ export function PublicDashboard() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -82,7 +84,7 @@ export function PublicDashboard() {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -116,7 +118,7 @@ export function PublicDashboard() {
 
         <Row>
           <Button
-            text={follow ? 'Deixar de seguir' : 'Seguir'}
+            text={follow ? t('unfollow') : t('follow')}
             bgcolor={theme.colors.primary}
             bghover={theme.colors.black}
             textcolor={theme.colors.black}
@@ -143,7 +145,7 @@ export function PublicDashboard() {
           <PublicMenu type="club" />
         </MobileMenu>
       ) : (
-        <FloatingIcon name="Menu" onclick={() => setMenuVisibility(!menuVisibility)}>
+        <FloatingIcon name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
           <MenuIcon />
         </FloatingIcon>
       )}
@@ -158,7 +160,7 @@ export function PublicDashboard() {
 
       {/* <ImageModal isopen="true" /> */}
 
-      <Slide items={clubState.benefits} title="Benefícios do usuário" />
+      <Slide items={clubState.benefits} title={t('user_benefits')} />
 
     </Styled.PublicDashboardContainer>
   );

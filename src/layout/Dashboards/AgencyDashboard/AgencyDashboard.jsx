@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AgencyDashboard-Styles';
 import { theme } from '../../../styles/theme';
 import { ProfilePicture } from '../../../components/elements/ProfilePicture/ProfilePicture';
@@ -27,6 +28,8 @@ import { FloatingHeader } from '../../../components/Headers/FloatingHeader/Float
 import { Nav } from '../../../components/Nav/Nav';
 
 export function AgencyDashboard() {
+  const { t } = useTranslation();
+
   const agencyContext = useContext(AgencyContext);
   const { agencyState, agencyDispatch } = agencyContext;
 
@@ -46,7 +49,7 @@ export function AgencyDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -57,7 +60,7 @@ export function AgencyDashboard() {
 
           <Button
             path="/agency-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -69,7 +72,7 @@ export function AgencyDashboard() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -80,11 +83,11 @@ export function AgencyDashboard() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -95,7 +98,7 @@ export function AgencyDashboard() {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -106,7 +109,7 @@ export function AgencyDashboard() {
 
         <Button
           path="/player-dashboard"
-          text="Minha área"
+          text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
           textcolor={theme.colors.primary}
@@ -118,7 +121,7 @@ export function AgencyDashboard() {
 
         <Button
           path="/benefits"
-          text="Benefícios"
+          text={t('benefits')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -142,7 +145,7 @@ export function AgencyDashboard() {
         <Row>
           <Button
             path="profile-edit"
-            text="Editar Perfil"
+            text={t('edit_profile')}
             bgcolor={theme.colors.primary}
             bghover={theme.colors.black}
             textcolor={theme.colors.black}
@@ -150,7 +153,12 @@ export function AgencyDashboard() {
             border={theme.colors.black}
             borderhover={theme.colors.primary}
           />
-          <IconDiv active={settingsMenuVisibility} hovercolor={theme.colors.primary} name="Configurações" onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}>
+          <IconDiv
+            active={settingsMenuVisibility}
+            hovercolor={theme.colors.primary}
+            name={t('settings')}
+            onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}
+          >
             <SettingsIcon />
           </IconDiv>
 
@@ -175,7 +183,7 @@ export function AgencyDashboard() {
           <AgencyMenu />
         </MobileMenu>
       ) : (
-        <FloatingIcon name="Menu" onclick={() => setMenuVisibility(!menuVisibility)}>
+        <FloatingIcon name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
           <MenuIcon />
         </FloatingIcon>
       )}
@@ -188,7 +196,7 @@ export function AgencyDashboard() {
         </PlayerProvider>
       </S2tProvider>
 
-      <Slide items={agencyState.benefits} title="Meus benefícios" />
+      <Slide items={agencyState.benefits} title={t('my_benefits')} />
 
     </Styled.AgencyDashboardContainer>
   );

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './University-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -23,6 +24,7 @@ import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../..
 
 export function University() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
@@ -55,7 +57,7 @@ export function University() {
         earliestDate: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -80,7 +82,7 @@ export function University() {
         earliestDate: '',
       });
     } else {
-      console.error('Por favor, preencha todos os campos.');
+      console.error(t('fill_all_fields'));
     }
   };
 
@@ -101,22 +103,22 @@ export function University() {
 
           <AuthForm onSubmit={handleSubmit}>
 
-            <Subtitle text="Seu perfil (Universidade)" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_profile')} size={theme.sizes.xlarge} />
 
             <AuthInput
               type="text"
               name="universityRepresentative_input"
               id="universityRepresentative_input"
-              title="Representante"
-              placeholder="Nome do representante da universidade"
+              title={t('representative')}
+              placeholder={t('representative_university_name')}
               value={profileData.representative}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, representative: e.target.value }))}
             />
 
             <AuthDropdown
-              title="Qual o nível competitivo da universidade?"
+              title={t('which_university_competitive_lelvel')}
               id="universityCompetitiveLevel"
-              placeholder="Escolha o nível"
+              placeholder={t('select_level')}
               options={s2tState.formOptions.universityCompetitiveLevels}
               selectedvalue={profileData.competitiveLevel}
               otheroption
@@ -127,7 +129,7 @@ export function University() {
               type="date"
               name="universityFoundationDate_input"
               id="universityFoundationDate_input"
-              title="Data de fundação"
+              title={t('foundation_date')}
               value={profileData.foundationDate}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
             />
@@ -136,8 +138,8 @@ export function University() {
               type="text"
               name="universityCountry_input"
               id="universityCountry_input"
-              title="País"
-              placeholder="De qual país é a universidade"
+              title={t('country')}
+              placeholder={t('which_country_university')}
               value={profileData.country}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
@@ -146,8 +148,8 @@ export function University() {
               type="text"
               name="universityState_input"
               id="universityState_input"
-              title="Estado"
-              placeholder="De qual estado é a universidade"
+              title={t('state')}
+              placeholder={t('which_state_university')}
               value={profileData.state}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
             />
@@ -156,8 +158,8 @@ export function University() {
               type="text"
               name="universityTrainingCenter_input"
               id="universityTrainingCenter_input"
-              title="Local de treinamento"
-              placeholder="Onde a universidade realiza os treinamentos"
+              title={t('training_center')}
+              placeholder={t('where_university_train')}
               value={profileData.trainingCenter}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, trainingCenter: e.target.value }))}
             />
@@ -166,8 +168,8 @@ export function University() {
               type="text"
               name="universityStadium_input"
               id="universityStadium_input"
-              title="Nome do estádio"
-              placeholder="Estádio ou arena da universidade"
+              title={t('stadium_name')}
+              placeholder={t('university_stadium')}
               value={profileData.stadium}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, stadium: e.target.value }))}
             />
@@ -176,8 +178,8 @@ export function University() {
               type="text"
               name="universityCoach_input"
               id="universityCoach_input"
-              title="Treinador"
-              placeholder="Atual treinador da universidade"
+              title={t('coach')}
+              placeholder={t('actual_university_coach')}
               value={profileData.coach}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, coach: e.target.value }))}
             />
@@ -185,10 +187,10 @@ export function University() {
             <Row>
 
               <AuthAchievement
-                title="Competições em disputa"
+                title={t('current_competitions')}
                 id="universityCompetitionsHistory"
-                inputtitle="Competição"
-                placeholder="Nome da competição"
+                inputtitle={t('competition')}
+                placeholder={t('competition_name')}
               // Histórico do usuário (Dados anteriores que já estão salvos)
                 achievements={universityState.profile.competitions}
               // OnChanges para atualizar o competionHistory
@@ -201,10 +203,10 @@ export function University() {
               />
 
               <AuthAchievement
-                title="Histórico de títulos e prêmios"
+                title={t('titles_and_awards_history')}
                 id="universityAwardsHistory"
-                inputtitle="Competição / Prêmio"
-                placeholder="Nome da competição ou prêmio"
+                inputtitle={t('competition_award')}
+                placeholder={t('competition_award_name')}
                 // Histórico do usuário (Dados anteriores que já estão salvos)
                 achievements={universityState.profile.awards}
               // OnChanges para atualizar o awardHistory
@@ -220,7 +222,7 @@ export function University() {
             <AuthButton
               name="editUniversityProfile_submit"
               id="editUniversityProfile_submit"
-              value="Confirmar alteração"
+              value={t('confirm_changes')}
             />
 
           </AuthForm>

@@ -104,7 +104,7 @@ export function FanNav() {
         <StyledLink
           active={activeLink === '/fan-dashboard/my-affiliates'}
           path="my-affiliates"
-          text={t('my-affiliates')}
+          text={t('my_affiliates')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />

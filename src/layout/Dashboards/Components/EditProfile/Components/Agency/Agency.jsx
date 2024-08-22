@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Agency-Styles';
 
 import { AuthForm } from '../../../../../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -24,6 +25,7 @@ import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../..
 
 export function Agency() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
@@ -52,12 +54,12 @@ export function Agency() {
 
           <AuthForm onSubmit={handleSubmit}>
 
-            <Subtitle text="Seu perfil (Agência)" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_profile')} size={theme.sizes.xlarge} />
 
             <AuthDropdown
-              title="Qual é o tipo da sua agência?"
+              title={t('your_agency_type_question')}
               id="agencyProfileType"
-              placeholder="Escolha o tipo"
+              placeholder={t('select_type')}
               options={s2tState.formOptions.agencyProfileType}
               selectedvalue={profileData.profileType}
               otheroption
@@ -67,7 +69,7 @@ export function Agency() {
             <AuthButton
               name="editAgencyProfile_submit"
               id="editAgencyProfile_submit"
-              value="Confirmar alteração"
+              value={t('confirm_changes')}
             />
 
           </AuthForm>

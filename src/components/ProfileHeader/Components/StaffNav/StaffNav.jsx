@@ -98,7 +98,7 @@ export function StaffNav() {
         <StyledLink
           active={activeLink === '/staff-dashboard/my-affiliates'}
           path="my-affiliates"
-          text={t('my-affiliates')}
+          text={t('my_affiliates')}
           color={theme.colors.white}
           hovercolor={theme.colors.black}
         />

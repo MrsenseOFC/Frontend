@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './StaffProfile-Styles';
 import { ProfileInfo } from '../../../../../components/elements/ProfileInfo/ProfileInfo';
 import { Historic } from '../../../../../components/elements/Historic/Historic';
@@ -11,6 +12,7 @@ import { StaffContext } from '../../../../../contexts/userContext/StaffProvider/
 import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function StaffProfile() {
+  const { t } = useTranslation();
   const staffContext = useContext(StaffContext);
   const { staffState, staffDispatch } = staffContext;
 
@@ -19,14 +21,14 @@ export function StaffProfile() {
 
       <ProfileInfo items={staffState?.profile?.info || []} />
 
-      <OwnerSlide items={staffState?.profile?.photos || []} title="Fotos" ownerview />
-      <OwnerVideoSlide items={staffState?.profile?.videos || []} title="Vídeos" />
+      <OwnerSlide items={staffState?.profile?.photos || []} title={t('photos')} ownerview />
+      <OwnerVideoSlide items={staffState?.profile?.videos || []} title={t('videos')} />
       <Row>
-        <Historic items={staffState?.profile?.clubs || []} title="Histórico de clubes" />
-        <Historic items={staffState?.profile?.studies || []} title="Histórico acadêmico" />
+        <Historic items={staffState?.profile?.clubs || []} title={t('club_history')} />
+        <Historic items={staffState?.profile?.studies || []} title={t('academic_history')} />
       </Row>
 
-      <TextSlide items={staffState?.profile?.awards || []} title="Títulos e prêmios:" />
+      <TextSlide items={staffState?.profile?.awards || []} title={t('titles_and_awards')} />
 
     </Styled.StaffProfileContainer>
   );

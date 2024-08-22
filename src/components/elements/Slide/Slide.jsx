@@ -60,8 +60,8 @@ export function Slide({
               <SwiperSlide key={item.id}>
                 <ImageCard
                   src={item.src}
-                  alt={item.title}
-                  title={item.title}
+                  alt={t(item.title)}
+                  title={t(item.title)}
                   islocked={item.islocked}
                   path={item.islocked ? '/plans' : item.path}
                 />

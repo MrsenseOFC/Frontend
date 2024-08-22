@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './VerticalMiniSlide-Styles';
 import { Subtitle } from '../Subtitle/Subtitle';
 import { EventMiniCard } from '../EventsElements/EventMiniCard/EventMiniCard';
@@ -10,6 +11,8 @@ import { ContactCard } from '../ContactCard/ContactCard';
 import { ProposalMiniCard } from '../ProposalMiniCard/ProposalMiniCard';
 
 export function VerticalMiniSlide({ items, title, type }) {
+  const { t } = useTranslation();
+
   const normalizedType = type.toLowerCase();
   return (
     <Styled.VerticalMiniSlideWrapper>
@@ -57,9 +60,9 @@ export function VerticalMiniSlide({ items, title, type }) {
             {items.map((item) => (
               <SwiperSlide key={item.id}>
                 <NewsCard
-                  title={item.title}
+                  title={t(item.title)}
                   thumbnail={item.thumbnail}
-                  text={item.text}
+                  text={t(item.text)}
                   path={item.path}
                 />
               </SwiperSlide>
@@ -86,27 +89,6 @@ export function VerticalMiniSlide({ items, title, type }) {
                 />
               </SwiperSlide>
             ))}
-          </>
-          )}
-
-          {normalizedType === 'contact' && (
-          <>
-            <SwiperSlide>
-              <ContactCard title="Agente" subtitle="Centroavante" imagesrc="/assets/images/pngs/brasileirao.png" />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <ContactCard title="Agente" subtitle="Centroavante" imagesrc="/assets/images/pngs/brasileirao.png" newmessage />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <ContactCard title="Agente" subtitle="Centroavante" imagesrc="/assets/images/pngs/brasileirao.png" />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <ContactCard title="Agente" subtitle="Centroavante" imagesrc="/assets/images/pngs/brasileirao.png" newmessage />
-            </SwiperSlide>
-
           </>
           )}
 

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './UniversityDashboard-Styles';
 import { theme } from '../../../styles/theme';
 
@@ -29,6 +30,7 @@ import { FloatingHeader } from '../../../components/Headers/FloatingHeader/Float
 import { Nav } from '../../../components/Nav/Nav';
 
 export function UniversityDashboard() {
+  const { t } = useTranslation();
   const universityContext = useContext(UniversityContext);
   const { universityState, universityDispatch } = universityContext;
 
@@ -44,7 +46,7 @@ export function UniversityDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -55,7 +57,7 @@ export function UniversityDashboard() {
 
           <Button
             path="/university-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -67,7 +69,7 @@ export function UniversityDashboard() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -78,11 +80,11 @@ export function UniversityDashboard() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -93,7 +95,7 @@ export function UniversityDashboard() {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -104,7 +106,7 @@ export function UniversityDashboard() {
 
         <Button
           path="/player-dashboard"
-          text="Minha área"
+          text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
           textcolor={theme.colors.primary}
@@ -116,7 +118,7 @@ export function UniversityDashboard() {
 
         <Button
           path="/benefits"
-          text="Benefícios"
+          text={t('benefits')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -141,7 +143,7 @@ export function UniversityDashboard() {
         <Row>
           <Button
             path="profile-edit"
-            text="Editar Perfil"
+            text={t('edit_profile')}
             bgcolor={theme.colors.primary}
             bghover={theme.colors.black}
             textcolor={theme.colors.black}
@@ -149,7 +151,12 @@ export function UniversityDashboard() {
             border={theme.colors.black}
             borderhover={theme.colors.primary}
           />
-          <IconDiv active={settingsMenuVisibility} hovercolor={theme.colors.primary} name="Configurações" onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}>
+          <IconDiv
+            active={settingsMenuVisibility}
+            hovercolor={theme.colors.primary}
+            name={t('settings')}
+            onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}
+          >
             <SettingsIcon />
           </IconDiv>
 
@@ -185,7 +192,7 @@ export function UniversityDashboard() {
           </ColumnContainer>
         </PlayerProvider>
       </S2tProvider>
-      <Slide items={universityState.benefits} title="Meus benefícios" />
+      <Slide items={universityState.benefits} title={t('my_benefits')} />
 
     </Styled.UniversityDashboardContainer>
   );

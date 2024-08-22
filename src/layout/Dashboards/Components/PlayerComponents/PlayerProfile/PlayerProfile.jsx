@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PlayerProfile-Styles';
 import { ProfileInfo } from '../../../../../components/elements/ProfileInfo/ProfileInfo';
 import { Historic } from '../../../../../components/elements/Historic/Historic';
@@ -10,6 +11,7 @@ import { OwnerSlide } from '../../../../../components/elements/ProfileSlideEleme
 import { OwnerVideoSlide } from '../../../../../components/elements/ProfileSlideElements/OwnerVideoSlide/OwnerVideoSlide';
 
 export function PlayerProfile() {
+  const { t } = useTranslation();
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
 
@@ -18,15 +20,15 @@ export function PlayerProfile() {
 
       <ProfileInfo items={playerState?.profile?.info || []} />
 
-      <OwnerSlide items={playerState?.profile?.photos || []} title="Fotos" />
-      <OwnerVideoSlide items={playerState?.profile?.videos || []} title="Vídeos" />
+      <OwnerSlide items={playerState?.profile?.photos || []} title={t('photos')} />
+      <OwnerVideoSlide items={playerState?.profile?.videos || []} title={t('videos')} />
 
       <Row>
-        <Historic items={playerState?.profile?.clubs || []} title="Histórico de clubes" />
-        <Historic items={playerState?.profile?.studies || []} title="Histórico acadêmico" />
+        <Historic items={playerState?.profile?.clubs || []} title={t('club_history')} />
+        <Historic items={playerState?.profile?.studies || []} title={t('academic_history')} />
       </Row>
 
-      <TextSlide items={playerState?.profile?.awards || []} title="Títulos e prêmios:" />
+      <TextSlide items={playerState?.profile?.awards || []} title={t('titles_and_awards')} />
 
     </Styled.PlayerProfileContainer>
   );

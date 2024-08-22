@@ -24,6 +24,7 @@ import { addAwardHistory, addCompetitionHistory, changeProfileInfo } from '../..
 
 export function League() {
   const navigate = useNavigate();
+  const { t } = useNavigate();
 
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
@@ -44,7 +45,7 @@ export function League() {
 
           <AuthForm>
 
-            <Subtitle text="Seu perfil (Liga)" size={theme.sizes.xlarge} />
+            <Subtitle text={t('your_profile')} size={theme.sizes.xlarge} />
 
           </AuthForm>
         </AuthContainer>
