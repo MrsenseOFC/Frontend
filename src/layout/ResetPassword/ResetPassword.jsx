@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './ResetPassword-Styles';
 import { AuthWrapper } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper';
 import { AuthContainer } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper-Styles';
@@ -15,6 +16,7 @@ export function ResetPassword() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ export function ResetPassword() {
 
         <AuthContainer>
 
-          <Title text="Alterar senha" size={theme.sizes.xxlarge} />
+          <Title text={t('change_password')} size={theme.sizes.xxlarge} />
 
           <AuthForm>
 
@@ -36,8 +38,8 @@ export function ResetPassword() {
               type="password"
               name="password_input"
               id="password_input"
-              placeholder="Insira uma nova senha"
-              title="Nova senha"
+              placeholder={t('insert_new_password')}
+              title={t('new_password')}
               required
             />
 
@@ -45,15 +47,15 @@ export function ResetPassword() {
               type="password"
               name="confirm_password_input"
               id="confirm_password_input"
-              placeholder="Insira novamente sua nova senha"
-              title="Confirme sua nova senha"
+              placeholder={t('insert_new_password_again')}
+              title={t('confirm_new_password')}
               required
             />
 
             <AuthButton
               name="login_submit"
               id="login_submit"
-              value="Confirmar alteração"
+              value={t('confirm_change')}
               onclick={handleSubmit}
             />
 
@@ -62,8 +64,8 @@ export function ResetPassword() {
 
         {isOpen && (
         <Popup
-          title="Sua senha foi alterada com sucesso!"
-          firstoption="Fechar"
+          title={t('password_changed_successfully')}
+          firstoption={t('close')}
           firstpath="/login"
           isopen={isOpen}
           onclick={() => setIsOpen(!isOpen)}

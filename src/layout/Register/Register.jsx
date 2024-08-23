@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Register-Styles';
 
 import { Subtitle } from '../../components/elements/Subtitle/Subtitle';
@@ -35,6 +36,7 @@ export function Register() {
   const [teamModality, setTeamModality] = useState('');
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,13 +59,13 @@ export function Register() {
 
     try {
       const response = await axios.post('https://talent2show.onrender.com/api/auth/register', input);
-      console.log('Resposta do servidor:', response.data);
+      console.log(t('server_response'), response.data);
 
       localStorage.setItem('username', username);
       navigate('/login');
     } catch (error) {
-      console.error('Erro ao registrar usuário:', error.response ? error.response.data : error.message);
-      alert('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
+      console.error(t('register_error'), error.response ? error.response.data : error.message);
+      alert(t('register_error_try_again'));
     }
   };
 
@@ -74,7 +76,7 @@ export function Register() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -84,7 +86,7 @@ export function Register() {
           />
           <Button
             path="/login"
-            text="Login"
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -94,7 +96,7 @@ export function Register() {
           />
           <Button
             path="/register"
-            text="Registre-se"
+            text={t('register')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -105,7 +107,7 @@ export function Register() {
           />
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -117,33 +119,33 @@ export function Register() {
       </FloatingHeader>
       <Styled.RegisterPage>
         <Bubble>
-          <Subtitle text="Passo a passo" uppercase as="h4" size={theme.sizes.xlarge} />
+          <Subtitle text={t('step_by_step')} uppercase as="h4" size={theme.sizes.xlarge} />
           <ListContainer>
             <ListItem>
-              Informe seus dados pessoais com atenção e complete todos os campos obrigatórios.
+              {t('register_step_1')}
             </ListItem>
             <ListItem>
-              Selecione o tipo de perfil que deseja criar
+              {t('register_step_2')}
             </ListItem>
             <ListItem>
-              Valide sua conta: Confirme seu email e siga as instruções para concluir o processo de cadastro.
+              {t('register_step_3')}
             </ListItem>
 
             <ListItem>
-              Acesse "Editar perfil" e adicione detalhes sobre sua experiência, habilidades, formação e conquistas.
+              {t('register_step_4')}
             </ListItem>
           </ListContainer>
         </Bubble>
         <AuthContainer>
-          <Subtitle text="Registre-se" uppercase as="h4" size={theme.sizes.xlarge} />
+          <Subtitle text={t('register')} uppercase as="h4" size={theme.sizes.xlarge} />
           <AuthForm onSubmit={handleSubmit}>
 
             <AuthInput
               type="text"
               name="username"
               id="username"
-              title="Nome de usuário"
-              placeholder="Seu nome de usuário na T2S"
+              title={t('username')}
+              placeholder={t('your_username_on_t2s')}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -153,8 +155,8 @@ export function Register() {
               type="email"
               name="email"
               id="email"
-              title="E-mail"
-              placeholder="Seu e-mail"
+              title={t('email')}
+              placeholder={t('your_email')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -163,8 +165,8 @@ export function Register() {
               type="password"
               name="password"
               id="password"
-              title="Senha"
-              placeholder="Sua senha"
+              title={t('password')}
+              placeholder={t('your_password')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -173,16 +175,16 @@ export function Register() {
               type="password"
               name="confirmPassword"
               id="confirmPassword"
-              title="Confirmação de senha"
-              placeholder="Confirme sua senha"
+              title={t('password_confirmation')}
+              placeholder={t('confirm_password')}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
             <AuthDropdown
-              title="Qual o seu tipo de perfil?"
+              title={t('profile_type_question')}
               id="profileType"
-              placeholder="Escolha seu tipo de perfil"
+              placeholder={t('select_profile_type')}
               options={s2tState.formOptions.profileType}
               selectedvalue={profileType}
               onDropdownChange={(value) => setProfileType(value)}
@@ -194,16 +196,16 @@ export function Register() {
                 type="text"
                 name="name"
                 id="name"
-                title="Nome"
+                title={t('name')}
                 placeholder={
                {
-                 player: 'Qual o seu nome completo',
-                 club: 'Qual o nome do seu clube',
-                 university: 'Qual o nome da sua universidade',
-                 agency: 'Qual o nome da sua agência',
-                 league: 'Qual o nome da sua liga',
-                 staff: 'Qual o seu nome completo',
-                 fan: 'Qual o seu nome completo',
+                 player: t('player_name_question'),
+                 club: t('club_name_question'),
+                 university: t('university_name_question'),
+                 agency: t('agency_name_question'),
+                 league: t('league_name_question'),
+                 staff: t('staff_name_question'),
+                 fan: t('fan_name_question'),
                }[profileType] || '' // string vazia se nenhum perfil corresponder
                }
                 onChange={(e) => setName(e.target.value)}
@@ -216,9 +218,9 @@ export function Register() {
             <>
               {/* -------------------------Categoria competitiva------------------------- */}
               <AuthDropdown
-                title="Qual categoria competitiva?"
+                title={t('which_competitive_category')}
                 id="competitiveCategory"
-                placeholder="Escolha a categoria"
+                placeholder={t('select_category')}
                 options={s2tState.formOptions.competitiveCategory}
                 selectedvalue={competitiveCategory}
                 onDropdownChange={(value) => setCompetitiveCategory(value)}
@@ -228,9 +230,9 @@ export function Register() {
               {/* -------------------------Modalidade------------------------- */}
               {profileType === 'player' && (
               <AuthDropdown
-                title="Deseja atuar em qual modalidade?"
+                title={t('which_modality')}
                 id="playerModality"
-                placeholder="Escolha a modalidade"
+                placeholder={t('select_modality')}
                 options={s2tState.formOptions.modality}
                 selectedvalue={modality}
                 onDropdownChange={(value) => setModality(value)}
@@ -239,18 +241,22 @@ export function Register() {
 
               {profileType === 'club' && (
               <AuthDropdown
-                title="Qual a modalidade do seu Clube?"
+                title={t('which_club_modality')}
                 id="clubModality"
-                placeholder="Escolha a modalidade"
+                placeholder={t('select_modality')}
                 options={s2tState.formOptions.modality}
                 selectedvalue={modality}
                 onDropdownChange={(value) => setModality(value)}
               />
               )}
+
             </>
             )}
 
-            <AuthButton type="submit" title="Cadastrar-se" />
+            <AuthButton
+              type="submit"
+              value={t('register')}
+            />
           </AuthForm>
         </AuthContainer>
       </Styled.RegisterPage>

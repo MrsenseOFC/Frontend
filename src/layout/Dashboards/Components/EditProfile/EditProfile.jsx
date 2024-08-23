@@ -7,6 +7,7 @@ import { University } from './Components/University/University';
 import { Staff } from './Components/Staff/Staff';
 import { Fan } from './Components/Fan/Fan';
 import { Agency } from './Components/Agency/Agency';
+import { BusinessMan } from './Components/BusinessMan/BusinessMan';
 
 export function EditProfile({ type }) {
   const normalizedType = type.toLowerCase();
@@ -21,6 +22,7 @@ export function EditProfile({ type }) {
       {normalizedType === 'agency' && <Agency />}
       {normalizedType === 'staff' && <Staff />}
       {normalizedType === 'fan' && <Fan />}
+      {normalizedType === 'business-man' && <BusinessMan />}
 
     </Styled.EditProfileContainer>
   );

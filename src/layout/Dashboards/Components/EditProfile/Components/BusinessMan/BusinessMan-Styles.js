@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { AuthHistoricContainer } from '../../../../components/elements/AuthElements/AuthHistoric/AuthHistoric-Styles.js';
-import { RowContainer } from '../../../../components/RowContainer/Row-Styles.js.js';
+import { AuthHistoricContainer } from '../../../../../../components/elements/AuthElements/AuthHistoric/AuthHistoric-Styles.js';
+import { RowContainer } from '../../../../../../components/RowContainer/Row-Styles.js.js';
 
-export const ClubContainer = styled.section`
+export const BusinessManContainer = styled.section`
   ${({ theme }) => css`
   
   display: flex;

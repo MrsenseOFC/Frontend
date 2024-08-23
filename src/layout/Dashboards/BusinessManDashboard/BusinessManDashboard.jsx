@@ -4,7 +4,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Settings } from '@styled-icons/fluentui-system-filled';
 import { useTranslation } from 'react-i18next';
-import * as Styled from './StaffDashboard-Styles';
+import * as Styled from './BusinessManDashboard-Styles';
 import { theme } from '../../../styles/theme';
 
 import { ProfilePicture } from '../../../components/elements/ProfilePicture/ProfilePicture';
@@ -20,23 +20,23 @@ import { IconDiv } from '../../../components/elements/IconDiv/IconDiv';
 import { Row } from '../../../components/RowContainer/Row';
 import { FloatingMenu } from '../../../components/FloatingMenu/FloatingMenu';
 import { SettingsMenu } from '../../../components/FloatingMenu/Components/SettingsMenu/SettingsMenu';
-import { StaffNav } from '../../../components/ProfileHeader/Components/StaffNav/StaffNav';
-import { StaffMenu } from '../../../components/MobileMenu/Components/StaffMenu/StaffMenu';
+import { BusinessManNav } from '../../../components/ProfileHeader/Components/BusinessManNav/BusinessManNav';
+import { BusinessManMenu } from '../../../components/MobileMenu/Components/BusinessManMenu/BusinessManMenu';
 import { FloatingHeader } from '../../../components/Headers/FloatingHeader/FloatingHeader';
 import { Nav } from '../../../components/Nav/Nav';
-import { StaffContext } from '../../../contexts/userContext/StaffProvider/StaffContext';
+import { BusinessManContext } from '../../../contexts/userContext/BusinessManProvider/BusinessManContext';
 
-export function StaffDashboard() {
+export function BusinessManDashboard() {
   const { t } = useTranslation();
-  const staffContext = useContext(StaffContext);
-  const { staffState, staffDispatch } = staffContext;
+  const businessManContext = useContext(BusinessManContext);
+  const { businessManState, businessManDispatch } = businessManContext;
 
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [settingsMenuVisibility, setSettingsMenuVisibility] = useState(false);
   const [mobileHeader, setMobileHeader] = useState(false);
 
   return (
-    <Styled.StaffDashboardContainer>
+    <Styled.BusinessManDashboardContainer>
 
       <FloatingHeader>
 
@@ -53,7 +53,7 @@ export function StaffDashboard() {
           />
 
           <Button
-            path="/staff-dashboard"
+            path="/business-man-dashboard"
             text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
@@ -102,7 +102,7 @@ export function StaffDashboard() {
         />
 
         <Button
-          path="/staff-dashboard"
+          path="/business-man-dashboard"
           text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
@@ -128,15 +128,15 @@ export function StaffDashboard() {
 
       )}
 
-      <ProfileBanner backgroundimagesrc={staffState.profile.banner.backgroundImageSrc}>
+      <ProfileBanner backgroundimagesrc={businessManState.profile.banner.backgroundImageSrc}>
         <ProfilePicture
-          imagesrc={staffState.profile.banner.profileImageSrc}
-          badge={staffState.profile.banner.badge}
-          type={t(staffState.profile.info.profileType)}
+          imagesrc={businessManState.profile.banner.profileImageSrc}
+          badge={businessManState.profile.banner.badge}
+          type={t(businessManState.profile.info.profileType)}
           ownerview
         />
 
-        <ProfileName name={staffState.profile.banner.name} />
+        <ProfileName name={businessManState.profile.banner.name} />
 
         <Row>
           <Button
@@ -169,12 +169,12 @@ export function StaffDashboard() {
       </ProfileBanner>
 
       <ProfileHeader>
-        <StaffNav />
+        <BusinessManNav />
       </ProfileHeader>
 
       {menuVisibility ? (
         <MobileMenu onclick={() => setMenuVisibility(!menuVisibility)}>
-          <StaffMenu />
+          <BusinessManMenu />
         </MobileMenu>
       ) : (
         <FloatingIcon name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
@@ -186,8 +186,8 @@ export function StaffDashboard() {
         <Outlet />
       </Column>
 
-      <Slide items={staffState.benefits} title={t('my_benefits')} />
+      <Slide items={businessManState.benefits} title={t('my_benefits')} />
 
-    </Styled.StaffDashboardContainer>
+    </Styled.BusinessManDashboardContainer>
   );
 }

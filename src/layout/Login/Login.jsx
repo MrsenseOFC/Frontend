@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Login-Styles';
 
 import { AuthForm } from '../../components/elements/AuthElements/AuthForm/AuthForm';
@@ -21,6 +22,8 @@ import { Button } from '../../components/elements/Button/Button';
 
 export function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -58,11 +61,11 @@ export function Login() {
           navigate('/default-dashboard');
         }
       } else {
-        alert('Credenciais inválidas. Por favor, verifique seus dados.');
+        alert(t('invalid_credentials_check_details'));
       }
     } catch (error) {
-      console.error('Erro ao fazer login:', error.response ? error.response.data : error.message);
-      alert('Erro ao fazer login. Por favor, tente novamente.');
+      console.error(t('login_error'), error.response ? error.response.data : error.message);
+      alert(t('login_error_try_again'));
     }
 
     setUserData({
@@ -82,7 +85,7 @@ export function Login() {
 
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -93,7 +96,7 @@ export function Login() {
 
           <Button
             path="/login"
-            text="Login"
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -105,7 +108,7 @@ export function Login() {
 
           <Button
             path="/register"
-            text="Registre-se"
+            text={t('register')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -116,7 +119,7 @@ export function Login() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -130,15 +133,15 @@ export function Login() {
       <Styled.LoginPage>
         <AuthWrapper>
           <AuthContainer>
-            <Title text="Login" size={theme.sizes.xxlarge} />
+            <Title text={t('login')} size={theme.sizes.xxlarge} />
 
             <AuthForm onSubmit={handleSubmit} method="post">
               <AuthInput
                 type="email"
                 name="email"
                 id="email_input"
-                placeholder="Seu email"
-                title="E-mail"
+                placeholder={t('your_email')}
+                title={t('email')}
                 value={userData.email}
                 onChange={handleChange}
                 required
@@ -148,8 +151,8 @@ export function Login() {
                 type="password"
                 name="password"
                 id="password_input"
-                placeholder="Insira sua senha"
-                title="Senha"
+                placeholder={t('insert_your_password')}
+                title={t('password')}
                 value={userData.password}
                 onChange={handleChange}
                 required
@@ -158,25 +161,25 @@ export function Login() {
               <AuthButton
                 name="login_submit"
                 id="login_submit"
-                value="Login"
+                value={t('login')}
                 onClick={handleSubmit}
               />
 
               <AuthOptions
-                checkboxtext="Lembrar login"
+                checkboxtext={t('remember_login')}
                 checkboxid="rememberMe"
                 path="/forgot-password"
-                pathtext="Esqueceu a senha?"
+                pathtext={t('forgot_password_question')}
               />
 
               <AuthRedirect
-                text="Não possui uma conta?"
+                text={t('have_account_question')}
                 path="/register"
-                pathtext="Registre-se"
+                pathtext={t('register')}
               />
 
               <StyledLink
-                text="Voltar para home"
+                text={t('return_home')}
                 path="/"
                 color={theme.colors.secondary}
                 hovercolor={theme.colors.tertiary}

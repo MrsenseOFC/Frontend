@@ -149,11 +149,9 @@
 	"club": "Clube",
 	"club_name": "Nome do clube",
 	"university": "Universidade",
-	"universities": "Universidades",
 	"staff": "Staff",
 	"agency": "Agência",
 	"fan": "Fã",
-	"fans": "Fãs",
 	"performance_analyst": "Analista de desempenho",
 	"coach_assistant": "Auxiliar Técnico",
 	"coordinator": "Coordenador",
@@ -171,7 +169,6 @@
 	"doctor": "Médico",
 	"doctors": "Médicos",
 	"scout": "Scout",
-	"exchange_agencies": "Agências de intercâmbio",
 	"exchange_agency": "Agência de intercâmbio",
 	"serie_a": "Serie A",
 	"serie_b": "Serie B",
@@ -290,9 +287,7 @@
 	"edit_my_opportunity": "Editar minha oportunidade",
 	"which_league_question": "Para qual liga é a oportunidade?",
 	"league": "Liga",
-	"leagues": "ligas",
 	"country": "País",
-	"schools": "Escolas",
 	"which_country_opportunity": "Para qual país é a oportunidade?",
 	"position": "Posição",
 	"which_position": "Para qual posição é a oportunidade",
@@ -463,18 +458,5 @@
 	"": "",
 	"": "",
 	"": "",
-	"": "",
-
-	"------------------------------------------ Benefits pages": "------------------------------------------ ",
-
-	"welcome_t2s_events": "Boas-vindas aos eventos da T2S!",
-	"events_text_1": "Aqui, você encontrará os melhores eventos de futebol, tanto no Brasil quanto ao redor do mundo",
-	"events_text_2": "No momento, os eventos da T2S estão disponíveis em nossos sites individuais. Para acessá-los, basta seguir o passo-a-passo abaixo:",
-	"events_step_1": "Clique em qualquer um dos eventos abaixo.",
-	"events_step_2": "Leia os detalhes do evento.",
-	"events_step_3": "Ao encontrar um evento que lhe interesse, clique em ‘Participar’.",
-	"events_step_4": "Após isso, você será direcionado para a página do evento",
-
-	"": "",
-	"other_t2s_benefits": "Outros benefícios T2S"
+	"": ""
 }
