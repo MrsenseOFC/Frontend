@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Prop from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthQualCheck-Styles';
 import {
   AuthRadioContainer,
@@ -12,6 +13,7 @@ import { S2tContext } from '../../../../contexts/s2tContext/S2tContext';
 export function AuthQualCheck({
   title, groupname, onChange, selectedvalue,
 }) {
+  const { t } = useTranslation();
   const s2tContext = useContext(S2tContext);
   const { s2tState, s2tDispatch } = s2tContext;
 
@@ -41,8 +43,8 @@ export function AuthQualCheck({
               type="string"
               name="qualNote_input"
               id="qualNote_input"
-              title="Nota"
-              placeholder="Insira sua nota final"
+              title={t('note')}
+              placeholder={t('insert_final_grade')}
               value={selectedvalue === 'yes' ? '' : selectedvalue}
               onChange={(e) => onChange(e.target.value)}
               required

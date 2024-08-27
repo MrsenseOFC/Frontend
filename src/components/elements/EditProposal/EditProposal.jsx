@@ -102,7 +102,7 @@ export function EditProposal({ onclick, proposal }) {
               type="date"
               name="disponibility_input"
               id="disponibility_input"
-              title={t('which_disponibility_date_question')}
+              title={t('which_disponibility_date')}
               value={proposalData.details.disponibility}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, disponibility: e.target.value } }))}
             />

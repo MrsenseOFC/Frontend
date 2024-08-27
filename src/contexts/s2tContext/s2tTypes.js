@@ -8,5 +8,8 @@ export const report_media = 'report_media';
 export const filter_players = 'filter_players';
 export const search_players = 'search_players';
 
+export const filter_events = 'filter_events';
+export const search_events = 'search_events';
+
 export const filter_player_proposals = 'filter_player_proposals';
 export const search_player_proposals = 'search_player_proposals';

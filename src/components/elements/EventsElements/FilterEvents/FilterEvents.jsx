@@ -1,7 +1,8 @@
 import Prop from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { OptionsOutline as OptionsIcons } from '@styled-icons/evaicons-outline/OptionsOutline';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './FilterEvents-Styles';
 import { AuthInput } from '../../AuthElements/AuthInput/AuthInput';
 import { AuthDropdown } from '../../AuthElements/AuthDropdown/AuthDropdown';
@@ -13,9 +14,15 @@ import { Row } from '../../../RowContainer/Row';
 import { IconDiv } from '../../IconDiv/IconDiv';
 import { AuthLayout } from '../../AuthElements/AuthLayout/AuthLayout';
 import { SearchWrapper } from '../../AuthElements/AuthSearch/AuthSearch-Styles';
+import { S2tContext } from '../../../../contexts/s2tContext/S2tContext';
+import { filterEvents, searchEvents } from '../../../../contexts/s2tContext/s2tActions';
 
 export function FilterEvents() {
   const [isOpen, setIsOpen] = useState(true);
+  const { t } = useTranslation();
+
+  const s2tContext = useContext(S2tContext);
+  const { s2tState, s2tDispatch } = s2tContext;
 
   const [filterData, setFilterData] = useState({
     eventType: '',
@@ -26,30 +33,10 @@ export function FilterEvents() {
 
   const [searchData, setSearchData] = useState('');
 
-  const eventTypeOptions = [
-    { value: 'match', text: 'Partida' },
-    { value: 'camping', text: 'Camping' },
-    { value: 'clinic', text: 'Clínica' },
-    { value: 'palestra', text: 'Palestra' },
-    { value: 'tour', text: 'Tour' },
-    { value: 'showcase', text: 'Showcase' },
-    { value: 'exchange', text: 'Intercâmbio' },
-  ];
-
-  const eventFormatOptions = [
-    { value: 'online', text: 'Online' },
-    { value: 'inPerson', text: 'Presencial' },
-  ];
-
   useEffect(() => {
     const handleFilter = async () => {
       if (filterData) {
-        try {
-          const response = await axios.post('api', filterData);
-          console.log('Filtro atualizado:', response.data);
-        } catch (error) {
-          console.error('Erro ao filtrar', error);
-        }
+        filterEvents(s2tDispatch, filterData);
       }
     };
 
@@ -59,12 +46,7 @@ export function FilterEvents() {
   useEffect(() => {
     const handleSearch = async () => {
       if (searchData) {
-        try {
-          const response = await axios.post('api', searchData);
-          console.log('Pesquisa atualizada:', response.data);
-        } catch (error) {
-          console.error('Erro ao pesquisar', error);
-        }
+        searchEvents(s2tDispatch, searchData);
       }
     };
 
@@ -79,13 +61,13 @@ export function FilterEvents() {
           <Row>
             <AuthDropdown
               id="filterEventType"
-              options={eventTypeOptions}
-              placeholder="Todos"
+              options={s2tState.formOptions.eventType}
+              placeholder={t('all')}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, eventType: option }))}
             />
 
             <SearchWrapper>
-              <IconDiv onclick={() => setIsOpen(!isOpen)} name="Filtrar oportunidades">
+              <IconDiv onclick={() => setIsOpen(!isOpen)} name={t('filter_events')}>
                 <OptionsIcons />
               </IconDiv>
               <AuthSearch
@@ -101,8 +83,8 @@ export function FilterEvents() {
 
             <AuthDropdown
               id="filterEventFormat"
-              options={eventFormatOptions}
-              placeholder="Formato do evento"
+              options={s2tState.formOptions.eventFormat}
+              placeholder={t('event_format')}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, eventFormat: option }))}
             />
 
@@ -110,7 +92,7 @@ export function FilterEvents() {
               type="text"
               name="filterEventOrganizer_input"
               id="filterEventOrganizer_input"
-              placeholder="Organizador(a)"
+              placeholder={t('organizer')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, organizer: e.target.value }))}
             />
 
@@ -118,7 +100,7 @@ export function FilterEvents() {
               type="text"
               name="filterEventCountry_input"
               id="filterEventCountry_input"
-              placeholder="País"
+              placeholder={t('country')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { KeyboardArrowDown as ArrowDownIcon, KeyboardArrowUp as ArrowUpIcon } from '@styled-icons/material-outlined';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthDropdown-Styles';
 
 export function AuthDropdown({
@@ -13,6 +14,7 @@ export function AuthDropdown({
   selectedvalue = '',
   otheroption = false,
 }) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownText, setDropdownText] = useState(
     options.find((option) => option.value === selectedvalue)?.text || '',
@@ -42,12 +44,12 @@ export function AuthDropdown({
         <Styled.DropdownTitle>
           {title}
           {' '}
-          {required && '(Obrigatório)'}
+          {required && `(${t('required')})`}
         </Styled.DropdownTitle>
       )}
 
       <Styled.DropdownButton onClick={toggleDropdown} active={isOpen ? 'Active' : undefined}>
-        {dropdownText || placeholder || 'Selecione'}
+        {dropdownText || placeholder || t('select')}
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
       </Styled.DropdownButton>
 
@@ -64,13 +66,13 @@ export function AuthDropdown({
               onClick={() => handleItemClick(option)}
               key={option.value}
             >
-              {option.text}
+              {t(option.value)}
             </Styled.DropdownItem>
           ))}
 
           {otheroption && (
             <Styled.DropdownItem onClick={() => handleItemClick(other)}>
-              {other.text}
+              {t(other.value)}
             </Styled.DropdownItem>
           )}
         </Styled.DropdownContent>

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthInput-Styles';
 
 export function AuthInput({
@@ -13,11 +14,13 @@ export function AuthInput({
   autoComplete = '',
   required = false,
 }) {
+  const { t } = useTranslation();
+
   return (
     <Styled.AuthInputContainer>
       {title}
       {' '}
-      {required && '(Obrigatório)'}
+      {required && `(${t('required')})`}
       <Styled.AuthInputElement
         type={type}
         name={name}

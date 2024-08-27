@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './NewEvent-Styles';
 import { Subtitle } from '../../Subtitle/Subtitle';
 import { ColumnContainer } from '../../../ColumnContainer/Column-Styles';
@@ -43,6 +44,8 @@ export function NewEvent({ onclick }) {
     termsAndConditions: '',
   });
 
+  const { t } = useTranslation();
+
   const handleEventImage = (e) => {
     const newFile = e.target.files[0];
 
@@ -62,23 +65,23 @@ export function NewEvent({ onclick }) {
   return (
     <Styled.NewEventContainer>
       <Row>
-        <Title text="Criar evento" uppercase />
+        <Title text={t('create_new_event')} uppercase />
 
-        <IconDiv name="Voltar" onclick={onclick} hovercolor={theme.colors.red}>
+        <IconDiv name={t('back')} onclick={onclick} hovercolor={theme.colors.red}>
           <CloseIcon />
         </IconDiv>
       </Row>
 
       <AuthWrapper>
         <AuthForm onSubmit={handleSubmit}>
-          <Subtitle text="Detalhes" uppercase />
+          <Subtitle text={t('details')} uppercase />
           <AuthLayout isopen>
             <AuthInput
               type="text"
               name="eventName_input"
               id="eventName_input"
-              placeholder="Escolha o título do seu evento"
-              title="Título"
+              placeholder={t('select_event_title')}
+              title={t('title')}
               value={eventData.title}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, title: e.target.value }))}
               required
@@ -88,8 +91,8 @@ export function NewEvent({ onclick }) {
               type="text"
               name="eventSubtitle_input"
               id="eventSubtitle_input"
-              placeholder="Um breve resumo sobre o evento"
-              title="Resumo"
+              placeholder={t('summary_about_event')}
+              title={t('summary')}
               value={eventData.subtitle}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, subtitle: e.target.value }))}
             />
@@ -98,8 +101,8 @@ export function NewEvent({ onclick }) {
               type="text"
               name="eventOrganizer_input"
               id="eventOrganizer_input"
-              placeholder="Quem está organizando o evento"
-              title="Organizador"
+              placeholder={t('who_event_organizer')}
+              title={t('organizer')}
               value={eventData.organizer}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, organizer: e.target.value }))}
               required
@@ -108,8 +111,8 @@ export function NewEvent({ onclick }) {
             <AuthDropdown
               id="eventFormat"
               options={s2tState.formOptions.eventFormat}
-              placeholder="Escolha"
-              title="Qual o formato do evento?"
+              placeholder={t('select')}
+              title={t('which_event_format')}
               onDropdownChange={(value) => setEventData((prevData) => ({ ...prevData, format: value }))}
             />
 
@@ -119,8 +122,8 @@ export function NewEvent({ onclick }) {
                   type="text"
                   name="eventCountry_input"
                   id="eventCountry_input"
-                  placeholder="Insira o país que será realizado o evento"
-                  title="País"
+                  placeholder={t('insert_event_country')}
+                  title={t('country')}
                   value={eventData.country}
                   onChange={(e) => setEventData((prevData) => ({ ...prevData, country: e.target.value }))}
                 />
@@ -129,8 +132,8 @@ export function NewEvent({ onclick }) {
                   type="text"
                   name="eventState_input"
                   id="eventState_input"
-                  placeholder="Insira o estado que será realizado o evento"
-                  title="Estado"
+                  placeholder={t('insert_event_state')}
+                  title={t('state')}
                   value={eventData.state}
                   onChange={(e) => setEventData((prevData) => ({ ...prevData, state: e.target.value }))}
                 />
@@ -139,8 +142,8 @@ export function NewEvent({ onclick }) {
                   type="text"
                   name="eventZipCode_input"
                   id="eventZipCode_input"
-                  placeholder="Insira o CEP"
-                  title="CEP"
+                  placeholder={t('insert_zip_code')}
+                  title={t('zip_code')}
                   value={eventData.zipCode}
                   onChange={(e) => setEventData((prevData) => ({ ...prevData, zipCode: e.target.value }))}
                 />
@@ -149,8 +152,8 @@ export function NewEvent({ onclick }) {
                   type="text"
                   name="eventState_input"
                   id="eventState_input"
-                  placeholder="Insira o restante do endereço"
-                  title="Endereço"
+                  placeholder={t('insert_rest_adress')}
+                  title={t('adress')}
                   value={eventData.adress}
                   onChange={(e) => setEventData((prevData) => ({ ...prevData, adress: e.target.value }))}
                 />
@@ -163,8 +166,8 @@ export function NewEvent({ onclick }) {
               type="text"
               name="eventPlatform_input"
               id="eventPlatform_input"
-              placeholder="Qual plataforma será realizado o evento"
-              title="Plataforma"
+              placeholder={t('what_event_platform')}
+              title={t('platform')}
               value={eventData.adress}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, adress: e.target.value }))}
             />
@@ -174,7 +177,7 @@ export function NewEvent({ onclick }) {
               type="time"
               name="eventStartHour_input"
               id="eventStartHour_input"
-              title="Horário de início do evento"
+              title={t('event_start_hour')}
               value={eventData.startHour}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, startHour: e.target.value }))}
             />
@@ -183,7 +186,7 @@ export function NewEvent({ onclick }) {
               type="date"
               name="eventStartDate_input"
               id="eventStartDate_input"
-              title="Data de início do evento"
+              title={t('event_start_date')}
               value={eventData.startDate}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, startDate: e.target.value }))}
               required
@@ -193,7 +196,7 @@ export function NewEvent({ onclick }) {
               type="date"
               name="eventEndDate_input"
               id="eventEndDate_input"
-              title="Data do fim do evento"
+              title={t('event_end_date')}
               value={eventData.endDate}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, endDate: e.target.value }))}
               required
@@ -201,16 +204,16 @@ export function NewEvent({ onclick }) {
 
             <AuthFile
               id="eventImage_input"
-              text="Selecione a imagem de capa para o seu evento (16:9)"
+              text={t('select_event_banner')}
               onChange={(e) => handleEventImage(e)}
             />
 
           </AuthLayout>
 
           <ColumnContainer>
-            <Subtitle text="Descrição" uppercase />
+            <Subtitle text={t('description')} uppercase />
             <TextArea
-              placeholder="Insira mais detalhes sobre o evento"
+              placeholder={t('insert_more_event_details')}
               name="description"
               value={eventData.description}
               onChange={(e) => setEventData((prevData) => ({ ...prevData, description: e.target.value }))}
@@ -231,7 +234,7 @@ export function NewEvent({ onclick }) {
           <AuthButton
             name="createEvent_submit"
             id="createEvent_submit"
-            value="Publicar Evento"
+            value={t('create_new_event')}
           />
         </AuthForm>
       </AuthWrapper>

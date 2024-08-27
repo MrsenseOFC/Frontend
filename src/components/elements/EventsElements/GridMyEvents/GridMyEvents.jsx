@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Add as AddIcon } from '@styled-icons/material-outlined';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './GridMyEvents-Styles';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { EventModal } from '../EventModal/EventModal';
@@ -14,6 +15,8 @@ import { Text } from '../../Text/Text';
 export function GridMyEvents({ items }) {
   const [selectedEvent, setSelectedEvent] = useState();
   const [isAddNewEvent, setIsAddNewEvent] = useState(false);
+
+  const { t } = useTranslation();
 
   // Pagination stuff
   const [pageNumber, setPageNumber] = useState(0);
@@ -58,8 +61,8 @@ export function GridMyEvents({ items }) {
         <>
 
           <Row>
-            <Title text="Meus eventos" uppercase />
-            <IconDiv name="Criar nova proposta" onclick={() => setIsAddNewEvent(!isAddNewEvent)}>
+            <Title text={t('my_events')} uppercase />
+            <IconDiv name={t('create_new_event')} onclick={() => setIsAddNewEvent(!isAddNewEvent)}>
               <AddIcon />
             </IconDiv>
           </Row>
@@ -83,13 +86,13 @@ export function GridMyEvents({ items }) {
               ))}
             </GridLayout>
           ) : (
-            <Text text="Você ainda não publicou nenhum evento. Que tal começar agora? Clique no ícone de ‘+’ acima para criar o seu primeiro evento" />
+            <Text text={t('no_owner_events_found')} />
           )}
 
           {displayItems.length > 0 && (
           <Styled.StyledPaginate
-            previousLabel="Anterior"
-            nextLabel="Próximo"
+            previousLabel={t('previous')}
+            nextLabel={t('next')}
             breakLabel="..."
             pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
             pageRangeDisplayed={3}

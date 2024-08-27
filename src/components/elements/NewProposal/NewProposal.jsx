@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './NewProposal-Styles';
 import { Subtitle } from '../Subtitle/Subtitle';
 import { ColumnContainer } from '../../ColumnContainer/Column-Styles';
@@ -49,6 +50,8 @@ export function NewProposal({ onclick }) {
     requirements: '',
   });
 
+  const { t } = useTranslation();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     addProposal(s2tDispatch, proposalData);
@@ -59,23 +62,23 @@ export function NewProposal({ onclick }) {
     <Styled.NewProposalContainer>
       <Row>
 
-        <Title text="Criar oportunidade" uppercase />
+        <Title text={t('create_new_opportunity')} uppercase />
 
-        <IconDiv name="Voltar" onclick={onclick}>
+        <IconDiv name={t('back')} onclick={onclick}>
           <CloseIcon />
         </IconDiv>
       </Row>
 
       <AuthWrapper>
         <AuthForm onSubmit={handleSubmit}>
-          <Subtitle text="Detalhes" uppercase />
+          <Subtitle text={t('details')} uppercase />
           <AuthLayout isopen>
             <AuthInput
               type="text"
               name="league_input"
               id="league_input"
-              placeholder="Para qual liga é a oportunidade?"
-              title="Liga"
+              placeholder={t('which_league')}
+              title={t('league')}
               value={proposalData.details.org}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, org: e.target.value } }))}
               required
@@ -85,16 +88,16 @@ export function NewProposal({ onclick }) {
               type="text"
               name="country_input"
               id="country_input"
-              placeholder="Para qual país é a oportunidade?"
-              title="País"
+              placeholder={t('which_country_opportunity')}
+              title={t('country')}
               required
               value={proposalData.details.country}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, country: e.target.value } }))}
             />
 
             <AuthDropdown
-              title="Para qual posição é a oportunidade"
-              placeholder="Escolha a posição"
+              title={t('which_position')}
+              placeholder={t('select_position')}
               id="position"
               required
               options={s2tState.formOptions.positions}
@@ -102,9 +105,9 @@ export function NewProposal({ onclick }) {
             />
 
             <AuthDropdown
-              title="Para qual categoria é a oportunidade?"
+              title={t('which_category')}
               id="competitiveCategory"
-              placeholder="Escolha a categoria"
+              placeholder={t('select_category')}
               options={s2tState.formOptions.competitiveCategory}
               onDropdownChange={(option) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, category: option } }))}
               required
@@ -114,7 +117,7 @@ export function NewProposal({ onclick }) {
               type="date"
               name="disponibility_input"
               id="disponibility_input"
-              title="Qual a data de disponibilidade da oportunidade?"
+              title={t('which_disponibility_date')}
               value={proposalData.details.disponibility}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, disponibility: e.target.value } }))}
             />
@@ -123,8 +126,8 @@ export function NewProposal({ onclick }) {
               type="text"
               name="minimumHeight_input"
               id="minimumHeight_input"
-              placeholder="Qual altura mínima para se candidatar?"
-              title="Altura mínima"
+              placeholder={t('which_minimum_height')}
+              title={t('minimum_height')}
               value={proposalData.details.minHeight}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, minHeight: e.target.value } }))}
             />
@@ -133,8 +136,8 @@ export function NewProposal({ onclick }) {
               type="number"
               name="minimumAge_input"
               id="minimumAge_input"
-              placeholder="Qual a idade mínima para se candidatar? (Em anos)"
-              title="Idade Mínima"
+              placeholder={t('which_minimum_age')}
+              title={t('minimum_age')}
               value={proposalData.details.age.minAge}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, age: { ...prevData.details.age, minAge: e.target.value } } }))}
             />
@@ -143,8 +146,8 @@ export function NewProposal({ onclick }) {
               type="text"
               name="maximumAge_input"
               id="maximumAge_input"
-              placeholder="Qual a idade máxima para se candidatar? (Em anos)"
-              title="Idade Máxima"
+              placeholder={t('which_maximum_age')}
+              title={t('maximum_age')}
               value={proposalData.details.age.maxAge}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, age: { ...prevData.details.age, maxAge: e.target.value } } }))}
             />
@@ -153,8 +156,8 @@ export function NewProposal({ onclick }) {
               type="text"
               name="mininumPayment_input"
               id="mininumPayment_input"
-              placeholder="Qual o menor valor que o jogador pode receber mensalmente?"
-              title="Salário mínimo"
+              placeholder={t('which_minimum_payment')}
+              title={t('minimum_payment')}
               required
               value={proposalData.details.payment.minPayment}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, payment: { ...prevData.details.payment, minPayment: e.target.value } } }))} // Atualize aqui
@@ -164,15 +167,15 @@ export function NewProposal({ onclick }) {
               type="text"
               name="maximumPayment_input"
               id="maximumPayment_input"
-              placeholder="Qual o maior valor que o jogador pode receber mensalmente?"
-              title="Salário máximo"
+              placeholder={t('which_maximum_payment')}
+              title={t('maximum_payment')}
               value={proposalData.details.payment.maxPayment}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, details: { ...prevData.details, payment: { ...prevData.details.payment, maxPayment: e.target.value } } }))} // Atualize aqui
             />
 
             <AuthDropdown
-              title="Qual moeda será usada para o pagamento?"
-              placeholder="Escolha a moeda"
+              title={t('which_currency')}
+              placeholder={t('select_currency')}
               id="paymentCurrency"
               options={s2tState.formOptions.currency}
               required
@@ -182,9 +185,9 @@ export function NewProposal({ onclick }) {
           </AuthLayout>
 
           <ColumnContainer>
-            <Subtitle text="Descrição" uppercase />
+            <Subtitle text={t('description')} uppercase />
             <TextArea
-              placeholder="Insira a descrição da sua proposta"
+              placeholder={t('insert_description')}
               name="description"
               value={proposalData.description}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, description: e.target.value }))}
@@ -192,9 +195,9 @@ export function NewProposal({ onclick }) {
           </ColumnContainer>
 
           <ColumnContainer>
-            <Subtitle text="Requisitos" uppercase />
+            <Subtitle text={t('requirements')} uppercase />
             <TextArea
-              placeholder="Insira outros requisitos para sua proposta"
+              placeholder={t('insert_requirements')}
               name="requirements"
               value={proposalData.requirements}
               onChange={(e) => setProposalData((prevData) => ({ ...prevData, requirements: e.target.value }))}
@@ -204,7 +207,7 @@ export function NewProposal({ onclick }) {
           <AuthButton
             name="createProposal_submit"
             id="createProposal_submit"
-            value="Publicar Oportunidade"
+            value={t('publish_opportunity')}
           />
         </AuthForm>
       </AuthWrapper>

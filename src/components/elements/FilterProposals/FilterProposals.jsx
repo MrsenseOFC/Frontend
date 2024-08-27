@@ -87,7 +87,7 @@ export function FilterProposals() {
 
             <AuthDropdown
               id="filterAgeCategory"
-              placeholder={t('categoria')}
+              placeholder={t('category')}
               options={s2tState.formOptions.ageCategory}
               onDropdownChange={(option) => setFilterData((prevData) => ({ ...prevData, ageCategory: option }))}
             />

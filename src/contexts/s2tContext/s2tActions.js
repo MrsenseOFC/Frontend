@@ -25,6 +25,14 @@ export const filterPlayers = (dispatch, filterData) => {
   dispatch({ type: types.filter_players, payload: filterData });
 };
 
+export const filterEvents = (dispatch, filterData) => {
+  dispatch({ type: types.filter_events, payload: filterData });
+};
+
+export const searchEvents = (dispatch, searchData) => {
+  dispatch({ type: types.search_events, payload: searchData });
+};
+
 export const searchPlayers = (dispatch, searchData) => {
   dispatch({ type: types.search_players, payload: searchData });
 };

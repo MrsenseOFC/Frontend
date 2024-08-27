@@ -1,18 +1,21 @@
 import Prop from 'prop-types';
 import React, { Children } from 'react';
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthSearch-Styles';
 
 export function AuthSearch({
   name, id, onChange, value, title = '', autocomplete = '', required = false, children,
 }) {
+  const { t } = useTranslation();
+
   return (
     <Styled.SearchWrapper>
       {children}
       <Styled.AuthSearchContainer>
         {title}
         {' '}
-        {required ? '(Obrigatório)' : ''}
+        {required ? t('required') : ''}
 
         <Styled.AuthSearchElement
           type="search"

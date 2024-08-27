@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
+import { t } from 'i18next';
 import * as Styled from './GridEvents-Styles';
 import { GridLayout } from '../../../GridLayout/GridLayout';
 import { EventModal } from '../EventModal/EventModal';
@@ -71,13 +72,13 @@ export function GridEvents({ items, selectedevent }) {
           ))}
         </GridLayout>
       ) : (
-        <Text text="Nenhum evento foi encontrado..." />
+        <Text text={t('event_not_found')} />
       )}
 
       {displayItems.length > 0 && (
       <Styled.StyledPaginate
-        previousLabel="Anterior"
-        nextLabel="Próximo"
+        previousLabel={t('previous')}
+        nextLabel={t('next')}
         breakLabel="..."
         pageCount={items ? Math.ceil(items.length / itemsPerPage) : 0}
         pageRangeDisplayed={3}

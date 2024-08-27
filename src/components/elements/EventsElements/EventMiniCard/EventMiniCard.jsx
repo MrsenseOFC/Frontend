@@ -1,6 +1,7 @@
 import Prop from 'prop-types';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './EventMiniCard-Styles';
 import { Subtitle } from '../../Subtitle/Subtitle';
 import { Text } from '../../Text/Text';
@@ -10,6 +11,7 @@ export function EventMiniCard({
   item,
 }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleCardClick = (selectedEvent) => {
     // Player é substituido pelo dashboard do usuário dinamicamente

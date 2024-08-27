@@ -2,6 +2,7 @@ import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import { DocumentPdf as DocumentPdfIcon, DocumentTableArrowRight } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './EventModal-Styles';
 import { FloatingMenu } from '../../../FloatingMenu/FloatingMenu';
 import { Row } from '../../../RowContainer/Row';
@@ -23,6 +24,7 @@ import { StyledLink } from '../../StyledLink/StyledLink';
 
 export function EventModal({ event, onclick }) {
   const [isRegistering, setIsRegistering] = useState();
+  const { t } = useTranslation();
 
   return (
     <Styled.EventModalContainer>
@@ -41,19 +43,19 @@ export function EventModal({ event, onclick }) {
         <Subtitle text="Detalhes" uppercase />
 
         <GridOneColumn>
-          {event.organizer && <InfoInRow infotitle="Organizador(a)" info={event.organizer} uppercase />}
-          {event.startDate && <InfoInRow infotitle="Data de início" info={event.startDate} uppercase />}
-          {event.endDate && <InfoInRow infotitle="Data do fim" info={event.endDate} uppercase />}
-          {event.startHour && <InfoInRow infotitle="Horário" info={`${event.startHour}h`} uppercase />}
-          {event.country && <InfoInRow infotitle="País" info={event.country} uppercase />}
-          {event.state && <InfoInRow infotitle="Estado" info={event.state} uppercase />}
-          {event.zipCode && <InfoInRow infotitle="CEP" info={event.zipCode} uppercase />}
-          {event.adress && <InfoInRow infotitle="Endereço" info={event.adress} uppercase />}
-          {event.platform && <InfoInRow infotitle="Plataforma" info={event.platform} uppercase />}
+          {event.organizer && <InfoInRow infotitle={t('organizer')} info={event.organizer} uppercase />}
+          {event.startDate && <InfoInRow infotitle={t('start_date')} info={event.startDate} uppercase />}
+          {event.endDate && <InfoInRow infotitle={t('end_date')} info={event.endDate} uppercase />}
+          {event.startHour && <InfoInRow infotitle={t('hour')} info={`${event.startHour}h`} uppercase />}
+          {event.country && <InfoInRow infotitle={t('country')} info={event.country} uppercase />}
+          {event.state && <InfoInRow infotitle={t('state')} info={event.state} uppercase />}
+          {event.zipCode && <InfoInRow infotitle={t('zip_code')} info={event.zipCode} uppercase />}
+          {event.adress && <InfoInRow infotitle={t('adress')} info={event.adress} uppercase />}
+          {event.platform && <InfoInRow infotitle={t('platform')} info={event.platform} uppercase />}
         </GridOneColumn>
 
         <ColumnContainer>
-          <Subtitle text="Descrição" uppercase />
+          <Subtitle text={t('description')} uppercase />
           {event.description && <Text text={event.description} />}
         </ColumnContainer>
 
@@ -155,7 +157,7 @@ export function EventModal({ event, onclick }) {
         {event.path && (
         <Button
           path={event.path}
-          text="Participar"
+          text={t('participate')}
           bgcolor={theme.colors.quaternary}
           bghover={theme.colors.secondary}
           textcolor={theme.colors.white}

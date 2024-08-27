@@ -43,7 +43,7 @@ export function PlayerDashboard() {
         <Nav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}

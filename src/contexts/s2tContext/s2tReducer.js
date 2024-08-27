@@ -71,6 +71,16 @@ export const s2tReducer = (state, action) => {
       // insira a função aqui
       return { ...state };
 
+    case types.filter_events:
+
+      // insira a função aqui
+      return { ...state };
+
+    case types.search_events:
+
+      // insira a função aqui
+      return { ...state };
+
     default: {
       return { ...state };
     }

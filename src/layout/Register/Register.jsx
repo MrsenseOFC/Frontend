@@ -36,7 +36,9 @@ export function Register() {
   const [teamModality, setTeamModality] = useState('');
 
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  console.log(i18n.language);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,7 +119,7 @@ export function Register() {
           />
         </Nav>
       </FloatingHeader>
-      <Styled.RegisterPage>
+      <Styled.RegisterPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
         <Bubble>
           <Subtitle text={t('step_by_step')} uppercase as="h4" size={theme.sizes.xlarge} />
           <ListContainer>

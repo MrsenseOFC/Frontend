@@ -5,13 +5,13 @@ import { BubbleContainer } from '../../components/Bubble/Bubble-Styles.js';
 import { TextElement } from '../../components/elements/Text/Text-Styles.js';
 
 export const RegisterPage = styled.section`
-  ${({ theme }) => css`
+  ${({ theme, backgroundimagesrc }) => css`
       background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 1)
       ),
-      url('/assets/images/backgrounds/login_register.png');
+      url(${backgroundimagesrc});
 
       background-position: right;
       background-size: cover;

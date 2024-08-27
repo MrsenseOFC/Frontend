@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthHistoric-Styles';
 import { AuthInput } from '../AuthInput/AuthInput';
 import { theme } from '../../../../styles/theme';
@@ -16,6 +17,8 @@ export function AuthHistoric({
   title = '', id, inputtitle, placeholder, historic, onChangeName, onChangeEarliestDate, onChangeLatestDate, onClick,
   nameValue, earliestDateValue, latestDateValue,
 }) {
+  const { t } = useTranslation();
+
   const [isActual, setIsActual] = useState(false);
 
   const playerContext = useContext(PlayerContext);
@@ -67,8 +70,8 @@ export function AuthHistoric({
         type="date"
         name={`${id}EarliestDate_input`}
         id={`${id}EarliestDate_input`}
-        placeholder="Ano de entrada"
-        title="Entrada"
+        placeholder={t('entry_year')}
+        title={t('entry')}
         onChange={onChangeEarliestDate}
         value={earliestDateValue}
       />
@@ -78,8 +81,8 @@ export function AuthHistoric({
         type="date"
         name={`${id}LatestDate_input`}
         id={`${id}LatestDate_input`}
-        placeholder="Ano de saída"
-        title="Saída"
+        placeholder={t('exit_year')}
+        title={t('exit')}
         onChange={onChangeLatestDate}
         value={latestDateValue}
       />
@@ -88,13 +91,13 @@ export function AuthHistoric({
       <AuthCheckbox
         id={`isActual${id}`}
         value=""// proposialmente vazio para poder resetar o latestDate quando o usuário marcar a checkbox
-        text={`Atual ${inputtitle}`}
+        text={`${t('actual')} ${inputtitle}`}
         onChange={(e) => handleIsActual(e)}
         checked={isActual}
       />
 
       <Button
-        text="Adicionar"
+        text={t('add')}
         bgcolor={theme.colors.quaternary}
         bghover={theme.colors.secondary}
         textcolor={theme.colors.white}

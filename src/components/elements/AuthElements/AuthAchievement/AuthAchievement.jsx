@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthAchievement-Styles';
 import { AuthInfo } from '../AuthInfo/AuthInfo';
 import { AuthInput } from '../AuthInput/AuthInput';
@@ -21,6 +22,8 @@ export function AuthAchievement({
   title = '', id, inputtitle, placeholder, achievements, onChangeName, onChangeDate, onClick,
   nameValue, dateValue,
 }) {
+  const { t } = useTranslation();
+
   const playerContext = useContext(PlayerContext);
   const { playerState, playerDispatch } = playerContext;
 
@@ -77,14 +80,14 @@ export function AuthAchievement({
         type="date"
         name={`${id}AchievementYear_input`}
         id={`${id}AchievementYear_input`}
-        placeholder="Ano da conquista"
-        title="Data"
+        placeholder={t('year_of_achievement')}
+        title={t('date')}
         onChange={onChangeDate}
         value={dateValue}
       />
 
       <Button
-        text="Adicionar"
+        text={t('add')}
         bgcolor={theme.colors.quaternary}
         bghover={theme.colors.secondary}
         textcolor={theme.colors.white}

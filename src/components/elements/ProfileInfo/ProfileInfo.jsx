@@ -42,7 +42,7 @@ export function ProfileInfo({ items }) {
     // clubs
     teamModality: t('modality'),
     representative: t('representative'),
-    foundationDate: t('doundation_date'),
+    foundationDate: t('foundation_date'),
     country: t('country'),
     state: t('state'),
     trainingCenter: t('training_center'),

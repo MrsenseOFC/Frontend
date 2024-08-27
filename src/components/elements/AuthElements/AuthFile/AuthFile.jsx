@@ -8,7 +8,14 @@ export function AuthFile({
   return (
     <Styled.AuthFileContainer htmlFor={id}>
       {text}
-      <Styled.AuthFileInput type="file" onChange={onChange} accept={accept} id={id} name={id} required={required} />
+      <Styled.AuthFileInput
+        type="file"
+        onChange={onChange}
+        accept={accept}
+        id={id}
+        name={id}
+        required={required}
+      />
     </Styled.AuthFileContainer>
   );
 }

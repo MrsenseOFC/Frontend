@@ -33,8 +33,8 @@ export function PlayerHome() {
       {/* temporário, requer mudanças nos item passados */}
 
       <BannerSlide slidesperview={2} backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png" gradientdirection="to top">
-        <VerticalMiniSlide title="Eventos" type="events" items={s2tState.events} />
-        <VerticalMiniSlide title="Notícias" type="news" items={s2tState.news} />
+        <VerticalMiniSlide title={t('events')} type="events" items={s2tState.events} />
+        <VerticalMiniSlide title={t('news')} type="news" items={s2tState.news} />
       </BannerSlide>
 
     </Styled.PlayerHomeContainer>

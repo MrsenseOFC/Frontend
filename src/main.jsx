@@ -309,24 +309,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
                             </Routes>
 
-                            <Footer>
-                              <Row>
-                                <SocialLink type="facebook" />
-                                <SocialLink type="instagram" />
-                                <SocialLink type="twitter" />
-                                <SocialLink type="youtube" />
-                                <SocialLink type="tiktok" />
-                              </Row>
-
-                              <Nav>
-                                <StyledLink text="Privacidade" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                                <StyledLink text="Termos de uso" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                                <StyledLink text="Sobre nós" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                                <StyledLink text="Precisa de ajuda?" color={theme.colors.lightgray} hovercolor={theme.colors.white} />
-                              </Nav>
-
-                              <Text text="© 2024 Talent 2 Show" color={theme.colors.primary} uppercase />
-                            </Footer>
+                            <Footer />
 
                           </FanProvider>
                         </BusinessManProvider>

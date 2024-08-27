@@ -1173,5 +1173,15 @@ export const s2tData = {
       { value: 'in_person', text: 'Presencial' },
     ],
 
+    eventType: [
+      { value: 'match', text: 'Partida' },
+      { value: 'camping', text: 'Camping' },
+      { value: 'clinic', text: 'Clínica' },
+      { value: 'palestra', text: 'Palestra' },
+      { value: 'tour', text: 'Tour' },
+      { value: 'showcase', text: 'Showcase' },
+      { value: 'exchange', text: 'Intercâmbio' },
+    ],
+
   },
 };
