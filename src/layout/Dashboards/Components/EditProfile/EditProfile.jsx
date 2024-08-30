@@ -7,6 +7,8 @@ import { University } from './Components/University/University';
 import { Staff } from './Components/Staff/Staff';
 import { Fan } from './Components/Fan/Fan';
 import { Agency } from './Components/Agency/Agency';
+import { League } from './Components/League/League';
+
 import { BusinessMan } from './Components/BusinessMan/BusinessMan';
 
 export function EditProfile({ type }) {
@@ -17,7 +19,7 @@ export function EditProfile({ type }) {
 
       {normalizedType === 'club' && <Club />}
       {normalizedType === 'player' && <Player />}
-      {normalizedType === 'league' && <Club />}
+      {normalizedType === 'league' && <League />}
       {normalizedType === 'university' && <University />}
       {normalizedType === 'agency' && <Agency />}
       {normalizedType === 'staff' && <Staff />}

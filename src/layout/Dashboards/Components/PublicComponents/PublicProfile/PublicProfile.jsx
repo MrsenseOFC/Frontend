@@ -22,11 +22,20 @@ export function PublicProfile() {
   return (
     <Styled.PublicProfileContainer>
 
-      {/* Todos os dados aqui são polaceholder, necessário substituir posteriormente pelos dados do perfil acessado */}
+      {/* Todos os dados aqui são placeholder, necessário substituir posteriormente pelos dados do perfil acessado */}
       <ProfileInfo items={clubState.profile.info} />
 
-      <PublicSlide items={clubState.profile.photos} title={t('photos')} />
-      <PublicVideoSlide items={clubState.profile.videos} title={t('videos')} />
+      {clubState.profile.photos && clubState.profile.photos.length > 0 ? (
+        <PublicSlide items={clubState.profile.photos} title={t('photos')} />
+      ) : (
+        <></>
+      )}
+
+      {clubState.profile.videos && clubState.profile.videos.length > 0 ? (
+        <PublicSlide items={clubState.profile.videos} title={t('videos')} />
+      ) : (
+        <></>
+      )}
 
       <Row>
         <Historic items={clubState.profile.leagues} title={t('current_competitions')} />

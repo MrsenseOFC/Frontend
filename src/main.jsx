@@ -105,6 +105,7 @@ import { BusinessManDashboard } from './layout/Dashboards/BusinessManDashboard/B
 import { BusinessManHome } from './layout/Dashboards/Components/BusinessManComponents/BusinessManHome/BusinessManHome';
 import { BusinessManProfile } from './layout/Dashboards/Components/BusinessManComponents/BusinessManProfile/BusinessManProfile';
 import { BusinessManFavorites } from './layout/Dashboards/Components/BusinessManComponents/BusinessManFavorites/BusinessManFavorites';
+import { StaffPage } from './layout/Users/Components/Staff/StaffPage';
 
 register();
 
@@ -152,6 +153,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
                               <Route path="/users" element={<Users />}>
                                 <Route path="player" element={<PlayerPage />} />
+                                <Route path="staff" element={<StaffPage />} />
                                 <Route path="club" element={<ClubPage />} />
                               </Route>
 
@@ -229,7 +231,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                 <Route path="" element={<ClubHome />} />
                                 <Route path="profile" element={<ClubProfile />} />
                                 <Route path="my-squad" element={<MySquad />} />
-                                <Route path="profile-edit" element={<EditProfile type="club" />} />
+                                <Route path="profile-edit" element={<EditProfile type="league" />} />
                                 <Route path="opportunities" element={<Opportunities />} />
                                 <Route path="my-opportunities" element={<MyOpportunities opportunities={s2tData.proposals.male.professional.agents} />} />
                                 <Route path="scouts" element={<Scouts />} />

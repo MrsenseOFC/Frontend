@@ -4,6 +4,7 @@ import { FloatingHeaderContainer } from '../../../components/Headers/FloatingHea
 import { NavContainer } from '../../../components/Nav/Nav-Styles';
 import { IconContainer } from '../../../components/elements/IconDiv/IconDiv-Styles';
 import { FloatingMenuContainer } from '../../../components/FloatingMenu/FloatingMenu-Styles';
+import { ButtonElement } from '../../../components/elements/Button/Button-Styles';
 
 export const UniversityDashboardContainer = styled.section`
   ${({ theme }) => css`
@@ -33,6 +34,12 @@ export const UniversityDashboardContainer = styled.section`
         @media ${theme.medias.mobile} {
           display: flex;
         }
+      }
+    }
+
+    ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
       }
     }
 

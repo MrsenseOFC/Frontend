@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import { PopupElement } from '../../../elements/Popup/Popup-Styles';
+import { TextCopyElement } from '../../../elements/TextCopy/TextCopy-Styles';
 
-export const SettingsMenuContainer = styled.div`
+export const ShareMenuContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -9,8 +10,9 @@ export const SettingsMenuContainer = styled.div`
     flex-direction: column;
     gap: ${theme.spacings.small};
     padding: ${theme.spacings.xsmall};
-      ${PopupElement} {
-        margin-top: 20px;
-      }
+    ${TextCopyElement} {
+      border
+    }
+    
   `}
 `;

@@ -7,6 +7,7 @@ import { FloatingHeaderContainer } from '../../../components/Headers/FloatingHea
 import { NavContainer } from '../../../components/Nav/Nav-Styles.js';
 import { MobileNavContainer } from '../../../components/MobileNav/MobileNav-Styles.js';
 import { FloatingMenuContainer } from '../../../components/FloatingMenu/FloatingMenu-Styles.js';
+import { ButtonElement } from '../../../components/elements/Button/Button-Styles.js';
 
 export const PlayerDashboardContainer = styled.section`
   ${({ theme }) => css`
@@ -35,6 +36,13 @@ export const PlayerDashboardContainer = styled.section`
         @media ${theme.medias.mobile} {
           display: flex;
         }
+      }
+    }
+
+
+    ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
       }
     }
 

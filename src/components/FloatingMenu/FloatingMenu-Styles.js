@@ -10,7 +10,7 @@ export const FloatingMenuContainer = styled.nav`
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border: ${theme.borders.white};
-    box-shadow: 0px 0px 10px 2px ${theme.colors.white};
+    box-shadow: 0px 0px 8px 0.5px ${theme.colors.white};
     border-radius: 15px;
 
     position: fixed;

@@ -5,6 +5,7 @@ import { FloatingHeaderContainer } from '../../../components/Headers/FloatingHea
 import { IconContainer } from '../../../components/elements/IconDiv/IconDiv-Styles';
 import { NavContainer } from '../../../components/Nav/Nav-Styles';
 import { FloatingMenuContainer } from '../../../components/FloatingMenu/FloatingMenu-Styles';
+import { ButtonElement } from '../../../components/elements/Button/Button-Styles';
 
 export const LeagueDashboardContainer = styled.section`
   ${({ theme }) => css`
@@ -33,6 +34,12 @@ export const LeagueDashboardContainer = styled.section`
         @media ${theme.medias.mobile} {
           display: flex;
         }
+      }
+    }
+
+    ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
       }
     }
 

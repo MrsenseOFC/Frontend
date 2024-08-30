@@ -6,7 +6,7 @@ import { BookOpenGlobe as BookOpenIcon } from '@styled-icons/fluentui-system-fil
 import { Image as ImageIcon } from '@styled-icons/fluentui-system-filled/Image';
 import { VideoAdd as VideoAddIcon } from '@styled-icons/fluentui-system-filled';
 import { useTranslation } from 'react-i18next';
-import * as Styled from './ClubPage-Styles';
+import * as Styled from './StaffPage-Styles';
 import { Title } from '../../../../components/elements/Title/Title';
 import { GridLayout } from '../../../../components/GridLayout/GridLayout';
 import { IconDiv } from '../../../../components/elements/IconDiv/IconDiv';
@@ -23,12 +23,12 @@ import { Row } from '../../../../components/RowContainer/Row';
 import { ListContainer, ListItem } from '../../../../components/elements/List/List-Styles';
 import { List } from '../../../../components/elements/List/List';
 
-export function ClubPage({ children }) {
+export function StaffPage({ children }) {
   const { t } = useTranslation();
   const [explanation, setExplanation] = useState('step-1');
 
   return (
-    <Styled.ClubPageContainer>
+    <Styled.StaffPageContainer>
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
         <Subtitle
           as="h2"
@@ -38,7 +38,7 @@ export function ClubPage({ children }) {
         />
         <Text
           size={theme.sizes.large}
-          text={t('club_text')}
+          text={t('staff_text')}
         />
         <Button
           path="/register"
@@ -58,13 +58,13 @@ export function ClubPage({ children }) {
       <GridLayout>
 
         <IconCard
-          name={t('club_step_1_title')}
+          name={t('staff_step_1_title')}
           onclick={() => setExplanation(explanation === 'step-1' ? '' : 'step-1')}
           active={explanation === 'step-1'}
           activecolor={theme.colors.primary}
         >
           <CheckIcon />
-          <Subtitle text={t('club_step_1_title')} size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('staff_step_1_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-1' && (
             <Styled.Explanation>
@@ -78,7 +78,7 @@ export function ClubPage({ children }) {
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_1_part_3')}
+                  {t('staff_step_1_part_3')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
@@ -90,13 +90,13 @@ export function ClubPage({ children }) {
         </IconCard>
 
         <IconCard
-          name={t('club_step_2_title')}
+          name={t('staff_step_2_title')}
           onclick={() => setExplanation(explanation === 'step-2' ? '' : 'step-2')}
           active={explanation === 'step-2'}
           activecolor={theme.colors.primary}
         >
           <PersonEditIcon />
-          <Subtitle text={t('club_step_2_title')} size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('staff_step_2_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-2' && (
             <Styled.Explanation>
@@ -110,7 +110,11 @@ export function ClubPage({ children }) {
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_2_part_3')}
+                  {t('staff_step_2_part_3')}
+                </ListItem>
+
+                <ListItem color={theme.colors.primary}>
+                  {t('staff_step_2_part_4')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -118,13 +122,13 @@ export function ClubPage({ children }) {
         </IconCard>
 
         <IconCard
-          name={t('club_step_3_title')}
+          name={t('staff_step_3_title')}
           onclick={() => setExplanation(explanation === 'step-3' ? '' : 'step-3')}
           active={explanation === 'step-3'}
           activecolor={theme.colors.primary}
         >
           <VideoAddIcon />
-          <Subtitle text={t('club_step_3_title')} size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('staff_step_3_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-3' && (
             <Styled.Explanation>
@@ -138,7 +142,7 @@ export function ClubPage({ children }) {
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_3_part_3')}
+                  {t('staff_step_3_part_3')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -146,31 +150,31 @@ export function ClubPage({ children }) {
         </IconCard>
 
         <IconCard
-          name={t('club_step_4_title')}
+          name={t('staff_step_4_title')}
           onclick={() => setExplanation(explanation === 'step-4' ? '' : 'step-4')}
           active={explanation === 'step-4'}
           activecolor={theme.colors.primary}
         >
           <BookOpenIcon />
-          <Subtitle text={t('club_step_4_title')} size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('staff_step_4_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-4' && (
             <Styled.Explanation>
               <ListContainer>
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_4_part_1')}
+                  {t('staff_step_4_part_1')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_4_part_2')}
+                  {t('staff_step_4_part_2')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_4_part_3')}
+                  {t('staff_step_4_part_3')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  {t('club_step_4_part_4')}
+                  {t('staff_step_4_part_4')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -190,6 +194,7 @@ export function ClubPage({ children }) {
 
       <Styled.Benefits>
         <Slide items={s2tData.photos.benefits} title="Benefícios" />
+
       </Styled.Benefits>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
@@ -198,7 +203,7 @@ export function ClubPage({ children }) {
 
         <Text
           size={theme.sizes.large}
-          text={t('club_text_2')}
+          text={t('staff_text_2')}
         />
 
         <Row>
@@ -216,7 +221,7 @@ export function ClubPage({ children }) {
 
           <Button
             path="/register"
-            text={t('register')}
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.lightprimary}
@@ -230,10 +235,10 @@ export function ClubPage({ children }) {
 
       </Banner>
 
-    </Styled.ClubPageContainer>
+    </Styled.StaffPageContainer>
   );
 }
 
-ClubPage.propTypes = {
+StaffPage.propTypes = {
 
 };

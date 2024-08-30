@@ -4,6 +4,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import Prop from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { Share } from '@styled-icons/fluentui-system-filled';
 import * as Styled from './PublicDashboard-Styles';
 import { PlayerContext } from '../../../contexts/userContext/PlayerProvider/PlayerContext';
 import { theme } from '../../../styles/theme';
@@ -28,6 +29,7 @@ import { FloatingHeader } from '../../../components/Headers/FloatingHeader/Float
 import { Nav } from '../../../components/Nav/Nav';
 import { IconDiv } from '../../../components/elements/IconDiv/IconDiv';
 import { FloatingMenu } from '../../../components/FloatingMenu/FloatingMenu';
+import { ShareMenu } from '../../../components/FloatingMenu/Components/ShareMenu/ShareMenu';
 
 export function PublicDashboard() {
   const { t } = useTranslation();
@@ -38,6 +40,12 @@ export function PublicDashboard() {
   const [mobileHeader, setMobileHeader] = useState(false);
 
   const { username } = useParams();
+
+  const [shareMenuVisibility, setShareMenuVisibility] = useState(false);
+
+  const handleShareMenuVisibility = () => {
+    setShareMenuVisibility(!shareMenuVisibility);
+  };
 
   return (
     <Styled.PublicDashboardContainer>
@@ -129,6 +137,21 @@ export function PublicDashboard() {
           />
 
           <FavoriteIcon />
+
+          <IconDiv
+            active={shareMenuVisibility}
+            hovercolor={theme.colors.primary}
+            name={t('share')}
+            onclick={handleShareMenuVisibility}
+          >
+            <Share />
+          </IconDiv>
+
+          {shareMenuVisibility && (
+          <FloatingMenu onclick={() => setShareMenuVisibility(false)}>
+            <ShareMenu />
+          </FloatingMenu>
+          )}
         </Row>
       </ProfileBanner>
 

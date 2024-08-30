@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
-import { Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
+import { Settings as SettingsIcon, Share } from '@styled-icons/fluentui-system-filled';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './AgencyDashboard-Styles';
 import { theme } from '../../../styles/theme';
@@ -26,6 +26,7 @@ import { FloatingMenu } from '../../../components/FloatingMenu/FloatingMenu';
 import { SettingsMenu } from '../../../components/FloatingMenu/Components/SettingsMenu/SettingsMenu';
 import { FloatingHeader } from '../../../components/Headers/FloatingHeader/FloatingHeader';
 import { Nav } from '../../../components/Nav/Nav';
+import { ShareMenu } from '../../../components/FloatingMenu/Components/ShareMenu/ShareMenu';
 
 export function AgencyDashboard() {
   const { t } = useTranslation();
@@ -35,11 +36,23 @@ export function AgencyDashboard() {
 
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [settingsMenuVisibility, setSettingsMenuVisibility] = useState(false);
+  const [shareMenuVisibility, setShareMenuVisibility] = useState(false);
+
   const [mobileHeader, setMobileHeader] = useState(false);
 
   if (!agencyState.profile || !agencyState.profile.banner) {
     return <div>Loading...</div>;
   }
+
+  const handleShareMenuVisibility = () => {
+    setShareMenuVisibility(!shareMenuVisibility);
+    setSettingsMenuVisibility(false);
+  };
+
+  const handleSettingsMenuVisibility = () => {
+    setSettingsMenuVisibility(!settingsMenuVisibility);
+    setShareMenuVisibility(false);
+  };
 
   return (
     <Styled.AgencyDashboardContainer>
@@ -157,14 +170,29 @@ export function AgencyDashboard() {
             active={settingsMenuVisibility}
             hovercolor={theme.colors.primary}
             name={t('settings')}
-            onclick={() => setSettingsMenuVisibility(!settingsMenuVisibility)}
+            onclick={handleSettingsMenuVisibility}
           >
             <SettingsIcon />
+          </IconDiv>
+
+          <IconDiv
+            active={shareMenuVisibility}
+            hovercolor={theme.colors.primary}
+            name={t('share')}
+            onclick={handleShareMenuVisibility}
+          >
+            <Share />
           </IconDiv>
 
           {settingsMenuVisibility && (
           <FloatingMenu onclick={() => setSettingsMenuVisibility(false)}>
             <SettingsMenu />
+          </FloatingMenu>
+          )}
+
+          {shareMenuVisibility && (
+          <FloatingMenu onclick={() => setShareMenuVisibility(false)}>
+            <ShareMenu />
           </FloatingMenu>
           )}
 

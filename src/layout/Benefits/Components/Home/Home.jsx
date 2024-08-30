@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Home-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
 import { Title } from '../../../../components/elements/Title/Title';
@@ -19,26 +20,28 @@ export function Home() {
     behavior: 'smooth',
   });
 
+  const { t } = useTranslation();
+
   return (
     <Styled.HomeContainer>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Boas-vindas aos benefícios da T2S!" uppercase />
+        <Title text={t('welcome_t2s_benefits')} uppercase />
 
-        <Text text="Descubra as vantagens exclusivas que a T2S tem reservadas especialmente para você. Nossa missão é tornar sua experiência conosco ainda mais gratificante e recompensadora." />
-        <Text text="Aqui estão alguns dos benefícios incríveis que você pode aproveitar como parte da comunidade T2S:" />
+        <Text text={t('benefits_text_1')} />
+        <Text text={t('benefits_text_2')} />
 
       </Banner>
 
-      <Slide items={s2tData.photos.benefits} title="Benefícios T2S" />
+      <Slide items={s2tData.photos.benefits} title={t('t2s_benefits')} />
 
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" gradientdirection="to top">
-        <VerticalMiniSlide title="Eventos" type="events" items={s2tData.events} />
+        <VerticalMiniSlide title={t('events')} type="events" items={s2tData.events} />
 
-        <VerticalSoloSlide title="Social" size="400px" items={s2tData.news} />
+        <VerticalSoloSlide title={t('social')} size="400px" items={s2tData.news} />
 
-        <VerticalMiniSlide title="Notícias" type="news" items={s2tData.news} />
+        <VerticalMiniSlide title={t('news')} type="news" items={s2tData.news} />
       </BannerSlide>
 
     </Styled.HomeContainer>

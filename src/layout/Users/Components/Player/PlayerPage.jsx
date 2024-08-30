@@ -5,6 +5,7 @@ import { PersonEdit as PersonEditIcon } from '@styled-icons/fluentui-system-fill
 import { BookOpenGlobe as BookOpenIcon } from '@styled-icons/fluentui-system-filled/BookOpenGlobe';
 import { Image as ImageIcon } from '@styled-icons/fluentui-system-filled/Image';
 import { VideoAdd as VideoAddIcon } from '@styled-icons/fluentui-system-filled';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './PlayerPage-Styles';
 import { Title } from '../../../../components/elements/Title/Title';
 import { GridLayout } from '../../../../components/GridLayout/GridLayout';
@@ -23,6 +24,7 @@ import { ListContainer, ListItem } from '../../../../components/elements/List/Li
 import { List } from '../../../../components/elements/List/List';
 
 export function PlayerPage({ children }) {
+  const { t } = useTranslation();
   const [explanation, setExplanation] = useState('step-1');
 
   return (
@@ -31,16 +33,16 @@ export function PlayerPage({ children }) {
         <Subtitle
           as="h2"
           uppercase
-          text="O caminho para o estrelato esportivo começa aqui."
+          text={t('slogan')}
           size={theme.sizes.huge}
         />
         <Text
           size={theme.sizes.large}
-          text="Trabalhamos com atletas de todos os níveis, incluindo amadores, profissionais, semi profissionais e de categorias de base"
+          text={t('player_text')}
         />
         <Button
           path="/register"
-          text="Registre-se"
+          text={t('register')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.lightprimary}
@@ -51,36 +53,36 @@ export function PlayerPage({ children }) {
         />
       </Banner>
 
-      <Subtitle text="Como funciona" size={theme.sizes.xxlarge} uppercase />
+      <Subtitle text={t('how_it_works')} size={theme.sizes.xxlarge} uppercase />
 
       <GridLayout>
 
         <IconCard
-          name="Crie sua conta"
+          name={t('player_step_1_title')}
           onclick={() => setExplanation(explanation === 'step-1' ? '' : 'step-1')}
           active={explanation === 'step-1'}
           activecolor={theme.colors.primary}
         >
           <CheckIcon />
-          <Subtitle text="Crie sua conta" size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('player_step_1_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-1' && (
             <Styled.Explanation>
               <ListContainer>
                 <ListItem color={theme.colors.primary}>
-                  Acesse a plataforma e clique em "Registre-se".
+                  {t('generic_step_1_part_1')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Informe seus dados pessoais com atenção e complete todos os campos obrigatórios.
+                  {t('generic_step_1_part_2')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Selecione a opção "Atleta" para se cadastrar como um atleta em busca de oportunidades.
+                  {t('player_step_1_part_3')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Valide sua conta: Confirme seu email e siga as instruções para concluir o processo de cadastro.
+                  {t('generic_step_1_part_4')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -88,27 +90,27 @@ export function PlayerPage({ children }) {
         </IconCard>
 
         <IconCard
-          name="Edite seu perfil"
+          name={t('player_step_2_title')}
           onclick={() => setExplanation(explanation === 'step-2' ? '' : 'step-2')}
           active={explanation === 'step-2'}
           activecolor={theme.colors.primary}
         >
           <PersonEditIcon />
-          <Subtitle text="Edite seu perfil" size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('player_step_2_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-2' && (
             <Styled.Explanation>
               <ListContainer>
                 <ListItem color={theme.colors.primary}>
-                  Clique em "Minha area" para entrar na página do seu perfil.
+                  {t('generic_step_2_part_1')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Utilize imagens profissionais e de alta qualidade em seu perfil e banner para causar uma boa impressão.
+                  {t('generic_step_2_part_2')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Adicione detalhes sobre sua experiência, habilidades, formação e conquistas.
+                  {t('player_step_2_part_3')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -116,27 +118,27 @@ export function PlayerPage({ children }) {
         </IconCard>
 
         <IconCard
-          name="Mostre seu talento"
+          name={t('player_step_3_title')}
           onclick={() => setExplanation(explanation === 'step-3' ? '' : 'step-3')}
           active={explanation === 'step-3'}
           activecolor={theme.colors.primary}
         >
           <VideoAddIcon />
-          <Subtitle text="Mostre seu talento" size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('player_step_3_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-3' && (
             <Styled.Explanation>
               <ListContainer>
                 <ListItem color={theme.colors.primary}>
-                  Em sua área acesse a opção "perfil" através do menu de navegação
+                  {t('generic_step_3_part_1')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  No carrosel de mídias utilize o botão "+" para selecionar e enviar seus melhores conteúdos.
+                  {t('generic_step_3_part_2')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Inclua fotos e vídeos que demonstrem suas habilidades, técnicas e momentos de destaque em competições ou treinos.
+                  {t('player_step_3_part_3')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -144,31 +146,31 @@ export function PlayerPage({ children }) {
         </IconCard>
 
         <IconCard
-          name="Busque oportunidades"
+          name={t('player_step_4_title')}
           onclick={() => setExplanation(explanation === 'step-4' ? '' : 'step-4')}
           active={explanation === 'step-4'}
           activecolor={theme.colors.primary}
         >
           <BookOpenIcon />
-          <Subtitle text="Busque oportunidades" size={theme.sizes.small} uppercase as="h3" />
+          <Subtitle text={t('player_step_4_title')} size={theme.sizes.small} uppercase as="h3" />
 
           {explanation === 'step-4' && (
             <Styled.Explanation>
               <ListContainer>
                 <ListItem color={theme.colors.primary}>
-                  Acesse a seção "Oportunidades" para visualizar as vagas disponíveis.
+                  {t('player_step_4_part_1')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Utilize os filtros para encontrar oportunidades que se encaixam em seu perfil e interesses.
+                  {t('player_step_4_part_2')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Clique na vaga que te interessa, leia com atenção os detalhes e requisitos para saber se você se encaixa!
+                  {t('player_step_4_part_3')}
                 </ListItem>
 
                 <ListItem color={theme.colors.primary}>
-                  Se você se encaixa nos requisitos, preencha a área de texto com uma apresentação e clique em "Enviar" para dar o próximo passo.
+                  {t('player_step_4_part_4')}
                 </ListItem>
               </ListContainer>
             </Styled.Explanation>
@@ -188,21 +190,22 @@ export function PlayerPage({ children }) {
 
       <Styled.Benefits>
         <Slide items={s2tData.photos.benefits} title="Benefícios" />
+
       </Styled.Benefits>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Subtitle text="Faça parte!" uppercase size={theme.sizes.xhuge} />
+        <Subtitle text={t('be_part_exclamation')} uppercase size={theme.sizes.xhuge} />
 
         <Text
           size={theme.sizes.large}
-          text="Crie o seu perfil, compartilhe suas melhores fotos e vídeos e deixe que o mundo descubra o seu talento."
+          text={t('player_text_2')}
         />
 
         <Row>
           <Button
             path="/login"
-            text="Login"
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.lightprimary}
@@ -214,7 +217,7 @@ export function PlayerPage({ children }) {
 
           <Button
             path="/register"
-            text="Registre-se"
+            text={t('register')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.lightprimary}

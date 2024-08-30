@@ -128,7 +128,7 @@ export function Club() {
 
             <AuthInput
               type="date"
-              name="clubRoundationDate_input"
+              name="clubFoundationDate_input"
               id="clubFoundationDate_input"
               title={t('foundation_date')}
               value={profileData.foundationDate}

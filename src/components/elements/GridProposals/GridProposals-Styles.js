@@ -14,9 +14,9 @@ export const GridProposalsContainer = styled.div`
    flex-direction: column;
    gap: ${theme.spacings.large};
 
-   & ${IconContainer} {
+   /* & ${IconContainer} {
     animation: none;
-   }
+   } */
 
     ${TextElement} {
    }

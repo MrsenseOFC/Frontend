@@ -89,7 +89,7 @@ export function ReportModal({ onclick, id }) {
 
                 <Column>
                   <TextArea
-                    placeholder={t('select_report_details')}
+                    placeholder={t('insert_report_details')}
                     info="reportDetails"
                     name="reportDetails"
                     onChange={(e) => setReportData((prevData) => ({ ...prevData, reportDetails: e.target.value }))}

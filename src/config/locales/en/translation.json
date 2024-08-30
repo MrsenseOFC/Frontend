@@ -1,6 +1,6 @@
 {
 	"------------------------------------------ Palavras comuns": "------------------------------------------ ",
-
+	"slogan": "The road to sports stardom starts here",
 	"username": "Username",
 	"login": "Login",
 	"remember_login": "Remember login",
@@ -65,6 +65,10 @@
 	"terms_of_use": "Terms of use",
 	"about_us": "About us",
 	"need_help_question": "Need help?",
+	"share": "Share",
+	"language": "Language",
+	"copy_url": "Copy URL",
+
 	"------------------------------------------ Mensagens ao usuário": "------------------------------------------ ",
 
 	"no_owner_opportunities": "You haven't published any opportunities yet. Why not start now? Click the '+' icon above to create your first opportunity!",
@@ -334,6 +338,7 @@
 	"your_academic_history": "Your academic history",
 	"titles_and_awards_history": "History of titles and awards",
 	"competition_award": "Competition/Award",
+	"competition": "Competition",
 	"competition_award_name": "Competition or award name",
 	"take_toefl_question": "Did you take the TOEFL test?",
 	"take_act_question": "Did you take the ACT test?",
@@ -380,7 +385,7 @@
 	"competitive_level": "Competitive level",
 	"category": "Category",
 	"best_leg": "Best leg",
-	"availability": "Availability",
+	"avaliability": "Avaliability",
 	"has_manager": "Has agent",
 	"has_manager_question": "Do you have an agent?",
 	"minimum_transfer_value": "Minimum transfer value",
@@ -461,6 +466,12 @@
 	"register_step_4": "Go to 'Edit profile' and add details about your experience, skills, education, and achievements.",
 	"------------------------------------------ Benefits pages": "------------------------------------------ ",
 
+	"welcome_t2s_benefits": "Welcome to T2S benefits",
+	"benefits_text_1": "Discover the exclusive advantages that T2S has specially reserved for you. Our mission is to make your experience with us even more rewarding and gratifying.",
+	"benefits_text_2": "Here are some of the incredible benefits you can enjoy as part of the T2S community:",
+	"benefits_step_1": "Click on any of the events below.",
+	"t2s_benefits": "T2S Benefits",
+
 	"welcome_t2s_events": "Welcome to T2S events!",
 	"events_text_1": "Here you'll find the best football events, both in Brazil and around the world.",
 	"events_text_2": "Currently, T2S events are available on our individual websites. To access them, simply follow the steps below:",
@@ -530,5 +541,51 @@
 	"event_start_hour": "Event start time",
 	"event_end_date": "Event end date",
 	"select_event_banner": "Select the cover image for your event (16:9)",
-	"insert_more_event_details": "Insert more details about the event"
+	"insert_more_event_details": "Insert more details about the event",
+
+	"------------------------------------------ Userspage": "------------------------------------------ ",
+
+	"profile_types": "Profile types",
+	"generic_step_1_part_1": "Access the platform and click on 'Register'.",
+	"generic_step_1_part_2": "Enter your personal data carefully and complete all required fields.",
+	"generic_step_1_part_3": "Select the type of profile you want to register.",
+	"generic_step_1_part_4": "Validate your account: Confirm your email and follow the instructions to complete the registration process.",
+
+	"generic_step_2_part_1": "Click on 'My area' to enter your profile page.",
+	"generic_step_2_part_2": "Use professional and high-quality images in your profile and banner to make a good impression.",
+	"generic_step_2_part_3": "Add details about your account.",
+
+	"generic_step_3_part_1": "In your area, access the 'Profile' option through the navigation menu.",
+	"generic_step_3_part_2": "In the media carousel, use the '+' button to select and send your best content.",
+	"generic_step_3_part_3": "Include photos and videos that show moments related to your career.",
+
+	"player_text": "We work with athletes of all levels, including amateurs, professionals, semi-professionals and youth categories.",
+	"how_it_works": "How it works",
+	"player_step_1_title": "Create your account",
+	"player_step_2_title": "Edit your profile",
+	"player_step_3_title": "Show your talent",
+	"player_step_4_title": "seek opportunities",
+	"player_step_1_part_3": "Select the 'Athlete' option to register as an athlete looking for opportunities.",
+	"player_step_2_part_3": "Add details about your experience, skills, training and achievements.",
+	"player_step_3_part_3": "Include photos and videos that demonstrate your skills, techniques and highlights in competitions or training.",
+	"player_step_4_part_1": "Access the 'Opportunities' section to view available vacancies.",
+	"player_step_4_part_2": "Use the filters to find opportunities that fit your profile and interests.",
+	"player_step_4_part_3": "Click on the vacancy that interests you, read the details and requirements carefully to see if you fit!",
+	"player_step_4_part_4": "If you meet the requirements, fill in the text area with a presentation and click 'Send' to take the next step.",
+	"be_part_exclamation": "Be part of it!",
+	"player_text_2": "Create your profile, share your best photos and videos and let the world discover your talent.",
+
+	"club_text": "We work with clubs of all levels, including amateurs, professionals and semi-professionals.",
+	"club_step_1_title": "Create your account",
+	"club_step_2_title": "Edit your profile",
+	"club_step_3_title": "Show your talent",
+	"club_step_4_title": "Seek talents",
+	"club_step_1_part_3": "Select the 'Club' option to register as a club looking for new talents.",
+	"club_step_2_part_3": "Complete your profile! Reveal your memorable achievements, the stadium that crowns you and the coach that drives you.",
+	"club_step_3_part_3": "Include photos and videos that show the players training, highlights in competitions or the daily life of your club.",
+	"club_step_4_part_1": "Access the 'My opportunities' section to view your available opportunities.",
+	"club_step_4_part_2": "Click on the '+' icon to start creating a new opportunity.",
+	"club_step_4_part_3": "Click on an existing opportunity to edit its details at any time.",
+	"club_step_4_part_4": "Access the 'players' section and use the filters to discover the talents that can take your team to the next level.",
+	"club_text_2": "Create your profile, show your club to the world and seek new talents."
 }

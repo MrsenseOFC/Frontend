@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './CryptoWallet-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
 import { Title } from '../../../../components/elements/Title/Title';
@@ -19,36 +20,34 @@ export function CryptoWallet() {
     behavior: 'smooth',
   });
 
+  const { t } = useTranslation();
+
   return (
     <Styled.CryptoWalletContainer>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Boas-vindas à area de investimentos da T2S!" uppercase />
+        <Title text={t('welcome_t2s_crypto_wallet')} uppercase />
 
-        <Text text="Aqui, você encontrará informações essenciais para otimizar seus investimentos e fazer seu patrimônio crescer" />
-        <Text text="
-        A area de investimentos da T2S tem seu próprio site, onde você encontra tudo o que precisa para aproveitar ao máximo.
-        Para acessar:
-       "
-        />
+        <Text text={t('crypto_wallet_text_1')} />
+        <Text text={t('crypto_wallet_text_2')} />
 
         <ListWrapper>
           <ListContainer>
             <ListItem>
-              Clique em qualquer um dos tipos des investimentos abaixo.
+              {t('crypto_wallet_step_1')}
             </ListItem>
 
             <ListItem>
-              Você será direcionado automaticamente para o nosso site de investimentos.
+              {t('crypto_wallet_step_2')}
             </ListItem>
 
             <ListItem>
-              Crie sua conta ou faça login, se já tiver uma.
+              {t('crypto_wallet_step_3')}
             </ListItem>
 
             <ListItem>
-              Comece a explorar e aproveitar as vantagens exclusivas que te esperam!
+              {t('crypto_wallet_step_4')}
             </ListItem>
           </ListContainer>
         </ListWrapper>
@@ -85,11 +84,11 @@ export function CryptoWallet() {
       <Slide items={s2tData.photos.benefits} title="Outros benefícios T2S" />
 
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" gradientdirection="to top">
-        <VerticalMiniSlide title="Eventos" type="events" items={s2tData.events} />
+        <VerticalMiniSlide title={t('events')} type="events" items={s2tData.events} />
 
-        <VerticalSoloSlide title="Social" size="400px" items={s2tData.news} />
+        <VerticalSoloSlide title={t('social')} size="400px" items={s2tData.news} />
 
-        <VerticalMiniSlide title="Notícias" type="news" items={s2tData.news} />
+        <VerticalMiniSlide title={t('news')} type="news" items={s2tData.news} />
       </BannerSlide>
 
     </Styled.CryptoWalletContainer>

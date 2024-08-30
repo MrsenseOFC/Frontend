@@ -22,7 +22,7 @@ import { Button } from '../../components/elements/Button/Button';
 
 export function Login() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [userData, setUserData] = useState({
     email: '',
@@ -130,7 +130,7 @@ export function Login() {
         </Nav>
       </FloatingHeader>
 
-      <Styled.LoginPage>
+      <Styled.LoginPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
         <AuthWrapper>
           <AuthContainer>
             <Title text={t('login')} size={theme.sizes.xxlarge} />

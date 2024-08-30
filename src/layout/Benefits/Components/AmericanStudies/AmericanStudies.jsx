@@ -1,5 +1,6 @@
 import Prop from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AmericanStudies-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
 import { Title } from '../../../../components/elements/Title/Title';
@@ -19,29 +20,34 @@ export function AmericanStudies() {
     behavior: 'smooth',
   });
 
+  const { t } = useTranslation();
+
   return (
     <Styled.AmericanStudiesContainer>
 
       <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-1.png">
 
-        <Title text="Welcome to the T2S American Study Area!" uppercase />
+        <Title text={t('welcome_t2s_american_studies')} uppercase />
 
-        <Text text="Here, you'll find essential information to enhance your knowledge and expand your learning." />
-        <Text text="The T2S Study Area has a list of dedicated websites where you'll discover valuable resources to make the most of your academic journey." />
-        <Text text="To access:" />
+        <Text text={t('american_studies_text_1')} />
+        <Text text={t('american_studies_text_2')} />
 
         <ListWrapper>
           <ListContainer>
             <ListItem>
-              Click on any of the study types below:
+              {t('american_studies_step_1')}
             </ListItem>
 
             <ListItem>
-              You will be automatically redirected to the corresponding website.
+              {t('american_studies_step_2')}
             </ListItem>
 
             <ListItem>
-              Start enhancing your knowledge!
+              {t('american_studies_step_3')}
+            </ListItem>
+
+            <ListItem>
+              {t('american_studies_step_4')}
             </ListItem>
           </ListContainer>
         </ListWrapper>
@@ -75,14 +81,14 @@ export function AmericanStudies() {
 
       </BannerSlide>
 
-      <Slide items={s2tData.photos.benefits} title="Outros benefícios T2S" />
+      <Slide items={s2tData.photos.benefits} title={t('others_t2s_benefits')} />
 
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" gradientdirection="to top">
-        <VerticalMiniSlide title="Eventos" type="events" items={s2tData.events} />
+        <VerticalMiniSlide title={t('events')} type="events" items={s2tData.events} />
 
-        <VerticalSoloSlide title="Social" size="400px" items={s2tData.news} />
+        <VerticalSoloSlide title={t('social')} size="400px" items={s2tData.news} />
 
-        <VerticalMiniSlide title="Notícias" type="news" items={s2tData.news} />
+        <VerticalMiniSlide title={t('news')} type="news" items={s2tData.news} />
       </BannerSlide>
 
     </Styled.AmericanStudiesContainer>

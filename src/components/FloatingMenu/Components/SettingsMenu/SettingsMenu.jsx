@@ -11,17 +11,21 @@ import { GridLayout } from '../../../GridLayout/GridLayout';
 import { StyledLink } from '../../../elements/StyledLink/StyledLink';
 import { theme } from '../../../../styles/theme';
 import { Popup } from '../../../elements/Popup/Popup';
+import { Text } from '../../../elements/Text/Text';
 
 export function SettingsMenu() {
   const { t } = useTranslation();
 
   return (
     <Styled.SettingsMenuContainer>
+
+      <Text text={t('settings')} uppercase />
+
       <GridLayout>
 
         <StyledLink color={theme.colors.white} hovercolor={theme.colors.primary}>
           <LanguageIcon />
-          {t('select_language')}
+          {t('language')}
         </StyledLink>
 
         <StyledLink path="/logout" color={theme.colors.white} hovercolor={theme.colors.primary}>

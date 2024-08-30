@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Benefits-Styles';
 import { S2tProvider } from '../../contexts/s2tContext/S2tProvider';
 import { StandardHeader } from '../../components/Headers/StandardHeader/StandardHeader';
@@ -19,6 +20,8 @@ import { FloatingHeader } from '../../components/Headers/FloatingHeader/Floating
 export function Benefits() {
   const [mobileHeader, setMobileHeader] = useState(false);
 
+  const { t } = useTranslation();
+
   return (
     <Styled.BenefitsPage>
 
@@ -30,7 +33,7 @@ export function Benefits() {
 
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -41,7 +44,7 @@ export function Benefits() {
 
           <Button
             path="/player-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -52,7 +55,7 @@ export function Benefits() {
 
           <Button
             path="/benefits"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -64,11 +67,11 @@ export function Benefits() {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -78,7 +81,7 @@ export function Benefits() {
         <MobileNav>
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -89,7 +92,7 @@ export function Benefits() {
 
           <Button
             path="/player-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -100,7 +103,7 @@ export function Benefits() {
 
           <Button
             path="/player-dashboard"
-            text="Benefícios"
+            text={t('benefits')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}

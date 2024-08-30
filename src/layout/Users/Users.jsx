@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import { Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './Users-Styles';
 import { S2tProvider } from '../../contexts/s2tContext/S2tProvider';
 import { StandardHeader } from '../../components/Headers/StandardHeader/StandardHeader';
@@ -18,6 +19,7 @@ import { FloatingMenu } from '../../components/FloatingMenu/FloatingMenu';
 
 export function Users({ children }) {
   const [mobileHeader, setMobileHeader] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Styled.UsersPage>
@@ -29,7 +31,7 @@ export function Users({ children }) {
 
           <Button
             path="/"
-            text="Página principal"
+            text={t('home_page')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -38,9 +40,10 @@ export function Users({ children }) {
             borderhover={theme.colors.primary}
           />
 
+          {/* Trocar dinamicamente baseado no tipo usuário */}
           <Button
             path="/player-dashboard"
-            text="Minha área"
+            text={t('my_area')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -51,7 +54,7 @@ export function Users({ children }) {
 
           <Button
             path="/users"
-            text="Tipo de usuários"
+            text={t('profile_types')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.black}
             textcolor={theme.colors.primary}
@@ -63,11 +66,11 @@ export function Users({ children }) {
         </Nav>
 
         {mobileHeader ? (
-          <IconDiv name="Menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <CloseIcon />
           </IconDiv>
         ) : (
-          <IconDiv name="Fechar menu" onclick={() => setMobileHeader(!mobileHeader)}>
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
         ) }
@@ -77,7 +80,7 @@ export function Users({ children }) {
       <FloatingMenu>
         <Button
           path="/"
-          text="Página principal"
+          text={t('home_page')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -88,7 +91,7 @@ export function Users({ children }) {
 
         <Button
           path="/player-dashboard"
-          text="Minha área"
+          text={t('my_area')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.mediumblack}
           textcolor={theme.colors.white}
@@ -97,9 +100,10 @@ export function Users({ children }) {
           borderhover={theme.colors.primary}
         />
 
+        {/* Trocar dinamicamente baseado no tipo usuário */}
         <Button
           path="/player-dashboard"
-          text="Benefícios"
+          text={t('benefits')}
           bgcolor={theme.colors.mediumblack}
           bghover={theme.colors.black}
           textcolor={theme.colors.primary}

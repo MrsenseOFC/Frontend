@@ -41,7 +41,7 @@ export function ProposalCard({
         {org && <StyledLink path={orgpath} text={org} />}
       </CenterColumn>
 
-      {publicview && <FavoriteIcon id={id} />}
+      {publicview && <FavoriteIcon />}
       {ownerview && <RemoveIcon id={id} message={t('delete_opportunity_question')} />}
 
     </Styled.ProposalCardElement>

@@ -1,4 +1,4 @@
-import * as types from './leagueTypeses';
+import * as types from './leagueTypes';
 
 export const changeProfileInfo = (dispatch, profileInfo) => {
   dispatch({ type: types.change_profile_info, payload: profileInfo });

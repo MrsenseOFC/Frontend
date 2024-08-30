@@ -16,7 +16,7 @@ export function TextCopy({ title, text }) {
 
   const handleCopyText = async () => {
     try {
-      await navigator.clipboard.writeText(text); // Assume que 'text' está definido em outro lugar
+      await navigator.clipboard.writeText(text);
       setMessage(t('text_copied_sucess'));
       setIsCopied(true);
     } catch (error) {

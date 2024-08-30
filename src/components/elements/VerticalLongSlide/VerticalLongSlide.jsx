@@ -34,6 +34,8 @@ export function VerticalLongSlide({ items, title, type }) {
           {/* Necessário mudanças. Está assim apenas para renderizar algo visual */}
           {normalizedType === 'contact' && (
           <>
+
+            {/* Alterar futuramente quando já ter o sistema de chat */}
             <SwiperSlide>
               <ContactCard title="Agente" subtitle="Centroavante" imagesrc="/assets/images/pngs/brasileirao.png" newmessage />
             </SwiperSlide>

@@ -5,6 +5,7 @@ import { FloatingHeaderContainer } from '../../../components/Headers/FloatingHea
 import { IconContainer } from '../../../components/elements/IconDiv/IconDiv-Styles.js';
 import { NavContainer } from '../../../components/Nav/Nav-Styles.js';
 import { FloatingMenuContainer } from '../../../components/FloatingMenu/FloatingMenu-Styles.js';
+import { ButtonElement } from '../../../components/elements/Button/Button-Styles.js';
 
 export const PublicDashboardContainer = styled.section`
   ${({ theme }) => css`
@@ -34,6 +35,12 @@ export const PublicDashboardContainer = styled.section`
         @media ${theme.medias.mobile} {
           display: flex;
         }
+      }
+    }
+
+     ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
       }
     }
 
