@@ -81,7 +81,7 @@ export function English() {
 
       </BannerSlide>
 
-      <Slide items={s2tData.photos.benefits} title="Outros benefícios T2S" />
+      <Slide items={s2tData.photos.benefits} title={t('other_t2s_benefits')} />
 
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" gradientdirection="to top">
         <VerticalMiniSlide title={t('events')} type="events" items={s2tData.events} />

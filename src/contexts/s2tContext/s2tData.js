@@ -358,62 +358,55 @@ export const s2tData = {
 
       {
         id: 2,
-        src: '/assets/images/users/scouts.png',
-        title: 'scout',
-        path: '/register',
-      },
-
-      {
-        id: 3,
         src: '/assets/images/users/business.png',
         title: 'business_man',
         path: '/register',
       },
 
       {
-        id: 4,
+        id: 3,
         src: '/assets/images/users/clubs.png',
         title: 'clubs',
         path: '/register',
       },
 
       {
-        id: 5,
+        id: 4,
         src: '/assets/images/users/facultys.png',
         title: 'universities',
         path: '/register',
       },
 
       {
-        id: 6,
+        id: 5,
         src: '/assets/images/users/leagues.png',
         title: 'leagues',
         path: '/register',
       },
 
       {
-        id: 7,
+        id: 6,
         src: '/assets/images/users/schools.jpg',
         title: 'schools',
         path: '/register',
       },
 
       {
-        id: 8,
+        id: 7,
         src: '/assets/images/users/staff.jpg',
         title: 'staff',
         path: '/register',
       },
 
       {
-        id: 9,
+        id: 8,
         src: '/assets/images/users/exchangeAgencies.jpg',
         title: 'exchange_agencies',
         path: '/register',
       },
 
       {
-        id: 10,
+        id: 9,
         src: '/assets/images/users/fans.jpg',
         title: 'fans',
         path: '/register',
