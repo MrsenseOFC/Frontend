@@ -17,6 +17,7 @@ import {
   SafetyDivider as SquadIcon,
   Close as CloseIcon,
   PersonSearch as PersonSearchIcon,
+  SocialDistance as AffiliateIcon,
 } from '@styled-icons/material-outlined';
 
 import { useTranslation } from 'react-i18next';
@@ -164,6 +165,16 @@ export function LeagueMenu() {
       >
         <PlusIcon />
         {t('t2s+')}
+
+      </StyledLink>
+
+      <StyledLink
+        path="my-affiliates"
+        color={theme.colors.white}
+        hovercolor={theme.colors.primary}
+      >
+        <AffiliateIcon />
+        {t('my_affiliates')}
 
       </StyledLink>
 

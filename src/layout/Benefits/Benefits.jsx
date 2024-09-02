@@ -16,6 +16,7 @@ import { s2tData } from '../../contexts/s2tContext/s2tData';
 import { MobileNav } from '../../components/MobileNav/MobileNav';
 import { IconDiv } from '../../components/elements/IconDiv/IconDiv';
 import { FloatingHeader } from '../../components/Headers/FloatingHeader/FloatingHeader';
+import { FloatingMenu } from '../../components/FloatingMenu/FloatingMenu';
 
 export function Benefits() {
   const [mobileHeader, setMobileHeader] = useState(false);
@@ -78,7 +79,7 @@ export function Benefits() {
       </FloatingHeader>
 
       {mobileHeader && (
-        <MobileNav>
+        <FloatingMenu>
           <Button
             path="/"
             text={t('home_page')}
@@ -112,7 +113,7 @@ export function Benefits() {
             borderhover={theme.colors.primary}
             active
           />
-        </MobileNav>
+        </FloatingMenu>
       )}
 
       <S2tProvider>

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { Close as CloseIcon } from '@styled-icons/material-outlined';
+import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import * as Styled from './Login-Styles';
-
 import { AuthForm } from '../../components/elements/AuthElements/AuthForm/AuthForm';
 import { AuthButton } from '../../components/elements/AuthElements/AuthButton/AuthButton';
 import { AuthInput } from '../../components/elements/AuthElements/AuthInput/AuthInput';
@@ -19,10 +20,13 @@ import { FloatingHeader } from '../../components/Headers/FloatingHeader/Floating
 import { Logo } from '../../components/elements/Logo/Logo';
 import { Nav } from '../../components/Nav/Nav';
 import { Button } from '../../components/elements/Button/Button';
+import { IconDiv } from '../../components/elements/IconDiv/IconDiv';
+import { FloatingMenu } from '../../components/FloatingMenu/FloatingMenu';
 
 export function Login() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const [mobileHeader, setMobileHeader] = useState(false);
 
   const [userData, setUserData] = useState({
     email: '',
@@ -73,16 +77,14 @@ export function Login() {
       password: '', // Limpa a senha do estado após o envio do formulário
     });
   };
+  const [menuVisibility, setMenuVisibility] = useState(false);
 
   return (
-    <>
+    <Styled.LoginWrapper>
 
       <FloatingHeader>
-
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
-
         <Nav>
-
           <Button
             path="/"
             text={t('home_page')}
@@ -128,7 +130,68 @@ export function Login() {
             borderhover={theme.colors.primary}
           />
         </Nav>
+
+        {mobileHeader ? (
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <CloseIcon />
+          </IconDiv>
+        ) : (
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <MenuIcon />
+          </IconDiv>
+        ) }
       </FloatingHeader>
+
+      {mobileHeader && (
+      <FloatingMenu>
+        <Button
+          path="/"
+          text={t('home_page')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+        <Button
+          path="/login"
+          text={t('login')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.black}
+          textcolor={theme.colors.primary}
+          texthover={theme.colors.primary}
+          border={theme.colors.primary}
+          borderhover={theme.colors.primary}
+          active
+        />
+
+        <Button
+          path="/register"
+          text={t('register')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+        <Button
+          path="/benefits"
+          text={t('benefits')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+      </FloatingMenu>
+
+      )}
 
       <Styled.LoginPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
         <AuthWrapper>
@@ -188,6 +251,6 @@ export function Login() {
           </AuthContainer>
         </AuthWrapper>
       </Styled.LoginPage>
-    </>
+    </Styled.LoginWrapper>
   );
 }

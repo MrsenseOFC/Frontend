@@ -34,11 +34,11 @@ export const ProposalModalElement = styled.div`
      }
 
      @media ${theme.medias.tablet} {
-      max-height: 85%;
+      max-height: 70%;
      }
 
      @media ${theme.medias.smallmobile} {
-      max-height: 60%;
+      max-height: 50%;
      }
 
      &:hover {

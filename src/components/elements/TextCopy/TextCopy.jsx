@@ -45,7 +45,7 @@ export function TextCopy({ title, text }) {
 
       <Row>
         <Styled.TextCopyElement active={isCopied ? 'active' : undefined}>
-          <Text text={text} color={isCopied ? theme.colors.primary : theme.colors.white} />
+          <Text text={text || 'Link aqui'} color={isCopied ? theme.colors.primary : theme.colors.white} />
           <IconDiv name={t('copy')} onclick={handleCopyText} active={isCopied}>
             <CopyIcon />
           </IconDiv>

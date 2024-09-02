@@ -8,6 +8,8 @@ import { BannerContainer } from '../../components/elements/Banner/Banner-Styles'
 import { SubtitleElement } from '../../components/elements/Subtitle/Subtitle-Styles';
 import { TitleElement } from '../../components/elements/Title/Title-Styles';
 import { ListItem } from '../../components/elements/List/List-Styles';
+import { FloatingMenuContainer } from '../../components/FloatingMenu/FloatingMenu-Styles';
+import { ButtonElement } from '../../components/elements/Button/Button-Styles';
 
 export const BenefitsPage = styled.section`
   ${({ theme }) => css`
@@ -69,6 +71,23 @@ export const BenefitsPage = styled.section`
       display: none;
     }
   }
+
+  ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
+      }
+    }
+
+    > ${FloatingMenuContainer} {
+      display: none;
+      flex-direction: column;
+      gap: ${theme.spacings.small};
+      padding: ${theme.spacings.medium};
+
+      @media ${theme.medias.tablet} {
+        display: flex;
+      }
+    }
   
 
   `}

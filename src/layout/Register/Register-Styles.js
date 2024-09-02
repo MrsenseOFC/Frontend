@@ -3,6 +3,55 @@ import { RowContainer } from '../../components/RowContainer/Row-Styles.js';
 import { AuthContainer } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper-Styles.js';
 import { BubbleContainer } from '../../components/Bubble/Bubble-Styles.js';
 import { TextElement } from '../../components/elements/Text/Text-Styles.js';
+import { FloatingHeaderContainer } from '../../components/Headers/FloatingHeader/FloatingHeader-Styles.js';
+import { NavContainer } from '../../components/Nav/Nav-Styles.js';
+import { IconContainer } from '../../components/elements/IconDiv/IconDiv-Styles.js';
+import { FloatingMenuContainer } from '../../components/FloatingMenu/FloatingMenu-Styles.js';
+import { ButtonElement } from '../../components/elements/Button/Button-Styles.js';
+
+export const RegisterWrapper = styled.div`
+  ${({ theme }) => css`
+    
+  ${FloatingHeaderContainer} {
+      justify-content: space-between;
+
+
+      ${NavContainer} {
+        @media ${theme.medias.tablet} {
+         display: none;
+        }
+      }
+
+      ${IconContainer} {
+        display: none;
+        animation: none;
+
+        @media ${theme.medias.tablet} {
+          display: flex;
+        }
+      }
+    }
+
+
+    ${FloatingMenuContainer} {
+      & ${ButtonElement} {
+        height: 30px;
+      }
+    }
+
+    > ${FloatingMenuContainer} {
+      display: none;
+      flex-direction: column;
+      gap: ${theme.spacings.small};
+      padding: ${theme.spacings.medium};
+
+      @media ${theme.medias.tablet} {
+        display: flex;
+      }
+    }
+    
+  `}
+`;
 
 export const RegisterPage = styled.section`
   ${({ theme, backgroundimagesrc }) => css`
@@ -13,8 +62,8 @@ export const RegisterPage = styled.section`
       ),
       url(${backgroundimagesrc});
 
-      background-position: right;
-      background-size: cover;
+     background-position: right;
+     background-size: cover;
      display: flex;
      height: 100%;
      width: 100%;

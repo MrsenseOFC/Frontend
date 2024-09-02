@@ -15,6 +15,7 @@ import {
   Handshake as HandshakeIcon,
   LocalGroceryStore as StoreIcon,
   Close as CloseIcon,
+  SocialDistance as AffiliateIcon,
 } from '@styled-icons/material-outlined';
 
 import { useTranslation } from 'react-i18next';
@@ -132,6 +133,16 @@ export function PlayerMenu() {
       >
         <PlusIcon />
         {t('t2s+')}
+
+      </StyledLink>
+
+      <StyledLink
+        path="my-affiliates"
+        color={theme.colors.white}
+        hovercolor={theme.colors.primary}
+      >
+        <AffiliateIcon />
+        {t('my_affiliates')}
 
       </StyledLink>
 

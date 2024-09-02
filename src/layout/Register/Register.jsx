@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { useTranslation } from 'react-i18next';
+import { Close as CloseIcon } from '@styled-icons/material-outlined';
+import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import * as Styled from './Register-Styles';
 
 import { Subtitle } from '../../components/elements/Subtitle/Subtitle';
@@ -19,6 +21,8 @@ import { ListContainer, ListItem } from '../../components/elements/List/List-Sty
 import { Bubble } from '../../components/Bubble/Bubble';
 import { theme } from '../../styles/theme';
 import { S2tContext } from '../../contexts/s2tContext/S2tContext';
+import { IconDiv } from '../../components/elements/IconDiv/IconDiv';
+import { FloatingMenu } from '../../components/FloatingMenu/FloatingMenu';
 
 export function Register() {
   const s2tContext = useContext(S2tContext);
@@ -37,8 +41,7 @@ export function Register() {
 
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-
-  console.log(i18n.language);
+  const [mobileHeader, setMobileHeader] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +75,7 @@ export function Register() {
   };
 
   return (
-    <>
+    <Styled.RegisterWrapper>
       <FloatingHeader>
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
         <Nav>
@@ -118,7 +121,66 @@ export function Register() {
             borderhover={theme.colors.primary}
           />
         </Nav>
+
+        {mobileHeader ? (
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <CloseIcon />
+          </IconDiv>
+        ) : (
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <MenuIcon />
+          </IconDiv>
+        ) }
       </FloatingHeader>
+
+      {mobileHeader && (
+      <FloatingMenu>
+        <Button
+          path="/"
+          text={t('home_page')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+        <Button
+          path="/login"
+          text={t('login')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+        <Button
+          path="/register"
+          text={t('register')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.black}
+          textcolor={theme.colors.primary}
+          texthover={theme.colors.primary}
+          border={theme.colors.primary}
+          borderhover={theme.colors.primary}
+          active
+        />
+        <Button
+          path="/benefits"
+          text={t('benefits')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+      </FloatingMenu>
+
+      )}
+
       <Styled.RegisterPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
         <Bubble>
           <Subtitle text={t('step_by_step')} uppercase as="h4" size={theme.sizes.xlarge} />
@@ -262,6 +324,6 @@ export function Register() {
           </AuthForm>
         </AuthContainer>
       </Styled.RegisterPage>
-    </>
+    </Styled.RegisterWrapper>
   );
 }
