@@ -23,7 +23,7 @@ export function Opportunities() {
   const location = useLocation();
   const selectedProposal = location.state?.selectedProposal || null;
 
-  const getProposals = (type) => s2tState.proposals[playerState.profile.info.modality]?.[playerState.profile.info.competitiveCategory]?.[type] || [];
+  const getProposals = (type) => s2tState.proposals[playerState.profile.info.modality || 'male']?.[playerState.profile.info.competitiveCategory || 'professional']?.[type || 'clubs'] || [];
 
   const proposals = [
     ...getProposals('agents'),
