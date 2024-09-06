@@ -106,6 +106,12 @@ import { BusinessManHome } from './layout/Dashboards/Components/BusinessManCompo
 import { BusinessManProfile } from './layout/Dashboards/Components/BusinessManComponents/BusinessManProfile/BusinessManProfile';
 import { BusinessManFavorites } from './layout/Dashboards/Components/BusinessManComponents/BusinessManFavorites/BusinessManFavorites';
 import { StaffPage } from './layout/Users/Components/Staff/StaffPage';
+import { Terms } from './layout/Policies/Components/Terms/Terms';
+import { Policies } from './layout/Policies/Policies';
+import { Privacy } from './layout/Policies/Components/Privacy/Privacy';
+import { Copyright } from './layout/Policies/Components/Copyright/Copyright';
+import { AcceptableUse } from './layout/Policies/Components/AcceptableUse/AcceptableUse';
+import { agencyData } from './contexts/userContext/AgencyProvider/agencyData';
 
 register();
 
@@ -135,6 +141,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                               <Route path="/login" element={<Login />} />
                               <Route path="/forgot-password" element={<ForgotPassword />} />
                               <Route path="/reset-password" element={<ResetPassword />} />
+
+                              <Route path="/policies" element={<Policies />}>
+                                <Route path="terms-of-use" element={<Terms />} />
+                                <Route path="privacy" element={<Privacy />} />
+                                <Route path="copyright" element={<Copyright />} />
+                                <Route path="acceptable-use" element={<AcceptableUse />} />
+                              </Route>
 
                               <Route path="/benefits" element={<Benefits />}>
                                 <Route path="" element={<BenefitsHome />} />
@@ -260,7 +273,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                 <Route path="favorites" element={<AgencyFavorites />} />
                                 <Route path="events" element={<Events />} />
                                 <Route path="contacts" element={<h1>Em construção... :)</h1>} />
-                                <Route path="friends" element={<Friends friends={clubData.friends} />} />
+                                <Route path="friends" element={<Friends friends={agencyData.friends} />} />
                                 <Route path="store" element={<Store />} />
                                 <Route path="my-events" element={<MyEvents events={s2tData.events} />} />
                                 <Route path="my-affiliates" element={<MyAffiliates affiliates={s2tData.users.scouts} />} />

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
-import { Settings, Share } from '@styled-icons/fluentui-system-filled';
+import { Settings, Share, Settings as SettingsIcon } from '@styled-icons/fluentui-system-filled';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './BusinessManDashboard-Styles';
 import { theme } from '../../../styles/theme';

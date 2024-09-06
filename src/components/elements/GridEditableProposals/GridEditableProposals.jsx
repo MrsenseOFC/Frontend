@@ -77,16 +77,16 @@ export function GridEditableProposals({ items, title }) {
                   <GridLayoutContainer>
                     {displayItems.map((item) => (
                       <ProposalCard
-                        date={item.details.date}
-                        opportunity={item.details.opportunity}
-                        category={item.details.category}
-                        country={item.details.country}
-                        org={item.details.org}
-                        orglogo={item.details.orgLogo}
-                        orgpath={item.details.orgPath}
+                        date={item?.details?.date}
+                        opportunity={item?.details?.opportunity}
+                        category={item?.details?.category}
+                        country={item?.details?.country}
+                        org={item?.details?.org}
+                        orglogo={item?.details?.orgLogo}
+                        orgpath={item?.details?.orgPath}
                         onclick={() => handleCardClick(item)}
-                        id={item.opportunityId}
-                        key={item.opportunityId}
+                        id={item?.opportunityId}
+                        key={item?.opportunityId}
                         ownerview
                       />
                     ))}

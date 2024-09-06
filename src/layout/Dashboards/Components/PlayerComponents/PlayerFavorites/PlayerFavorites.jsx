@@ -18,11 +18,14 @@ export function PlayerFavorites() {
 
   return (
     <Styled.PlayerFavoritesContainer>
-      <PublicVideoSlide items={s2tState.videos.trending} title={t('favorite_videos')} publicview lazy />
+      <PublicVideoSlide items={s2tState?.videos?.trending} title={t('favorite_videos')} publicview lazy />
 
       {/* A ideia é chamar o componente passando para ele no items as oportunidades que o usuário favoritou.
       Aqui estou passando apenas as oportunidades dos clubs para ter um exemplo */}
-      <GridProposals title={t('favorite_opportunities')} items={s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents} />
+      <GridProposals
+        title={t('favorite_opportunities')}
+        items={s2tState.proposals[playerState.profile.info.modality]?.[playerState.profile.info.competitiveCategory]?.agents || []}
+      />
     </Styled.PlayerFavoritesContainer>
   );
 }

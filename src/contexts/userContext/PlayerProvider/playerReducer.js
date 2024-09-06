@@ -1,3 +1,5 @@
+import * as types from './playerTypes';
+
 const initialState = {
   profile: {
     user_id: '', // ID do usuário associado ao perfil
@@ -38,11 +40,9 @@ export const playerReducer = (state, action) => {
     case 'LOAD_PLAYER_DATA':
       return {
         ...state,
-        profile: {
-          ...state.profile,
-          ...action.payload,
-        },
+        ...action.payload,
       };
+
     case 'UPDATE_PROFILE_PICTURE':
       return {
         ...state,
@@ -54,7 +54,18 @@ export const playerReducer = (state, action) => {
           },
         },
       };
-    case 'ADD_CLUB_HISTORY':
+
+    case types.change_profile_info:
+
+      return {
+        ...state,
+        profile: {
+          ...state.profile, info: action.payload,
+        },
+
+      };
+
+    case types.add_club_history:
       return {
         ...state,
         profile: {
@@ -62,15 +73,18 @@ export const playerReducer = (state, action) => {
           clubs: [...state.profile.clubs, action.payload],
         },
       };
-    case 'ADD_AWARD_HISTORY':
+
+    case types.remove_club_history:
       return {
         ...state,
         profile: {
           ...state.profile,
-          awards: [...state.profile.awards, action.payload],
+          clubs: state.profile.clubs.filter((club) => club.id !== action.payload.id),
         },
       };
-    case 'ADD_ACADEMIC_HISTORY':
+
+    case types.add_academic_history:
+
       return {
         ...state,
         profile: {
@@ -78,7 +92,35 @@ export const playerReducer = (state, action) => {
           studies: [...state.profile.studies, action.payload],
         },
       };
+
+    case types.remove_academic_history:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          studies: state.profile.studies.filter((studie) => studie.id !== action.payload.id),
+        },
+      };
+
+    case types.add_award_history:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          awards: [...state.profile.awards, action.payload],
+        },
+      };
+
+    case types.remove_award_history:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          awards: state.profile.awards.filter((award) => award.id !== action.payload.id),
+        },
+      };
+
     default:
-      return state;
+      return state;
   }
 };

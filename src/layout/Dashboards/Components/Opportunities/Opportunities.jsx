@@ -23,9 +23,11 @@ export function Opportunities() {
   const location = useLocation();
   const selectedProposal = location.state?.selectedProposal || null;
 
+  const getProposals = (type) => s2tState.proposals[playerState.profile.info.modality]?.[playerState.profile.info.competitiveCategory]?.[type] || [];
+
   const proposals = [
-    ...s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].agents,
-    ...s2tState.proposals[playerState.profile.info.modality][playerState.profile.info.competitiveCategory].clubs,
+    ...getProposals('agents'),
+    ...getProposals('clubs'),
   ];
 
   return (
@@ -36,7 +38,3 @@ export function Opportunities() {
     </Styled.OpportunitiesContainer>
   );
 }
-
-Opportunities.propTypes = {
-  selectedproposal: Prop.object,
-};
