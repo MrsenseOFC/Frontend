@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthButton-Styles';
+import { theme } from '../../../../styles/theme';
 
 export function AuthButton({
-  name, id, value,
+  name, id, value, bgcolor = theme.colors.secondary, bghover = theme.colors.quaternary,
 }) {
   const { t } = useTranslation();
 
@@ -15,6 +16,8 @@ export function AuthButton({
       name={name}
       id={id}
       value={value}
+      bgcolor={bgcolor}
+      bghover={bghover}
     />
   );
 }
@@ -23,4 +26,6 @@ AuthButton.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  bgcolor: PropTypes.string,
+  bghover: PropTypes.string,
 };

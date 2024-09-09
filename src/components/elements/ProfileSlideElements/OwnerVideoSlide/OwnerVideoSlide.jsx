@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import { Add as AddIcon } from '@styled-icons/material-outlined/Add';
-import { Fullscreen } from '@styled-icons/material-outlined';
+import { Close, Fullscreen } from '@styled-icons/material-outlined';
 import { Delete } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import {
+  Youtube as YoutubeIcon,
+  Vimeo as VimeoIcon,
+} from '@styled-icons/boxicons-logos';
 import * as Styled from './OwnerVideoSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -14,7 +18,17 @@ import { AuthIconFile } from '../../AuthElements/AuthIconFile/AuthIconFile';
 import { theme } from '../../../../styles/theme';
 import { Popup } from '../../Popup/Popup';
 import { Column } from '../../../ColumnContainer/Column';
+import { GridLayout } from '../../../GridLayout/GridLayout';
 import { useAuth } from '../../../../contexts/AuthContext/AuthContext';
+import { FloatingMenu } from '../../../FloatingMenu/FloatingMenu';
+import { Text } from '../../Text/Text';
+import { Subtitle } from '../../Subtitle/Subtitle';
+import { Row } from '../../../RowContainer/Row';
+import { StyledLink } from '../../StyledLink/StyledLink';
+import { YoutubeVideo } from '../../../FloatingMenu/Components/VideoComponents/YoutubeVideo/YoutubeVideo';
+import { HudlVideo } from '../../../FloatingMenu/Components/VideoComponents/HudlVideo/HudlVideo';
+import { VimeoVideo } from '../../../FloatingMenu/Components/VideoComponents/VimeoVideo/VimeoVideo';
+import { UploadOptions } from '../../../FloatingMenu/Components/VideoComponents/UploadOptions/UploadOptions';
 
 // Galeria de vídeos utilizada quando o usuário acessa o próprio perfil
 export function OwnerVideoSlide({
@@ -23,7 +37,7 @@ export function OwnerVideoSlide({
   const { t } = useTranslation();
   const [fullscreenVideo, setFullscreenVideo] = useState('');
   const [deleteVideo, setDeleteVideo] = useState('');
-  const [newVideo, setNewVideo] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
 
   const { currentUser } = useAuth();
 
@@ -37,33 +51,6 @@ export function OwnerVideoSlide({
 
   const handleConfirmDelete = (item) => {
     setDeleteVideo('');
-  };
-
-  const handleAddVideo = async (event) => {
-    if (!currentUser) {
-      console.error(t('not_logged'));
-      return;
-    }
-
-    const newFile = event.target.files[0];
-    console.log(newFile);
-
-    if (newFile) {
-      const formData = new FormData();
-      formData.append('video_file', newFile);
-
-      try {
-        const response = await axios.post(`https://talent2show.onrender.com/api/userVideos/${currentUser.id}/upload`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-
-        setNewVideo(response.data.video_file);
-      } catch (error) {
-        console.error(t('video_upload_error'), error);
-      }
-    }
   };
 
   return (
@@ -142,18 +129,25 @@ export function OwnerVideoSlide({
           ))}
 
           <SwiperSlide>
-            <AuthIconFile
-              onChange={handleAddVideo}
-              id="addVideo"
-              accept="video/*"
-              hovercolor={theme.colors.secondary}
-              name={t('add_video_button')}
-            >
-              <AddIcon />
-            </AuthIconFile>
+            <div onClick={() => setIsUploading(true)}>
+              <AuthIconFile
+                id="addVideo"
+                accept="video/*"
+                hovercolor={theme.colors.secondary}
+                name={t('add_video_button')}
+              >
+                <AddIcon />
+              </AuthIconFile>
+            </div>
           </SwiperSlide>
 
         </Swiper>
+
+        {isUploading && (
+        <FloatingMenu>
+          <UploadOptions onClick={() => setIsUploading(false)} />
+        </FloatingMenu>
+        )}
 
       </Styled.OwnerVideoSlideElement>
 

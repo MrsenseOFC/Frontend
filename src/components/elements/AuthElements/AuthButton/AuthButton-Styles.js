@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const AuthButtonElement = styled.input`
-  ${({ theme }) => css`
-    background: ${theme.colors.secondary};
+  ${({ theme, bgcolor, bghover }) => css`
+    background: ${bgcolor};
     border: ${theme.borders.white};
     border-radius: 7px;
     color: ${theme.colors.white};
@@ -16,7 +16,7 @@ export const AuthButtonElement = styled.input`
     transition: all 400ms ease-in-out;
 
     &:hover {
-      background: ${theme.colors.quaternary};
+      background: ${bghover};
     }
 
     @media ${theme.medias.mobile} {

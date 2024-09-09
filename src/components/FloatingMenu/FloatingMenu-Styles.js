@@ -51,7 +51,7 @@ export const FloatingMenuContainer = styled.nav`
       }
 
       &:hover {
-        color: ${theme.colors.primary};
+        
         & svg {
           color: ${theme.colors.primary};
         }

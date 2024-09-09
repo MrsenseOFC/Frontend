@@ -20,11 +20,14 @@ export const theme = {
     shadow: '#0000001a',
     transparent: 'transparent',
 
-    mediumred: '#FF4040',
+    mediumred: '#E33434',
     lightred: '#FF3F5F',
     red: '#C20032',
 
     gold: '#ffbf00',
+
+    orange: '#FF6300',
+    lightorange: '#FF8A40',
   },
 
   borders: {
@@ -44,6 +47,12 @@ export const theme = {
 
     white: '1px solid white',
     xwhite: '2px solid white',
+
+    red: '1px solid #C20032',
+    mediumred: '1px solid #E33434',
+
+    orange: '1px solid #FF6300',
+    lightorange: '1px solid #FF8A40',
 
     xtransparent: '2px solid transparent',
   },

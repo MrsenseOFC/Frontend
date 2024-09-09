@@ -6,6 +6,11 @@ import { AuthIconFileContainer } from '../../AuthElements/AuthIconFile/AuthIconF
 import { AuthFormContainer } from '../../AuthElements/AuthForm/AuthForm-Styles';
 import { PopupElement } from '../../Popup/Popup-Styles';
 import { ColumnContainer } from '../../../ColumnContainer/Column-Styles';
+import { FloatingMenuContainer } from '../../../FloatingMenu/FloatingMenu-Styles';
+import { RowContainer } from '../../../RowContainer/Row-Styles.js';
+import { LinkContainer } from '../../StyledLink/StyledLink-Styles.js';
+import { GridLayoutContainer } from '../../../GridLayout/GridLayout-Styles.js';
+import { SubtitleElement } from '../../Subtitle/Subtitle-Styles.js';
 
 export const OwnerVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
@@ -68,6 +73,68 @@ export const OwnerVideoSlideElement = styled.div`
       & svg {
        width: 40%;
       }
+   }
+
+
+   ${FloatingMenuContainer} {
+    position: absolute;
+    width: 50%;
+    padding: ${theme.spacings.medium};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: ${theme.spacings.large};
+
+
+    ${GridLayoutContainer} {
+      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+
+      @media ${theme.medias.smallpc} {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      @media ${theme.medias.tablet} {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      }
+
+      @media ${theme.medias.mobile} {
+        grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+      }
+
+      @media ${theme.medias.smallmobile} {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      }
+    }
+
+    ${LinkContainer} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: ${theme.spacings.xsmall};
+ 
+      min-width: 80px;
+      font-size: ${theme.sizes.medium};
+
+      > img {
+        width: 35px;
+      }
+    }
+
+   
+    ${RowContainer} {
+      justify-content: space-between;
+      align-items: center;
+
+      @media ${theme.medias.smallpc} {
+        flex-direction: row;
+      }
+ 
+      ${SubtitleElement} {
+        margin-bottom: 0px;
+      }
+    }
    }
  `}
 `;

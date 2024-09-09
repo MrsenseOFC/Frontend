@@ -38,6 +38,12 @@ export const AuthInputElement = styled.input`
       color: ${theme.colors.white};
     }
 
+    &:focus {
+      border: ${theme.borders.secondary};
+      box-shadow: 0px 0px 5px 1px ${theme.colors.secondary};
+      outline: none;
+    }
+
     &::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(0.8) brightness(100%) sepia(0%) saturate(10000%) hue-rotate(210deg); 
@@ -47,12 +53,6 @@ export const AuthInputElement = styled.input`
     &:hover {
       filter: invert(0.8) brightness(50%) sepia(100%) saturate(10000%) hue-rotate(195deg); 
     }
-    }
-
-    &:focus {
-      border: ${theme.borders.secondary};
-      box-shadow: 0px 0px 5px 1px ${theme.colors.secondary};
-      outline: none;
     }
 
     @media ${theme.medias.mobile} {

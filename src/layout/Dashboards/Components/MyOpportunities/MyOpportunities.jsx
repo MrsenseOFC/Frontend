@@ -6,6 +6,7 @@ import { GridEditableProposals } from '../../../../components/elements/GridEdita
 
 export function MyOpportunities({ opportunities }) {
   const { t } = useTranslation();
+  console.log(opportunities);
   return (
     <Styled.MyOpportunitiesContainer>
 
