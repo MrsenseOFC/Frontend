@@ -26,7 +26,7 @@ export function VerticalVideoSlide({
         pagination
       >
 
-        {items && items.length > 0 ? (
+        {/* {items && items.length > 0 ? (
           <>
             {items.map((item) => (
               <SwiperSlide>
@@ -40,7 +40,7 @@ export function VerticalVideoSlide({
         )
           : (
             <Text text={t('data_not_found')} />
-          )}
+          )} */}
 
       </Swiper>
 

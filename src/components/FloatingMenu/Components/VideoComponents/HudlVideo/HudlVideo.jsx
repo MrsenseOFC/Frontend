@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Close } from '@styled-icons/evaicons-solid';
 import { ArrowBack } from '@styled-icons/material-outlined';
@@ -14,6 +14,18 @@ import { Row } from '../../../../RowContainer/Row';
 
 export function HudlVideo({ onCloseClick, onBackClick }) {
   const { t } = useTranslation();
+  const [videoUrl, setVideoUrl] = useState();
+  const [message, setMessage] = useState();
+
+  const handleVideoUpload = (e) => {
+    e.preventDefault();
+
+    if (videoUrl) {
+      onCloseClick();
+    } else {
+      setMessage(t('insert_video_url'));
+    }
+  };
 
   return (
     <Styled.HudlVideoContainer>
@@ -28,16 +40,27 @@ export function HudlVideo({ onCloseClick, onBackClick }) {
         </IconDiv>
       </Row>
 
-      <AuthForm>
+      <AuthForm onSubmit={handleVideoUpload}>
 
-        <AuthInput title={t('name')} type="text" placeholder={t('video_name')} />
-        <AuthInput title={t('url')} type="text" placeholder={t('hudl_video_url')} />
+        <AuthInput
+          name="hudlVideoUrl_input"
+          id="hudlVideoUrl_input"
+          title={t('url')}
+          type="text"
+          placeholder={t('hudl_video_url')}
+          value={videoUrl}
+          onChange={(e) => setVideoUrl(e.target.value)}
+        />
+
         <AuthButton
           name={t('confirm')}
           value={t('confirm')}
           bgcolor={theme.colors.orange}
           bghover={theme.colors.lightorange}
         />
+
+        {message && <Text text={message} />}
+
       </AuthForm>
 
     </Styled.HudlVideoContainer>

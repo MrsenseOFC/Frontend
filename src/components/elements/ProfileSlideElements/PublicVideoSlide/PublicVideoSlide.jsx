@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import { Fullscreen } from '@styled-icons/material-outlined';
 import { useTranslation } from 'react-i18next';
+import ReactPlayer from 'react-player';
 import * as Styled from './PublicVideoSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -69,10 +70,12 @@ export function PublicVideoSlide({
 
                 </Styled.TopIconsWrapper>
 
-                <video autoPlay muted>
-                  <source src={item.src} type="video/mp4" />
-                  <track kind="captions" src="" srcLang="en" />
-                </video>
+                <ReactPlayer
+                  url={item.src}
+                  width="100%"
+                  height="100%"
+                  controls
+                />
 
                 <Styled.BottomIconsWrapper>
 
@@ -80,14 +83,6 @@ export function PublicVideoSlide({
                     ratevalue={item.rateValue}
                     mediaid={item.id}
                   />
-
-                  <IconDiv
-                    active={fullscreenVideo === item.src}
-                    name={t('fullscreen')}
-                    onclick={() => handleFullscreen(item)}
-                  >
-                    <Fullscreen />
-                  </IconDiv>
 
                 </Styled.BottomIconsWrapper>
 

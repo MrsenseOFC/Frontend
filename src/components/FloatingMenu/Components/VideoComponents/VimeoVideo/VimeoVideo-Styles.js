@@ -10,7 +10,8 @@ export const VimeoVideoContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: ${theme.spacings.large};    padding: ${theme.spacings.xsmall};
+    gap: ${theme.spacings.large};
+    padding: ${theme.spacings.xsmall};
 
   `}
 `;

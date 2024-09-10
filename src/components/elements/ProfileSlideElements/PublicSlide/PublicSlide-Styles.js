@@ -26,7 +26,7 @@ export const PublicSlideElement = styled.div`
 
 
    .swiper-slide {
-     height: 370px;
+     height: 360px;
      border-radius: 15px;
 
       @media (max-width: 1050px) {

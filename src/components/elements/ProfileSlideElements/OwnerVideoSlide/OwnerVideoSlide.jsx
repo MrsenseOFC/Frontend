@@ -7,10 +7,8 @@ import { Close, Fullscreen } from '@styled-icons/material-outlined';
 import { Delete } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
-import {
-  Youtube as YoutubeIcon,
-  Vimeo as VimeoIcon,
-} from '@styled-icons/boxicons-logos';
+import ReactPlayer from 'react-player/lazy';
+
 import * as Styled from './OwnerVideoSlide-Styles';
 import { Title } from '../../Title/Title';
 import { IconDiv } from '../../IconDiv/IconDiv';
@@ -42,7 +40,7 @@ export function OwnerVideoSlide({
   const { currentUser } = useAuth();
 
   const handleFullscreen = (item) => {
-    setFullscreenVideo(item.src);
+    setFullscreenVideo(item.url);
   };
 
   const handleIsDeleting = (item) => {
@@ -78,7 +76,7 @@ export function OwnerVideoSlide({
           {items && items.map((item) => (
             <SwiperSlide
               key={item.id}
-              lazy
+
             >
               <Styled.MediaWrapper>
 
@@ -95,22 +93,15 @@ export function OwnerVideoSlide({
 
                 </Styled.TopIconsWrapper>
 
-                <video autoPlay muted>
-                  <source src={item.src} type="video/mp4" />
-                  <track kind="captions" src="" srcLang="en" />
-                </video>
-
-                <Styled.BottomIconsWrapper>
-
-                  <IconDiv
-                    active={fullscreenVideo === item.src}
-                    onclick={() => handleFullscreen(item)}
-                    name={t('fullscreen')}
-                  >
-                    <Fullscreen />
-                  </IconDiv>
-
-                </Styled.BottomIconsWrapper>
+                <SwiperSlide>
+                  <ReactPlayer
+                    url={item.url}
+                    width="100%"
+                    height="100%"
+                    controls
+                    playsinline
+                  />
+                </SwiperSlide>
 
                 <Column>
                   <Popup
@@ -129,16 +120,15 @@ export function OwnerVideoSlide({
           ))}
 
           <SwiperSlide>
-            <div onClick={() => setIsUploading(true)}>
-              <AuthIconFile
-                id="addVideo"
-                accept="video/*"
+            <Styled.VideoUpload>
+              <IconDiv
                 hovercolor={theme.colors.secondary}
                 name={t('add_video_button')}
+                onclick={() => setIsUploading(!isUploading)}
               >
                 <AddIcon />
-              </AuthIconFile>
-            </div>
+              </IconDiv>
+            </Styled.VideoUpload>
           </SwiperSlide>
 
         </Swiper>

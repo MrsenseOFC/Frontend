@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 import { slideInLeft } from '../../../../styles/animations';
 import { IconContainer } from '../../IconDiv/IconDiv-Styles';
-import { AuthIconFileContainer } from '../../AuthElements/AuthIconFile/AuthIconFile-Styles';
 import { AuthFormContainer } from '../../AuthElements/AuthForm/AuthForm-Styles';
 import { PopupElement } from '../../Popup/Popup-Styles';
 import { ColumnContainer } from '../../../ColumnContainer/Column-Styles';
@@ -14,7 +13,8 @@ import { SubtitleElement } from '../../Subtitle/Subtitle-Styles.js';
 
 export const OwnerVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
-
+    /* background: white; */
+    padding: ${theme.spacings.small};
   `}  
 `;
 
@@ -22,8 +22,18 @@ export const OwnerVideoSlideElement = styled.div`
   ${({ theme }) => css`
 
   .swiper-slide {
-     height: 370px;
-     border-radius: 15px;
+
+     > div {
+      object-fit: cover;
+     }
+
+     & video {
+      
+     }
+    
+     height: 360px;
+
+     /* border-radius: 15px; */
 
       @media (max-width: 1050px) {
         height: 320px;
@@ -55,25 +65,8 @@ export const OwnerVideoSlideElement = styled.div`
       }
    }
 
-  ${AuthIconFileContainer} {
-     width: 100%;
-     height: 100%;
-     border-radius: 12px;
-     background: url('/assets/images/backgrounds/ball.png');
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-     transition: all 500ms ease-in-out;
+   
 
-
-      &:hover {
-       box-shadow: 0px 0px 5px 2px inset ${theme.colors.secondary};
-      }
-
-      & svg {
-       width: 40%;
-      }
-   }
 
 
    ${FloatingMenuContainer} {
@@ -143,11 +136,11 @@ export const MediaWrapper = styled.div`
   ${({ theme }) => css`
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   display: flex;
   justify-content: center;
     
-  & img, video {
+  /* & img, video {
     object-fit: fill;
     width: 100%;
     height: 100%;
@@ -155,7 +148,9 @@ export const MediaWrapper = styled.div`
     transition: all 500ms ease-in-out;
     box-sizing: border-box;
     border: ${theme.borders.xtransparent};
-  }
+  } */
+
+    
 
 
   ${ColumnContainer} {
@@ -240,5 +235,43 @@ export const BottomIconsWrapper = styled.div`
        height: 25px;
       }
     }
+   }
  `}
+`;
+
+export const VideoUpload = styled.div`
+  ${({ theme }) => css`
+
+    width: 100%;
+    height: 100%;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+     > ${IconContainer} {
+      animation: none;
+      width: 100%;
+      height: 93%;
+      border-radius: 12px;
+      background: url('/assets/images/backgrounds/ball.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transition: all 500ms ease-in-out;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      &:hover {
+       box-shadow: 0px 0px 5px 2px inset ${theme.colors.secondary};
+      }
+
+      & svg {
+       width: 40%;
+      }
+     }
+  `}  
 `;

@@ -32,7 +32,7 @@ export function PublicProfile() {
       )}
 
       {clubState.profile.videos && clubState.profile.videos.length > 0 ? (
-        <PublicSlide items={clubState.profile.videos} title={t('videos')} />
+        <PublicVideoSlide items={clubState.profile.videos} title={t('videos')} />
       ) : (
         <></>
       )}

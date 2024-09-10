@@ -26,7 +26,7 @@ export const PublicVideoSlideElement = styled.div`
 
 
    .swiper-slide {
-     height: 370px;
+     height: 360px;
      border-radius: 15px;
 
       @media (max-width: 1050px) {
@@ -128,8 +128,8 @@ export const BottomIconsWrapper = styled.div`
     gap: ${theme.spacings.xsmall};
     height: 30px;
     position: absolute;
-    right: 5px;
-    bottom: 5px;
+    right: 30px;
+    bottom: 70px;
     border-radius: 15px;
     z-index: 100;
 

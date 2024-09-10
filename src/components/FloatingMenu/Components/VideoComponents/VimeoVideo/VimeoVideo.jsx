@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Close } from '@styled-icons/evaicons-solid';
 import { ArrowBack } from '@styled-icons/material-outlined';
@@ -11,9 +11,22 @@ import { AuthButton } from '../../../../elements/AuthElements/AuthButton/AuthBut
 import { Subtitle } from '../../../../elements/Subtitle/Subtitle';
 import { IconDiv } from '../../../../elements/IconDiv/IconDiv';
 import { Row } from '../../../../RowContainer/Row';
+import { Text } from '../../../../elements/Text/Text';
 
 export function VimeoVideo({ onCloseClick, onBackClick }) {
   const { t } = useTranslation();
+  const [videoUrl, setVideoUrl] = useState();
+  const [message, setMessage] = useState();
+
+  const handleVideoUpload = (e) => {
+    e.preventDefault();
+
+    if (videoUrl) {
+      onCloseClick();
+    } else {
+      setMessage(t('insert_video_url'));
+    }
+  };
 
   return (
     <Styled.VimeoVideoContainer>
@@ -28,11 +41,26 @@ export function VimeoVideo({ onCloseClick, onBackClick }) {
         </IconDiv>
       </Row>
 
-      <AuthForm>
+      <AuthForm onSubmit={handleVideoUpload}>
 
-        <AuthInput title={t('name')} type="text" placeholder={t('video_name')} />
-        <AuthInput title={t('url')} type="text" placeholder={t('vimeo_video_url')} />
-        <AuthButton name={t('confirm')} value={t('confirm')} />
+        <AuthInput
+          name="vimeoVideoUrl_input"
+          id="vimeoVideoUrl_input"
+          title={t('url')}
+          type="text"
+          placeholder={t('vimeo_video_url')}
+          value={videoUrl}
+          onChange={(e) => setVideoUrl(e.target.value)}
+        />
+
+        <AuthButton
+          name={t('confirm')}
+          value={t('confirm')}
+          bgcolor={theme.colors.quaternary}
+          bghover={theme.colors.secondary}
+        />
+
+        {message && <Text text={message} />}
 
       </AuthForm>
 
