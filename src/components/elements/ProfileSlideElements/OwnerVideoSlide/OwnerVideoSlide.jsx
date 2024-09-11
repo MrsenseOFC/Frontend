@@ -1,5 +1,5 @@
 import Prop, { bool } from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import { Add as AddIcon } from '@styled-icons/material-outlined/Add';
@@ -28,10 +28,47 @@ import { HudlVideo } from '../../../FloatingMenu/Components/VideoComponents/Hudl
 import { VimeoVideo } from '../../../FloatingMenu/Components/VideoComponents/VimeoVideo/VimeoVideo';
 import { UploadOptions } from '../../../FloatingMenu/Components/VideoComponents/UploadOptions/UploadOptions';
 
+import { removeVideo as removePlayerVideo } from '../../../../contexts/userContext/PlayerProvider/playerActions';
+import { removeVideo as removeClubVideo } from '../../../../contexts/userContext/ClubProvider/clubActions';
+import { removeVideo as removeAgencyVideo } from '../../../../contexts/userContext/AgencyProvider/agencyActions';
+import { removeVideo as removeLeagueVideo } from '../../../../contexts/userContext/LeagueProvider/leagueActions';
+import { removeVideo as removeUniversityVideo } from '../../../../contexts/userContext/UniversityProvider/universityActions';
+import { removeVideo as removeFanVideo } from '../../../../contexts/userContext/FanProvider/fanActions';
+import { removeVideo as removeStaffVideo } from '../../../../contexts/userContext/StaffProvider/staffActions';
+
+import { PlayerContext } from '../../../../contexts/userContext/PlayerProvider/PlayerContext';
+import { ClubContext } from '../../../../contexts/userContext/ClubProvider/ClubContext';
+import { AgencyContext } from '../../../../contexts/userContext/AgencyProvider/AgencyContext';
+import { LeagueContext } from '../../../../contexts/userContext/LeagueProvider/LeagueContext';
+import { UniversityContext } from '../../../../contexts/userContext/UniversityProvider/UniversityContext';
+import { StaffContext } from '../../../../contexts/userContext/StaffProvider/StaffContext';
+import { FanContext } from '../../../../contexts/userContext/FanProvider/FanContext';
+
 // Galeria de vídeos utilizada quando o usuário acessa o próprio perfil
 export function OwnerVideoSlide({
   items, title, profileType,
 }) {
+  const playerContext = useContext(PlayerContext);
+  const { playerState, playerDispatch } = playerContext;
+
+  const agencyContext = useContext(AgencyContext);
+  const { agencyState, agencyDispatch } = agencyContext;
+
+  const clubContext = useContext(ClubContext);
+  const { clubState, clubDispatch } = clubContext;
+
+  const leagueContext = useContext(LeagueContext);
+  const { leagueState, leagueDispatch } = leagueContext;
+
+  const universityContext = useContext(UniversityContext);
+  const { universityState, universityDispatch } = universityContext;
+
+  const staffContext = useContext(StaffContext);
+  const { staffState, staffDispatch } = staffContext;
+
+  const fanContext = useContext(FanContext);
+  const { fanState, fanDispatch } = fanContext;
+
   const { t } = useTranslation();
   const [deleteVideo, setDeleteVideo] = useState('');
   const [isUploading, setIsUploading] = useState(false);
@@ -39,10 +76,23 @@ export function OwnerVideoSlide({
   const { currentUser } = useAuth();
 
   const handleIsDeleting = (item) => {
-    setDeleteVideo(deleteVideo === item.id ? '' : item.id);
+    setDeleteVideo(deleteVideo === item.url ? '' : item.url);
   };
 
   const handleConfirmDelete = (item) => {
+    const actions = {
+      player: () => removePlayerVideo(playerDispatch, item),
+      club: () => removeClubVideo(clubDispatch, item),
+      agency: () => removeAgencyVideo(agencyDispatch, item),
+      university: () => removeUniversityVideo(universityDispatch, item),
+      league: () => removeLeagueVideo(leagueDispatch, item),
+      fan: () => removeFanVideo(fanDispatch, item),
+      staff: () => removeStaffVideo(staffDispatch, item),
+    };
+
+    const action = actions[profileType];
+    action();
+
     setDeleteVideo('');
   };
 
@@ -70,7 +120,7 @@ export function OwnerVideoSlide({
 
           {items && items.map((item) => (
             <SwiperSlide
-              key={item.id}
+              key={item.url}
 
             >
               <Styled.MediaWrapper>
@@ -79,7 +129,7 @@ export function OwnerVideoSlide({
 
                   <IconDiv
                     onclick={() => handleIsDeleting(item)}
-                    active={deleteVideo === item.id}
+                    active={deleteVideo === item.url}
                     activecolor={theme.colors.red}
                     hovercolor={theme.colors.lightred}
                   >
@@ -98,7 +148,7 @@ export function OwnerVideoSlide({
 
                 <Column>
                   <Popup
-                    isopen={deleteVideo === item.id}
+                    isopen={deleteVideo === item.url}
                     title={t('delete_video_question')}
                     firstoption="Sim"
                     secondoption="Não"

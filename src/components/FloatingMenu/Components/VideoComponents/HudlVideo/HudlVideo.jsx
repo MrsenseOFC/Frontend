@@ -71,7 +71,6 @@ export function HudlVideo({ onCloseClick, onBackClick, profileType }) {
       league: () => addLeagueVideo(leagueDispatch, videoData),
       fan: () => addFanVideo(fanDispatch, videoData),
       staff: () => addStaffVideo(staffDispatch, videoData),
-
     };
 
     if (videoData.url) {

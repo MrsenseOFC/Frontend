@@ -7,5 +7,6 @@ export const add_academic_history = 'add_academic_history';
 export const remove_academic_history = 'remove_academic_history';
 export const add_award_history = 'add_award_history';
 export const add_video = 'add_video';
+export const remove_video = 'remove_video';
 
 // Insira aqui as types igual a acima

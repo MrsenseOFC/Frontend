@@ -53,12 +53,28 @@ export const leagueReducer = (state, action) => {
         },
       };
 
-    case types.add_video:
+    case types.add_video: {
+      const videoExists = state.profile.videos.some((video) => video.url === action.payload.url);
+
+      if (!videoExists) {
+        return {
+          ...state,
+          profile: {
+            ...state.profile,
+            videos: [...state.profile.videos, action.payload],
+          },
+        };
+      }
+
+      return state;
+    }
+
+    case types.remove_video:
       return {
         ...state,
         profile: {
           ...state.profile,
-          videos: [...state.profile.videos, action.payload],
+          videos: state.profile.videos.filter((video) => video.url !== action.payload.url),
         },
       };
 
