@@ -316,6 +316,7 @@ export const s2tData = {
       { value: 'staff', text: 'Comissão técnica' },
       { value: 'agency', text: 'Agência' },
       { value: 'fan', text: 'Fã' },
+      { value: 'business_man', text: 'Empresário' },
     ],
 
     staffProfileType: [

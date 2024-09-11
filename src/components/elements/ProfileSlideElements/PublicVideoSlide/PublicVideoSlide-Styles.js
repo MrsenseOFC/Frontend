@@ -83,15 +83,15 @@ export const MediaWrapper = styled.div`
 
 export const TopIconsWrapper = styled.div`
   ${({ theme }) => css`
-
+    
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     gap: ${theme.spacings.xsmall};
     height: 30px;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    left: 15px;
+    top: 60px;
     border-radius: 15px;
     z-index: 100;
 
@@ -128,7 +128,7 @@ export const BottomIconsWrapper = styled.div`
     gap: ${theme.spacings.xsmall};
     height: 30px;
     position: absolute;
-    right: 30px;
+    left: 15px;
     bottom: 70px;
     border-radius: 15px;
     z-index: 100;

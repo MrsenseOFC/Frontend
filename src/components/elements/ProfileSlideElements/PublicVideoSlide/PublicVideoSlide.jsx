@@ -71,10 +71,11 @@ export function PublicVideoSlide({
                 </Styled.TopIconsWrapper>
 
                 <ReactPlayer
-                  url={item.src}
+                  url={item.url}
                   width="100%"
                   height="100%"
                   controls
+                  playsinline
                 />
 
                 <Styled.BottomIconsWrapper>

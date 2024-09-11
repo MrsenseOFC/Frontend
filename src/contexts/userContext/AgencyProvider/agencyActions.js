@@ -19,3 +19,7 @@ export const addAwardHistory = (dispatch, awardData) => {
 export const removeAwardHistory = (dispatch, awardData) => {
   dispatch({ type: types.remove_award_history, payload: awardData });
 };
+
+export const addVideo = (dispatch, videoData) => {
+  dispatch({ type: types.add_video, payload: videoData });
+};

@@ -21,7 +21,7 @@ export function AgencyProfile() {
       <ProfileInfo items={agencyState?.profile?.info || []} />
 
       <OwnerSlide items={agencyState?.profile?.photos || []} title={t('photos')} ownerview />
-      <OwnerVideoSlide items={agencyState?.profile?.videos || []} title={t('videos')} />
+      <OwnerVideoSlide items={agencyState?.profile?.videos || []} title={t('videos')} profileType="agency" />
 
     </Styled.AgencyProfileContainer>
   );

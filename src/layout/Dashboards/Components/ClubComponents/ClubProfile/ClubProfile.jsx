@@ -21,7 +21,7 @@ export function ClubProfile() {
       <ProfileInfo items={clubState?.profile?.info || []} />
 
       <OwnerSlide items={clubState?.profile?.photos || []} title={t('photos')} ownerview />
-      <OwnerVideoSlide items={clubState?.profile?.videos || []} title={t('videos')} />
+      <OwnerVideoSlide items={clubState?.profile?.videos || []} title={t('videos')} profileType="club" />
 
       <Row>
         <Historic items={clubState?.profile?.competitions || []} title={t('current_competitions')} />

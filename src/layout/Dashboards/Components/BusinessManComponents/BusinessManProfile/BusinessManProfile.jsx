@@ -22,7 +22,7 @@ export function BusinessManProfile() {
       <ProfileInfo items={businessManState?.profile?.info || []} />
 
       <OwnerSlide items={businessManState?.profile?.photos || []} title={t('photos')} ownerview />
-      <OwnerVideoSlide items={businessManState?.profile?.videos || []} title={t('videos')} />
+      <OwnerVideoSlide items={businessManState?.profile?.videos || []} title={t('videos')} profileType="business_man" />
       <Row>
         <Historic items={businessManState?.profile?.clubs || []} title={t('club_history')} />
         <Historic items={businessManState?.profile?.studies || []} title={t('academic_history')} />

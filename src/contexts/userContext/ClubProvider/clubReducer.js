@@ -53,6 +53,15 @@ export const clubReducer = (state, action) => {
         },
       };
 
+    case types.add_video:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          videos: [...state.profile.videos, action.payload],
+        },
+      };
+
     default: {
       return { ...state };
     }

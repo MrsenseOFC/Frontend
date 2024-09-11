@@ -18,7 +18,7 @@ export function FanProfile() {
       <ProfileInfo items={fanState?.profile?.info || []} />
 
       <OwnerSlide items={fanState?.profile?.photos || []} title={t('photos')} ownerview />
-      <OwnerVideoSlide items={fanState?.profile?.videos || []} title={t('videos')} />
+      <OwnerVideoSlide items={fanState?.profile?.videos || []} title={t('videos')} profileType="fan" />
 
     </Styled.FanProfileContainer>
   );

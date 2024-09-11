@@ -174,8 +174,8 @@ export const TopIconsWrapper = styled.div`
     gap: ${theme.spacings.xsmall};
     height: 30px;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    left: 15px;
+    top: 60px;
     border-radius: 15px;
     z-index: 100;
 

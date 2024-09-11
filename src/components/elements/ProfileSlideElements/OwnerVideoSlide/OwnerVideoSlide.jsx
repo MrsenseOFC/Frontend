@@ -30,18 +30,13 @@ import { UploadOptions } from '../../../FloatingMenu/Components/VideoComponents/
 
 // Galeria de vídeos utilizada quando o usuário acessa o próprio perfil
 export function OwnerVideoSlide({
-  items, title,
+  items, title, profileType,
 }) {
   const { t } = useTranslation();
-  const [fullscreenVideo, setFullscreenVideo] = useState('');
   const [deleteVideo, setDeleteVideo] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
   const { currentUser } = useAuth();
-
-  const handleFullscreen = (item) => {
-    setFullscreenVideo(item.url);
-  };
 
   const handleIsDeleting = (item) => {
     setDeleteVideo(deleteVideo === item.id ? '' : item.id);
@@ -93,15 +88,13 @@ export function OwnerVideoSlide({
 
                 </Styled.TopIconsWrapper>
 
-                <SwiperSlide>
-                  <ReactPlayer
-                    url={item.url}
-                    width="100%"
-                    height="100%"
-                    controls
-                    playsinline
-                  />
-                </SwiperSlide>
+                <ReactPlayer
+                  url={item.url}
+                  width="100%"
+                  height="100%"
+                  controls
+                  playsinline
+                />
 
                 <Column>
                   <Popup
@@ -135,7 +128,7 @@ export function OwnerVideoSlide({
 
         {isUploading && (
         <FloatingMenu>
-          <UploadOptions onClick={() => setIsUploading(false)} />
+          <UploadOptions profileType={profileType} onClick={() => setIsUploading(false)} />
         </FloatingMenu>
         )}
 
@@ -146,7 +139,7 @@ export function OwnerVideoSlide({
 }
 
 OwnerVideoSlide.propTypes = {
-  // n faço ideia oq é isso, só está assim pq foi o unico q n deu erro no console
   items: Prop.arrayOf(Prop.object).isRequired,
   title: Prop.string,
+  profileType: Prop.string.isRequired,
 };

@@ -3,13 +3,20 @@ import * as types from './fanTypes';
 export const fanReducer = (state, action) => {
   switch (action.type) {
     case types.change_profile_info:
-
       return {
         ...state,
         profile: {
           ...state.profile, info: action.payload,
         },
+      };
 
+    case types.add_video:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          videos: [...state.profile.videos, action.payload],
+        },
       };
 
     default: {

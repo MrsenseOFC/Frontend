@@ -17,7 +17,7 @@ import { VimeoVideo } from '../VimeoVideo/VimeoVideo';
 import { HudlVideo } from '../HudlVideo/HudlVideo';
 import { T2sVideo } from '../T2sVideo/T2sVideo';
 
-export function UploadOptions({ onClick }) {
+export function UploadOptions({ onClick, profileType }) {
   const { t } = useTranslation();
   const [uploadType, setUploadType] = useState();
 
@@ -39,7 +39,7 @@ export function UploadOptions({ onClick }) {
       {!uploadType && (
       <>
         <Row>
-          <Subtitle text="Forma de envio" uppercase />
+          <Subtitle text={t('upload_method')} uppercase />
 
           <IconDiv hovercolor={theme.colors.mediumred} onclick={onClick}>
             <Close />
@@ -49,32 +49,32 @@ export function UploadOptions({ onClick }) {
         <GridLayout>
           <StyledLink hovercolor={theme.colors.mediumred} onclick={(e) => handleUploadOption(e, 'youtube')}>
             <img src="/assets/images/logos/youtube.png" alt="a" />
-            Youtube
+            {t('youtube')}
           </StyledLink>
 
           <StyledLink hovercolor={theme.colors.secondary} onclick={(e) => handleUploadOption(e, 'vimeo')}>
             <img src="/assets/images/logos/vimeo.png" alt="a" />
-            Vimeo
+            {t('vimeo')}
           </StyledLink>
 
-          <StyledLink hovercolor={theme.colors.orange} onclick={(e) => handleUploadOption(e, 'hudl')}>
+          {/* <StyledLink hovercolor={theme.colors.orange} onclick={(e) => handleUploadOption(e, 'hudl')}>
             <img src="/assets/images/logos/hudl.png" alt="a" />
-            Hudl
-          </StyledLink>
+            {t('hudl')}
+          </StyledLink> */}
 
           <StyledLink hovercolor={theme.colors.primary} onclick={(e) => handleUploadOption(e, 't2s')}>
             <img src="/assets/images/logos/t2s.png" alt="a" />
-            T2S
+            {t('t2s')}
           </StyledLink>
 
         </GridLayout>
       </>
       )}
 
-      {uploadType === 'youtube' && <YoutubeVideo onCloseClick={onClick} onBackClick={handleCancelUpload} />}
-      {uploadType === 'vimeo' && <VimeoVideo onCloseClick={onClick} onBackClick={handleCancelUpload} />}
-      {uploadType === 'hudl' && <HudlVideo onCloseClick={onClick} onBackClick={handleCancelUpload} />}
-      {uploadType === 't2s' && <T2sVideo onCloseClick={onClick} onBackClick={handleCancelUpload} />}
+      {uploadType === 'youtube' && <YoutubeVideo profileType={profileType} onCloseClick={onClick} onBackClick={handleCancelUpload} />}
+      {uploadType === 'vimeo' && <VimeoVideo profileType={profileType} onCloseClick={onClick} onBackClick={handleCancelUpload} />}
+      {uploadType === 'hudl' && <HudlVideo profileType={profileType} onCloseClick={onClick} onBackClick={handleCancelUpload} />}
+      {uploadType === 't2s' && <T2sVideo profileType={profileType} onCloseClick={onClick} onBackClick={handleCancelUpload} />}
 
     </Styled.UploadOptionsContainer>
   );
@@ -82,4 +82,5 @@ export function UploadOptions({ onClick }) {
 
 UploadOptions.propTypes = {
   onClick: Prop.func,
+  profileType: Prop.string.isRequired,
 };

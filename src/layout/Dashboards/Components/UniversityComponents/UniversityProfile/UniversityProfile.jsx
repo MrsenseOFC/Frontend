@@ -21,7 +21,7 @@ export function UniversityProfile() {
       <ProfileInfo items={universityState?.profile?.info || []} />
 
       <OwnerSlide items={universityState?.profile?.photos || []} title={t('photos')} ownerview />
-      <OwnerVideoSlide items={universityState?.profil?.videos || []} title={t('videos')} />
+      <OwnerVideoSlide items={universityState?.profile?.videos || []} title={t('videos')} profileType="university" />
       <Row>
         <Historic items={universityState?.profile?.competitions || []} title={t('current_competitions')} />
       </Row>

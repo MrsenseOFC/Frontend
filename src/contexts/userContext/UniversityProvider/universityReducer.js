@@ -49,6 +49,16 @@ export const universityReducer = (state, action) => {
         },
       };
 
+    case types.add_video:
+      console.log(action.payload);
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          videos: [...state.profile.videos, action.payload],
+        },
+      };
+
     default: {
       return { ...state };
     }
