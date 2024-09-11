@@ -27,7 +27,8 @@ export const PublicVideoSlideElement = styled.div`
 
    .swiper-slide {
      height: 360px;
-     border-radius: 15px;
+     aspect-ratio: 16 / 9; 
+     container-type: size;
 
       @media (max-width: 1050px) {
         height: 320px;

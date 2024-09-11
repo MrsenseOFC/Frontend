@@ -268,9 +268,9 @@ export const s2tData = {
 
   videos: {
     trending: [
-      // { url: 'https://www.youtube.com/watch?v=vvQWXbXfAjM&t=2925s' },
-      // { url: 'https://vimeo.com/1006144786' },
-      // { url: '/assets/videos/silas.mp4' },
+      { url: 'https://www.youtube.com/watch?v=vvQWXbXfAjM&t=2925s' },
+      { url: 'https://vimeo.com/1006144786' },
+      { url: '/assets/videos/silas.mp4' },
     ],
   },
 

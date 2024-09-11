@@ -23,15 +23,15 @@ export const OwnerVideoSlideElement = styled.div`
 
   .swiper-slide {
 
-     > div {
-      object-fit: cover;
-     }
+    aspect-ratio: 16 / 9; 
+    container-type: size;
+    height: 360px;
 
-     & video {
-      
-     }
-    
-     height: 360px;
+
+     /* > div {
+      object-fit: cover;
+     } */
+
 
      /* border-radius: 15px; */
 
