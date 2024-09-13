@@ -7,10 +7,10 @@ import * as Styled from './ReportIcon-Styles';
 import { IconDiv } from '../IconDiv/IconDiv';
 import { theme } from '../../../styles/theme';
 
-export function ReportIcon({ onclick, isreporting }) {
+export function ReportIcon({ onclick, isreporting, color = theme.colors.white }) {
   const { t } = useTranslation();
   return (
-    <Styled.ReportIconElement isreporting={isreporting ? 'isreporting' : undefined}>
+    <Styled.ReportIconElement isreporting={isreporting ? 'isreporting' : undefined} color={color}>
       <IconDiv
         active={isreporting}
         activecolor={theme.colors.white}
@@ -27,4 +27,5 @@ export function ReportIcon({ onclick, isreporting }) {
 ReportIcon.propTypes = {
   isreporting: Prop.bool,
   onclick: Prop.func,
+  color: Prop.string,
 };

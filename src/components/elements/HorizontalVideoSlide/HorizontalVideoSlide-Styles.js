@@ -1,65 +1,62 @@
 import styled, { css } from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
-import { slideInLeft } from '../../../../styles/animations';
-import { IconContainer } from '../../IconDiv/IconDiv-Styles';
-import { AuthIconFileContainer } from '../../AuthElements/AuthIconFile/AuthIconFile-Styles';
-import { AuthFormContainer } from '../../AuthElements/AuthForm/AuthForm-Styles';
-import { PopupElement } from '../../Popup/Popup-Styles';
-import { ColumnContainer } from '../../../ColumnContainer/Column-Styles';
-import { RowContainer } from '../../../RowContainer/Row-Styles.js';
+import { slideInLeft } from '../../../styles/animations';
+import { IconContainer } from '../IconDiv/IconDiv-Styles';
+import { AuthIconFileContainer } from '../AuthElements/AuthIconFile/AuthIconFile-Styles';
+import { AuthFormContainer } from '../AuthElements/AuthForm/AuthForm-Styles';
+import { PopupElement } from '../Popup/Popup-Styles';
+import { ColumnContainer } from '../../ColumnContainer/Column-Styles';
+import { RowContainer } from '../../RowContainer/Row-Styles.js';
 
-export const PublicVideoSlideWrapper = styled.div`
+export const HorizontalVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
 
   width: 100%;
   height: 100%;
 
-   & ${AuthFormContainer} {
-
-      & ${IconContainer}{
-        & svg {
-          width: 40%;
-        }
-      }
-      
-    }
+    
   `}  
 `;
 
-export const PublicVideoSlideElement = styled.div`
+export const HorizontalVideoSlideElement = styled.div`
   ${({ theme }) => css`
 
     .swiper-wrapper {
-     height: 400px;
+     height: 350px;
      aspect-ratio: 16 / 9; 
      container-type: size;
 
-      @media (max-width: 1050px) {
-        height: 350px;
-      }
 
-      @media ${theme.medias.smallpc} { 
-        height: 300px;
-      }
-
-      @media ${theme.medias.tablet} { 
-        height: 440px;
-      }
-
-      @media (max-width: 650px) { 
+      @media (max-width: 1470px) {
         height: 400px;
       }
 
-      @media (max-width: 570px) { 
-        height: 350px;
+      @media (max-width: 1050px) {
+        height: 450px;
+      }
+
+      @media ${theme.medias.smallpc} { 
+        height: 410px;
+      }
+
+      @media ${theme.medias.tablet} { 
+        height: 380px;
+      }
+
+      @media (max-width: 630px) {
+        height: 310px;
       }
   
       @media ${theme.medias.mobile} { 
-        height: 300px;
+        height: 250px;
       }
 
       @media ${theme.medias.smallmobile} { 
-        height: 250px;
+        height: 210px;
+      }
+
+      @media (max-width: 280px) {
+        height: 190px;
       }
     }
 
@@ -70,6 +67,7 @@ export const PublicVideoSlideElement = styled.div`
      background: rgba(0,0,0,0.5);
      border: ${theme.borders.xwhite};
      border-radius: 12px;
+   
    }
  `}
 `;

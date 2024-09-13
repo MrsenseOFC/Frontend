@@ -113,7 +113,7 @@ export function ReportModal({ onclick, id }) {
               <Text text="Recebemos a sua denúncia!" uppercase />
               <Text text="Obrigado por nos ajudar a manter nossa plataforma segura e livre de conteúdo impróprio. Sua denúncia será cuidadosamente analisada por nossa equipe. " />
               <Button
-                text="Fechar"
+                text={t('close')}
                 bgcolor={theme.colors.secondary}
                 bghover={theme.colors.quaternary}
                 textcolor={theme.colors.white}

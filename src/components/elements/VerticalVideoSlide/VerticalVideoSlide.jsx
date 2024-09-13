@@ -7,7 +7,6 @@ import { StyledLink } from '../StyledLink/StyledLink';
 import { Subtitle } from '../Subtitle/Subtitle';
 import { Text } from '../Text/Text';
 import { useTranslation } from 'react-i18next';
-import ReactPlayer from 'react-player';
 
 export function VerticalVideoSlide({
   items, size = '500px', title, lazy,
@@ -27,24 +26,21 @@ export function VerticalVideoSlide({
         pagination
       >
 
-        {items && items.length > 0 ? (
+        {/* {items && items.length > 0 ? (
           <>
             {items.map((item) => (
               <SwiperSlide>
-                <ReactPlayer
-                  url={item.url}
-                  width="100%"
-                  height="100%"
-                  controls
-                  playsinline
-                />
+                <video autoPlay muted>
+                  <source src={item.src} type="video/mp4" />
+                  <track kind="captions" src="" srcLang="en" />
+                </video>
               </SwiperSlide>
             ))}
           </>
         )
           : (
             <Text text={t('data_not_found')} />
-          )}
+          )} */}
 
       </Swiper>
 

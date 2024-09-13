@@ -37,8 +37,6 @@ export function PublicProfile() {
         <></>
       )}
 
-      <PublicVideoSlide items={playerState.profile.videos} title={t('videos')} />
-
       <Row>
         <Historic items={clubState.profile.leagues} title={t('current_competitions')} />
       </Row>

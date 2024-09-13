@@ -29,11 +29,12 @@ export function BannerSlide({
           spaceBetween={10}
           grabCursor
           navigation
+          pagination={{ clickable: true }}
           loop
-          autoplay={autoplay ? { delay: 2000, disableOnInteraction: true } : false}
+          autoplay={autoplay ? { delay: 2500, disableOnInteraction: true } : false}
           lazy={lazy ? 'true' : undefined}
           breakpoints={{
-            1425: {
+            1470: {
               slidesPerView: slidesperview || 3,
             },
             1050: {

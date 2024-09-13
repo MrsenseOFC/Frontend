@@ -6,7 +6,7 @@ import {
 } from '../../../styles/animations';
 
 export const FavoriteIconElement = styled.div`
-  ${({ theme, isfavorite }) => css`
+  ${({ theme, isfavorite, color }) => css`
   ${IconContainer} {
     width: 30px;
     animation: ${isfavorite ? spin360Right : spin360Left} 300ms;
@@ -16,7 +16,7 @@ export const FavoriteIconElement = styled.div`
     }
 
     > svg {
-     color: ${isfavorite ? theme.colors.red : theme.colors.white};
+     color: ${isfavorite ? theme.colors.red : color};
      padding: 2px;
     }
   }

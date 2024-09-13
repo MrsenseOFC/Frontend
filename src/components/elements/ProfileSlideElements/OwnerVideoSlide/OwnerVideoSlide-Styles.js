@@ -21,48 +21,47 @@ export const OwnerVideoSlideWrapper = styled.div`
 export const OwnerVideoSlideElement = styled.div`
   ${({ theme }) => css`
 
-  .swiper-slide {
-
-    aspect-ratio: 16 / 9; 
-    container-type: size;
-    height: 360px;
-
-
-     /* > div {
-      object-fit: cover;
-     } */
-
-
-     /* border-radius: 15px; */
+  .swiper-wrapper {
+     height: 400px;
+     aspect-ratio: 16 / 9; 
+     container-type: size;
 
       @media (max-width: 1050px) {
-        height: 320px;
+        height: 350px;
       }
 
       @media ${theme.medias.smallpc} { 
-        height: 260px;
-      }
-
-      @media ${theme.medias.tablet} { 
-        height: 380px;
-      }
-
-
-      @media (max-width: 550px) { 
         height: 300px;
       }
 
+      @media ${theme.medias.tablet} { 
+        height: 440px;
+      }
+
+      @media (max-width: 650px) { 
+        height: 400px;
+      }
+
+      @media (max-width: 570px) { 
+        height: 350px;
+      }
+  
       @media ${theme.medias.mobile} { 
-        height: 260px;
+        height: 300px;
       }
 
       @media ${theme.medias.smallmobile} { 
-        height: 200px;
+        height: 250px;
       }
+    }
 
-      @media (max-width: 280px) { 
-        height: 160px;
-      }
+
+   .swiper-slide {
+     height: 100%;
+     width: 100%;
+     background: rgba(0,0,0,0.5);
+     border: ${theme.borders.xwhite};
+     border-radius: 12px;
    }
 
    
@@ -134,87 +133,53 @@ export const OwnerVideoSlideElement = styled.div`
 
 export const MediaWrapper = styled.div`
   ${({ theme }) => css`
-  width: 100%;
-  height: 100%;
-  /* border-radius: 12px; */
-  display: flex;
-  justify-content: center;
-    
-  /* & img, video {
-    object-fit: fill;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
-    transition: all 500ms ease-in-out;
-    box-sizing: border-box;
-    border: ${theme.borders.xtransparent};
-  } */
-
-    
-
-
-  ${ColumnContainer} {
+    border-radius: 12px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    ${PopupElement}{
-      max-width: 90%;
-    }
-  }
-  `}
-`;
-
-export const TopIconsWrapper = styled.div`
-  ${({ theme }) => css`
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     gap: ${theme.spacings.xsmall};
-    height: 30px;
-    position: absolute;
-    left: 15px;
-    top: 60px;
-    border-radius: 15px;
-    z-index: 100;
+    padding: ${theme.spacings.medium};
 
     ${IconContainer} {
-      width: auto;
-      height: 100%;
-      
-      > svg {
-        border-radius: 50%;
-        padding: 2px;
-        background: rgba(0, 0, 0, 0.5);
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.8);
-          transform: scale(1.1);
-        }
-
-        @media ${theme.medias.mobile} {
-          width: 25px;
-          height: 25px;
-        }
-      }
+    > svg {
+        background: ${theme.colors.black};
+    }
   }
-  
- `}
+
+
+    
+    & img, video{
+      /* object-fit: contain;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      transition: all 500ms ease-in-out;
+      box-sizing: border-box;
+      border: ${theme.borders.xtransparent}; */
+    }
+
+    ${RowContainer} {
+      justify-content: space-between;
+      align-items: center;
+      /* gap: ${theme.spacings.large} */
+
+      @media ${theme.medias.smallpc} {
+        flex-direction: row;
+      }
+    }
+  `}
 `;
 
 export const BottomIconsWrapper = styled.div`
   ${({ theme }) => css`
-
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     gap: ${theme.spacings.xsmall};
     height: 30px;
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    border-radius: 15px;
     z-index: 100;
 
     ${IconContainer} {
@@ -223,10 +188,11 @@ export const BottomIconsWrapper = styled.div`
 
     > svg {
      border-radius: 50%;
-     background: rgba(0, 0, 0, 0.5);
+     /* background: rgba(0, 0, 0, 0.5); */
 
       &:hover {
-        background: rgba(0, 0, 0, 0.8);
+        /* background: rgba(0, 0, 0, 0.8); */
+        box-shadow: none;
         transform: scale(1.1);
       }
 
@@ -235,7 +201,7 @@ export const BottomIconsWrapper = styled.div`
        height: 25px;
       }
     }
-   }
+  }
  `}
 `;
 
@@ -252,8 +218,8 @@ export const VideoUpload = styled.div`
      > ${IconContainer} {
       animation: none;
       width: 100%;
-      height: 93%;
-      border-radius: 12px;
+      height: 100%;
+      border-radius: 8px;
       background: url('/assets/images/backgrounds/ball.png');
       background-repeat: no-repeat;
       background-size: cover;

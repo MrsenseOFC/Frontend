@@ -7,7 +7,7 @@ import * as Styled from './FavoriteIcon-Styles';
 import { IconDiv } from '../IconDiv/IconDiv';
 import { theme } from '../../../styles/theme';
 
-export function FavoriteIcon({ isfavorite, id }) {
+export function FavoriteIcon({ isfavorite, id, color = theme.colors.white }) {
   const { t } = useTranslation();
   const [favorite, setFavorite] = useState(isfavorite);
 
@@ -21,7 +21,7 @@ export function FavoriteIcon({ isfavorite, id }) {
   };
 
   return (
-    <Styled.FavoriteIconElement isfavorite={favorite ? 'favorite' : undefined}>
+    <Styled.FavoriteIconElement isfavorite={favorite ? 'favorite' : undefined} color={color}>
       <IconDiv
         name={favorite ? t('remove_from_favorites') : t('make_favorite')}
         hovercolor={favorite ? theme.colors.red : theme.colors.white}
@@ -39,4 +39,5 @@ FavoriteIcon.propTypes = {
     Prop.number,
   ]),
   isfavorite: Prop.bool,
+  color: Prop.string,
 };

@@ -9,6 +9,7 @@ import { AuthButtonElement } from '../AuthElements/AuthButton/AuthButton-Styles.
 
 export const ReportModalElement = styled.div`
   ${({ theme }) => css`
+
      display: flex;
      flex-direction: column;
      gap: ${theme.spacings.xlarge};
@@ -23,6 +24,7 @@ export const ReportModalElement = styled.div`
      ${ButtonElement} {
       animation: ${slideIn} 1000ms;
       padding: ${theme.spacings.medium};
+
      }
 
      ${AuthButtonElement} {
@@ -48,22 +50,7 @@ export const ReportModalElement = styled.div`
       > ${SubtitleElement} {
         margin: auto 0;
       }
-
-     
      }
      
-  `}
-`;
-
-export const ReportedMessageWrapper = styled.div`
-  ${({ theme }) => css`
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.6);
-  z-index: 999; 
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
   `}
 `;

@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 import { fadeIn, slideIn } from '../../../styles/animations';
 import { VerticalSoloSlideElement } from '../VerticalSoloSlide/VerticalSoloSlide-Styles';
+import { HorizontalVideoSlideWrapper } from '../HorizontalVideoSlide/HorizontalVideoSlide-Styles';
 
 export const BannerSlideWrapper = styled.div`
   ${({
     theme, backgroundimagesrc, gradientdirection, backgroundfixed,
   }) => css`
     animation: ${fadeIn} 500ms;
-    height: 500px;
+    height: 600px;
     width: 100%;
     background: linear-gradient(
     ${gradientdirection || 'to bottom'},
@@ -24,16 +25,20 @@ export const BannerSlideWrapper = styled.div`
     justify-content: center;
     padding: ${theme.spacings.small};
 
+    @media (max-width: 1050px) {
+      height: 600px;
+    }
+
     @media ${theme.medias.smallpc} {
-      max-height: 500px;
+      height: 600px;
     }
 
     @media ${theme.medias.tablet} {
-      max-height: 400px;
+      height: 550px;
     }
 
     @media ${theme.medias.mobile} {
-      max-height: 300px;
+      height: 350px;
     }
 
   `}
@@ -43,7 +48,6 @@ export const BannerSlideContainer = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: 100%;
-   
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,5 +80,31 @@ export const BannerSlideContainer = styled.div`
         width: 100%;
       }    
     }
+
+    & ${HorizontalVideoSlideWrapper} {
+
+      width: 85%;
+      padding-bottom: ${theme.spacings.huge};
+     
+
+      @media (max-width: 1050px) {
+       width: 70%;
+      }
+
+      @media ${theme.medias.smallpc} {
+        width: 70%;
+      }
+
+      @media ${theme.medias.tablet} {
+        width: 75%;
+      }
+
+      @media ${theme.medias.mobile} {
+        width: 75%;
+      }
+    }
+
+
+    
   `}
 `;

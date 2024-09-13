@@ -7,7 +7,7 @@ import {
 } from '../../../styles/animations';
 
 export const ReportIconElement = styled.div`
-  ${({ theme, isreporting }) => css`
+  ${({ theme, isreporting, color }) => css`
   ${IconContainer} {
     width: 30px;
     animation: ${isreporting ? spin360Right : spin360Left} 300ms;
@@ -17,7 +17,7 @@ export const ReportIconElement = styled.div`
     }
 
     > svg {
-     color: ${isreporting ? theme.colors.red : ''};
+     color: ${isreporting ? theme.colors.red : color};
      padding: 2px;
      background: ${isreporting && 'black'};
     }

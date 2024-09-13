@@ -125,19 +125,6 @@ export function OwnerVideoSlide({
             >
               <Styled.MediaWrapper>
 
-                <Styled.TopIconsWrapper>
-
-                  <IconDiv
-                    onclick={() => handleIsDeleting(item)}
-                    active={deleteVideo === item.url}
-                    activecolor={theme.colors.red}
-                    hovercolor={theme.colors.lightred}
-                  >
-                    <Delete />
-                  </IconDiv>
-
-                </Styled.TopIconsWrapper>
-
                 <ReactPlayer
                   url={item.url}
                   width="100%"
@@ -145,6 +132,22 @@ export function OwnerVideoSlide({
                   controls
                   playsinline
                 />
+
+                <Row>
+                  <Styled.BottomIconsWrapper>
+
+                    <IconDiv
+                      onclick={() => handleIsDeleting(item)}
+                      active={deleteVideo === item.url}
+                      activecolor={theme.colors.red}
+                      hovercolor={theme.colors.lightred}
+                      color={theme.colors.white}
+                    >
+                      <Delete />
+                    </IconDiv>
+
+                  </Styled.BottomIconsWrapper>
+                </Row>
 
                 <Column>
                   <Popup

@@ -8,7 +8,7 @@ import * as Styled from './RateIcons-Styles';
 import { IconDiv } from '../IconDiv/IconDiv';
 import { theme } from '../../../styles/theme';
 
-export function RateIcons({ mediaid, ratevalue }) {
+export function RateIcons({ mediaid, ratevalue, color = theme.colors.white }) {
   const [rate, setRate] = useState();
 
   const handleRateClick = (value) => {
@@ -16,11 +16,12 @@ export function RateIcons({ mediaid, ratevalue }) {
   };
 
   return (
-    <Styled.RateIconsElement>
+    <Styled.RateIconsElement color={color}>
       <IconDiv
         name="+1"
         onclick={() => handleRateClick(1)}
         active={rate === 1}
+        color={color}
         activecolor={theme.colors.gold}
         hovercolor={theme.colors.gold}
       >
@@ -31,6 +32,7 @@ export function RateIcons({ mediaid, ratevalue }) {
         name="+5"
         onclick={() => handleRateClick(5)}
         active={rate === 5}
+        color={color}
         activecolor={theme.colors.gold}
         hovercolor={theme.colors.gold}
       >
@@ -41,6 +43,7 @@ export function RateIcons({ mediaid, ratevalue }) {
         name="+10"
         onclick={() => handleRateClick(10)}
         active={rate === 10}
+        color={color}
         activecolor={theme.colors.gold}
         hovercolor={theme.colors.gold}
       >
@@ -56,4 +59,5 @@ RateIcons.propTypes = {
     Prop.number,
   ]),
   ratevalue: Prop.number,
+  color: Prop.string,
 };
