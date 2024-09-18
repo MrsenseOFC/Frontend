@@ -110,6 +110,7 @@ export function VimeoVideo({ onCloseClick, onBackClick, profileType }) {
         />
 
         <AuthButton
+          id="vimeoVideoUpload"
           name={t('confirm')}
           value={t('confirm')}
           bgcolor={theme.colors.quaternary}

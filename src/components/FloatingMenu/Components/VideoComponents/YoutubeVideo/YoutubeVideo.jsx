@@ -111,6 +111,7 @@ export function YoutubeVideo({ onCloseClick, onBackClick, profileType }) {
         />
 
         <AuthButton
+          id="youtubeVideoUpload"
           name={t('confirm')}
           value={t('confirm')}
           bgcolor={theme.colors.red}

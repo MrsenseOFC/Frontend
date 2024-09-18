@@ -1,10 +1,13 @@
 import Prop from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './AuthRadio-Styles';
 
 export function AuthRadio({
   title, options, groupname, onChange, required, selectedvalue,
 }) {
+  const { t } = useTranslation();
+
   const handleClick = (option) => {
     onChange(option.value);
   };
@@ -14,7 +17,9 @@ export function AuthRadio({
       <Styled.AuthRadioTitle>
         {title}
         {' '}
-        (Obrigatório)
+        (
+        {t('required')}
+        )
       </Styled.AuthRadioTitle>
       {options.map((option) => (
         <Styled.AuthRadioElement key={option.value}>
@@ -27,7 +32,7 @@ export function AuthRadio({
             required={required}
             checked={option.value === selectedvalue}
           />
-          <Styled.AuthRadioLabel htmlFor={`${groupname}:${option.value}`}>{option.label}</Styled.AuthRadioLabel>
+          <Styled.AuthRadioLabel htmlFor={`${groupname}:${option.value}`}>{t(`${option.value}`)}</Styled.AuthRadioLabel>
         </Styled.AuthRadioElement>
       ))}
 

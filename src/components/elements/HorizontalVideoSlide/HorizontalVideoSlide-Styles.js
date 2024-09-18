@@ -7,14 +7,48 @@ import { AuthFormContainer } from '../AuthElements/AuthForm/AuthForm-Styles';
 import { PopupElement } from '../Popup/Popup-Styles';
 import { ColumnContainer } from '../../ColumnContainer/Column-Styles';
 import { RowContainer } from '../../RowContainer/Row-Styles.js';
+import { ReportModalElement } from '../ReportModal/ReportModal-Styles.js';
+import { FloatingMenuContainer } from '../../FloatingMenu/FloatingMenu-Styles.js';
+import { TextAreaElement } from '../TextArea/TextArea-Styles.js';
 
 export const HorizontalVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
+    width: 100%;
+    height: 100%; 
 
-  width: 100%;
-  height: 100%;
+    ${FloatingMenuContainer} {
+      width: 60%;
+      height: auto;
+      position: absolute;
 
-    
+      @media ${theme.medias.mobile} {
+        height: 90%;
+        overflow-y: auto;
+      }
+
+      @media ${theme.medias.smallmobile} {
+        height: 100%;
+      }
+
+       ${ReportModalElement} {
+         width: 100%;
+         height: 100%; 
+        
+
+          ${TextAreaElement} {
+            @media ${theme.medias.mobile} {
+              max-width: 100%;
+              min-width: 100%;
+              min-height: 30px;
+              max-height: 100px;
+            }
+          }
+       }
+    }
+
+    @media ${theme.medias.mobile} {
+      min-width: 0px;
+    }
   `}  
 `;
 
@@ -22,7 +56,7 @@ export const HorizontalVideoSlideElement = styled.div`
   ${({ theme }) => css`
 
     .swiper-wrapper {
-     height: 350px;
+     height: 360px;
      aspect-ratio: 16 / 9; 
      container-type: size;
 
@@ -139,6 +173,11 @@ export const BottomIconsWrapper = styled.div`
       @media ${theme.medias.mobile} {
        width: 25px;
        height: 25px;
+      }
+
+      @media ${theme.medias.smallmobile} {
+       width: 20px;
+       height: 20px;
       }
     }
   }

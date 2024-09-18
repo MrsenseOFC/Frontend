@@ -75,6 +75,44 @@ export function League() {
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
             />
 
+            <AuthDropdown
+              title={t('which_league_competitive_level')}
+              id="leagueCompetitiveLevel"
+              placeholder={t('select_level')}
+              options={s2tState.formOptions.competitiveLevels}
+              selectedvalue={profileData.competitiveLevel}
+              onDropdownChange={(option) => setProfileData((prevData) => ({ ...prevData, competitiveLevel: option }))}
+            />
+
+            <AuthInput
+              type="date"
+              name="leagueFoundationDate_input"
+              id="leagueFoundationDate_input"
+              title={t('foundation_date')}
+              value={profileData.foundationDate}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, foundationDate: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
+              name="leagueCountry_input"
+              id="leagueCountry_input"
+              title={t('country')}
+              placeholder={t('which_country_league')}
+              value={profileData.country}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, country: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
+              name="leagueState_input"
+              id="leagueState_input"
+              title={t('state')}
+              placeholder={t('which_state_league')}
+              value={profileData.state}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, state: e.target.value }))}
+            />
+
             <AuthButton
               name="editLeagueProfile_submit"
               id="editLeagueProfile_submit"

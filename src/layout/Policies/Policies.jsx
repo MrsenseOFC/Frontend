@@ -173,5 +173,5 @@ export function Policies({ children }) {
 }
 
 Policies.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

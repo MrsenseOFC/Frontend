@@ -90,262 +90,32 @@ export const s2tData = {
 
   products: {
     shirts: [
-      {
-        id: 1,
-        name: 'Camisa - São Paulo 2024',
-        price: 360.00,
-        imagesrc: '/assets/images/products/spfc.png',
-        path: '/',
-      },
 
-      {
-        id: 2,
-        name: 'Camisa - São Paulo 2024',
-        price: 360.00,
-        imagesrc: '/assets/images/products/spfc.png',
-        path: '/',
-      },
-
-      {
-        id: 3,
-        name: 'Camisa - São Paulo 2024',
-        price: 360.00,
-        imagesrc: '/assets/images/products/spfc.png',
-        path: '/',
-      },
-
-      {
-        id: 4,
-        name: 'Camisa - São Paulo 2024',
-        price: 360.00,
-        imagesrc: '/assets/images/products/spfc.png',
-        path: '/',
-      },
     ],
 
     footballBoots: [
-      {
-        id: 1,
-        name: 'Chuteira - Nike 2024',
-        price: 740.00,
-        imagesrc: '/assets/images/products/chuteira-2.png',
-        path: '/',
-      },
 
-      {
-        id: 2,
-        name: 'Chuteira - Nike 2024',
-        price: 740.00,
-        imagesrc: '/assets/images/products/chuteira-2.png',
-        path: '/',
-      },
-
-      {
-        id: 3,
-        name: 'Chuteira - Nike 2024',
-        price: 740.00,
-        imagesrc: '/assets/images/products/chuteira-2.png',
-        path: '/',
-      },
-
-      {
-        id: 4,
-        name: 'Chuteira - Nike 2024',
-        price: 740.00,
-        imagesrc: '/assets/images/products/chuteira-2.png',
-        path: '/',
-      },
-
-      {
-        id: 5,
-        name: 'Chuteira - Nike 2024',
-        price: 740.00,
-        imagesrc: '/assets/images/products/chuteira-2.png',
-        path: '/',
-      },
     ],
   },
 
   rankings: {
     referral: [
-      { name: 'Bruno da Silva Pedrosa', position: 1, imagesrc: '/assets/images/background.png' },
-      { name: 'Caio Henrique', position: 2, imagesrc: '/assets/images/background.png' },
-      { name: 'Eduardo Medeiros', position: 3, imagesrc: '/assets/images/background.png' },
-      { name: 'Bruno Andrade Ferraz', position: 4, imagesrc: '/assets/images/background.png' },
+
     ],
   },
 
   news: [
-    {
-      id: 1,
-      title: 'News',
-      thumbnail: '/assets/images/home/News/brasil.jpg',
-      src: '/assets/images/home/CenterSlide/brasil.png',
-      text: 'Lorem ipsum dolor sit amet',
-      path: '/',
-    },
-    {
-      id: 2,
-      title: 'News',
-      thumbnail: '/assets/images/home/News/messi.png',
-      src: '/assets/images/home/CenterSlide/argentina.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      path: '/',
-    },
-    {
-      id: 3,
-      title: 'News',
-      thumbnail: '/assets/images/home/News/cr7.png',
-      src: '/assets/images/home/CenterSlide/portugal.jpg',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      path: '/',
-    },
-    {
-      id: 4,
-      title: 'News',
-      thumbnail: '/assets/images/home/News/pedro.jpg',
-      src: '/assets/images/home/CenterSlide/flamengo.png',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      path: '/',
-    },
-    {
-      id: 5,
-      title: 'News',
-      thumbnail: '/assets/images/home/News/calleri.jpeg',
-      src: '/assets/images/home/CenterSlide/spfc.png',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      path: '/',
-    },
+
   ],
 
   events: [
-    {
-      id: 1,
-      title: 'Tour 1',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitaaaaaaaaaaaaaaaaa',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'inPerson',
-      platform: '',
-      country: 'Brasil',
-      state: 'São Paulo',
-      adress: 'R. dos Pinheiros, 19, São Paulo - SP',
-      zipCode: '07652-287',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
 
-    {
-      id: 2,
-      title: 'Transmissão de partida 2',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'online',
-      platform: 'Discord',
-      country: '',
-      state: '',
-      adress: '',
-      zipCode: '',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
-
-    {
-      id: 3,
-      title: 'Viagem 3',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'inPerson',
-      platform: '',
-      country: 'Brasil',
-      state: 'São Paulo',
-      adress: 'R. dos Pinheiros, 19, São Paulo - SP',
-      zipCode: '07652-287',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
-
-    {
-      id: 4,
-      title: 'Encontro com craque 4',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'inPerson',
-      platform: '',
-      country: 'Brasil',
-      state: 'São Paulo',
-      adress: 'R. dos Pinheiros, 19, São Paulo - SP',
-      zipCode: '07652-287',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
-
-    {
-      id: 5,
-      title: 'Tour 5',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'inPerson',
-      platform: '',
-      country: 'Brasil',
-      state: 'São Paulo',
-      adress: 'R. dos Pinheiros, 19, São Paulo - SP',
-      zipCode: '07652-287',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
-
-    {
-      id: 6,
-      title: 'Partida 6',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      organizer: 'Talent 2 Show',
-      startDate: '01-06-2024',
-      endDate: '10-06-2024',
-      startHour: '16:30',
-      format: 'inPerson',
-      platform: '',
-      country: 'Brasil',
-      state: 'São Paulo',
-      adress: 'R. dos Pinheiros, 19, São Paulo - SP',
-      zipCode: '07652-287',
-      path: '/',
-      src: '/assets/images/others/leagues.png',
-    },
   ],
 
   photos: {
 
     events: [
-      {
-        id: 0, src: '/assets/images/background.png', title: 'Tour', path: '/tour',
-      },
-      {
-        id: 1, src: '/assets/images/background.png', title: 'Tour 2', path: '/tour2',
-      },
-      {
-        id: 2, src: '/assets/images/background.png', title: 'Tour 3', path: '/tour3',
-      },
+
     ],
 
     usersType: [
@@ -358,55 +128,62 @@ export const s2tData = {
 
       {
         id: 2,
+        src: '/assets/images/users/scouts.png',
+        title: 'scout',
+        path: '/register',
+      },
+
+      {
+        id: 3,
         src: '/assets/images/users/business.png',
         title: 'business_man',
         path: '/register',
       },
 
       {
-        id: 3,
+        id: 4,
         src: '/assets/images/users/clubs.png',
         title: 'clubs',
         path: '/register',
       },
 
       {
-        id: 4,
+        id: 5,
         src: '/assets/images/users/facultys.png',
         title: 'universities',
         path: '/register',
       },
 
       {
-        id: 5,
+        id: 6,
         src: '/assets/images/users/leagues.png',
         title: 'leagues',
         path: '/register',
       },
 
       {
-        id: 6,
+        id: 7,
         src: '/assets/images/users/schools.jpg',
         title: 'schools',
         path: '/register',
       },
 
       {
-        id: 7,
+        id: 8,
         src: '/assets/images/users/staff.jpg',
         title: 'staff',
         path: '/register',
       },
 
       {
-        id: 8,
+        id: 9,
         src: '/assets/images/users/exchangeAgencies.jpg',
         title: 'exchange_agencies',
         path: '/register',
       },
 
       {
-        id: 9,
+        id: 10,
         src: '/assets/images/users/fans.jpg',
         title: 'fans',
         path: '/register',
@@ -488,15 +265,29 @@ export const s2tData = {
       {
         id: '11',
         src: '/assets/images/benefits/studies.jpg',
-        title: 'studies',
+        title: 'education',
         path: '/benefits/studies',
       },
 
       {
         id: '12',
         src: '/assets/images/benefits/american_studies.jpg',
-        title: 'american_studies',
+        title: 'american_education',
         path: '/benefits/american-studies',
+      },
+
+      {
+        id: '13',
+        src: '/assets/images/benefits/telemedicine.jpg',
+        title: 'telemedicine_usa',
+        path: '/benefits/telemedicine-usa',
+      },
+
+      {
+        id: '14',
+        src: '/assets/images/benefits/solar.jpg',
+        title: 'solar',
+        path: '/benefits/solar',
       },
 
     ],
@@ -504,251 +295,21 @@ export const s2tData = {
 
   videos: {
     trending: [
-      { url: 'https://vimeo.com/953545193', id: 4 },
-      { url: '/assets/videos/silas.mp4', id: 1 },
-      { url: 'https://vimeo.com/953545193', id: 4 },
+
     ],
   },
 
   users: {
     scouts: [
-      { id: '1', name: 'Melissa de Lima', profileImageSrc: '/assets/images/background.png' },
-      { id: '2', name: 'Enzo Costa', profileImageSrc: '/assets/images/background.png' },
-      { id: '3', name: 'Beatriz Oliveira', profileImageSrc: '/assets/images/background.png' },
-      { id: '4', name: 'Sophia Silva', profileImageSrc: '/assets/images/background.png' },
-      { id: '5', name: 'Miguel Pereira', profileImageSrc: '/assets/images/background.png' },
-      { id: '6', name: 'Laura Souza', profileImageSrc: '/assets/images/background.png' },
-      { id: '7', name: 'Gabriel Santos', profileImageSrc: '/assets/images/background.png' },
-      { id: '8', name: 'Isabella Almeida', profileImageSrc: '/assets/images/background.png' },
-      { id: '9', name: 'Manuela Nunes', profileImageSrc: '/assets/images/background.png' },
-      { id: '10', name: 'Lucas Ferreira', profileImageSrc: '/assets/images/background.png' },
-      { id: '11', name: 'Maria Mendes', profileImageSrc: '/assets/images/background.png' },
-      { id: '12', name: 'André Cardoso', profileImageSrc: '/assets/images/background.png' },
+
     ],
 
     clubs: [
-      { id: '1', name: 'São Paulo', profileImageSrc: '/assets/images/background.png' },
-      { id: '2', name: 'Barcelona', profileImageSrc: '/assets/images/background.png' },
-      { id: '3', name: 'Real Madrid', profileImageSrc: '/assets/images/background.png' },
-      { id: '4', name: 'Celta de Vigo', profileImageSrc: '/assets/images/background.png' },
-      { id: '5', name: 'Ajax', profileImageSrc: '/assets/images/background.png' },
-      { id: '6', name: 'Novorizontino', profileImageSrc: '/assets/images/background.png' },
-      { id: '7', name: 'Aguia de marabá', profileImageSrc: '/assets/images/background.png' },
-      { id: '8', name: 'Atlético de Madrid', profileImageSrc: '/assets/images/background.png' },
-      { id: '9', name: 'PSG', profileImageSrc: '/assets/images/background.png' },
-      { id: '10', name: 'River Plate', profileImageSrc: '/assets/images/background.png' },
-      { id: '11', name: 'XV de Piracicaba', profileImageSrc: '/assets/images/background.png' },
-      { id: '12', name: 'Coritiba', profileImageSrc: '/assets/images/background.png' },
+
     ],
 
     players: [
-      {
-        playerId: 1,
-        category: 'professional',
-        name: 'Everton Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
 
-      {
-        playerId: 2,
-        category: 'professional',
-        name: 'Carlos Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 3,
-        category: 'professional',
-        name: 'Cesar Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 4,
-        category: 'professional',
-        name: 'Augusto Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 5,
-        category: 'professional',
-        name: 'Everton Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 6,
-        category: 'professional',
-        name: 'Carlos Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 7,
-        category: 'professional',
-        name: 'Cesar Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 8,
-        category: 'professional',
-        name: 'Augusto Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 9,
-        category: 'professional',
-        name: 'Everton Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 10,
-        category: 'professional',
-        name: 'Carlos Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 11,
-        category: 'professional',
-        name: 'Cesar Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 12,
-        category: 'professional',
-        name: 'Augusto Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 13,
-        category: 'professional',
-        name: 'Everton Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 14,
-        category: 'professional',
-        name: 'Carlos Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 15,
-        category: 'professional',
-        name: 'Cesar Felipe',
-        age: 23,
-        position: 'Centroavante',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.70,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
-
-      {
-        playerId: 16,
-        category: 'professional',
-        name: 'Bernardo da Silva',
-        age: 32,
-        position: 'Ponta esquerda',
-        bestLeg: 'Direita',
-        weight: 80,
-        height: 1.72,
-        path: '/player-dashboard/profile',
-        profileImageSrc: '/assets/images/profile/profile.png',
-      },
     ],
   },
 
@@ -761,31 +322,11 @@ export const s2tData = {
     male: {
       semiProfessional: {
         agents: [
-          {
-            from: 'Agente',
-            date: '29/05/2024',
-            disponibility: '29/05/2024',
-            category: 'Universitário',
-            opportunity: 'Centroavante',
-            country: 'Brasil',
-            org: 'Brasileirão',
-            orgLogo: '/assets/images/pngs/brasileirao.png',
-            orgPath: '/brasileirao',
-          },
+
         ],
 
         clubs: [
-          {
-            from: 'Clube',
-            date: '29/05/2024',
-            disponibility: '29/05/2024',
-            category: 'Semi profissional',
-            opportunity: 'Centroavante',
-            country: 'Brasil',
-            org: 'Brasileirão',
-            orgLogo: '/assets/images/pngs/brasileirao.png',
-            orgPath: '/brasileirao',
-          },
+
         ],
 
       },
@@ -819,9 +360,9 @@ export const s2tData = {
             requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
           },
           {
-            opportunityId: 1,
+            opportunityId: 0,
             details: {
-              from: 'Clube 1',
+              from: 'Clube 0',
               date: '01-06-2024',
               disponibility: '2024-07-10',
               category: 'Profissional',
@@ -845,9 +386,9 @@ export const s2tData = {
             requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
           },
           {
-            opportunityId: 2,
+            opportunityId: 0,
             details: {
-              from: 'Clube 2',
+              from: 'Clube 0',
               date: '01-06-2024',
               disponibility: '2024-07-10',
               category: 'Profissional',
@@ -870,40 +411,10 @@ export const s2tData = {
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
             requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
           },
-        ],
-
-        agents: [
           {
-            opportunityId: 3,
+            opportunityId: 0,
             details: {
-              from: 'Agente',
-              date: '29-05-2024',
-              disponibility: '2024-07-10',
-              category: 'Profissional',
-              opportunity: 'Centroavante',
-              country: 'Brasil',
-              org: 'Brasileirão',
-              orgLogo: '/assets/images/pngs/brasileirao.png',
-              orgPath: '/brasileirao',
-              age: {
-                minAge: 18,
-                maxAge: 28,
-              },
-              payment: {
-                minPayment: 5000,
-                maxPayment: 8000,
-                currency: 'Real',
-              },
-              minHeight: 1.70,
-            },
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-            requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-          },
-
-          {
-            opportunityId: 4,
-            details: {
-              from: 'Agente 2',
+              from: 'Clube 0',
               date: '01-06-2024',
               disponibility: '2024-07-10',
               category: 'Profissional',
@@ -922,87 +433,6 @@ export const s2tData = {
                 currency: 'Real',
               },
               minHeight: 1.70,
-            },
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-            requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-          },
-
-          {
-            opportunityId: 5,
-            details: {
-              from: 'Agente 3',
-              date: '01-06-2024',
-              disponibility: '2024-07-10',
-              category: 'Profissional',
-              opportunity: 'Zagueiro',
-              country: 'Alemanha',
-              org: 'Bundesliga',
-              orgLogo: '/assets/images/pngs/brasileirao.png',
-              orgPath: '/bundesliga',
-              age: {
-                minAge: 18,
-                maxAge: 28,
-              },
-              payment: {
-                minPayment: 10000,
-                maxPayment: 18000,
-                currency: 'Real',
-              },
-              minHeight: 1.70,
-            },
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-            requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-          },
-
-          {
-            opportunityId: 6,
-            details: {
-              from: 'Agente 4',
-              date: '01-06-2024',
-              disponibility: '2024-07-10',
-              category: 'Profissional',
-              opportunity: 'Zagueiro',
-              country: 'Alemanha',
-              org: 'Bundesliga',
-              orgLogo: '/assets/images/pngs/brasileirao.png',
-              orgPath: '/bundesliga',
-              age: {
-                minAge: 18,
-                maxAge: 28,
-              },
-              payment: {
-                minPayment: 10000,
-                maxPayment: 18000,
-                currency: 'Real',
-              },
-              minHeight: 1.70,
-            },
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-            requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
-          },
-
-          {
-            opportunityId: 7,
-            details: {
-              from: 'Agente 5',
-              date: '01-06-2024',
-              disponibility: '2024-07-10',
-              category: 'Profissional',
-              opportunity: 'Zagueiro',
-              country: 'Alemanha',
-              org: 'Bundesliga',
-              orgLogo: '/assets/images/pngs/brasileirao.png',
-              orgPath: '/bundesliga',
-              age: {
-                minAge: 18,
-                maxAge: 28,
-              },
-              payment: {
-                minPayment: 10000,
-                maxPayment: 18000,
-                currency: 'Real',
-              },
-              minHeight: 1.75,
             },
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
             requirements: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit nisl et leo porta egestas. Duis risus dolor, dignissim non gravida at, gravida non augue. Ut vulputate, nulla sed eleifend euismod, tellus libero rhoncus sem, vitae lobortis ipsum tellus ut diam. Integer fermentum nisi velit, sed posuere felis vestibulum vel',
@@ -1044,6 +474,7 @@ export const s2tData = {
       { value: 'psychologist', text: 'Psicólogo' },
       { value: 'scout', text: 'Scout' },
       { value: 'coach', text: 'Técnico' },
+      { value: 'personal_trainer', text: '' },
     ],
 
     agencyProfileType: [
@@ -1059,10 +490,18 @@ export const s2tData = {
     ],
 
     competitiveLevels: [
-      { value: 'serie_a', text: 'Serie A' },
-      { value: 'serie_b', text: 'Serie B' },
-      { value: 'serie_c', text: 'Serie C' },
-      { value: 'serie_d', text: 'Serie D' },
+      { value: 'division_1', text: '1° Divisão' },
+      { value: 'division_2', text: '2° Divisão' },
+      { value: 'division_3', text: '3° Divisão' },
+      { value: 'division_4', text: '4° Divisão' },
+      { value: 'division_5', text: '5° Divisão' },
+      { value: 'division_6', text: '6° Divisão' },
+      { value: 'division_7', text: '7° Divisão' },
+      { value: 'division_8', text: '8° Divisão' },
+      { value: 'division_9', text: '9° Divisão' },
+      { value: 'division_10', text: '10° Divisão' },
+      { value: 'division_11', text: '11° Divisão' },
+      { value: 'division_12', text: '12° Divisão' },
     ],
 
     universityCompetitiveLevels: [
@@ -1104,6 +543,7 @@ export const s2tData = {
       { value: 'left_winger', text: 'Ponta Esquerda' },
       { value: 'right_winger', text: 'Ponta Direita' },
       { value: 'center_forward', text: 'Centroavante' },
+      { value: 'striker', text: 'Atacante' },
       { value: 'not_specified', text: 'Não especificado' },
     ],
 
@@ -1167,14 +607,24 @@ export const s2tData = {
       { value: 'in_person', text: 'Presencial' },
     ],
 
-    eventType: [
-      { value: 'match', text: 'Partida' },
-      { value: 'camping', text: 'Camping' },
-      { value: 'clinic', text: 'Clínica' },
-      { value: 'palestra', text: 'Palestra' },
-      { value: 'tour', text: 'Tour' },
-      { value: 'showcase', text: 'Showcase' },
-      { value: 'exchange', text: 'Intercâmbio' },
+    languageOptions: [
+      { value: 'pt', text: 'Português' },
+      { value: 'en', text: 'Inglês' },
+      { value: 'es', text: 'Espanhol' },
+      { value: 'fr', text: 'Francês' },
+    ],
+
+    sportsOptions: [
+      { value: 'football', text: 'Futebol' },
+      { value: 'cricket', text: 'Críquete' },
+      { value: 'hockey', text: 'Hóquei' },
+      { value: 'tennis', text: 'Tênis' },
+      { value: 'volleyball', text: 'Vôlei' },
+      { value: 'tabletennis', text: 'Tênis de Mesa' },
+      { value: 'basketball', text: 'Basquete' },
+      { value: 'baseball', text: 'Beisebol' },
+      { value: 'rugby', text: 'Rugby' },
+      { value: 'golf', text: 'Golfe' },
     ],
 
   },

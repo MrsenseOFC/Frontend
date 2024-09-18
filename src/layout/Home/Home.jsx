@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next'; // Hook do i18next para tradução
 import { Close as CloseIcon } from '@styled-icons/material-outlined';
 import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
@@ -22,6 +22,7 @@ import { MiniSlide } from '../../components/elements/MiniSlide/MiniSlide';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 import { PublicVideoSlide } from '../../components/elements/ProfileSlideElements/PublicVideoSlide/PublicVideoSlide';
 import { HorizontalVideoSlide } from '../../components/elements/HorizontalVideoSlide/HorizontalVideoSlide';
+import { Row } from '../../components/RowContainer/Row';
 
 export function Home() {
   const { t, i18n } = useTranslation(); // Hook do i18next para tradução
@@ -30,38 +31,54 @@ export function Home() {
   const { currentUser } = useAuth();
 
   const [menuVisibility, setMenuVisibility] = useState(false);
-
-  const languageOptions = [
-    { value: 'pt', text: 'Português' },
-    { value: 'en', text: 'Inglês' },
-    { value: 'es', text: 'Espanhol' },
-    { value: 'fr', text: 'Francês' },
-  ];
+  const [sport, setSport] = useState('football');
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang); // Muda o idioma no i18next
   };
 
+  const [isScreenLarge, setIsScreenLarge] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenLarge(window.innerWidth >= 1080);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <Styled.HomePage>
       <StandardHeader>
-        <Logo size="150px" logo="/assets/images/pngs/logo.png" />
-        {menuVisibility ? (
-          <IconDiv name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
-            <CloseIcon />
-          </IconDiv>
-        ) : (
-          <IconDiv name={t('close_menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
-            <MenuIcon />
-          </IconDiv>
-        )}
+
+        <Nav>
+          <Logo size="150px" logo="/assets/images/pngs/logo.png" />
+
+          {isScreenLarge && (
+          <AuthDropdown
+            id="sportsOptions"
+            placeholder={t('select_sport')} // Traduz o placeholder
+            options={s2tState.formOptions.sportsOptions}
+            onDropdownChange={(option) => setSport(option)}
+            selectedvalue={sport}
+          />
+          )}
+        </Nav>
+
+        {isScreenLarge && (
         <Nav>
           <AuthDropdown
             id="languageOptions"
             placeholder={t('select_language')} // Traduz o placeholder
-            options={languageOptions}
+            options={s2tState.formOptions.languageOptions}
             onDropdownChange={handleLanguageChange} // Handler para mudar o idioma
-            selectedvalue={i18n.language} // Valor selecionado atualmente
+            selectedvalue={i18n.language}
           />
 
           {currentUser ? (
@@ -124,15 +141,37 @@ export function Home() {
             </>
           )}
         </Nav>
+        )}
+
+        {menuVisibility ? (
+          <IconDiv name={t('menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
+            <CloseIcon />
+          </IconDiv>
+        ) : (
+          <IconDiv name={t('close_menu')} onclick={() => setMenuVisibility(!menuVisibility)}>
+            <MenuIcon />
+          </IconDiv>
+        )}
+
       </StandardHeader>
+
       {menuVisibility && (
         <MobileNav>
+
           <AuthDropdown
             id="languageOptions"
             placeholder={t('select_language')} // Traduz o placeholder
-            options={languageOptions}
-            onDropdownChange={handleLanguageChange}
+            options={s2tState.formOptions.languageOptions}
+            onDropdownChange={handleLanguageChange} // Handler para mudar o idioma
             selectedvalue={i18n.language}
+          />
+
+          <AuthDropdown
+            id="sportsOptions"
+            placeholder={t('select_sport')} // Traduz o placeholder
+            options={s2tState.formOptions.sportsOptions}
+            onDropdownChange={(option) => setSport(option)}
+            selectedvalue={sport}
           />
           {currentUser ? (
             <>

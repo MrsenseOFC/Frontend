@@ -6,13 +6,14 @@ import { TextElement } from '../Text/Text-Styles.js';
 import { ButtonElement } from '../Button/Button-Styles.js';
 import { IconContainer } from '../IconDiv/IconDiv-Styles.js';
 import { AuthButtonElement } from '../AuthElements/AuthButton/AuthButton-Styles.js';
+import { AuthFormContainer } from '../AuthElements/AuthForm/AuthForm-Styles.js';
 
 export const ReportModalElement = styled.div`
   ${({ theme }) => css`
 
      display: flex;
      flex-direction: column;
-     gap: ${theme.spacings.xlarge};
+     gap: ${theme.spacings.medium};
 
      padding: ${theme.spacings.large};
 
@@ -23,8 +24,10 @@ export const ReportModalElement = styled.div`
 
      ${ButtonElement} {
       animation: ${slideIn} 1000ms;
-      padding: ${theme.spacings.medium};
-
+      padding: ${theme.spacings.large};
+      display: flex;
+      justify-content: center;
+      align-items: center;
      }
 
      ${AuthButtonElement} {
@@ -36,6 +39,9 @@ export const ReportModalElement = styled.div`
       animation: none;
      }
 
+     ${AuthFormContainer} {
+     }
+
 
      ${TextElement}{
       animation: ${slideIn} 1000ms;
@@ -43,6 +49,7 @@ export const ReportModalElement = styled.div`
 
      > ${RowContainer} {
       justify-content: space-between;
+
       @media ${theme.medias.smallpc} {
         flex-direction: row;
       }

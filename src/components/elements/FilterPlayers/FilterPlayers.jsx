@@ -31,6 +31,7 @@ export function FilterPlayers() {
     position: '',
     bestLeg: '',
     birthCountry: '',
+    operationCountry: '',
     league: '',
     competitiveLevel: '',
     competitiveCategory: '',
@@ -185,9 +186,17 @@ export function FilterPlayers() {
             <AuthInput
               type="text"
               name="filterBirthCountry_input"
-              id="filterBirthCountrycountry_input"
+              id="filterBirthCountry_input"
               placeholder={t('birth_country')}
               onChange={(e) => setFilterData((prevData) => ({ ...prevData, birthCountry: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
+              name="filterOperationCountry_input"
+              id="filterOperationCountry_input"
+              placeholder={t('operation_country')}
+              onChange={(e) => setFilterData((prevData) => ({ ...prevData, operationCountry: e.target.value }))}
             />
 
             <AuthInput

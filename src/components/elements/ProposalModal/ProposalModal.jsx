@@ -14,6 +14,8 @@ import { ColumnContainer } from '../../ColumnContainer/Column-Styles';
 import { TextArea } from '../TextArea/TextArea';
 import { Row } from '../../RowContainer/Row';
 import { IconDiv } from '../IconDiv/IconDiv';
+import { GridLayout } from '../../GridLayout/GridLayout';
+
 import { FavoriteIcon } from '../FavoriteIcon/FavoriteIcon';
 
 export function ProposalModal({ proposal, onclick, isapplied }) {
@@ -22,7 +24,11 @@ export function ProposalModal({ proposal, onclick, isapplied }) {
 
   const handleSubmitMessage = (e) => {
     e.preventDefault();
-    // enviar os dados para o backend
+    // Lógica para envio de mensagem ou criar uma função dispatch com ela
+  };
+
+  const handleMessage = (option) => {
+    setMessage(message === option ? '' : option);
   };
 
   return (
@@ -77,33 +83,97 @@ export function ProposalModal({ proposal, onclick, isapplied }) {
 
         <ColumnContainer>
           <Subtitle text={t('message')} uppercase />
+
+          <GridLayout>
+            <Button
+              text={t('opportunity_player_message_1')}
+              bgcolor={message === t('opportunity_player_message_1') ? theme.colors.primary : theme.colors.lightprimary}
+              bghover={theme.colors.primary}
+              textcolor={theme.colors.black}
+              texthover={theme.colors.black}
+              border={theme.colors.lightprimary}
+              borderhover={theme.colors.primary}
+              active={message === t('opportunity_player_message_1')}
+              onclick={() => handleMessage(t('opportunity_player_message_1'))}
+            />
+
+            <Button
+              text={t('opportunity_player_message_2')}
+              bgcolor={message === t('opportunity_player_message_2') ? theme.colors.primary : theme.colors.lightprimary}
+              bghover={theme.colors.primary}
+              textcolor={theme.colors.black}
+              texthover={theme.colors.black}
+              border={theme.colors.lightprimary}
+              borderhover={theme.colors.primary}
+              active={message === t('opportunity_player_message_2')}
+              onclick={() => handleMessage(t('opportunity_player_message_2'))}
+            />
+
+            <Button
+              text={t('opportunity_player_message_3')}
+              bgcolor={message === t('opportunity_player_message_3') ? theme.colors.primary : theme.colors.lightprimary}
+              bghover={theme.colors.primary}
+              textcolor={theme.colors.black}
+              texthover={theme.colors.black}
+              border={theme.colors.lightprimary}
+              borderhover={theme.colors.primary}
+              active={message === t('opportunity_player_message_3')}
+              onclick={() => handleMessage(t('opportunity_player_message_3'))}
+            />
+
+            <Button
+              text={t('opportunity_player_message_4')}
+              bgcolor={message === t('opportunity_player_message_4') ? theme.colors.primary : theme.colors.lightprimary}
+              bghover={theme.colors.primary}
+              textcolor={theme.colors.black}
+              texthover={theme.colors.black}
+              border={theme.colors.lightprimary}
+              borderhover={theme.colors.primary}
+              active={message === t('opportunity_player_message_4')}
+              onclick={() => handleMessage(t('opportunity_player_message_4'))}
+            />
+
+          </GridLayout>
+
           <TextArea
-            placeholder={t('optional')}
             info="message"
-            onChange={(e) => setMessage(e.target.value)}
             value={message}
           />
 
-          {isapplied ? (
+          {!isapplied ? (
+            <>
+              {message ? (
+                <Button
+                  text={t('send_message')}
+                  bgcolor={theme.colors.quaternary}
+                  bghover={theme.colors.secondary}
+                  textcolor={theme.colors.white}
+                  texthover={theme.colors.white}
+                  border={theme.colors.tertiary}
+                  borderhover={theme.colors.white}
+                  onclick={handleSubmitMessage}
+                />
+              ) : (
+                <Button
+                  text={t('send_message')}
+                  bgcolor={theme.colors.darkgray}
+                  bghover={theme.colors.darkgray}
+                  textcolor={theme.colors.white}
+                  texthover={theme.colors.white}
+                  border={theme.colors.darkgray}
+                  borderhover={theme.colors.lightgray}
+                />
+              )}
+            </>
+          ) : (
             <Button
               text={t('opportunity_message_sent')}
               bgcolor={theme.colors.darkgray}
               bghover={theme.colors.darkgray}
               textcolor={theme.colors.white}
               texthover={theme.colors.white}
-              border={theme.colors.lightgray}
+              border={theme.colors.darkgray}
               borderhover={theme.colors.lightgray}
-            />
-          ) : (
-            <Button
-              text={t('send_message')}
-              bgcolor={theme.colors.quaternary}
-              bghover={theme.colors.secondary}
-              textcolor={theme.colors.white}
-              texthover={theme.colors.white}
-              border={theme.colors.tertiary}
-              borderhover={theme.colors.white}
-              onclick={handleSubmitMessage}
             />
           )}
 

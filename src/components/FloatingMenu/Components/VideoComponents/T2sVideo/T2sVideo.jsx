@@ -86,6 +86,7 @@ export function T2sVideo({ onCloseClick, onBackClick }) {
         />
 
         <AuthButton
+          id="t2sVideoUpload"
           name={t('confirm')}
           value={t('confirm')}
           bgcolor={theme.colors.lightprimary}

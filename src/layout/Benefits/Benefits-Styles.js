@@ -42,6 +42,14 @@ export const BenefitsPage = styled.section`
   ${BannerContainer} {
     padding-top: 50px;
 
+      > ${SubtitleElement}, > ${TitleElement} {
+      font-weight: 900;
+      margin-bottom: 0px;
+      text-align: center;
+      text-shadow: 3px 3px 1px ${theme.colors.lightblack};
+    }
+    
+
     
     @media ${theme.medias.smallpc} {
       max-height: 500px;
@@ -58,12 +66,7 @@ export const BenefitsPage = styled.section`
 
     }
 
-    ${SubtitleElement}, ${TitleElement} {
-      font-weight: 900;
-      margin-bottom: 0px;
-      text-align: center;
-      text-shadow: 3px 3px 1px ${theme.colors.lightblack};
-    }
+
   }
 
   ${ListItem} {

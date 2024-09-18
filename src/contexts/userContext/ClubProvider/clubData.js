@@ -21,7 +21,9 @@ export const clubData = {
     ],
 
     videos: [
-
+      { url: 'https://vimeo.com/953545193', id: 2 },
+      { url: '/assets/videos/silas.mp4', id: 1 },
+      { url: 'https://vimeo.com/953545193', id: 3 },
     ],
 
     // Histórico de clubes do usuário

@@ -227,5 +227,5 @@ export function Privacy({ children }) {
 }
 
 Privacy.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

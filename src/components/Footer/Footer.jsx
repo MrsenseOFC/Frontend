@@ -38,5 +38,5 @@ export function Footer({ children }) {
 }
 
 Footer.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

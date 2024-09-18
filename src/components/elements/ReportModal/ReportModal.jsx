@@ -110,8 +110,8 @@ export function ReportModal({ onclick, id }) {
 
             {reported && (
             <>
-              <Text text="Recebemos a sua denúncia!" uppercase />
-              <Text text="Obrigado por nos ajudar a manter nossa plataforma segura e livre de conteúdo impróprio. Sua denúncia será cuidadosamente analisada por nossa equipe. " />
+              <Text text={t('received_your_report')} uppercase />
+              <Text text={t('thank_you_report')} />
               <Button
                 text={t('close')}
                 bgcolor={theme.colors.secondary}

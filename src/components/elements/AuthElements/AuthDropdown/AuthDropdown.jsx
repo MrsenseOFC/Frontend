@@ -16,9 +16,7 @@ export function AuthDropdown({
 }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownText, setDropdownText] = useState(
-    options.find((option) => option.value === selectedvalue)?.text || '',
-  );
+  const [dropdownText, setDropdownText] = useState('');
 
   const other = { value: 'other', text: 'Outro' };
 
@@ -29,7 +27,7 @@ export function AuthDropdown({
 
   const handleItemClick = (option) => {
     onDropdownChange(option.value);
-    setDropdownText(option.text);
+    setDropdownText(option.value);
     setIsOpen(false); // Fecha o dropdown após a seleção
   };
 
@@ -49,7 +47,7 @@ export function AuthDropdown({
       )}
 
       <Styled.DropdownButton onClick={toggleDropdown} active={isOpen ? 'Active' : undefined}>
-        {dropdownText || placeholder || t('select')}
+        {t(`${selectedvalue}`) || t(`${dropdownText}`) || t(`${placeholder}`) || t('select')}
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
       </Styled.DropdownButton>
 

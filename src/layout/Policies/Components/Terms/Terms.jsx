@@ -352,5 +352,5 @@ export function Terms({ children }) {
 }
 
 Terms.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

@@ -122,5 +122,5 @@ export function AcceptableUse({ children }) {
 }
 
 AcceptableUse.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

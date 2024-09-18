@@ -233,6 +233,26 @@ export function Player() {
 
             <AuthInput
               type="text"
+              name="playerCountry_Of_Operation_input"
+              id="playerCountry_Of_Operation_input"
+              title={t('operation_country')}
+              placeholder={t('country_you play_in')}
+              value={profileData.primaryNationality}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, primaryNationality: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
+              name="playerBirthState_input"
+              id="playerBirthState_input"
+              title={t('state')}
+              placeholder={t('your_birth_state')}
+              value={profileData.birthCity}
+              onChange={(e) => setProfileData((prevData) => ({ ...prevData, birthCity: e.target.value }))}
+            />
+
+            <AuthInput
+              type="text"
               name="playerBirthCity_input"
               id="playerBirthCity_input"
               title={t('city')}
@@ -246,7 +266,7 @@ export function Player() {
               name="playerPassports_input"
               id="playerPassports_input"
               title={t('have_passports_question')}
-              placeholder={t('if_yes_list_the_countroes')}
+              placeholder={t('if_yes_list_the_countries')}
               value={profileData.passports}
               onChange={(e) => setProfileData((prevData) => ({ ...prevData, passports: e.target.value }))}
             />

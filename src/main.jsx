@@ -112,6 +112,8 @@ import { Privacy } from './layout/Policies/Components/Privacy/Privacy';
 import { Copyright } from './layout/Policies/Components/Copyright/Copyright';
 import { AcceptableUse } from './layout/Policies/Components/AcceptableUse/AcceptableUse';
 import { agencyData } from './contexts/userContext/AgencyProvider/agencyData';
+import { TelemedicineUsa } from './layout/Benefits/Components/TelemedicineUsa/TelemedicineUsa';
+import { Solar } from './layout/Benefits/Components/Solar/Solar';
 
 register();
 
@@ -162,6 +164,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                 <Route path="lions-platform" element={<LionsPlatform />} />
                                 <Route path="benefits-club" element={<BenefitsClub />} />
                                 <Route path="events" element={<EventsPage items={s2tData.events} />} />
+                                <Route path="telemedicine-usa" element={<TelemedicineUsa />} />
+                                <Route path="solar" element={<Solar />} />
                               </Route>
 
                               <Route path="/users" element={<Users />}>

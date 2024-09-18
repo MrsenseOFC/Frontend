@@ -52,6 +52,7 @@ export function HorizontalVideoSlide({
                   height="100%"
                   controls
                   playsinline
+                  styles={{ background: 'red' }}
                   // config={{
                   //   youtube: {
                   //     playerVars: {
@@ -74,7 +75,6 @@ export function HorizontalVideoSlide({
                       isfavorite={item.isfavorite}
                       id={item.id}
                       color={theme.colors.black}
-
                     />
 
                   </Styled.BottomIconsWrapper>

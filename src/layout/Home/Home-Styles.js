@@ -39,6 +39,7 @@ export const HomePage = styled.main`
     width: 100%;
     max-width: 700px;
 
+
     @media ${theme.medias.tablet} {
       font-size: ${theme.sizes.small};
     }
@@ -55,34 +56,52 @@ export const HomePage = styled.main`
 
   ${StandardHeaderContainer} {
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: ${theme.spacings.medium};
 
-    ${IconContainer} {
-    display: none;
-    animation: none;
+    ${RowContainer} {
+      width: auto;
+      height: auto;
+      padding: 0px ${theme.spacings.medium};
+      gap: ${theme.spacings.medium};
+      background: red;
 
-    @media ${theme.medias.smallpc} {
-      display: flex;
+      @media ${theme.medias.smallpc} {
+        flex-direction: row;
+      }
     }
-  }
+
+    
+    ${IconContainer} {
+      display: none;
+      animation: none;
+
+      @media (max-width: 1050px) {
+        display: flex;
+      }
+    }
 
     ${NavContainer} {
-      @media ${theme.medias.smallpc} {
-      display: none;
-     }
+      padding: 0px ${theme.spacings.medium};
     }
   }
 
   ${MobileNavContainer} {
     position: absolute;
-    top: 80px;
+    top: 90px;
     padding: ${theme.spacings.huge};
+    ${ButtonElement} {
+      width: 174px;
+    }
 
-    @media ${theme.medias.smallpc} {
+    @media (max-width: 1080px) {
       display: flex;
     }
 
     @media ${theme.medias.tablet} {
-      top: 75px;
+      top: 70px;
     }
   }
 

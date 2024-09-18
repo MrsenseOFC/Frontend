@@ -110,6 +110,7 @@ export function HudlVideo({ onCloseClick, onBackClick, profileType }) {
         />
 
         <AuthButton
+          id="hudlVideoUpload"
           name={t('confirm')}
           value={t('confirm')}
           bgcolor={theme.colors.orange}

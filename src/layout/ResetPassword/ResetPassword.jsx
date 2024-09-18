@@ -16,7 +16,7 @@ export function ResetPassword() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export function ResetPassword() {
   };
 
   return (
-    <Styled.ResetPasswordPage>
+    <Styled.ResetPasswordPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
       <AuthWrapper>
 
         <AuthContainer>

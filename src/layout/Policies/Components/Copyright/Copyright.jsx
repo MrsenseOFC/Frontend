@@ -49,5 +49,5 @@ export function Copyright({ children }) {
 }
 
 Copyright.propTypes = {
-  children: Prop.node.isRequired,
+  children: Prop.node,
 };

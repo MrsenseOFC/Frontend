@@ -68,6 +68,8 @@ export const DropdownTitle = styled.p`
     @media ${theme.medias.mobile} {
       font-size: ${theme.sizes.small};
     }
+
+    
   `}
 `;
 
@@ -82,7 +84,6 @@ export const DropdownButton = styled.button`
   padding: ${theme.spacings.small};
   cursor: pointer;
   font-family: ${theme.fonts.primary};
-  
 
   display: flex;
   justify-content: space-between;
@@ -90,6 +91,10 @@ export const DropdownButton = styled.button`
 
   transition: all 500ms ease-in-out;
   box-shadow: ${active ? `0px 0px 5px 1px ${theme.colors.primary}` : `0px 0px 5px 1px ${theme.colors.transparent}`};
+
+  @media ${theme.medias.smallmobile} {
+    font-size: ${theme.sizes.xsmall};
+  }
 
 
   &:hover {

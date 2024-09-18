@@ -1065,10 +1065,18 @@ export const s2tData = {
     ],
 
     competitiveLevels: [
-      { value: 'serie_a', text: 'Serie A' },
-      { value: 'serie_b', text: 'Serie B' },
-      { value: 'serie_c', text: 'Serie C' },
-      { value: 'serie_d', text: 'Serie D' },
+      { value: 'division_1', text: '1° Divisão' },
+      { value: 'division_2', text: '2° Divisão' },
+      { value: 'division_3', text: '3° Divisão' },
+      { value: 'division_4', text: '4° Divisão' },
+      { value: 'division_5', text: '5° Divisão' },
+      { value: 'division_6', text: '6° Divisão' },
+      { value: 'division_7', text: '7° Divisão' },
+      { value: 'division_8', text: '8° Divisão' },
+      { value: 'division_9', text: '9° Divisão' },
+      { value: 'division_10', text: '10° Divisão' },
+      { value: 'division_11', text: '11° Divisão' },
+      { value: 'division_12', text: '12° Divisão' },
     ],
 
     universityCompetitiveLevels: [
@@ -1110,6 +1118,7 @@ export const s2tData = {
       { value: 'left_winger', text: 'Ponta Esquerda' },
       { value: 'right_winger', text: 'Ponta Direita' },
       { value: 'center_forward', text: 'Centroavante' },
+      { value: 'striker', text: 'Atacante' },
       { value: 'not_specified', text: 'Não especificado' },
     ],
 

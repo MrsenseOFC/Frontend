@@ -7,12 +7,13 @@ import { AuthFormContainer } from '../../AuthElements/AuthForm/AuthForm-Styles';
 import { PopupElement } from '../../Popup/Popup-Styles';
 import { ColumnContainer } from '../../../ColumnContainer/Column-Styles';
 import { RowContainer } from '../../../RowContainer/Row-Styles.js';
+import { FloatingMenuContainer } from '../../../FloatingMenu/FloatingMenu-Styles.js';
 
 export const PublicVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
 
-  width: 100%;
-  height: 100%;
+   width: 100%;
+   height: 100%;
 
    & ${AuthFormContainer} {
 
@@ -22,6 +23,15 @@ export const PublicVideoSlideWrapper = styled.div`
         }
       }
       
+    }
+
+
+    ${FloatingMenuContainer} {
+      min-width: 430px;
+
+      @media ${theme.medias.mobile} {
+        min-width: 90%;
+      }
     }
   `}  
 `;
