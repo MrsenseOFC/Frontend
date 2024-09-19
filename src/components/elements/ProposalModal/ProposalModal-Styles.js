@@ -4,6 +4,7 @@ import { SubtitleElement } from '../Subtitle/Subtitle-Styles';
 import { slideIn } from '../../../styles/animations';
 import { RowContainer } from '../../RowContainer/Row-Styles.js';
 import { ButtonElement } from '../Button/Button-Styles.js';
+import { GridLayoutContainer } from '../../GridLayout/GridLayout-Styles.js';
 
 export const ProposalModalElement = styled.div`
   ${({ theme }) => css`
@@ -45,6 +46,32 @@ export const ProposalModalElement = styled.div`
       background: rgba(0, 0, 0, 0.9);
       box-shadow: 0px 0px 10px 2px white;
       backdrop-filter: blur(2px);
+     }
+
+     ${GridLayoutContainer} {
+      width: 100%;
+      background: red;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      @media ${theme.medias.smallpc} {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      @media ${theme.medias.tablet} {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      @media ${theme.medias.mobile} {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+
+      ${ButtonElement} {
+        min-height: 110px;
+
+        @media ${theme.medias.mobile} {
+          min-height: 70px;        }
+       }
      }
 
 

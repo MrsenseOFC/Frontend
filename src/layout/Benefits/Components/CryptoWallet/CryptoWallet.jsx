@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './CryptoWallet-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
@@ -15,10 +15,12 @@ import { s2tData } from '../../../../contexts/s2tContext/s2tData';
 import { Banner } from '../../../../components/elements/Banner/Banner';
 
 export function CryptoWallet() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   const { t } = useTranslation();
 

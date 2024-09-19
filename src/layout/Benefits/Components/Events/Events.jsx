@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './Events-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
@@ -19,10 +19,12 @@ export function Events({ items }) {
   const { t } = useTranslation();
   const [selectedEvent, setSelectedEvent] = useState();
 
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   return (
     <Styled.EventsContainer>

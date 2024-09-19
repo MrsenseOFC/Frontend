@@ -33,6 +33,6 @@ export const Explanation = styled.div`
     padding: ${theme.spacings.small};
     position: absolute;
     top: 105%;
-    z-index: 1000;
+    z-index: 500;
   `}
 `;

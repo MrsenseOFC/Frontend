@@ -2,6 +2,8 @@ import Prop from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Close as CloseIcon } from '@styled-icons/material-outlined';
+import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
 import * as Styled from './ForgotPassword-Styles';
 import { AuthWrapper } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper';
 import { AuthContainer } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper-Styles';
@@ -16,12 +18,15 @@ import { StandardHeader } from '../../components/Headers/StandardHeader/Standard
 import { Logo } from '../../components/elements/Logo/Logo';
 import { Nav } from '../../components/Nav/Nav';
 import { FloatingHeader } from '../../components/Headers/FloatingHeader/FloatingHeader';
+import { IconDiv } from '../../components/elements/IconDiv/IconDiv';
+import { FloatingMenu } from '../../components/FloatingMenu/FloatingMenu';
 
 export function ForgotPassword() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+  const [mobileHeader, setMobileHeader] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,27 +35,13 @@ export function ForgotPassword() {
   };
 
   return (
-    <>
+    <Styled.ForgotPasswordWrapper>
       <FloatingHeader>
-
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
-
         <Nav>
-
           <Button
             path="/"
             text={t('home_page')}
-            bgcolor={theme.colors.mediumblack}
-            bghover={theme.colors.mediumblack}
-            textcolor={theme.colors.white}
-            texthover={theme.colors.primary}
-            border={theme.colors.white}
-            borderhover={theme.colors.primary}
-          />
-
-          <Button
-            path="/login"
-            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -72,8 +63,8 @@ export function ForgotPassword() {
           />
 
           <Button
-            path="/register"
-            text={t('register')}
+            path="/login"
+            text={t('login')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -83,8 +74,8 @@ export function ForgotPassword() {
           />
 
           <Button
-            path="/benefits"
-            text={t('benefits')}
+            path="/register"
+            text={t('register')}
             bgcolor={theme.colors.mediumblack}
             bghover={theme.colors.mediumblack}
             textcolor={theme.colors.white}
@@ -93,9 +84,69 @@ export function ForgotPassword() {
             borderhover={theme.colors.primary}
           />
         </Nav>
+
+        {mobileHeader ? (
+          <IconDiv name={t('menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <CloseIcon />
+          </IconDiv>
+        ) : (
+          <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
+            <MenuIcon />
+          </IconDiv>
+        ) }
       </FloatingHeader>
 
-      <Styled.ForgotPasswordPage>
+      {mobileHeader && (
+      <FloatingMenu>
+        <Button
+          path="/"
+          text={t('home_page')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+        <Button
+          path="/forgot-password"
+          text={t('forgot_password')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.black}
+          textcolor={theme.colors.primary}
+          texthover={theme.colors.primary}
+          border={theme.colors.primary}
+          borderhover={theme.colors.primary}
+          active
+        />
+
+        <Button
+          path="/login"
+          text={t('login')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+
+        <Button
+          path="/register"
+          text={t('register')}
+          bgcolor={theme.colors.mediumblack}
+          bghover={theme.colors.mediumblack}
+          textcolor={theme.colors.white}
+          texthover={theme.colors.primary}
+          border={theme.colors.white}
+          borderhover={theme.colors.primary}
+        />
+      </FloatingMenu>
+
+      )}
+
+      <Styled.ForgotPasswordPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
         <AuthWrapper>
 
           <AuthContainer>
@@ -135,7 +186,7 @@ export function ForgotPassword() {
 
         </AuthWrapper>
       </Styled.ForgotPasswordPage>
-    </>
+    </Styled.ForgotPasswordWrapper>
   );
 }
 

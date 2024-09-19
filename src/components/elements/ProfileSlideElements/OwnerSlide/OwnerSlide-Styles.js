@@ -54,6 +54,8 @@ export const OwnerSlideElement = styled.div`
   ${AuthIconFileContainer} {
      width: 100%;
      height: 100%;
+     border: ${theme.borders.xwhite};
+
      border-radius: 12px;
      background: url('/assets/images/backgrounds/ball.png');
      background-repeat: no-repeat;
@@ -159,6 +161,7 @@ export const BottomIconsWrapper = styled.div`
     ${IconContainer} {
     width: auto;
     height: 100%;
+    
 
     > svg {
      border-radius: 50%;

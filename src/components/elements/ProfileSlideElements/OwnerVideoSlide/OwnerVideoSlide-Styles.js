@@ -13,13 +13,14 @@ import { SubtitleElement } from '../../Subtitle/Subtitle-Styles.js';
 
 export const OwnerVideoSlideWrapper = styled.div`
   ${({ theme }) => css`
-    /* background: white; */
-    padding: ${theme.spacings.small};
+    width: 100%;
   `}  
 `;
 
 export const OwnerVideoSlideElement = styled.div`
   ${({ theme }) => css`
+  width: 100%;
+
 
   .swiper-wrapper {
      height: 400px;
@@ -210,12 +211,12 @@ export const VideoUpload = styled.div`
 
     width: 100%;
     height: 100%;
-    /* background: red; */
     display: flex;
     justify-content: center;
     align-items: center;
 
      > ${IconContainer} {
+      
       animation: none;
       width: 100%;
       height: 100%;

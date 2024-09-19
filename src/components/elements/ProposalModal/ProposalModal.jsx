@@ -109,7 +109,7 @@ export function ProposalModal({ proposal, onclick, isapplied }) {
               onclick={() => handleMessage(t('opportunity_player_message_2'))}
             />
 
-            <Button
+            {/* <Button
               text={t('opportunity_player_message_3')}
               bgcolor={message === t('opportunity_player_message_3') ? theme.colors.primary : theme.colors.lightprimary}
               bghover={theme.colors.primary}
@@ -131,7 +131,7 @@ export function ProposalModal({ proposal, onclick, isapplied }) {
               borderhover={theme.colors.primary}
               active={message === t('opportunity_player_message_4')}
               onclick={() => handleMessage(t('opportunity_player_message_4'))}
-            />
+            /> */}
 
           </GridLayout>
 

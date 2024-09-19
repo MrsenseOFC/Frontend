@@ -1,5 +1,5 @@
 import Prop from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as Styled from './Solar-Styles';
 import { Text } from '../../../../components/elements/Text/Text';
@@ -23,12 +23,27 @@ import { Column } from '../../../../components/ColumnContainer/Column';
 import { Row } from '../../../../components/RowContainer/Row';
 
 export function Solar() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   const { t } = useTranslation();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    zipCode: '',
+    street: '',
+    country: '',
+    state: '',
+    city: '',
+    phoneNumber: '',
+  });
+
+  console.log(formData);
 
   return (
     <Styled.SolarContainer>
@@ -90,99 +105,119 @@ export function Solar() {
 
       </BannerSlide>
 
-      <Banner backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png">
-        <AuthWrapper>
+      <AuthWrapper>
 
-          <AuthContainer>
-            <Subtitle text="Subtitle" uppercase />
+        <AuthContainer>
+          <Subtitle text="solar_form_title" uppercase />
 
-            <AuthForm>
-              <Row>
-                <Column>
-                  <AuthInput
-                    type="text"
-                    name="completeName"
-                    id="completeName_input"
-                    placeholder={t('owner_house_complete_name')}
-                    title={t('complete_name')}
-                    required
-                  />
+          <AuthForm>
+            <Row>
+              <Column>
+                <AuthInput
+                  type="text"
+                  name="solarCompleteName"
+                  id="solarCompleteName_input"
+                  placeholder={t('owner_house_complete_name')}
+                  title={t('complete_name')}
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, name: e.target.value }))}
+                />
 
-                  <AuthInput
-                    type="email"
-                    name="email"
-                    id="email_input"
-                    placeholder={t('your_email')}
-                    title={t('email')}
-                    required
-                  />
+                <AuthInput
+                  type="email"
+                  name="solarEmail"
+                  id="solarEmail_input"
+                  placeholder={t('email')}
+                  title={t('email')}
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, email: e.target.value }))}
+                />
 
-                  <AuthInput
-                    type="text"
-                    name="playerPrimaryBirthCountry_input"
-                    id="playerPrimaryBirthCountry_input"
-                    title={t('primary_nationality')}
-                    placeholder={t('your_primary_nationality')}
-                  />
+                <AuthInput
+                  type="number"
+                  name="solarZipCode_input"
+                  id="solarZipCode_input"
+                  title={t('zip_code')}
+                  placeholder={t('zip_code')}
+                  required
+                  value={formData.zipCode}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, zipCode: e.target.value }))}
+                />
 
-                  <AuthInput
-                    type="text"
-                    name="playerBirthState_input"
-                    id="playerBirthState_input"
-                    title={t('state')}
-                    placeholder={t('your_birth_state')}
-                  />
-                </Column>
+                <AuthInput
+                  type="text"
+                  name="solarStreet_input"
+                  id="solarStreet_input"
+                  title={t('street')}
+                  placeholder={t('street_name')}
+                  required
+                  value={formData.street}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, street: e.target.value }))}
+                />
+              </Column>
 
-                <Column>
-                  <AuthInput
-                    type="text"
-                    name="playerBirthState_input"
-                    id="playerBirthState_input"
-                    title={t('state')}
-                    placeholder={t('your_birth_state')}
-                  />
+              <Column>
 
-                  <AuthInput
-                    type="text"
-                    name="playerBirthState_input"
-                    id="playerBirthState_input"
-                    title={t('state')}
-                    placeholder={t('your_birth_state')}
-                  />
+                <AuthInput
+                  type="text"
+                  name="solarCountry_input"
+                  id="solarCountry_input"
+                  title={t('country')}
+                  placeholder={t('country')}
+                  required
+                  value={formData.country}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, country: e.target.value }))}
+                />
 
-                  <AuthInput
-                    type="text"
-                    name="playerBirthState_input"
-                    id="playerBirthState_input"
-                    title={t('state')}
-                    placeholder={t('your_birth_state')}
-                  />
+                <AuthInput
+                  type="text"
+                  name="solarState_input"
+                  id="solarState_input"
+                  title={t('state')}
+                  placeholder={t('state')}
+                  required
+                  value={formData.state}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, state: e.target.value }))}
+                />
 
-                  <AuthInput
-                    type="email"
-                    name="email"
-                    id="email_input"
-                    placeholder={t('your_email')}
-                    title={t('email')}
-                    required
-                  />
+                <AuthInput
+                  type="text"
+                  name="solarCity_input"
+                  id="solarCity_input"
+                  title={t('city')}
+                  placeholder={t('city')}
+                  required
+                  value={formData.city}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, city: e.target.value }))}
+                />
 
-                  {/* <AuthButton
-                    name="login_submit"
-                    id="login_submit"
-                    value={t('login')}
-                  /> */}
+                <AuthInput
+                  type="number"
+                  name="solarPhoneNumber"
+                  id="solarPhoneNumber_input"
+                  placeholder={t('your_phone_number')}
+                  title={t('phone_number')}
+                  required
+                  value={formData.phoneNumber}
+                  onChange={(e) => setFormData((prevData) => ({ ...prevData, phoneNumber: e.target.value }))}
+                />
 
-                </Column>
+              </Column>
 
-              </Row>
+            </Row>
 
-            </AuthForm>
-          </AuthContainer>
-        </AuthWrapper>
+            <AuthButton
+              name="solarForm_submit"
+              id="solarForm_submit"
+              value={t('confirm')}
+            />
 
-      </Banner>
+          </AuthForm>
+        </AuthContainer>
+      </AuthWrapper>
+
       <Slide items={s2tData.photos.benefits} title={t('others_t2s_benefits')} />
 
       <BannerSlide backgroundimagesrc="/assets/images/backgrounds/slider-bg-2.png" gradientdirection="to top">

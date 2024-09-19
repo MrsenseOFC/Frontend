@@ -253,6 +253,16 @@
 	"injured": "Lesionado",
 	"injured_free": "Lesionado - Sem contrato",
 	"agents": "Agentes",
+
+	"------------------------------------------ Videos": "------------------------------------------ ",
+	"upload_method": "Método de envio",
+	"youtube": "Youtube",
+	"vimeo": "Vimeo",
+	"t2s": "T2S",
+	"youtube_video_url": "URL do vídeo no Youtube",
+	"vimeo_video_url": "URL do vídeo no Vimeo",
+	"url": "URL",
+
 	"------------------------------------------ Benefits": "------------------------------------------ ",
 
 	"podcast": "Podcast",
@@ -435,6 +445,11 @@
 	"send_message": "Enviar mensagem",
 	"opportunity_message_sent": "Você já enviou uma mensagem",
 	"select_position": "Escolha a posição",
+
+	"opportunity_player_message_1": "Oi, vi a oportunidade e estou muito interessado. Podemos conversar para discutir mais detalhes?",
+	"opportunity_player_message_2": "Olá, estou muito interessado na oportunidade e acredito que cumpro todos os requisitos. Agradeço pela consideração!",
+	"opportunity_player_message_3": "Olá, estou muito interessado na oportunidade. Atualmente, estou sob contrato, mas aberto a novas possibilidades. Obrigado!",
+	"opportunity_player_message_4": "Oi, estou muito interessado na oportunidade e estou disponível imediatamente, pois não estou sob contrato. Agradeço pela consideração!",
 	"------------------------------------------ Buttons text": "------------------------------------------ ",
 
 	"change_profile_picture_button": "Botão para alterar a foto do seu perfil",
@@ -601,6 +616,13 @@
 	"telemedicine_usa_step_2": "Você será direcionado automaticamente para o nosso site de telemedicina.",
 	"telemedicine_usa_step_3": "Crie sua conta ou faça login, se já tiver uma.",
 	"telemedicine_usa_step_4": "Comece a explorar e aproveitar as vantagens exclusivas que te esperam!",
+
+	"complete_name": "Nome completo",
+	"owner_house_complete_name": "Nome completo do dono da casa",
+	"street": "Rua",
+	"street_name": "Nome da rua",
+	"phone_number": "Número de telefone",
+	"your_phone_number": "Seu número de telefone",
 	"------------------------------------------ Auth Elements": "------------------------------------------ ",
 
 	"year_of_achievement": "Ano da conquista",
