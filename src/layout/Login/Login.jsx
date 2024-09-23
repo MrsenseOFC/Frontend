@@ -11,7 +11,6 @@ import { AuthInput } from '../../components/elements/AuthElements/AuthInput/Auth
 import { AuthRedirect } from '../../components/elements/AuthElements/AuthRedirect/Redirect';
 import { AuthOptions } from '../../components/elements/AuthElements/AuthOptions/AuthOptions';
 import { AuthWrapper } from '../../components/elements/AuthElements/AuthWrapper/AuthWrapper';
-
 import { StyledLink } from '../../components/elements/StyledLink/StyledLink';
 import { Title } from '../../components/elements/Title/Title';
 import { theme } from '../../styles/theme';
@@ -27,11 +26,8 @@ export function Login() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [mobileHeader, setMobileHeader] = useState(false);
-
-  const [userData, setUserData] = useState({
-    email: '',
-    password: '',
-  });
+  const [userData, setUserData] = useState({ email: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     setUserData({
@@ -42,93 +38,70 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(''); // Limpa a mensagem de erro
 
     try {
-      const response = await axios.post('https://talent2show.onrender.com/api/auth/login', {
-        email: userData.email,
-        password: userData.password,
-      });
+      const response = await axios.post('https://talent2show.onrender.com/api/auth/login', userData);
 
       if (response.data && response.data.token) {
-        const { token } = response.data;
-        localStorage.setItem('accessToken', token); // Armazena o token JWT no localStorage
-        const { user } = response.data;
+        const { token, user } = response.data;
+        localStorage.setItem('accessToken', token);
 
         // Redirecionamento baseado no tipo de perfil
-        if (user.profile_type === 'player') {
-          navigate('/player-dashboard');
-        } else if (user.profile_type === 'scout') {
-          navigate('/scout-dashboard');
-        } else if (user.profile_type === 'club') {
-          navigate('/club-dashboard');
-        } else {
-          navigate('/default-dashboard');
+        switch (user.profile_type) {
+          case 'player':
+            navigate('/player-dashboard');
+            break;
+          case 'scout':
+            navigate('/scout-dashboard');
+            break;
+          case 'club':
+            navigate('/club-dashboard');
+            break;
+          case 'staff':
+            navigate('/staff-dashboard');
+            break;
+          case 'agent':
+            navigate('/agent-dashboard');
+            break;
+          case 'league':
+            navigate('/league-dashboard');
+            break;
+          case 'university':
+            navigate('/university-dashboard');
+            break;
+          case 'fan':
+            navigate('/fan-dashboard');
+            break;
+          case 'exchangeAgencie':
+            navigate('/exchangeAgencie-dashboard');
+            break;
+          default:
+            navigate('/default-dashboard');
+            break;
         }
       } else {
-        alert(t('invalid_credentials_check_details'));
+        setErrorMessage(t('invalid_credentials_check_details'));
       }
     } catch (error) {
       console.error(t('login_error'), error.response ? error.response.data : error.message);
-      alert(t('login_error_try_again'));
+      setErrorMessage(t('login_error_try_again'));
     }
 
-    setUserData({
-      ...userData,
-      password: '', // Limpa a senha do estado após o envio do formulário
-    });
+    setUserData({ ...userData, password: '' }); // Limpa a senha após o envio
   };
+
   const [menuVisibility, setMenuVisibility] = useState(false);
 
   return (
     <Styled.LoginWrapper>
-
       <FloatingHeader>
         <Logo size="150px" logo="/assets/images/pngs/logo.png" />
         <Nav>
-          <Button
-            path="/"
-            text={t('home_page')}
-            bgcolor={theme.colors.mediumblack}
-            bghover={theme.colors.mediumblack}
-            textcolor={theme.colors.white}
-            texthover={theme.colors.primary}
-            border={theme.colors.white}
-            borderhover={theme.colors.primary}
-          />
-
-          <Button
-            path="/login"
-            text={t('login')}
-            bgcolor={theme.colors.mediumblack}
-            bghover={theme.colors.black}
-            textcolor={theme.colors.primary}
-            texthover={theme.colors.primary}
-            border={theme.colors.primary}
-            borderhover={theme.colors.primary}
-            active
-          />
-
-          <Button
-            path="/register"
-            text={t('register')}
-            bgcolor={theme.colors.mediumblack}
-            bghover={theme.colors.mediumblack}
-            textcolor={theme.colors.white}
-            texthover={theme.colors.primary}
-            border={theme.colors.white}
-            borderhover={theme.colors.primary}
-          />
-
-          <Button
-            path="/benefits"
-            text={t('benefits')}
-            bgcolor={theme.colors.mediumblack}
-            bghover={theme.colors.mediumblack}
-            textcolor={theme.colors.white}
-            texthover={theme.colors.primary}
-            border={theme.colors.white}
-            borderhover={theme.colors.primary}
-          />
+          <Button path="/" text={t('home_page')} bgcolor={theme.colors.mediumblack} />
+          <Button path="/login" text={t('login')} bgcolor={theme.colors.mediumblack} active />
+          <Button path="/register" text={t('register')} bgcolor={theme.colors.mediumblack} />
+          <Button path="/benefits" text={t('benefits')} bgcolor={theme.colors.mediumblack} />
         </Nav>
 
         {mobileHeader ? (
@@ -139,58 +112,16 @@ export function Login() {
           <IconDiv name={t('close_menu')} onclick={() => setMobileHeader(!mobileHeader)}>
             <MenuIcon />
           </IconDiv>
-        ) }
+        )}
       </FloatingHeader>
 
       {mobileHeader && (
-      <FloatingMenu>
-        <Button
-          path="/"
-          text={t('home_page')}
-          bgcolor={theme.colors.mediumblack}
-          bghover={theme.colors.mediumblack}
-          textcolor={theme.colors.white}
-          texthover={theme.colors.primary}
-          border={theme.colors.white}
-          borderhover={theme.colors.primary}
-        />
-
-        <Button
-          path="/login"
-          text={t('login')}
-          bgcolor={theme.colors.mediumblack}
-          bghover={theme.colors.black}
-          textcolor={theme.colors.primary}
-          texthover={theme.colors.primary}
-          border={theme.colors.primary}
-          borderhover={theme.colors.primary}
-          active
-        />
-
-        <Button
-          path="/register"
-          text={t('register')}
-          bgcolor={theme.colors.mediumblack}
-          bghover={theme.colors.mediumblack}
-          textcolor={theme.colors.white}
-          texthover={theme.colors.primary}
-          border={theme.colors.white}
-          borderhover={theme.colors.primary}
-        />
-
-        <Button
-          path="/benefits"
-          text={t('benefits')}
-          bgcolor={theme.colors.mediumblack}
-          bghover={theme.colors.mediumblack}
-          textcolor={theme.colors.white}
-          texthover={theme.colors.primary}
-          border={theme.colors.white}
-          borderhover={theme.colors.primary}
-        />
-
-      </FloatingMenu>
-
+        <FloatingMenu>
+          <Button path="/" text={t('home_page')} bgcolor={theme.colors.mediumblack} />
+          <Button path="/login" text={t('login')} bgcolor={theme.colors.mediumblack} active />
+          <Button path="/register" text={t('register')} bgcolor={theme.colors.mediumblack} />
+          <Button path="/benefits" text={t('benefits')} bgcolor={theme.colors.mediumblack} />
+        </FloatingMenu>
       )}
 
       <Styled.LoginPage backgroundimagesrc={`/assets/images/backgrounds/login_register_${i18n.language}.png`}>
@@ -198,55 +129,34 @@ export function Login() {
           <AuthContainer>
             <Title text={t('login')} size={theme.sizes.xxlarge} />
 
-            <AuthForm onSubmit={handleSubmit} method="post">
+            {errorMessage && <Styled.ErrorMessage>{errorMessage}</Styled.ErrorMessage>}
+
+            <AuthForm onSubmit={handleSubmit}>
               <AuthInput
                 type="email"
                 name="email"
-                id="email_input"
                 placeholder={t('your_email')}
-                title={t('email')}
                 value={userData.email}
                 onChange={handleChange}
                 required
               />
-
               <AuthInput
                 type="password"
                 name="password"
-                id="password_input"
                 placeholder={t('insert_your_password')}
-                title={t('password')}
                 value={userData.password}
                 onChange={handleChange}
                 required
               />
-
-              <AuthButton
-                name="login_submit"
-                id="login_submit"
-                value={t('login')}
-                onClick={handleSubmit}
-              />
-
+              <AuthButton name="login_submit" value={t('login')} onClick={handleSubmit} />
               <AuthOptions
                 checkboxtext={t('remember_login')}
                 checkboxid="rememberMe"
                 path="/forgot-password"
                 pathtext={t('forgot_password_question')}
               />
-
-              <AuthRedirect
-                text={t('have_account_question')}
-                path="/register"
-                pathtext={t('register')}
-              />
-
-              <StyledLink
-                text={t('return_home')}
-                path="/"
-                color={theme.colors.secondary}
-                hovercolor={theme.colors.tertiary}
-              />
+              <AuthRedirect text={t('have_account_question')} path="/register" pathtext={t('register')} />
+              <StyledLink text={t('return_home')} path="/" color={theme.colors.secondary} />
             </AuthForm>
           </AuthContainer>
         </AuthWrapper>

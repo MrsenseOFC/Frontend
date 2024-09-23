@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import Cookies from 'js-cookie';
-import axiosInstance from '../../axios';  // Importa a instância customizada do axios
+import axiosInstance from '../../axios';
+import API_BASE_URL from '../../../config'; // Importa a URL base
 
 interface User {
   id: string;
@@ -13,12 +14,16 @@ interface AuthContextType {
   currentUser: User | null;
   logout: () => void;
   error: string | null;
+  isLoading: boolean;
+  updateProfileImage: (imageUrl: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   currentUser: null,
   logout: () => {},
   error: null,
+  isLoading: false,
+  updateProfileImage: () => {},
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -26,34 +31,32 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  const fetchProfileImage = async (userId: string) => {
-    try {
-      const response = await axiosInstance.get(`https://talent2show.onrender.com/api/userPhotos/${userId}`);
-      if (response.data.profile_image) {
-        setCurrentUser(prevUser => ({
-          ...prevUser,
-          profileImage: response.data.profile_image,
-        } as User));
-      }
-    } catch (error) {
-      console.error('Erro ao carregar a imagem de perfil:', error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
+      setIsLoading(true);
       try {
         const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null;
         const token = Cookies.get('token');
 
         if (user && token) {
           axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
-          setCurrentUser(user);
-          await fetchProfileImage(user.id);
+          
+          const response = await axiosInstance.get(`${API_BASE_URL}/api/profilePicture/${user.id}`);
+          const profileImage = response.data.profile_image || '';
+
+          const updatedUser = { ...user, profileImage };
+          setCurrentUser(updatedUser);
+          localStorage.setItem('user', JSON.stringify(updatedUser)); // Atualiza o localStorage
+        } else {
+          setError('Usuário não autenticado.');
         }
       } catch (error) {
+        setError('Erro ao carregar o usuário atual.');
         console.error('Erro ao carregar o usuário atual:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -68,8 +71,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
   };
 
+  const updateProfileImage = (imageUrl: string) => {
+    if (currentUser) {
+      const updatedUser = { ...currentUser, profileImage: imageUrl };
+      setCurrentUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser)); // Atualiza o localStorage
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ currentUser, logout, error }}>
+    <AuthContext.Provider value={{ currentUser, logout, error, isLoading, updateProfileImage }}>
       {children}
     </AuthContext.Provider>
   );

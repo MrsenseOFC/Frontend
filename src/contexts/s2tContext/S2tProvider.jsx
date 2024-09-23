@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import Prop from 'prop-types';
+import PropTypes from 'prop-types'; // Corrigido para PropTypes
 import { S2tContext } from './S2tContext';
 import { s2tReducer } from './s2tReducer';
 import { s2tData } from './s2tData';
@@ -15,5 +15,5 @@ export function S2tProvider({ children }) {
 }
 
 S2tProvider.propTypes = {
-  children: Prop.node.isRequired,
+  children: PropTypes.node.isRequired, // Corrigido para PropTypes
 };

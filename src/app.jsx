@@ -1,14 +1,14 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext/AuthContext';
+import { useTranslation } from 'react-i18next';
+import { AuthProvider } from './contexts/AuthContext/AuthContext.tsx';
 import { Login } from './layout/Login/Login';
 import { PlayerDashboard } from './layout/Dashboards/PlayerDashboard/PlayerDashboard';
 import { ClubDashboard } from './layout/Dashboards/ClubDashboard/ClubDashboard';
 import { PrivateRoute } from './routes/PrivateRoute';
 
 // Importar o i18next para suporte a múltiplos idiomas
-import { useTranslation } from 'react-i18next';
 
 function App() {
   // Hook para gerenciar a tradução

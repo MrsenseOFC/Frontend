@@ -8,4 +8,9 @@ export const add_award_history = 'add_award_history';
 export const remove_award_history = 'remove_award_history';
 export const add_video = 'add_video';
 export const remove_video = 'remove_video';
+
 // Insira aqui as types igual a acima
+export const reveal_player = 'reveal_player';
+export const some_new_action = 'some_new_action'; // Exemplo de novo tipo
+export const another_action = 'another_action'; // Outro exemplo
+// Adicione mais tipos conforme necessário

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Prop from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { ImageAdd as AddImageIcon } from '@styled-icons/fluentui-system-filled';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -8,28 +8,47 @@ import { Button } from '../Button/Button';
 import { theme } from '../../../styles/theme';
 import { AuthIconFile } from '../AuthElements/AuthIconFile/AuthIconFile';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext.tsx';
+import API_BASE_URL from '../../../../config'; // Importa a URL base
 
 export function ProfilePicture({
   badge = '', type = '', competitivecategory, ownerview,
 }) {
-  const { currentUser } = useAuth();
-  const [profilePicture, setProfilePicture] = useState(currentUser?.profileImage || '');
+  const { currentUser, updateProfileImage } = useAuth();
+  const [profilePicture, setProfilePicture] = useState('');
   const { t } = useTranslation();
 
-  const handlePictureChange = async (event) => {
-    if (!currentUser) {
-      console.error(t('not_logged'));
-      return;
-    }
+  const userId = currentUser?.id;
 
+  useEffect(() => {
+    // Define a imagem de perfil inicial a partir do usuário atual
+    if (currentUser?.profileImage) {
+      setProfilePicture(currentUser.profileImage);
+    } else if (userId) {
+      fetchProfilePicture(); // Se não houver, busca no backend
+    }
+  }, [currentUser, userId]);
+
+  const fetchProfilePicture = async () => {
+    if (userId) {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/profilePicture/${userId}`);
+        const imageUrl = response.data.image_url || '';
+        setProfilePicture(imageUrl);
+      } catch (error) {
+        console.error(t('image_load_error'), error.response ? error.response.data : error.message);
+      }
+    }
+  };
+
+  const handlePictureChange = async (event) => {
     const newFile = event.target.files[0];
     if (newFile) {
       const formData = new FormData();
-      formData.append('image_file', newFile);
+      formData.append('profileImage', newFile);
 
       try {
         const response = await axios.post(
-          `http://localhost:7320/api/userPhotos/${currentUser.id}/upload`,
+          `${API_BASE_URL}/api/profilePicture/upload/${userId}`,
           formData,
           {
             headers: {
@@ -38,26 +57,20 @@ export function ProfilePicture({
           },
         );
 
-        setProfilePicture(response.data.image_file);
+        const updatedImageUrl = response.data.image_url;
+        setProfilePicture(updatedImageUrl);
+        updateProfileImage(updatedImageUrl); // Atualiza a imagem no contexto
       } catch (error) {
         console.error(t('image_upload_error'), error.response ? error.response.data : error.message);
       }
     }
   };
 
-  useEffect(() => {
-    setProfilePicture(currentUser?.profileImage || '');
-  }, [currentUser]);
-
   return (
     <Styled.ProfilePictureContainer>
       <Styled.ProfilePictureElement>
         <Styled.Picture
-          src={
-            profilePicture
-              ? `http://localhost:7320/uploads/${profilePicture}`
-              : '/assets/images/logos/vertical-background.png'
-          }
+          src={profilePicture ? `${API_BASE_URL}${profilePicture}` : '/assets/images/logos/vertical-background.png'}
           alt={t('profile_picture')}
         />
         {ownerview && (
@@ -89,8 +102,8 @@ export function ProfilePicture({
 }
 
 ProfilePicture.propTypes = {
-  competitivecategory: Prop.string,
-  badge: Prop.string,
-  type: Prop.string,
-  ownerview: Prop.bool.isRequired,
+  competitivecategory: PropTypes.string,
+  badge: PropTypes.string,
+  type: PropTypes.string,
+  ownerview: PropTypes.bool.isRequired,
 };
