@@ -19,7 +19,7 @@ import { FloatingIcon } from '../../../components/elements/FloatingIcon/Floating
 import { LeagueContext } from '../../../contexts/userContext/LeagueProvider/LeagueContext';
 import { ProfileBanner } from '../../../components/elements/ProfileBanner/ProfileBanner';
 import { LeagueNav } from '../../../components/ProfileHeader/Components/LeagueNav/LeagueNav';
-import { LeagueMenu } from '../../../components/MobileMenu/Components/LeagueMenu/LeagueMenu';
+import { LeagueMenu } from '../../../components/MobileMenu/Components/leagueMenu/leagueMenu';
 import { Row } from '../../../components/RowContainer/Row';
 import { IconDiv } from '../../../components/elements/IconDiv/IconDiv';
 import { FloatingMenu } from '../../../components/FloatingMenu/FloatingMenu';
